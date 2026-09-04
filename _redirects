@@ -1,0 +1,15 @@
+# Section URLs resolve to their place on the single-page site.
+/bespoke      /#bespoke       301
+/projects     /#making        301
+/making       /#making        301
+/trade        /#trade         301
+/about        /#about         301
+/contact      /#about         301
+/materials    /#materials     301
+/process      /#process       301
+/enquire      /#brief         301
+# Legacy design-environment filenames
+/Artilier%20v2.html            /              301
+/Artilier%20-%20Collection.html /collection/  301
+/collection.html               /collection/   301
+/rugs                          /collection/   301

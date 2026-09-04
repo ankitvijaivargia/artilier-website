@@ -1,0 +1,4 @@
+{
+  "_readme": "Portfolio / installed projects. Empty by design — nothing is invented. Add a record and the Projects section publishes itself on the homepage. Fields: slug, name, location, designer, category, terms[] (MATERIALS & TECHNIQUES slugs from taxonomy.json), materials[]/techniques[] (optional free text), products[] (design slugs), hero, images[], video, description, featured, order, published.",
+  "projects": []
+}

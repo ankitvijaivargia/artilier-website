@@ -1,0 +1,23 @@
+{
+  "name": "Artilier",
+  "tagline": "Art. Made Material.",
+  "studio": "New Delhi, India",
+  "email": "studio@artilier.co",
+  "canonical": "https://www.artilier.co",
+  "people": [
+    {
+      "name": "Ankit Vijaivargia",
+      "role": "Founder · Manufacturing & Development",
+      "media": "fo1"
+    },
+    {
+      "name": "Payal Samal",
+      "role": "Design Head · Interior Designer",
+      "media": "fo2"
+    }
+  ],
+  "defaultCta": {
+    "label": "Enquire about this design",
+    "href": "../index.html#brief"
+  }
+}

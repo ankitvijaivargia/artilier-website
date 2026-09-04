@@ -1,0 +1,320 @@
+{
+  "_readme": "MATERIALS & TECHNIQUES — the single source of truth for Artilier's material and technique vocabulary. Terms are NOT categories: a CATEGORY is what a piece is (rugs, objects), a MATERIAL is what it is made from, a TECHNIQUE is how it is made. `kind` may be \"material\", \"technique\" or \"both\", and may be revised as the studio's use of a term settles. Designs, collections and projects reference these slugs in their `terms` array; a term is only ever shown publicly when it is published AND attached to published work. Add a term by appending a record — nothing else changes.",
+  "terms": [
+    {
+      "slug": "hand-knotted",
+      "name": "Hand-knotted",
+      "kind": "technique",
+      "category": "rugs",
+      "published": true,
+      "order": 1,
+      "short": "Knot by knot on the loom"
+    },
+    {
+      "slug": "hand-tufted",
+      "name": "Hand-tufted",
+      "kind": "technique",
+      "category": "rugs",
+      "published": true,
+      "order": 2,
+      "short": "Tufted to the drawing"
+    },
+    {
+      "slug": "flatweave",
+      "name": "Flatweave",
+      "kind": "technique",
+      "category": "rugs",
+      "published": true,
+      "order": 3,
+      "short": "Woven flat, low underfoot"
+    },
+    {
+      "slug": "printed",
+      "name": "Printed",
+      "kind": "technique",
+      "category": "rugs",
+      "published": true,
+      "order": 4,
+      "short": ""
+    },
+    {
+      "slug": "braided",
+      "name": "Braided",
+      "kind": "technique",
+      "category": "rugs",
+      "published": true,
+      "order": 5,
+      "short": ""
+    },
+    {
+      "slug": "soumak",
+      "name": "Soumak weave",
+      "kind": "technique",
+      "category": "rugs",
+      "published": true,
+      "order": 6,
+      "short": ""
+    },
+    {
+      "slug": "loop-cut",
+      "name": "Loop & cut",
+      "kind": "technique",
+      "category": "rugs",
+      "published": true,
+      "order": 7,
+      "short": ""
+    },
+    {
+      "slug": "mixed",
+      "name": "Mixed technique",
+      "kind": "technique",
+      "category": "rugs",
+      "published": true,
+      "order": 8,
+      "short": ""
+    },
+    {
+      "slug": "straw-marquetry",
+      "name": "Straw Marquetry",
+      "kind": "technique",
+      "category": null,
+      "published": false,
+      "order": 100,
+      "short": ""
+    },
+    {
+      "slug": "bamboo-marquetry",
+      "name": "Bamboo Marquetry",
+      "kind": "technique",
+      "category": null,
+      "published": false,
+      "order": 101,
+      "short": ""
+    },
+    {
+      "slug": "parchment",
+      "name": "Parchment",
+      "kind": "material",
+      "category": null,
+      "published": false,
+      "order": 102,
+      "short": ""
+    },
+    {
+      "slug": "cast-brass",
+      "name": "Cast Brass",
+      "kind": "both",
+      "category": null,
+      "published": false,
+      "order": 103,
+      "short": ""
+    },
+    {
+      "slug": "cast-glass",
+      "name": "Cast Glass",
+      "kind": "both",
+      "category": null,
+      "published": false,
+      "order": 104,
+      "short": ""
+    },
+    {
+      "slug": "bone",
+      "name": "Bone",
+      "kind": "material",
+      "category": null,
+      "published": false,
+      "order": 105,
+      "short": ""
+    },
+    {
+      "slug": "stingray",
+      "name": "Stingray",
+      "kind": "material",
+      "category": null,
+      "published": false,
+      "order": 106,
+      "short": ""
+    },
+    {
+      "slug": "mosaics",
+      "name": "Mosaics",
+      "kind": "technique",
+      "category": null,
+      "published": false,
+      "order": 107,
+      "short": ""
+    },
+    {
+      "slug": "stone-inlay-and-carving",
+      "name": "Stone Inlay & Carving",
+      "kind": "technique",
+      "category": null,
+      "published": false,
+      "order": 108,
+      "short": ""
+    },
+    {
+      "slug": "eggshell",
+      "name": "Eggshell",
+      "kind": "material",
+      "category": null,
+      "published": false,
+      "order": 109,
+      "short": ""
+    },
+    {
+      "slug": "mother-of-pearl",
+      "name": "Mother of Pearl",
+      "kind": "material",
+      "category": null,
+      "published": false,
+      "order": 110,
+      "short": ""
+    },
+    {
+      "slug": "semi-precious-stone",
+      "name": "Semi-Precious Stone",
+      "kind": "material",
+      "category": null,
+      "published": false,
+      "order": 111,
+      "short": ""
+    },
+    {
+      "slug": "burnt-wood",
+      "name": "Burnt Wood",
+      "kind": "both",
+      "category": null,
+      "published": false,
+      "order": 112,
+      "short": ""
+    },
+    {
+      "slug": "carved-wood",
+      "name": "Carved Wood",
+      "kind": "technique",
+      "category": null,
+      "published": false,
+      "order": 113,
+      "short": ""
+    },
+    {
+      "slug": "selenite",
+      "name": "Selenite",
+      "kind": "material",
+      "category": null,
+      "published": false,
+      "order": 114,
+      "short": ""
+    },
+    {
+      "slug": "paper-mache",
+      "name": "Paper Mache",
+      "kind": "both",
+      "category": null,
+      "published": false,
+      "order": 115,
+      "short": ""
+    },
+    {
+      "slug": "embroidery",
+      "name": "Embroidery",
+      "kind": "technique",
+      "category": null,
+      "published": false,
+      "order": 116,
+      "short": ""
+    },
+    {
+      "slug": "raffia",
+      "name": "Raffia",
+      "kind": "material",
+      "category": null,
+      "published": false,
+      "order": 117,
+      "short": ""
+    },
+    {
+      "slug": "horn",
+      "name": "Horn",
+      "kind": "material",
+      "category": null,
+      "published": false,
+      "order": 118,
+      "short": ""
+    },
+    {
+      "slug": "feathers",
+      "name": "Feathers",
+      "kind": "material",
+      "category": null,
+      "published": false,
+      "order": 119,
+      "short": ""
+    },
+    {
+      "slug": "metal-cladding",
+      "name": "Metal Cladding",
+      "kind": "both",
+      "category": null,
+      "published": false,
+      "order": 120,
+      "short": ""
+    },
+    {
+      "slug": "silver-and-gold-leaf",
+      "name": "Silver & Gold Leaf",
+      "kind": "both",
+      "category": null,
+      "published": false,
+      "order": 121,
+      "short": ""
+    },
+    {
+      "slug": "resin-casting",
+      "name": "Resin Casting",
+      "kind": "technique",
+      "category": null,
+      "published": false,
+      "order": 122,
+      "short": ""
+    },
+    {
+      "slug": "ceramic",
+      "name": "Ceramic",
+      "kind": "material",
+      "category": null,
+      "published": false,
+      "order": 123,
+      "short": ""
+    },
+    {
+      "slug": "dye-stone",
+      "name": "Dye-Stone",
+      "kind": "material",
+      "category": null,
+      "published": false,
+      "order": 124,
+      "short": ""
+    },
+    {
+      "slug": "terracotta",
+      "name": "Terracotta",
+      "kind": "material",
+      "category": null,
+      "published": false,
+      "order": 125,
+      "short": ""
+    },
+    {
+      "slug": "tobacco-leaf",
+      "name": "Tobacco Leaf",
+      "kind": "material",
+      "category": null,
+      "published": false,
+      "order": 126,
+      "short": ""
+    }
+  ]
+}

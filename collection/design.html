@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Design — Artilier</title>
+<meta name="description" content="A single design from the Artilier collection — construction, material, sizes and colourway, woven to order. Trade only, New Delhi.">
+<meta name="robots" content="noindex,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Artilier">
+<meta property="og:title" content="Design — Artilier">
+<meta property="og:image" content="https://www.artilier.co/assets/og-artilier.png">
+<meta name="theme-color" content="#F7F3EB">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/layout.css">
+<link rel="stylesheet" href="../assets/css/responsive.css">
+<script defer src="../assets/js/slots.js?v=2" data-manifest="../assets/media/manifest.json"></script>
+<script defer src="../assets/js/content.js?v=1" data-content="../content/"></script>
+</head>
+<body>
+<a class="skip" href="#design-root">Skip to the design</a>
+<nav id="nav" class="s">
+  <a href="../index.html" class="logo">Artilier<em>Art. Made Material.</em></a>
+  <ul class="nl">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="index.html">The collection</a></li>
+    <li><a href="../index.html#bespoke">Bespoke</a></li>
+    <li><a href="../index.html#about">About</a></li>
+  </ul>
+  <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav">Menu <span aria-hidden="true">≡</span></button>
+  <a href="../index.html#brief" class="cta">Start a project <span>→</span></a>
+</nav>
+<div class="mnav" id="mnav" hidden>
+  <a href="../index.html">Home</a><a href="index.html">The collection</a><a href="../index.html#bespoke">Bespoke development</a><a href="../index.html#materials">Materials</a><a href="../index.html#process">Process</a><a href="../index.html#about">About &amp; contact</a><a href="../index.html#brief" class="cta">Start a project <span>→</span></a>
+</div>
+<div class="crumb" role="navigation" aria-label="Breadcrumb"><a href="../index.html">Artilier</a><span aria-hidden="true">/</span><a href="index.html">The collection</a><span aria-hidden="true">/</span><span aria-current="page" data-crumb>Design</span></div>
+<main id="design-root"></main>
+<div class="backhome">
+  <a href="index.html" class="cta ol"><span aria-hidden="true">←</span> Back to the collection</a>
+  <div class="backhome-l"><a href="../index.html#bespoke">Bespoke development</a><a href="../index.html#materials">Rug materials</a><a href="../index.html#process">How we work</a><a href="../index.html#about">About &amp; contact</a></div>
+</div>
+<footer>
+  <div class="f-top">
+    <div>
+      <h4>Artilier</h4>
+      <p>Art. Made Material. A design-led studio in New Delhi, working trade only. Our first collection is rugs — hand-knotted, hand-tufted and flatweave, made to any dimension, from our collection or developed from your own artwork.</p>
+    </div>
+    <div class="f-col"><h5>Collection</h5><ul>
+      <li><a href="index.html#knotted">Hand-knotted designs</a></li><li><a href="index.html#tufted">Hand-tufted designs</a></li>
+      <li><a href="index.html#flatweave">Flatweave designs</a></li><li><a href="index.html#other">Other techniques</a></li>
+    </ul></div>
+    <div class="f-col"><h5>Site</h5><ul>
+      <li><a href="../index.html#bespoke">Bespoke development</a></li>
+      <li><a href="../index.html#studio">The studio</a></li>
+      <li><a href="../index.html#about">About</a></li>
+    </ul></div>
+    <div class="f-col"><h5>Contact</h5><ul>
+      <li><a href="mailto:studio@artilier.co">studio@artilier.co</a></li>
+      <li><a href="../index.html#brief">Start a project</a></li>
+      <li><a href="../index.html">Home</a></li>
+    </ul></div>
+  </div>
+  <div class="f-bot">
+    <span>© 2026 Artilier</span><span>New Delhi · Woven across India</span><span>Trade only · Any design, any dimension</span>
+  </div>
+</footer>
+<a class="mcta" id="mcta" href="../index.html#brief">Start a project <span aria-hidden="true">→</span></a>
+<script>
+const bg=document.getElementById('burger'),mn=document.getElementById('mnav');
+if(bg&&mn){
+  const setMenu=o=>{o?mn.removeAttribute('hidden'):mn.setAttribute('hidden','');bg.setAttribute('aria-expanded',String(o));document.body.classList.toggle('menu-open',o);bg.firstChild.nodeValue=o?'Close ':'Menu '};
+  bg.addEventListener('click',()=>setMenu(mn.hasAttribute('hidden')));
+  mn.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false)});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&!mn.hasAttribute('hidden')){setMenu(false);bg.focus()}});
+}
+const mc=document.getElementById('mcta');
+if(mc){addEventListener('scroll',()=>mc.classList.toggle('on',scrollY>innerHeight*.5),{passive:true})}
+document.addEventListener('artilier:content',()=>{
+  const h1=document.querySelector('#design-root h1'),c=document.querySelector('[data-crumb]');
+  if(h1&&c)c.textContent=h1.textContent;
+});
+</script>
+</body>
+</html>

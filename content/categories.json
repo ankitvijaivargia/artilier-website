@@ -1,0 +1,55 @@
+{
+  "_readme": "Content source of truth for Artilier categories. See CONTENT.md. published:false = built but never rendered publicly.",
+  "categories": [
+    {
+      "slug": "rugs",
+      "name": "Rugs",
+      "order": 1,
+      "published": true,
+      "collectionPage": "collection/index.html",
+      "intro": "Hand-knotted, hand-tufted and flatweave rugs, made to order in any dimension."
+    },
+    {
+      "slug": "embroidery",
+      "name": "Embroidery",
+      "order": 2,
+      "published": false,
+      "intro": ""
+    },
+    {
+      "slug": "straw-marquetry",
+      "name": "Straw Marquetry",
+      "order": 3,
+      "published": false,
+      "intro": ""
+    },
+    {
+      "slug": "furniture",
+      "name": "Furniture",
+      "order": 4,
+      "published": false,
+      "intro": ""
+    },
+    {
+      "slug": "lighting",
+      "name": "Lighting",
+      "order": 5,
+      "published": false,
+      "intro": ""
+    },
+    {
+      "slug": "objects",
+      "name": "Objects",
+      "order": 6,
+      "published": false,
+      "intro": ""
+    },
+    {
+      "slug": "textiles",
+      "name": "Textiles",
+      "order": 7,
+      "published": false,
+      "intro": ""
+    }
+  ]
+}

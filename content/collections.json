@@ -1,0 +1,79 @@
+{
+  "_readme": "Each published collection renders one section on its category's collection page, in `order`. Unlimited collections are supported; the filter row and counts are derived from this file plus designs.json.",
+  "collections": [
+    {
+      "slug": "knotted",
+      "name": "Hand-knotted",
+      "category": "rugs",
+      "technique": "hand-knotted",
+      "order": 1,
+      "published": true,
+      "eyebrow": "Collection 01",
+      "title": "Hand-",
+      "titleItalic": "knotted",
+      "subtitle": "Knot by knot on the loom.",
+      "intro": "The finest definition we can offer, and the construction that carries painterly artwork best. Knot count, yarn and dye lot are set per design.",
+      "filterLabel": "Hand-knotted",
+      "note": "{n} designs shown. Every one is woven to order — re-coloured, re-scaled and re-proportioned for the project. New designs are added as the studio develops them.",
+      "link": {
+        "label": "Bespoke from your artwork",
+        "href": "../index.html#bespoke"
+      },
+      "terms": [
+        "hand-knotted"
+      ]
+    },
+    {
+      "slug": "tufted",
+      "name": "Hand-tufted",
+      "category": "rugs",
+      "technique": "hand-tufted",
+      "order": 2,
+      "published": true,
+      "eyebrow": "Collection 02",
+      "title": "Hand-",
+      "titleItalic": "tufted",
+      "subtitle": "Texture, carving and pile height.",
+      "intro": "Carved outlines, loop-and-cut surfaces and high-low relief, at a shorter lead time than knotting.",
+      "filterLabel": "Hand-tufted",
+      "note": "{n} designs shown. Every one is woven to order — re-coloured, re-scaled and re-proportioned for the project. New designs are added as the studio develops them.",
+      "terms": [
+        "hand-tufted"
+      ]
+    },
+    {
+      "slug": "flatweave",
+      "name": "Flatweave",
+      "category": "rugs",
+      "technique": "flatweave",
+      "order": 3,
+      "published": true,
+      "eyebrow": "Collection 03",
+      "title": "Flat",
+      "titleItalic": "weave",
+      "subtitle": "Woven flat, low underfoot.",
+      "intro": "Graphic and geometric work, layering, and rooms where a pile would sit too high.",
+      "filterLabel": "Flatweave",
+      "note": "{n} designs shown. Every one is woven to order — re-coloured, re-scaled and re-proportioned for the project. New designs are added as the studio develops them.",
+      "terms": [
+        "flatweave"
+      ]
+    },
+    {
+      "slug": "other",
+      "name": "Other techniques",
+      "category": "rugs",
+      "technique": null,
+      "order": 4,
+      "published": true,
+      "eyebrow": "Collection 04",
+      "title": "Other ",
+      "titleItalic": "techniques",
+      "subtitle": "Constructions we develop beyond the three main ones.",
+      "intro": "Printed, braided, soumak, loop-and-cut and mixed constructions — developed where a design or an application calls for them. Availability depends on the design, the size and the workshop, so these are shown as work rather than as a standing range.",
+      "filterLabel": "Other techniques",
+      "note": "{n} designs shown, and the group grows as new techniques are developed. Every one is woven to order — re-coloured, re-scaled and re-proportioned for the project.",
+      "terms": []
+    }
+  ]
+}

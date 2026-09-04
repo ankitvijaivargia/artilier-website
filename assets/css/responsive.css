@@ -1,0 +1,218 @@
+/* ARTILIER — responsive refinement layer.
+   Loaded last. Desktop (≥1081px) is deliberately left untouched: every rule
+   here sits inside a media query for tablet, phone or touch/motion context. */
+
+/* form fields must be allowed to shrink inside narrow grid tracks */
+.fx .row{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.f,.f input,.f select,.f textarea{min-width:0}
+
+/* ── shared tokens & touch hygiene ── */
+:root{--navh:56px;--tapmin:44px}
+@media(max-width:1080px){
+  h1,h2,h3,.d1,.d2,.d3,.hero-h,.area-t,.sb-l,.brief h2{text-wrap:balance}
+  p,.bd,.bd-s,.area-s,.area-t2{text-wrap:pretty}
+  .sec-hd,.cgs-hd,.hand-hd,.wp-hd,.area-in,.exp-in,.phil-in{align-items:start}
+}
+/* hover effects only where a real pointer exists — no sticky states on touch */
+@media(hover:none){
+  .tech-list li:hover,.cat .nm:hover,.cgi .nm:hover,.idx-h:hover{color:inherit}
+  .cta:hover{transform:none}
+  .pstep:hover .pg{color:var(--tx-3)}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+
+/* ══ TABLET — 901 to 1080 (iPad landscape, small laptops) ══
+   The base sheet collapses these to one column at 1080; at this width there is
+   still enough measure for the two-column editorial pairing. */
+@media(min-width:901px) and (max-width:1080px){
+  .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:end}
+  .hero-l{padding-bottom:clamp(20px,3vw,40px)}
+  .hero-r{margin-top:0}
+  .mi{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}
+  .about{grid-template-columns:minmax(0,.95fr) minmax(0,1.15fr)}
+  .sec-hd{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+  .brief-in{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+  .brief-ph{aspect-ratio:4/5}
+}
+
+/* ══ TABLET — up to 1040: the menu takes over on every page ══
+   Five nav links plus a CTA get cramped before the 760 phone breakpoint. */
+@media(max-width:1040px){
+  nav .nl{display:none}
+  nav .burger{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;min-height:var(--tapmin);padding:0 2px}
+  .filt{top:var(--navh)}
+}
+
+/* ══ TABLET PORTRAIT — 761 to 1024 (iPad 768 / 834) ══ */
+@media(min-width:761px) and (max-width:1024px){
+  .hero{padding-top:124px}
+  .hero-r{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+  .hs-a{aspect-ratio:4/5}
+  .vals{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cats.core{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .cg{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+  .why{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .f-top{grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr))}
+  .f-top>div:first-child{grid-column:span 3}
+  .hand-strip{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .hclip:nth-child(n+4){display:block}
+  .hclip:nth-child(n+5){display:none}
+  .bsp-flow{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .bs .bt{font-size:26px}
+}
+
+/* ══ MOBILE NAVIGATION — full-sheet menu ══ */
+@media(max-width:1040px){
+  .mnav{position:fixed;top:var(--navh);left:0;right:0;bottom:0;z-index:89;
+    display:grid;align-content:start;gap:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    background:var(--paper);border-bottom:0;
+    padding:clamp(14px,3vw,26px) var(--pad) calc(28px + env(safe-area-inset-bottom));
+    animation:mnav-in .42s var(--e) both}
+  .mnav a{display:flex;align-items:center;min-height:52px;padding:12px 0;
+    border-bottom:1px solid var(--sand);font-family:var(--d);font-size:clamp(21px,5.4vw,27px);
+    line-height:1.15;color:var(--tx)}
+  .mnav a:last-of-type{border-bottom:0}
+  .mnav a.cta{margin-top:22px;min-height:54px;border-bottom:0;font-family:var(--s);
+    font-size:11.5px;letter-spacing:.18em;justify-content:center}
+  .mnav[hidden]{display:none!important}
+  body.menu-open{overflow:hidden}
+  .burger[aria-expanded="true"] span{transform:rotate(90deg)}
+  .burger span{display:inline-block;transition:transform .35s var(--e)}
+}
+@keyframes mnav-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.mnav{animation:none}}
+
+/* ══ PHONE — up to 760 ══ */
+@media(max-width:760px){
+  :root{--pad:22px}
+  nav{padding:14px var(--pad)}
+  nav.s{padding:11px var(--pad)}
+  .logo{font-size:21px;letter-spacing:.26em}
+  nav .cta{padding:12px 15px;font-size:10.5px;letter-spacing:.14em;min-height:var(--tapmin)}
+  nav .cta span{display:none}
+
+  /* hero: headline first, then one cinematic full-bleed frame */
+  .hero{padding-top:104px}
+  .hero-l .lb{margin-bottom:16px}
+  .hero-p{margin-top:20px;max-width:38ch;font-size:16px}
+  .hero-a{margin-top:26px;gap:10px}
+  .hero-a .cta{flex:1 1 100%;justify-content:center;min-height:52px}
+  .hero-base{margin-top:28px;gap:14px 22px;font-size:10.5px}
+  .hero-r{margin-top:26px;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .hs-a{grid-column:span 2;grid-row:auto;aspect-ratio:4/5;
+    width:calc(100% + var(--pad) * 2);margin-inline:calc(var(--pad) * -1)}
+  .hs-b,.hs-c{aspect-ratio:1}
+  .strip{margin-top:44px}
+  .strip-in{gap:0 22px;padding:14px var(--pad);font-size:10.5px}
+
+  /* section rhythm: tighter, but still generous */
+  .sec{padding:clamp(52px,12vw,72px) var(--pad)}
+  .sec.tight{padding-top:40px}
+  .sec-hd{margin-bottom:28px;gap:18px}
+  .bd{font-size:16px;line-height:1.7}
+
+  .val{padding:22px 0 24px;border-right:0}
+  .val .n{font-size:26px}
+  .val p{max-width:44ch}
+
+  .cat .bar{padding-top:12px}
+  .cats{gap:26px}
+  .cat .ph{aspect-ratio:3/4}
+
+  .mats{gap:0}
+  .exp-facts b{font-size:23px}
+  .facts div{flex-direction:column;gap:4px;padding:12px 0}
+  .facts b{align-self:start}
+
+  .pstep{padding:18px 0;gap:12px 14px}
+  .pstep .pi{max-width:none}
+
+  .brief h2{font-size:clamp(32px,8.6vw,42px)}
+  .brief p{font-size:16px}
+  .brief-a{gap:10px}
+  .brief-a .cta{flex:1 1 100%;justify-content:center;min-height:52px}
+  .brief-list b{min-width:64px}
+
+  /* forms: one-handed, no iOS zoom, comfortable targets */
+  .fx{gap:22px}
+  .f input,.f select,.f textarea{font-size:16px;padding:13px 0;min-height:var(--tapmin)}
+  .f textarea{min-height:132px}
+  .f input[type="file"]{font-size:14px;padding:12px 0}
+  .fx>.cta{min-height:54px;font-size:11.5px}
+
+  footer{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+  .f-top{gap:28px}
+  .f-col ul{gap:2px}
+  .f-col a{display:inline-flex;align-items:center;min-height:40px}
+  .f-bot{gap:8px;flex-direction:column}
+
+  /* collection page */
+  .wp-hd{gap:20px}
+  .wp-meta{gap:14px 20px}
+  .filt-in{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:0 22px;padding:8px var(--pad)}
+  .filt-in::-webkit-scrollbar{display:none}
+  .filt button{min-height:var(--tapmin);white-space:nowrap;padding:6px 0}
+  .cgs{padding:clamp(44px,10vw,62px) var(--pad)}
+  .cgs-hd{margin-bottom:24px}
+  .cg{gap:22px 14px}
+  .cgi b{font-size:21px}
+  .backhome{gap:14px 24px}
+  .backhome .cta{min-height:var(--tapmin)}
+}
+
+/* ══ SMALL PHONE — up to 520 (iPhone SE 320 / 375 / 390) ══ */
+@media(max-width:520px){
+  .hero-h{font-size:clamp(32px,9.6vw,38px)}
+  .d1{font-size:clamp(32px,9.4vw,38px)}
+  .d2{font-size:clamp(26px,7.6vw,30px)}
+  .d3{font-size:23px}
+  .hero-base span:nth-child(3){display:none}
+  .strip-in span:nth-child(n+7){display:none}
+  .cg{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}
+  .cgi b{font-size:18px;letter-spacing:0}
+  .cgi .cgn{font-size:9px}
+  .cgi figcaption span[data-mf]{font-size:9.5px;letter-spacing:.1em}
+  .why h3{font-size:20px}
+  .tech-list li{font-size:17px}
+  .f-top h4{font-size:25px}
+  .brief-list div{flex-direction:column;gap:3px}
+  .brief-list b{min-width:0}
+}
+@media(max-width:380px){
+  :root{--pad:18px}
+  .logo{letter-spacing:.2em}
+  nav .cta{padding:11px 12px;letter-spacing:.1em}
+  .cg{grid-template-columns:1fr}
+  .cgi b{font-size:22px}
+  .hero-h{font-size:31px}
+}
+
+/* ══ PHONE LANDSCAPE — short viewports ══ */
+@media(max-height:520px) and (orientation:landscape) and (max-width:1024px){
+  .hero{padding-top:88px}
+  .hero-h{font-size:clamp(30px,5.4vw,42px)}
+  .hero-r{margin-top:20px;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hs-a{grid-column:span 1;aspect-ratio:3/4;width:100%;margin-inline:0}
+  .mnav{padding-top:10px}
+  .mnav a{min-height:44px;padding:8px 0;font-size:18px}
+}
+
+/* ══ mobile enquiry bar — keeps the primary action reachable
+      without loading the header ══ */
+.mcta{display:none}
+@media(max-width:760px){
+  .mcta{position:fixed;left:0;right:0;bottom:0;z-index:88;display:flex;
+    align-items:center;justify-content:center;gap:12px;
+    min-height:54px;padding:0 var(--pad) env(safe-area-inset-bottom);
+    background:var(--rust);color:var(--paper);
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    transform:translateY(110%);transition:transform .45s var(--e);
+    box-shadow:0 -1px 0 rgba(21,17,16,.12)}
+  .mcta.on{transform:none}
+  .mcta:hover,.mcta:focus-visible{color:var(--paper)}
+  body{padding-bottom:0}
+}
+@media(prefers-reduced-motion:reduce){.mcta{transition:none}}
