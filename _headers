@@ -4,14 +4,22 @@
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: geolocation=(), microphone=(), camera=()
 
-/assets/*
+# Cloudflare CONCATENATES every matching rule rather than letting the most
+# specific one win, so these paths must not overlap. A broad /assets/* rule
+# here would prepend "immutable, max-age=1yr" to everything below it and
+# silently win, which is what previously froze the CSS and the manifest.
+
+/assets/css/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/assets/js/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/assets/media/*
   Cache-Control: public, max-age=31536000, immutable
 
-/assets/media/manifest.json
-  Cache-Control: public, max-age=300
-
 /content/*
-  Cache-Control: public, max-age=300
+  Cache-Control: public, max-age=300, must-revalidate
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
