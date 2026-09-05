@@ -324,13 +324,13 @@
   },
   "h1": {
     "type": "video",
-    "src": "h1.mp4?v=2",
-    "poster": "/assets/media/h1-poster.webp?v=2"
+    "src": "h2.mp4?v=2",
+    "poster": "/assets/media/h2-poster.webp?v=2"
   },
   "h2": {
     "type": "video",
-    "src": "h2.mp4?v=2",
-    "poster": "/assets/media/h2-poster.webp?v=2"
+    "src": "h1.mp4?v=2",
+    "poster": "/assets/media/h1-poster.webp?v=2"
   },
   "h3": {
     "src": "h3.webp?v=2",
