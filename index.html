@@ -506,7 +506,7 @@ document.querySelectorAll('.rv').forEach(e=>ob.observe(e));
    your own handler) and the form posts there, including attachments, and only
    reports success when the endpoint accepts it. Until then it composes the
    brief into an email addressed to studio@artilier.co — no false success. */
-const BRIEF_ENDPOINT = '';
+const BRIEF_ENDPOINT = 'https://formspree.io/f/myklqvgp';
 const BRIEF_EMAIL = 'studio@artilier.co';
 const bf=document.getElementById('briefForm'),bs=document.getElementById('briefStatus');
 if(bf){bf.addEventListener('submit',async e=>{
