@@ -1,10 +1,11 @@
 {
   "b1": {
     "type": "video",
-    "src": "b1.mp4"
+    "src": "b1.mp4?v=2",
+    "poster": "/assets/media/b1-poster.webp?v=2"
   },
   "bs1": {
-    "src": "bs1.webp",
+    "src": "bs1.webp?v=2",
     "type": "image",
     "view": {
       "s": 1,
@@ -14,10 +15,11 @@
   },
   "bs2": {
     "type": "video",
-    "src": "bs2.mp4"
+    "src": "bs2.mp4?v=2",
+    "poster": "/assets/media/bs2-poster.webp?v=2"
   },
   "bs3": {
-    "src": "bs3.webp",
+    "src": "bs3.webp?v=2",
     "type": "image",
     "view": {
       "s": 1,
@@ -26,15 +28,15 @@
     }
   },
   "cb1": {
-    "src": "cb1.webp",
+    "src": "cb1.webp?v=2",
     "type": "image"
   },
   "cf1": {
-    "src": "cf1.webp",
+    "src": "cf1.webp?v=2",
     "type": "image"
   },
   "cf10": {
-    "src": "cf10.webp",
+    "src": "cf10.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.0157697636255723,
@@ -43,11 +45,11 @@
     }
   },
   "cf2": {
-    "src": "cf2.webp",
+    "src": "cf2.webp?v=2",
     "type": "image"
   },
   "cf3": {
-    "src": "cf3.webp",
+    "src": "cf3.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.0926092468210271,
@@ -56,7 +58,7 @@
     }
   },
   "cf4": {
-    "src": "cf4.webp",
+    "src": "cf4.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.273381331814395,
@@ -65,55 +67,55 @@
     }
   },
   "cf5": {
-    "src": "cf5.webp",
+    "src": "cf5.webp?v=2",
     "type": "image"
   },
   "cf6": {
-    "src": "cf6.webp",
+    "src": "cf6.webp?v=2",
     "type": "image"
   },
   "cf7": {
-    "src": "cf7.webp",
+    "src": "cf7.webp?v=2",
     "type": "image"
   },
   "cf8": {
-    "src": "cf8.webp",
+    "src": "cf8.webp?v=2",
     "type": "image"
   },
   "cf9": {
-    "src": "cf9.webp",
+    "src": "cf9.webp?v=2",
     "type": "image"
   },
   "ck1": {
-    "src": "ck1.webp",
+    "src": "ck1.webp?v=2",
     "type": "image"
   },
   "ck10": {
-    "src": "ck10.webp",
+    "src": "ck10.webp?v=2",
     "type": "image"
   },
   "ck11": {
-    "src": "ck11.webp",
+    "src": "ck11.webp?v=2",
     "type": "image"
   },
   "ck12": {
-    "src": "ck12.webp",
+    "src": "ck12.webp?v=2",
     "type": "image"
   },
   "ck13": {
-    "src": "ck13.webp",
+    "src": "ck13.webp?v=2",
     "type": "image"
   },
   "ck14": {
-    "src": "ck14.webp",
+    "src": "ck14.webp?v=2",
     "type": "image"
   },
   "ck15": {
-    "src": "ck15.webp",
+    "src": "ck15.webp?v=2",
     "type": "image"
   },
   "ck2": {
-    "src": "ck2.webp",
+    "src": "ck2.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.3280900307815777,
@@ -122,7 +124,7 @@
     }
   },
   "ck3": {
-    "src": "ck3.webp",
+    "src": "ck3.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.397250162223551,
@@ -131,7 +133,7 @@
     }
   },
   "ck4": {
-    "src": "ck4.webp",
+    "src": "ck4.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.0369031008034721,
@@ -140,11 +142,11 @@
     }
   },
   "ck5": {
-    "src": "ck5.webp",
+    "src": "ck5.webp?v=2",
     "type": "image"
   },
   "ck6": {
-    "src": "ck6.webp",
+    "src": "ck6.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.0833731335143475,
@@ -153,7 +155,7 @@
     }
   },
   "ck7": {
-    "src": "ck7.webp",
+    "src": "ck7.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.1243878986391695,
@@ -162,7 +164,7 @@
     }
   },
   "ck8": {
-    "src": "ck8.webp",
+    "src": "ck8.webp?v=2",
     "type": "image",
     "view": {
       "s": 1,
@@ -171,7 +173,7 @@
     }
   },
   "ck9": {
-    "src": "ck9.webp",
+    "src": "ck9.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.0720338307238944,
@@ -180,35 +182,35 @@
     }
   },
   "cn1": {
-    "src": "cn1.webp",
+    "src": "cn1.webp?v=2",
     "type": "image"
   },
   "cn2": {
-    "src": "cn2.webp",
+    "src": "cn2.webp?v=2",
     "type": "image"
   },
   "cn3": {
-    "src": "cn3.webp",
+    "src": "cn3.webp?v=2",
     "type": "image"
   },
   "co1": {
-    "src": "co1.webp",
+    "src": "co1.webp?v=2",
     "type": "image"
   },
   "co2": {
-    "src": "co2.webp",
+    "src": "co2.webp?v=2",
     "type": "image"
   },
   "co3": {
-    "src": "co3.webp",
+    "src": "co3.webp?v=2",
     "type": "image"
   },
   "co4": {
-    "src": "co4.webp",
+    "src": "co4.webp?v=2",
     "type": "image"
   },
   "co5": {
-    "src": "co5.webp",
+    "src": "co5.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.0937653338430242,
@@ -217,19 +219,19 @@
     }
   },
   "co6": {
-    "src": "co6.webp",
+    "src": "co6.webp?v=2",
     "type": "image"
   },
   "co7": {
-    "src": "co7.webp",
+    "src": "co7.webp?v=2",
     "type": "image"
   },
   "co8": {
-    "src": "co8.webp",
+    "src": "co8.webp?v=2",
     "type": "image"
   },
   "ct1": {
-    "src": "ct1.webp",
+    "src": "ct1.webp?v=2",
     "type": "image",
     "view": {
       "s": 1,
@@ -238,7 +240,7 @@
     }
   },
   "ct10": {
-    "src": "ct10.webp",
+    "src": "ct10.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.097187290299682,
@@ -247,7 +249,7 @@
     }
   },
   "ct11": {
-    "src": "ct11.webp",
+    "src": "ct11.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.0357956549492937,
@@ -256,7 +258,7 @@
     }
   },
   "ct12": {
-    "src": "ct12.webp",
+    "src": "ct12.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.0215073839601896,
@@ -265,7 +267,7 @@
     }
   },
   "ct2": {
-    "src": "ct2.webp",
+    "src": "ct2.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.075773724476151,
@@ -274,7 +276,7 @@
     }
   },
   "ct3": {
-    "src": "ct3.webp",
+    "src": "ct3.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.0669378581418423,
@@ -283,7 +285,7 @@
     }
   },
   "ct4": {
-    "src": "ct4.webp",
+    "src": "ct4.webp?v=2",
     "type": "image",
     "view": {
       "s": 1,
@@ -292,27 +294,27 @@
     }
   },
   "ct5": {
-    "src": "ct5.webp",
+    "src": "ct5.webp?v=2",
     "type": "image"
   },
   "ct6": {
-    "src": "ct6.webp",
+    "src": "ct6.webp?v=2",
     "type": "image"
   },
   "ct7": {
-    "src": "ct7.webp",
+    "src": "ct7.webp?v=2",
     "type": "image"
   },
   "ct8": {
-    "src": "ct8.webp",
+    "src": "ct8.webp?v=2",
     "type": "image"
   },
   "ct9": {
-    "src": "ct9.webp",
+    "src": "ct9.webp?v=2",
     "type": "image"
   },
   "fo1": {
-    "src": "fo1.webp",
+    "src": "fo1.webp?v=2",
     "type": "image",
     "view": {
       "s": 4.549474526307925,
@@ -322,43 +324,49 @@
   },
   "h1": {
     "type": "video",
-    "src": "h1.mp4"
+    "src": "h1.mp4?v=2",
+    "poster": "/assets/media/h1-poster.webp?v=2"
   },
   "h2": {
     "type": "video",
-    "src": "h2.mp4"
+    "src": "h2.mp4?v=2",
+    "poster": "/assets/media/h2-poster.webp?v=2"
   },
   "h3": {
-    "src": "h3.webp",
+    "src": "h3.webp?v=2",
     "type": "image"
   },
   "h4": {
     "type": "video",
-    "src": "h4.mp4"
+    "src": "h4.mp4?v=2",
+    "poster": "/assets/media/h4-poster.webp?v=2"
   },
   "h5": {
-    "src": "h5.webp",
+    "src": "h5.webp?v=2",
     "type": "image"
   },
   "hero-2": {
-    "src": "hero-2.webp",
+    "src": "hero-2.webp?v=2",
     "type": "image"
   },
   "hero-3": {
     "type": "video",
-    "src": "hero-3.mp4"
+    "src": "hero-3.mp4?v=2",
+    "poster": "/assets/media/hero-3-poster.webp?v=2"
   },
   "hero-main": {
-    "src": "hero-main.mp4",
+    "src": "hero-main.mp4?v=2",
     "type": "video",
-    "alt": "Hand-knotting at the loom"
+    "alt": "Hand-knotting at the loom",
+    "poster": "/assets/media/hero-main-poster.webp?v=2"
   },
   "m1": {
     "type": "video",
-    "src": "m1.mp4"
+    "src": "m1.mp4?v=2",
+    "poster": "/assets/media/m1-poster.webp?v=2"
   },
   "m2": {
-    "src": "m2.webp",
+    "src": "m2.webp?v=2",
     "type": "image",
     "view": {
       "s": 1,
@@ -367,11 +375,11 @@
     }
   },
   "m3": {
-    "src": "m3.webp",
+    "src": "m3.webp?v=2",
     "type": "image"
   },
   "w1": {
-    "src": "w1.webp",
+    "src": "w1.webp?v=2",
     "type": "image",
     "view": {
       "s": 1,
@@ -381,10 +389,11 @@
   },
   "w10": {
     "type": "video",
-    "src": "w10.mp4"
+    "src": "w10.mp4?v=2",
+    "poster": "/assets/media/w10-poster.webp?v=2"
   },
   "w13": {
-    "src": "w13.webp",
+    "src": "w13.webp?v=2",
     "type": "image",
     "view": {
       "s": 1,
@@ -393,7 +402,7 @@
     }
   },
   "w19": {
-    "src": "w19.webp",
+    "src": "w19.webp?v=2",
     "type": "image",
     "view": {
       "s": 1.0045067533750003,
@@ -403,11 +412,13 @@
   },
   "w2": {
     "type": "video",
-    "src": "w2.mp4"
+    "src": "w2.mp4?v=2",
+    "poster": "/assets/media/w2-poster.webp?v=2"
   },
   "w20": {
     "type": "video",
-    "src": "w20.mp4"
+    "src": "w20.mp4?v=2",
+    "poster": "/assets/media/w20-poster.webp?v=2"
   },
   "w3": {
     "type": "video",
@@ -416,20 +427,23 @@
       "x": 0,
       "y": 0
     },
-    "src": "w3.mp4"
+    "src": "w3.mp4?v=2",
+    "poster": "/assets/media/w3-poster.webp?v=2"
   },
   "w4": {
-    "src": "w4.mp4",
+    "src": "w4.mp4?v=2",
     "type": "video",
     "alt": "Tufting gun working the design into the backing cloth",
-    "facts": "Hand-tufted · wool pile"
+    "facts": "Hand-tufted · wool pile",
+    "poster": "/assets/media/w4-poster.webp?v=2"
   },
   "w6": {
     "type": "video",
-    "src": "w6.mp4"
+    "src": "w6.mp4?v=2",
+    "poster": "/assets/media/w6-poster.webp?v=2"
   },
   "w8": {
-    "src": "w8.webp",
+    "src": "w8.webp?v=2",
     "type": "image"
   },
   "w9": {
@@ -439,14 +453,15 @@
       "x": 0,
       "y": 5.636648158312621
     },
-    "src": "w9.mp4"
+    "src": "w9.mp4?v=2",
+    "poster": "/assets/media/w9-poster.webp?v=2"
   },
   "wd1": {
-    "src": "wd1.webp",
+    "src": "wd1.webp?v=2",
     "type": "image"
   },
   "fo2": {
-    "src": "fo2.webp",
+    "src": "fo2.webp?v=2",
     "type": "image",
     "alt": "Payal Samal, Design Head at Artilier"
   }
