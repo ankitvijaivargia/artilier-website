@@ -57,9 +57,9 @@
   .why{grid-template-columns:repeat(2,minmax(0,1fr))}
   .f-top{grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr))}
   .f-top>div:first-child{grid-column:span 3}
-  .hand-strip{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .hclip:nth-child(n+4){display:block}
-  .hclip:nth-child(n+5){display:none}
+  /* all five hands stay — 768px / 5 still reads at ~140px per clip */
+  .hand-strip{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+  .hand-strip .hclip{display:block}
   .bsp-flow{grid-template-columns:repeat(3,minmax(0,1fr))}
   .bs .bt{font-size:26px}
 }
@@ -163,6 +163,36 @@
   .backhome .cta{min-height:var(--tapmin)}
 }
 
+/* ══ SECTION 08 — THE HAND BEHIND THE RUG, ON PHONES ══
+   All five clips are carried on mobile. Five in a row on a 390px screen would
+   leave each clip ~66px wide, which destroys the point of the section — the
+   craft detail stops being legible. Instead the strip becomes a full-bleed
+   horizontal snap track: every clip stays in the DOM, stays large enough to
+   read the hand at work, and the overflow itself signals there is more to see.
+   Overrides the 3-up / 2-up truncation in base.css. */
+@media(max-width:760px){
+  .hand-strip{
+    display:flex;
+    grid-template-columns:none;
+    gap:8px;
+    overflow-x:auto;
+    overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+    scroll-padding-left:var(--pad);
+    scrollbar-width:none;
+    padding-inline:var(--pad);
+    margin-inline:calc(var(--pad) * -1);
+  }
+  .hand-strip::-webkit-scrollbar{display:none}
+  .hand-strip .hclip{
+    display:block;
+    flex:0 0 58%;
+    scroll-snap-align:start;
+  }
+  .hand-strip .hclip:last-child{margin-right:var(--pad)}
+}
+
 /* ══ SMALL PHONE — up to 520 (iPhone SE 320 / 375 / 390) ══ */
 @media(max-width:520px){
   .hero-h{font-size:clamp(32px,9.6vw,38px)}
@@ -188,6 +218,7 @@
   .cg{grid-template-columns:1fr}
   .cgi b{font-size:22px}
   .hero-h{font-size:31px}
+  .hand-strip .hclip{flex-basis:66%}
 }
 
 /* ══ PHONE LANDSCAPE — short viewports ══ */
