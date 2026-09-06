@@ -2,7 +2,8 @@
   "b1": {
     "type": "video",
     "src": "b1.mp4?v=2",
-    "poster": "/assets/media/b1-poster.webp?v=2"
+    "poster": "/assets/media/b1-poster.webp?v=2",
+    "alt": "Finished rugs laid out for inspection"
   },
   "bs1": {
     "src": "bs1.webp?v=2",
@@ -11,12 +12,14 @@
       "s": 1,
       "x": 0,
       "y": 0
-    }
+    },
+    "alt": "Technical specification drawing for a hand-tufted rug, with dimensions and colour breakdown"
   },
   "bs2": {
     "type": "video",
     "src": "bs2.mp4?v=2",
-    "poster": "/assets/media/bs2-poster.webp?v=2"
+    "poster": "/assets/media/bs2-poster.webp?v=2",
+    "alt": "Artisan working on a large checkerboard rug"
   },
   "bs3": {
     "src": "bs3.webp?v=2",
@@ -25,15 +28,18 @@
       "s": 1,
       "x": 0,
       "y": -69.89394413174901
-    }
+    },
+    "alt": "Cream rug with raised sculptural relief detail"
   },
   "cb1": {
     "src": "cb1.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Custom rug with a linear drawn motif, installed in a residential interior"
   },
   "cf1": {
     "src": "cf1.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Sutra flatweave rug — tonal brown and beige striated weave"
   },
   "cf10": {
     "src": "cf10.webp?v=2",
@@ -42,11 +48,13 @@
       "s": 1.0157697636255723,
       "x": 0.17560215607493374,
       "y": 0.2817212923147076
-    }
+    },
+    "alt": "Rekha flatweave rug — natural fibre with brown diamond pattern"
   },
   "cf2": {
     "src": "cf2.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Taana flatweave rug — brown and cream shaggy horizontal bands with fringe"
   },
   "cf3": {
     "src": "cf3.webp?v=2",
@@ -55,7 +63,8 @@
       "s": 1.0926092468210271,
       "x": -0.4601508093295972,
       "y": -0.020007637664920974
-    }
+    },
+    "alt": "Baana flatweave rug — cream ground with dark brown vertical tufted dashes"
   },
   "cf4": {
     "src": "cf4.webp?v=2",
@@ -64,55 +73,68 @@
       "s": 1.273381331814395,
       "x": 0.5025388043774699,
       "y": -1.9565968419124764
-    }
+    },
+    "alt": "Chaukhat flatweave rug — pale grey and white textured vertical stripes"
   },
   "cf5": {
     "src": "cf5.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Panah flatweave rug — ivory broken-stripe texture"
   },
   "cf6": {
     "src": "cf6.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Kadam flatweave rug — sage green and ivory vertical stripes"
   },
   "cf7": {
     "src": "cf7.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Chaal flatweave rug — pale grey-green mottled weave"
   },
   "cf8": {
     "src": "cf8.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Sthir flatweave rug — sage and ivory horizontal textured bands"
   },
   "cf9": {
     "src": "cf9.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Seedha flatweave rug — camel ground with fine linear detail"
   },
   "ck1": {
     "src": "ck1.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Raeth hand-knotted rug — pale ivory and blue-grey all-over abstract pattern"
   },
   "ck10": {
     "src": "ck10.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Aab hand-knotted rug — copper and rust abraded lattice"
   },
   "ck11": {
     "src": "ck11.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Saanjh hand-knotted rug — grey eroded traditional pattern"
   },
   "ck12": {
     "src": "ck12.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Naad hand-knotted rug — taupe and grey faded floral"
   },
   "ck13": {
     "src": "ck13.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Ilm hand-knotted rug — grey and ivory vertical striated abstract"
   },
   "ck14": {
     "src": "ck14.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Vaan hand-knotted rug — soft sage and grey faded all-over pattern"
   },
   "ck15": {
     "src": "ck15.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Kaanch hand-knotted rug — charcoal and grey distressed pattern with rust"
   },
   "ck2": {
     "src": "ck2.webp?v=2",
@@ -121,7 +143,8 @@
       "s": 1.3280900307815777,
       "x": 1.4184808061936147,
       "y": 6.153419112492288
-    }
+    },
+    "alt": "Shakti hand-knotted rug — gold and brown chevron geometric"
   },
   "ck3": {
     "src": "ck3.webp?v=2",
@@ -130,7 +153,8 @@
       "s": 1.397250162223551,
       "x": -6.1109032910035275,
       "y": 3.9256971141239636
-    }
+    },
+    "alt": "Dua hand-knotted rug — antique gold all-over botanical pattern"
   },
   "ck4": {
     "src": "ck4.webp?v=2",
@@ -139,11 +163,13 @@
       "s": 1.0369031008034721,
       "x": 0.542961454340545,
       "y": 0.27850685757523136
-    }
+    },
+    "alt": "Anhad hand-knotted rug — black ground with ivory and gold classical floral and border"
   },
   "ck5": {
     "src": "ck5.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Nazm hand-knotted rug — rust and charcoal crackled branching pattern"
   },
   "ck6": {
     "src": "ck6.webp?v=2",
@@ -152,7 +178,8 @@
       "s": 1.0833731335143475,
       "x": -1.2558680054848352,
       "y": -1.8275511756533986
-    }
+    },
+    "alt": "Sahar hand-knotted rug — ivory and gold classical floral field with dark brown border"
   },
   "ck7": {
     "src": "ck7.webp?v=2",
@@ -161,7 +188,8 @@
       "s": 1.1243878986391695,
       "x": 0.22494745416086936,
       "y": 0.05308318642696053
-    }
+    },
+    "alt": "Rooh hand-knotted rug — soft blue and grey Oushak-style floral with border"
   },
   "ck8": {
     "src": "ck8.webp?v=2",
@@ -170,7 +198,8 @@
       "s": 1,
       "x": 0,
       "y": 1.3727777840124609
-    }
+    },
+    "alt": "Zameen hand-knotted rug — deep indigo all-over classical floral with border"
   },
   "ck9": {
     "src": "ck9.webp?v=2",
@@ -179,35 +208,43 @@
       "s": 1.0720338307238944,
       "x": 0.7131287374308037,
       "y": 0.6120404937095463
-    }
+    },
+    "alt": "Mehr hand-knotted rug — pale blue and grey Oushak-style floral"
   },
   "cn1": {
     "src": "cn1.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Weaver working at an upright loom"
   },
   "cn2": {
     "src": "cn2.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Artisan finishing a large hexagon-patterned rug"
   },
   "cn3": {
     "src": "cn3.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Warp threads dressed on the loom"
   },
   "co1": {
     "src": "co1.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Vyom rug — natural fibre with printed brown diamond lattice"
   },
   "co2": {
     "src": "co2.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Chhaap round rug — natural fibre with blue block-printed border"
   },
   "co3": {
     "src": "co3.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Bel rug — cream and green bordered flat rug with corner tassels"
   },
   "co4": {
     "src": "co4.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Gaanth rug — faded blue and rust Persian-style medallion"
   },
   "co5": {
     "src": "co5.webp?v=2",
@@ -216,19 +253,23 @@
       "s": 1.0937653338430242,
       "x": 0.10822133216461058,
       "y": -0.43682041376745673
-    }
+    },
+    "alt": "Soum rug — brown hide patchwork in a square grid"
   },
   "co6": {
     "src": "co6.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Beel round rug — natural fibre coiled weave"
   },
   "co7": {
     "src": "co7.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Loop rug — ivory Moroccan-style diamond pattern in loop and cut pile"
   },
   "co8": {
     "src": "co8.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Khadi rug — indigo ground with ivory patchwork panels"
   },
   "ct1": {
     "src": "ct1.webp?v=2",
@@ -237,7 +278,8 @@
       "s": 1,
       "x": 0.240522431434854,
       "y": 0
-    }
+    },
+    "alt": "Chhaya hand-tufted rug — navy ground with multicoloured ikat pattern"
   },
   "ct10": {
     "src": "ct10.webp?v=2",
@@ -246,7 +288,8 @@
       "s": 1.097187290299682,
       "x": 0.7536291968126998,
       "y": 1.403151799537036
-    }
+    },
+    "alt": "Vartul hand-tufted rug — contemporary abstract in terracotta, blue and sand curved bands"
   },
   "ct11": {
     "src": "ct11.webp?v=2",
@@ -255,7 +298,8 @@
       "s": 1.0357956549492937,
       "x": -1.0383302338233076,
       "y": 0.2000658760952804
-    }
+    },
+    "alt": "Kalp hand-tufted rug — distressed painterly abstract in blue, rust and grey"
   },
   "ct12": {
     "src": "ct12.webp?v=2",
@@ -264,7 +308,8 @@
       "s": 1.0215073839601896,
       "x": 0.2452101111594835,
       "y": 0.47932364335849287
-    }
+    },
+    "alt": "Reth hand-tufted rug — contemporary abstract with circular motif on sand ground"
   },
   "ct2": {
     "src": "ct2.webp?v=2",
@@ -273,7 +318,8 @@
       "s": 1.075773724476151,
       "x": 0.04140624516511138,
       "y": 0.6622052185177667
-    }
+    },
+    "alt": "Girah hand-tufted rug — grey and black painterly abstract"
   },
   "ct3": {
     "src": "ct3.webp?v=2",
@@ -282,7 +328,8 @@
       "s": 1.0669378581418423,
       "x": -0.4309918892964173,
       "y": 1.0195367048915254
-    }
+    },
+    "alt": "Parat hand-tufted rug — pale green ground with ivory floral"
   },
   "ct4": {
     "src": "ct4.webp?v=2",
@@ -291,27 +338,33 @@
       "s": 1,
       "x": 0,
       "y": 0
-    }
+    },
+    "alt": "Silai hand-tufted rug — pale blue-green with repeating red and gold motif bands"
   },
   "ct5": {
     "src": "ct5.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Uchaan hand-tufted rug — black ground all-over classical floral"
   },
   "ct6": {
     "src": "ct6.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Talab hand-tufted rug — ivory and gold classical medallion with border"
   },
   "ct7": {
     "src": "ct7.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Bhanwar hand-tufted rug — soft rose and beige all-over classical floral"
   },
   "ct8": {
     "src": "ct8.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Ojas hand-tufted rug — dark brown ground with ivory classical border"
   },
   "ct9": {
     "src": "ct9.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Ghata hand-tufted rug — ivory and gold classical medallion"
   },
   "fo1": {
     "src": "fo1.webp?v=2",
@@ -320,50 +373,59 @@
       "s": 4.549474526307925,
       "x": -16.4482298425642,
       "y": -77.31384865134476
-    }
+    },
+    "alt": "Ankit Vijaivargia, Founder of Artilier"
   },
   "h1": {
     "type": "video",
     "src": "h2.mp4?v=2",
-    "poster": "/assets/media/h2-poster.webp?v=2"
+    "poster": "/assets/media/h2-poster.webp?v=2",
+    "alt": "Artisans carving the pile to bring out the design"
   },
   "h2": {
     "type": "video",
     "src": "h1.mp4?v=2",
-    "poster": "/assets/media/h1-poster.webp?v=2"
+    "poster": "/assets/media/h1-poster.webp?v=2",
+    "alt": "Rose-toned rug on the frame during production"
   },
   "h3": {
     "src": "h3.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Artisans working together on a large multicoloured rug"
   },
   "h4": {
     "type": "video",
     "src": "h4.mp4?v=2",
-    "poster": "/assets/media/h4-poster.webp?v=2"
+    "poster": "/assets/media/h4-poster.webp?v=2",
+    "alt": "Rug designs laid out across the workshop floor"
   },
   "h5": {
     "src": "h5.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Abstract brown and cream rug being worked by hand"
   },
   "hero-2": {
     "src": "hero-2.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Geometric flatweave rug on the loom"
   },
   "hero-3": {
     "type": "video",
     "src": "hero-3.mp4?v=2",
-    "poster": "/assets/media/hero-3-poster.webp?v=2"
+    "poster": "/assets/media/hero-3-poster.webp?v=2",
+    "alt": "Washing and finishing the woven pile"
   },
   "hero-main": {
     "src": "hero-main.mp4?v=2",
     "type": "video",
-    "alt": "Hand-knotting at the loom",
+    "alt": "Artisans hand-tufting a green botanical design",
     "poster": "/assets/media/hero-main-poster.webp?v=2"
   },
   "m1": {
     "type": "video",
     "src": "m1.mp4?v=2",
-    "poster": "/assets/media/m1-poster.webp?v=2"
+    "poster": "/assets/media/m1-poster.webp?v=2",
+    "alt": "Rugs being washed at the workshop"
   },
   "m2": {
     "src": "m2.webp?v=2",
@@ -372,11 +434,13 @@
       "s": 1,
       "x": 0,
       "y": 16.666666666666675
-    }
+    },
+    "alt": "Wool yarn sample laid on a specification sheet"
   },
   "m3": {
     "src": "m3.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Yarn colour library — hundreds of dyed wool shades"
   },
   "w1": {
     "src": "w1.webp?v=2",
@@ -385,12 +449,14 @@
       "s": 1,
       "x": 0,
       "y": 0
-    }
+    },
+    "alt": "Rug in progress on a long horizontal loom"
   },
   "w10": {
     "type": "video",
     "src": "w10.mp4?v=2",
-    "poster": "/assets/media/w10-poster.webp?v=2"
+    "poster": "/assets/media/w10-poster.webp?v=2",
+    "alt": "Artisan working at a wooden frame loom"
   },
   "w13": {
     "src": "w13.webp?v=2",
@@ -399,7 +465,8 @@
       "s": 1,
       "x": 0,
       "y": 7.43942408612952
-    }
+    },
+    "alt": "Weaver working a pale patterned rug on the loom"
   },
   "w19": {
     "src": "w19.webp?v=2",
@@ -408,17 +475,20 @@
       "s": 1.0045067533750003,
       "x": -0.21490008800035135,
       "y": 106.36598699265762
-    }
+    },
+    "alt": "Loom with hand tools and yarn during weaving"
   },
   "w2": {
     "type": "video",
     "src": "w2.mp4?v=2",
-    "poster": "/assets/media/w2-poster.webp?v=2"
+    "poster": "/assets/media/w2-poster.webp?v=2",
+    "alt": "Red and pink warp threads dressed on the frame"
   },
   "w20": {
     "type": "video",
     "src": "w20.mp4?v=2",
-    "poster": "/assets/media/w20-poster.webp?v=2"
+    "poster": "/assets/media/w20-poster.webp?v=2",
+    "alt": "Artisan tufting a blue botanical design"
   },
   "w3": {
     "type": "video",
@@ -428,7 +498,8 @@
       "y": 0
     },
     "src": "w3.mp4?v=2",
-    "poster": "/assets/media/w3-poster.webp?v=2"
+    "poster": "/assets/media/w3-poster.webp?v=2",
+    "alt": "Weaver knotting row by row at the loom"
   },
   "w4": {
     "src": "w4.mp4?v=2",
@@ -440,11 +511,13 @@
   "w6": {
     "type": "video",
     "src": "w6.mp4?v=2",
-    "poster": "/assets/media/w6-poster.webp?v=2"
+    "poster": "/assets/media/w6-poster.webp?v=2",
+    "alt": "Close detail of warp threads under tension"
   },
   "w8": {
     "src": "w8.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Large painterly rug reviewed flat during finishing"
   },
   "w9": {
     "type": "video",
@@ -454,11 +527,13 @@
       "y": 5.636648158312621
     },
     "src": "w9.mp4?v=2",
-    "poster": "/assets/media/w9-poster.webp?v=2"
+    "poster": "/assets/media/w9-poster.webp?v=2",
+    "alt": "Artisan working a large flowing multicoloured design"
   },
   "wd1": {
     "src": "wd1.webp?v=2",
-    "type": "image"
+    "type": "image",
+    "alt": "Artilier rugs displayed in the studio showroom"
   },
   "fo2": {
     "src": "fo2.webp?v=2",
