@@ -6,9 +6,11 @@
 <title>Design — Artilier</title>
 <meta name="description" content="A single design from the Artilier collection — construction, material, sizes and colourway, woven to order. Trade only, New Delhi.">
 <meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://artilier.co/collection/design.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Artilier">
 <meta property="og:title" content="Design — Artilier">
+<meta property="og:url" content="https://artilier.co/collection/design.html">
 <meta property="og:image" content="https://artilier.co/assets/og-artilier.png">
 <meta name="theme-color" content="#F7F3EB">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -82,6 +84,15 @@ if(mc){addEventListener('scroll',()=>mc.classList.toggle('on',scrollY>innerHeigh
 document.addEventListener('artilier:content',()=>{
   const h1=document.querySelector('#design-root h1'),c=document.querySelector('[data-crumb]');
   if(h1&&c)c.textContent=h1.textContent;
+  const slug=new URLSearchParams(location.search).get('d');
+  if(!slug)return;
+  const url='https://artilier.co/collection/design.html?d='+encodeURIComponent(slug);
+  const set=(sel,attr,val)=>{const n=document.querySelector(sel);if(n&&val)n.setAttribute(attr,val)};
+  set('link[rel="canonical"]','href',url);
+  set('meta[property="og:url"]','content',url);
+  if(h1)set('meta[property="og:title"]','content',h1.textContent.trim()+' — Artilier');
+  const d=document.querySelector('#design-root .bd');
+  if(d&&d.textContent.trim())set('meta[name="description"]','content',d.textContent.trim().slice(0,300));
 });
 </script>
 </body>
