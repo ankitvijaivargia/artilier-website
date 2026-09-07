@@ -5,7 +5,7 @@
  * Fields that are empty in the data (material, referenceSize, leadTime,
  * pileHeight, palette) are OMITTED, never guessed.
  */
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 
 const ROOT = join(dirname(new URL(import.meta.url).pathname), '..');
@@ -34,6 +34,8 @@ const CATS = [
 ];
 
 const indexable = designs.filter(d => d.detail === true);
+const WITHHELD = new Set(['parat']);
+const shownIn = coll => designs.filter(d => d.collection === coll && !WITHHELD.has(d.slug)).sort(by);
 const bySlug = s => designs.find(d => d.slug === s);
 
 /* ── shell ──────────────────────────────────────────────────────────── */
@@ -280,7 +282,8 @@ ${peers.length ? `<section class="sec">
 function categoryPage(cat) {
   const up = '../../';
   const coll = collections.find(c => c.slug === cat.coll);
-  const ds = indexable.filter(d => d.collection === cat.coll).sort(by);
+  const ds = shownIn(cat.coll);
+  const linked = ds.filter(d => d.detail === true);
   const url = `${HOST}/collection/${cat.slug}/`;
   const crumbs = [
     { name:'Artilier', href:`${up}index.html`, abs:`${HOST}/` },
@@ -291,8 +294,8 @@ function categoryPage(cat) {
     { '@type':'CollectionPage','@id':`${url}#collection`,'url':url,'name':`${coll.name} rugs — Artilier`,
       'isPartOf':{'@id':`${HOST}/#website`},'breadcrumb':{'@id':`${url}#breadcrumb`},
       'about':{'@id':`${HOST}/#organization`},
-      'mainEntity':{ '@type':'ItemList','numberOfItems':ds.length,
-        'itemListElement':ds.map((d,i)=>({ '@type':'ListItem','position':i+1,'name':d.name,'url':`${HOST}/collection/${d.slug}/` })) } },
+      'mainEntity':{ '@type':'ItemList','numberOfItems':linked.length,
+        'itemListElement':linked.map((d,i)=>({ '@type':'ListItem','position':i+1,'name':d.name,'url':`${HOST}/collection/${d.slug}/` })) } },
     { ...breadcrumb(crumbs), '@id':`${url}#breadcrumb` }
   ]);
   return head({
@@ -313,7 +316,7 @@ function categoryPage(cat) {
   </div>
 </header>
 <section class="cgs" data-subcategory="${esc(cat.coll)}">
-  <div class="cg">${ds.map((d,i)=>`<figure class="cgi" data-design="${esc(d.slug)}">${slotImg(d.hero,`${d.name} — ${d.construction} rug`,up,i<3)}<figcaption><b><a href="${up}collection/${d.slug}/">${esc(d.name)}</a></b><span></span><span class="cgn">${n2(i+1)}</span></figcaption></figure>`).join('')}</div>
+  <div class="cg">${ds.map((d,i)=>`<figure class="cgi" data-design="${esc(d.slug)}">${slotImg(d.hero,`${d.name} — ${d.construction} rug`,up,i<3)}<figcaption><b>${d.detail === true ? `<a href="${up}collection/${d.slug}/">${esc(d.name)}</a>` : esc(d.name)}</b><span></span><span class="cgn">${n2(i+1)}</span></figcaption></figure>`).join('')}</div>
   <p class="cg-note">${esc(String(coll.note||'').replace('{n}', ds.length))}</p>
 </section>
 <div class="backhome">
@@ -324,6 +327,14 @@ function categoryPage(cat) {
 }
 
 /* ── run ────────────────────────────────────────────────────────────── */
+const KEEP = new Set([...indexable.map(d=>d.slug), ...CATS.map(c=>c.slug)]);
+let pruned = 0;
+for (const e of readdirSync(ROOT+'/collection', { withFileTypes:true })) {
+  if (!e.isDirectory() || KEEP.has(e.name)) continue;
+  rmSync(ROOT+'/collection/'+e.name, { recursive:true, force:true });
+  pruned++;
+}
+console.log('  pruned:     '+pruned);
 const built = [];
 for (const d of indexable) built.push(write(`collection/${d.slug}/index.html`, designPage(d)));
 for (const c of CATS) built.push(write(`collection/${c.slug}/index.html`, categoryPage(c)));

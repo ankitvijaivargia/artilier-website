@@ -17,8 +17,10 @@ const sub = (s, a, b, label) => {
 
 /* 1. Indexing decision lives in the data, not in the templates. */
 const EXCLUDE = new Set([
-  'vyom','chhaap','bel','gaanth','soum','beel','loop','khadi', // "other techniques": not a standing range
-  'parat'                                                       // ct3 carries a supplier tearsheet/SKU
+  'vyom','chhaap','bel','gaanth','soum','beel','loop','khadi',
+  'parat',
+  'raeth','sahar','aab','saanjh','naad','ilm','vaan','kaanch',
+  'sutra','taana','baana','chaukhat','panah','kadam','chaal','sthir'
 ]);
 {
   const d = JSON.parse(rd('content/designs.json'));
