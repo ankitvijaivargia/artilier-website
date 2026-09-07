@@ -18,7 +18,6 @@ const sub = (s, a, b, label) => {
 /* 1. Indexing decision lives in the data, not in the templates. */
 const EXCLUDE = new Set([
   'vyom','chhaap','bel','gaanth','soum','beel','loop','khadi',
-  'parat',
   'raeth','sahar','aab','saanjh','naad','ilm','vaan','kaanch',
   'sutra','taana','baana','chaukhat','panah','kadam','chaal','sthir'
 ]);

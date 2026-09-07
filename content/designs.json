@@ -568,13 +568,13 @@
       "availableConstructions": [],
       "availableMaterials": [],
       "palette": [],
-      "description": "A pale green ground with an open ivory floral. Hand-tufted.",
+      "description": "A cream ground carrying oversized marigold blooms in orange and rose, with blue and green foliage and navy birds worked across the field. Hand-tufted.",
       "intent": "",
       "leadTime": null,
       "featured": false,
       "order": 3,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {

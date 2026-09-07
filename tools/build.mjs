@@ -34,7 +34,7 @@ const CATS = [
 ];
 
 const indexable = designs.filter(d => d.detail === true);
-const WITHHELD = new Set(['parat']);
+const WITHHELD = new Set([]);
 const shownIn = coll => designs.filter(d => d.collection === coll && !WITHHELD.has(d.slug)).sort(by);
 const bySlug = s => designs.find(d => d.slug === s);
 
