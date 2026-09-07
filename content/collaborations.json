@@ -1,0 +1,4 @@
+{
+  "_readme": "Collaborations — co-created work with designers, architects, artists and creative partners. Empty by design: nothing is invented, and while `collaborations` is empty the /collaborations/ page shows the capability only. Add a record and the collaboration story publishes itself. Fields: slug, name, partner, partnerRole (designer | architect | artist | studio | brand), type, year, summary, description, hero (media id), images[] (media ids), terms[] (MATERIALS & TECHNIQUES slugs from taxonomy.json), designs[] (design slugs from designs.json), collection (collection slug, optional), credits[] ({role, name}), link, featured, order, published.",
+  "collaborations": []
+}
