@@ -22,6 +22,11 @@
 <link rel="stylesheet" href="../assets/css/responsive.css?v=2">
 <script defer src="../assets/js/slots.js?v=3" data-manifest="../assets/media/manifest.json?v=5"></script>
 <script defer src="../assets/js/content.js?v=2" data-content="../content/"></script>
+<script>/* ARTILIER_PHASE2_REDIRECT — design.html?d=<slug> is superseded by
+   /collection/<slug>/. Forward before anything renders; the page keeps its
+   noindex so the legacy URL never competes with the canonical one. */
+(function(){var d=new URLSearchParams(location.search).get('d');
+if(d&&/^[a-z0-9-]+$/.test(d))location.replace('../collection/'+d+'/');})();</script>
 </head>
 <body>
 <a class="skip" href="#design-root">Skip to the design</a>

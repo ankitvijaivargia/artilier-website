@@ -30,7 +30,7 @@
       "featured": false,
       "order": 1,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -62,7 +62,7 @@
       "featured": false,
       "order": 2,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -94,7 +94,7 @@
       "featured": false,
       "order": 3,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -126,7 +126,7 @@
       "featured": false,
       "order": 4,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -158,7 +158,7 @@
       "featured": false,
       "order": 5,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -190,7 +190,7 @@
       "featured": false,
       "order": 6,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -222,7 +222,7 @@
       "featured": false,
       "order": 7,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -254,7 +254,7 @@
       "featured": false,
       "order": 8,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -286,7 +286,7 @@
       "featured": false,
       "order": 9,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -318,7 +318,7 @@
       "featured": false,
       "order": 10,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -350,7 +350,7 @@
       "featured": false,
       "order": 11,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -382,7 +382,7 @@
       "featured": false,
       "order": 12,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -414,7 +414,7 @@
       "featured": false,
       "order": 13,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -446,7 +446,7 @@
       "featured": false,
       "order": 14,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -478,7 +478,7 @@
       "featured": false,
       "order": 15,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -510,7 +510,7 @@
       "featured": false,
       "order": 1,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -542,7 +542,7 @@
       "featured": false,
       "order": 2,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -606,7 +606,7 @@
       "featured": false,
       "order": 4,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -638,7 +638,7 @@
       "featured": false,
       "order": 5,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -670,7 +670,7 @@
       "featured": false,
       "order": 6,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -702,7 +702,7 @@
       "featured": false,
       "order": 7,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -734,7 +734,7 @@
       "featured": false,
       "order": 8,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -766,7 +766,7 @@
       "featured": false,
       "order": 9,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -798,7 +798,7 @@
       "featured": false,
       "order": 10,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -830,7 +830,7 @@
       "featured": false,
       "order": 11,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -862,7 +862,7 @@
       "featured": false,
       "order": 12,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -894,7 +894,7 @@
       "featured": false,
       "order": 1,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -926,7 +926,7 @@
       "featured": false,
       "order": 2,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -958,7 +958,7 @@
       "featured": false,
       "order": 3,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -990,7 +990,7 @@
       "featured": false,
       "order": 4,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -1022,7 +1022,7 @@
       "featured": false,
       "order": 5,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -1054,7 +1054,7 @@
       "featured": false,
       "order": 6,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -1086,7 +1086,7 @@
       "featured": false,
       "order": 7,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -1118,7 +1118,7 @@
       "featured": false,
       "order": 8,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -1150,7 +1150,7 @@
       "featured": false,
       "order": 9,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {
@@ -1182,7 +1182,7 @@
       "featured": false,
       "order": 10,
       "published": true,
-      "detail": false,
+      "detail": true,
       "cta": null
     },
     {

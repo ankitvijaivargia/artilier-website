@@ -38,7 +38,7 @@
 
   const card = (d, i) => {
     const name = d.detail
-      ? `<a href="design.html?d=${encodeURIComponent(d.slug)}">${esc(d.name)}</a>`
+      ? `<a href="${encodeURIComponent(d.slug)}/">${esc(d.name)}</a>`
       : esc(d.name);
     return `<figure class="cgi" data-design="${esc(d.slug)}">${slot(d.hero, d.name + ' — full rug or in-room photograph')}` +
       `<figcaption><b data-mt="${esc(d.hero)}">${name}</b><span data-mf="${esc(d.hero)}">${esc(d.label || '')}</span>` +
@@ -59,11 +59,17 @@
     const cat = root.dataset.category || 'rugs';
     const colls = live(data.collections.collections).filter(c => c.category === cat).sort(by);
     const all = live(data.designs.designs).filter(d => d.category === cat);
-    root.innerHTML = colls.map((c, i) =>
-      section(c, all.filter(d => d.collection === c.slug).sort(by), i)).join('\n');
+    /* The collection is pre-rendered at build time so it is crawlable without
+       JavaScript. Re-rendering it here would throw that markup away and cause
+       a visible flash, so the built HTML is left in place and only the
+       derived UI below is wired up. */
+    if (!root.dataset.prerendered) {
+      root.innerHTML = colls.map((c, i) =>
+        section(c, all.filter(d => d.collection === c.slug).sort(by), i)).join('\n');
+    }
 
     const filt = el('#filt-in');
-    if (filt) {
+    if (filt && !filt.children.length) {
       filt.innerHTML = `<button data-f="all" aria-pressed="true">All designs</button>` +
         colls.map(c => `<button data-f="${esc(c.slug)}" aria-pressed="false">${esc(c.filterLabel || c.name)}</button>`).join('') +
         `<span class="fc" id="fc" role="status" aria-live="polite"></span>`;
