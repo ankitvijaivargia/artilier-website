@@ -61,14 +61,22 @@
     }
 
     _image(src, entry) {
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = entry.alt || this.getAttribute('alt') || '';
-      img.loading = this.hasAttribute('data-eager') ? 'eager' : 'lazy';
-      if (img.loading === 'eager') img.fetchPriority = 'high';
-      img.decoding = 'async';
-      if (entry.alt || this.getAttribute('alt')) img.setAttribute('role', 'img'); else img.setAttribute('aria-hidden', 'true');
-      this.appendChild(img);
+      /* Pages built by tools/build.mjs ship a real <img data-pre> inside the
+         slot so the markup is crawlable before JavaScript runs. Adopt it —
+         creating a second <img> here would double every image on the page. */
+      const pre = this.querySelector('img[data-pre]');
+      const img = pre || document.createElement('img');
+      if (!pre) {
+        img.src = src;
+        img.alt = entry.alt || this.getAttribute('alt') || '';
+        img.loading = this.hasAttribute('data-eager') ? 'eager' : 'lazy';
+        if (img.loading === 'eager') img.fetchPriority = 'high';
+        img.decoding = 'async';
+        if (entry.alt || this.getAttribute('alt')) img.setAttribute('role', 'img'); else img.setAttribute('aria-hidden', 'true');
+        this.appendChild(img);
+      } else if (entry.alt && !img.getAttribute('alt')) {
+        img.alt = entry.alt;
+      }
       const view = entry.view;
       if (!view) return;
       /* Reproduces the authored crop: cover baseline × view scale, positioned
