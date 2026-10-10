@@ -4,13 +4,13 @@
  * repository data. Nothing about certifications, MOQs, lead times, client
  * names, countries served or production locations is asserted.
  */
-import { indexable, CATS, HOST, esc, head, nav, footer, crumb, slotImg, graph, breadcrumb, write, collections, designs, manifest, n2, by } from './build.mjs';
+import { indexable, CATS, HOST, esc, head, nav, footer, crumb, slotImg, graph, breadcrumb, write, collections, designs, manifest, n2, by, home } from './build.mjs';
 
 const up = '../';
-const page = ({ slug, title, desc, h1, h1it, lb, lead, body, service, schemaExtra = [] }) => {
+const page = ({ slug, title, desc, h1, h1it, lb, lead, body, service, schemaExtra = [], ogImage }) => {
   const url = `${HOST}/${slug}/`;
   const crumbs = [
-    { name:'Artilier', href:`${up}index.html`, abs:`${HOST}/` },
+    { name:'Artilier', href:home(up), abs:`${HOST}/` },
     { name:lb, href:url, abs:url }
   ];
   const nodes = [
@@ -25,7 +25,7 @@ const page = ({ slug, title, desc, h1, h1it, lb, lead, body, service, schemaExtr
       'url':url }] : []),
     ...schemaExtra
   ];
-  return head({ title, desc, canonical:url, up, schema:graph(nodes) })
+  return head({ title, desc, canonical:url, up, schema:graph(nodes), ogImage })
     + nav(up) + crumb(crumbs.map(c=>({name:c.name,href:c.href}))) + `
 <main id="main">
 <header class="wp-hd">
@@ -43,15 +43,15 @@ ${body}
 
 const relatedBlock = (links) => `
 <div class="backhome">
-  <a href="${up}index.html#brief" class="cta">Start a project <span>→</span></a>
+  <a href="${up}contact/" class="cta">Start a project <span>→</span></a>
   <div class="backhome-l">${links.map(([h,t])=>`<a href="${up}${h}">${esc(t)}</a>`).join('')}</div>
 </div>`;
 
 /* ── /bespoke/ ─────────────────────────────────────────────────────── */
 const bespoke = page({
   slug:'bespoke', lb:'Bespoke rug development',
-  title:'Bespoke rug development — custom rugs from your artwork | Artilier',
-  desc:'Artilier develops bespoke rugs from a designer’s own artwork, drawing, CAD file or colour scheme — construction, yarn, colour and scale resolved in sampling before production. Trade only, New Delhi.',
+  title:'Bespoke Rugs from Your Artwork | Artilier Trade Studio',
+  desc:'Custom rugs developed from your artwork, CAD file or palette: construction, yarn, colour and scale resolved in sampling before production. Trade only.',
   h1:'Your artwork.<br>Our ', h1it:'development.',
   lead:`<p class="bd">Send artwork, a painting, a CAD file, a colour scheme, a reference image or a floor plan, and we develop it into a finished rug — construction, yarn, colour, scale and finish worked out with you, then proved in a sample before production.</p>
     <div class="wp-meta"><span><b>Made to order</b></span><span>Any dimension</span><span>Custom colourways</span></div>`,
@@ -83,14 +83,35 @@ const bespoke = page({
   <div class="sec-hd"><div><span class="lb">Construction</span><h2 class="d2">Which construction<br>a design <span class="it">wants.</span></h2></div>
   <p class="bd">Which construction a design wants is a technical decision, not a style one. We make the recommendation from the artwork, the detail it carries, the traffic it will take and the budget — and prove it in sampling before production. Existing designs in <a href="${up}collection/">the collection</a> can equally be re-scaled and re-coloured to a scheme rather than developed from scratch.</p></div>
 </section>
-${relatedBlock([['process/','The full process'],['materials/','Material selection'],['collection/','The collection'],['trade/','Working with us']])}`
+<section class="sec dark">
+  <div class="sec-hd"><div><span class="lb">Sampling and timing</span><h2 class="d2">Proved in a sample,<br>then <span class="it">made.</span></h2></div>
+  <p class="bd">Development runs in a fixed order, so you always know what is being decided and when.</p></div>
+  <div class="mats">
+    <div>Yarn samples <span>Approved in hand</span></div>
+    <div>Colour trials <span>Against your scheme</span></div>
+    <div>Woven strike-off <span>Before the loom is set</span></div>
+    <div>Initial cost range <span>Once there is enough information</span></div>
+    <div>Lead time <span>Given per project</span></div>
+    <div>Progress photography <span>At agreed points</span></div>
+  </div>
+  <p class="proc-note" style="color:rgba(247,243,235,.62)">Costing and lead times become more precise as the artwork, construction, materials and sampling are resolved. Hand-made production varies with construction, yarn availability and loom capacity — hand-knotting takes longest, hand-tufting is shorter — and we tell you about changes as they arise, not after the fact.</p>
+</section>
+<section class="sec">
+  <div class="sec-hd"><div><span class="lb">Start here</span><h2 class="d2">Send the artwork<br>and the <span class="it">room.</span></h2></div>
+  <p class="bd">Attach what you have — artwork, CAD, a scheme or a floor plan — with rug sizes and a target date if you know them. We reply individually with how we would make it and what still needs deciding.</p></div>
+  <div class="brief-a">
+    <a href="${up}contact/?type=bespoke" class="cta">Brief a bespoke rug <span>→</span></a>
+    <a href="mailto:studio@artilier.co" class="cta ol">studio@artilier.co</a>
+  </div>
+</section>
+${relatedBlock([['process/','The full process'],['materials/','Material selection'],['hospitality/','Hospitality & contract'],['collection/','The collection'],['trade/','Working with us']])}`
 });
 
 /* ── /trade/ ───────────────────────────────────────────────────────── */
 const trade = page({
   slug:'trade', lb:'Trade',
-  title:'Trade rugs for interior designers & architects | Artilier, New Delhi',
-  desc:'Artilier works trade only — custom rugs developed and made for interior designers, architects and design practices on high-end residential, villa and boutique hospitality projects. Contracted and exported by Art Avenue Pvt. Ltd.',
+  title:'Trade Rugs for Interior Designers & Architects | Artilier',
+  desc:'Custom rugs for designers and architects on high-end residential and villa projects. One studio from drawing to export, contracted by Art Avenue Pvt. Ltd.',
   h1:'A design-led studio,<br>working ', h1it:'trade only.',
   lead:`<p class="bd">Artilier is built around the relationship between art, material and making. We begin with rugs: developed and made for interior designers, architects and design practices working on high-end residential, villa and boutique hospitality projects.</p>
     <div class="wp-meta"><span><b>Trade only</b></span><span>Designers · architects</span><span>Made to order</span></div>`,
@@ -125,14 +146,28 @@ const trade = page({
   <div class="sec-hd"><div><span class="lb">Costing</span><h2 class="d2">What we can say,<br>and <span class="it">when.</span></h2></div>
   <p class="bd">Costing and lead times follow once construction, materials, dimensions and sampling requirements are understood — they become more precise as the artwork is resolved. Hand-made production can vary with construction, yarn availability and loom capacity, and we communicate changes as they arise. See <a href="${up}process/">the process</a> for where each of those decisions is taken.</p></div>
 </section>
-${relatedBlock([['bespoke/','Bespoke development'],['process/','The process'],['materials/','Materials'],['collection/','The collection']])}`
+<section class="sec dark">
+  <div class="sec-hd"><div><span class="lb">Who we work with</span><h2 class="d2">Practices, not<br><span class="it">shoppers.</span></h2></div>
+  <p class="bd">Interior designers, architects and design studios — and the procurement and hospitality teams who specify with them. There is no retail, no cart and no consumer pricing; every enquiry is read and answered individually.</p></div>
+  <div class="mats">
+    <div>Residential interiors <span>Villas · apartments · private homes</span></div>
+    <div>Boutique hospitality <span><a href="${up}hospitality/" style="color:inherit">Hotels &amp; contract</a></span></div>
+    <div>Artists &amp; designers <span><a href="${up}collaborations/" style="color:inherit">Collaborations</a></span></div>
+    <div>One rug or a schedule <span>Single pieces to multi-room projects</span></div>
+  </div>
+</section>
+<section class="sec">
+  <div class="sec-hd"><div><span class="lb">Working internationally</span><h2 class="d2">Briefed from<br>anywhere, made in <span class="it">Delhi.</span></h2></div>
+  <p class="bd">We work with trade clients in Europe, the Gulf and the United States. Market notes cover time zones, terminology and what to include in a brief: <a href="${up}trade/uae/">UAE</a> · <a href="${up}trade/saudi-arabia/">Saudi Arabia</a> · <a href="${up}trade/uk/">United Kingdom</a> · <a href="${up}trade/us/">United States</a> · <a href="${up}fr/" hreflang="fr" lang="fr">en français</a>.</p></div>
+</section>
+${relatedBlock([['bespoke/','Bespoke development'],['hospitality/','Hospitality & contract'],['process/','The process'],['materials/','Materials'],['collection/','The collection']])}`
 });
 
 /* ── /materials/ ───────────────────────────────────────────────────── */
 const materials = page({
   slug:'materials', lb:'Rug materials',
   title:'Rug materials — wool, silk blends, cotton, jute & hemp | Artilier',
-  desc:'Material selection is part of the design at Artilier: New Zealand wool, hand-spun wool, wool-silk blends, bamboo silk, cotton, allo/hemp, jute and developed blends — selected for the design and the application, approved in the hand before a loom is set.',
+  desc:'New Zealand wool, wool-silk, bamboo silk, cotton, jute and hemp: how Artilier selects yarn for each rug design and application, approved before weaving.',
   h1:'Material selection is<br>part of the ', h1it:'design.',
   lead:`<p class="bd">Yarn decides how a rug reads long before the colour does — how light moves across the pile, how the surface wears, how sharply a detail holds. We select and blend for the design and the application, not from a standard menu.</p>
     <p class="bd" style="margin-top:16px">Yarn, spin and dye lot are approved in the hand against your scheme before a loom is set. Where a material is unsuitable for the traffic a room will take, we say so.</p>`,
@@ -172,7 +207,7 @@ const PROC = [
 const process = page({
   slug:'process', lb:'Process',
   title:'How a custom rug is made — our six-stage process | Artilier',
-  desc:'From artwork to floor in six stages: understand, develop, sample, make, check, deliver. How Artilier develops and manufactures custom rugs for interior designers and architects, with approvals at the stages that matter.',
+  desc:'How a custom rug is made in six stages, from artwork to floor: understand, develop, sample, make, check, deliver. For interior designers and architects.',
   h1:'From artwork<br>to ', h1it:'floor.',
   lead:`<p class="bd">Six stages, adapted to the rug. Some commissions move quickly; others need more development. We keep the process transparent, with approvals and progress updates at the stages that matter.</p>
     <div class="wp-meta"><span><b>Six stages</b></span><span>Approvals throughout</span><span>Reviewed in Delhi</span></div>`,
@@ -199,7 +234,7 @@ ${relatedBlock([['bespoke/','Start from your artwork'],['materials/','Material s
 const craft = page({
   slug:'craft', lb:'The craft',
   title:'Handmade rugs from India — the craft behind the studio | Artilier',
-  desc:'Hand-knotting, hand-tufting and flatweaving as Artilier practises them: a New Delhi studio for design, sampling, finishing and quality control, with weaving through established rug workshops across India.',
+  desc:'Hand-knotting, hand-tufting and flatweaving as Artilier practises them: design, sampling and finishing in New Delhi, weaving through established workshops.',
   h1:'Made by hand,<br>and it ', h1it:'shows.',
   lead:`<p class="bd">Artilier is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. Our first collection is rugs, and every one of them is made by hand.</p>
     <div class="wp-meta"><span><b>New Delhi</b></span><span>Woven across India</span><span>Made to order</span></div>`,
@@ -274,22 +309,4 @@ ci = ci.replace('slots.js?v=3','slots.js?v=4').replace('content.js?v=2','content
 writeFileSync('collection/index.html', ci);
 console.log('pre-rendered collection/index.html');
 
-/* ── sitemap ───────────────────────────────────────────────────────── */
-const today = new Date().toISOString().slice(0,10);
-const urls = [
-  [`${HOST}/`, '1.0'],
-  [`${HOST}/collection/`, '0.9'],
-  ...CATS.map(c => [`${HOST}/collection/${c.slug}/`, '0.8']),
-  [`${HOST}/bespoke/`, '0.9'],
-  [`${HOST}/trade/`, '0.8'],
-  [`${HOST}/materials/`, '0.7'],
-  [`${HOST}/process/`, '0.7'],
-  [`${HOST}/craft/`, '0.7'],
-  ...indexable.slice().sort(by).map(d => [`${HOST}/collection/${d.slug}/`, '0.6'])
-];
-writeFileSync('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(([u,p]) => `  <url><loc>${u}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>${p}</priority></url>`).join('\n')}
-</urlset>
-`);
-console.log(`sitemap: ${urls.length} URLs`);
+/* Sitemap generation moved to tools/build3.mjs (it must list the new pages too). */

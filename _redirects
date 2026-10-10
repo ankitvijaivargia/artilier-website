@@ -1,9 +1,13 @@
-# Section URLs resolve to their place on the single-page site.
-/projects     /#making        301
+# Section URLs that have no page of their own resolve to the homepage section.
 /making       /#making        301
-/about        /#about         301
-/contact      /#about         301
-/enquire      /#brief         301
+# Real pages: /about/, /contact/, /projects/, /hospitality/, /fr/ and the
+# /trade/<market>/ pages exist — these lines only normalise the no-slash form.
+/about        /about/         301
+/contact      /contact/       301
+/enquire      /contact/       301
+/projects     /projects/      301
+/hospitality  /hospitality/   301
+/fr           /fr/            301
 # Real pages now exist at /bespoke/ /trade/ /materials/ /process/ /craft/ —
 # they must NOT be redirected to homepage anchors. Non-slash forms normalise
 # onto the canonical trailing-slash URL.

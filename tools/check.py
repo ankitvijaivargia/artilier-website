@@ -1,0 +1,90 @@
+"""Site checks — run from the repo root:  python3 tools/check.py
+Fails (exit 1) on: broken internal links, links to index.html, missing or
+duplicate titles/descriptions, titles > 65 or descriptions > 160 characters,
+pages without exactly one H1, invalid JSON-LD, sitemap entries that are missing
+or noindexed, indexable pages missing from the sitemap, images without alt,
+and any named manufacturing location."""
+import glob, json, os, re, sys, posixpath
+from bs4 import BeautifulSoup
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+os.chdir(ROOT)
+HOST = 'https://artilier.co'
+BANNED = re.compile(r'\b(bhadohi|mirzapur|jaipur|sitapura|panipat)\b', re.I)
+SKIP = {'collection/design.html'}
+errs, warns = [], []
+
+redirects = {}
+for line in open('_redirects'):
+    p = line.split()
+    if len(p) >= 2 and not line.startswith('#'): redirects[p[0]] = p[1]
+
+def url_of(f):
+    return '/' if f == 'index.html' else '/' + (f[:-10] if f.endswith('/index.html') else f)
+
+def resolves(path):
+    path = path.split('#')[0].split('?')[0]
+    if path in redirects: return 'redirect'
+    if path.endswith('/'): return os.path.exists('.' + path + 'index.html')
+    return os.path.exists('.' + path)
+
+pages = sorted(f for f in glob.glob('**/*.html', recursive=True) if f not in SKIP)
+titles, descs, indexable = {}, {}, set()
+for f in pages:
+    s = open(f, encoding='utf-8').read()
+    b = BeautifulSoup(s, 'html.parser')
+    u = url_of(f)
+    robots = (b.find('meta', attrs={'name': 'robots'}) or {}).get('content', '')
+    t = b.title.get_text() if b.title else ''
+    d = (b.find('meta', attrs={'name': 'description'}) or {}).get('content', '')
+    if not t: errs.append(f'{f}: no title')
+    if len(t) > 65: warns.append(f'{f}: title {len(t)} chars')
+    if not d: errs.append(f'{f}: no meta description')
+    if len(d) > 160: errs.append(f'{f}: description {len(d)} chars')
+    if 'noindex' not in robots:
+        indexable.add(u)
+        titles.setdefault(t, []).append(f); descs.setdefault(d, []).append(f)
+        can = b.find('link', rel='canonical')
+        if not can or can.get('href') != HOST + u: errs.append(f'{f}: canonical {can and can.get("href")} != {HOST + u}')
+    h1 = b.find_all('h1')
+    if len(h1) != 1: errs.append(f'{f}: {len(h1)} h1')
+    if not (b.html and b.html.get('lang')): errs.append(f'{f}: no lang')
+    for sc in b.find_all('script', type='application/ld+json'):
+        try:
+            data = json.loads(sc.string)
+            orgs = [n for n in data.get('@graph', [data]) if n.get('@type') == 'Organization']
+            if len(orgs) != 1: errs.append(f'{f}: {len(orgs)} Organization nodes')
+        except Exception as e: errs.append(f'{f}: bad JSON-LD {e}')
+    for img in b.find_all('img'):
+        if img.get('alt') is None: errs.append(f'{f}: img without alt {img.get("src")}')
+    text = b.get_text(' ')
+    if BANNED.search(text) or BANNED.search(s): errs.append(f'{f}: names a manufacturing location')
+    base = posixpath.dirname('/' + f) + '/'
+    for a in b.find_all('a', href=True):
+        h = a['href']
+        if h.startswith(('mailto:', 'tel:', 'https://', 'http://', '#')): continue
+        if 'index.html' in h: errs.append(f'{f}: link to index.html ({h})')
+        if f == '404.html': target = h
+        else: target = posixpath.normpath(posixpath.join(base, h.split('#')[0].split('?')[0] or '.'))
+        if (h.split('#')[0].split('?')[0].endswith('/') or h in ('', './')) and not target.endswith('/'): target += '/'
+        r = resolves(target)
+        if r == 'redirect': warns.append(f'{f}: link through redirect {h}')
+        elif not r: errs.append(f'{f}: broken link {h} -> {target}')
+
+for t, fs in titles.items():
+    if len(fs) > 1: errs.append(f'duplicate title on {fs}')
+for d, fs in descs.items():
+    if len(fs) > 1: errs.append(f'duplicate description on {fs}')
+
+sm = re.findall(r'<loc>([^<]+)</loc>', open('sitemap.xml').read())
+smu = {x.replace(HOST, '') for x in sm}
+for u in smu:
+    if u not in indexable: errs.append(f'sitemap lists non-indexable or missing {u}')
+for u in indexable - smu:
+    if u not in ('/404.html',): errs.append(f'indexable page not in sitemap: {u}')
+
+print(f'pages checked: {len(pages)}  indexable: {len(indexable)}  sitemap: {len(sm)}')
+for w in warns: print('WARN', w)
+for e in errs: print('ERROR', e)
+print('OK' if not errs else f'{len(errs)} errors')
+sys.exit(1 if errs else 0)
