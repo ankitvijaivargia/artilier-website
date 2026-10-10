@@ -52,7 +52,9 @@ Organic search is measured by the enquiries it produces, not by traffic. Nothing
 | Date | Change | URLs | Deployed? | Indexing requested? |
 |---|---|---|---|---|
 | 10 Oct 2026 | PR #5–#9 live (contact page, market pages, French page, working terms) | 40 URLs | Yes | Pending GSC |
-| *(on merge)* | P1 branch: French localisation, UAE/UK terms, briefing guide, related-design links, dark-list fix | `/fr/`, `/trade/uae/`, `/trade/uk/`, `/guides/briefing-a-bespoke-rug/`, 21 designs | No | — |
+| 10 Oct 2026 | PR #11 live (merge `b5814bd`): French localisation, UAE/UK terms, briefing guide, related-design links, contrast fixes, size wording | `/fr/`, `/trade/uae/`, `/trade/uk/`, `/guides/briefing-a-bespoke-rug/`, 21 designs | Yes | Guide: requested and accepted 10 Oct (not yet confirmed indexed) |
+| 10 Oct 2026 | PR #12 live (merge `9bae30d`): homepage "Made to size"; size-claim check | `/` | Yes | Not needed (`/` already indexed) |
+| 10 Oct 2026 | Sitemap resubmitted in Search Console | `sitemap.xml` (41 URLs) | — | Accepted; 41-URL discovery not yet confirmed |
 
 Add earned mentions here too (date, publication, URL, followed link Y/N).
 
@@ -60,9 +62,11 @@ Add earned mentions here too (date, publication, URL, followed link Y/N).
 
 | Metric | Baseline value | Date captured |
 |---|---|---|
-| Indexed pages | *unknown — capture at GSC verification* | |
-| Non-branded impressions (28 days) | *unknown* | |
-| Organic clicks (28 days) | *unknown* | |
+| Indexed pages | URL Inspection: 11 key pages on Google (`/`, `/bespoke/`, `/trade/`, `/trade/uae/`, `/trade/saudi-arabia/`, `/hospitality/`, `/fr/`, `/collection/` and 3 category pages); guide not yet. Pages report (stale, 4 Oct): 5 indexed / 29 not | 10 Oct 2026 |
+| Search Console, last 3 months | 2 clicks · 129 impressions · 1.6% CTR · avg position 7.6 — predominantly brand-misspelling queries; 1 non-branded query (3 impressions); AE and SA not in top 20 countries. Not a usable market baseline | 10 Oct 2026 (data ~42 h old) |
+| Cloudflare Web Analytics, last 7 days | 45 visits · 67 page views · India 29, US 9, Taiwan 4, Saudi Arabia 2, Canada 1 · direct 39, chatgpt.com 3, google.com 2, Instagram 1 — **includes testing visits**, not a clean business baseline | 10 Oct 2026 |
+| Non-branded impressions (28 days) | *capture at the ~7 Nov review* | |
+| Organic clicks (28 days) | *capture at the ~7 Nov review* | |
 | Enquiries since launch | *owner to export from Formspree* | |
 | Qualified trade enquiries since launch | *owner* | |
 | Referring domains (non-spam) | Semrush 10 Oct: 143 domains total, mostly link-farm anchors | 10 Oct 2026 |

@@ -21,17 +21,40 @@ Earlier releases: PR #5 (contact page, analytics code, market and French pages) 
 - [x] Pre-merge checks at `ae27880`: build reproducible; `check.py` 43 pages / 41 indexable / 41 in sitemap; 1,343 internal links, 0 broken; 11 URLs × 360/390/768/1440 px with 0 JS errors and 0 overflow (local headless Chromium)
 - [x] Live content read back from artilier.co after deploy (web fetch): sitemap lists **41** URLs including `/guides/briefing-a-bespoke-rug/`; `robots.txt` allows all and references the sitemap; `pages.css?v=3` serves the new rules; canonical and `og:url` correct on `/`, `/contact/`, `/about/`, `/trade/`, `/hospitality/`, `/craft/`, `/collection/`, `/fr/`, the guide; `/fr/` shows French navigation, footer and terms with `og:locale fr_FR`; `/404.html` shows the branded page with `noindex,follow`; `/about` (no slash) resolves to the About page; header "Start a project" links directly to `/contact/`; no town names, certifications, clients or projects found on the pages checked
 
-### B. Completed but not independently verified
-- [ ] **PR #12 on production** — the homepage "Values" strip said "Any *dimension*" (split by markup, missed by earlier scans). PR #12 replaces it with "Made to *size*" (sized to the project, within what the design and construction allow) and adds a `check.py` guard covering visible text, meta tags, titles and JSON-LD, including phrases split by markup. Verified in the repository; production read-back recorded in the PR #12 release report
-- [ ] **HTTP status codes and console errors on production.** The workspace cannot reach artilier.co directly and no browser was available, so pages were read by a fetch tool that does not report status codes, redirect hops or console output. A nonexistent URL returned a client error (consistent with 404, code not visible)
-- [ ] **Stylesheet reference on live pages.** `pages.css?v=3` itself is served; that every live page references `v=3` was verified in the repository, not in production HTML
-- [ ] **Enquiry form on production.** Logic tested 31/31 against a mocked endpoint; no real submission was made
+- [x] **PR #12 live** (merge `9bae30d`, build `eb4bcd46` success): homepage shows "Made to size"; no "any size/any dimension" on 11 key live pages (10 Oct)
+- [x] **Live enquiry delivery** — owner sent a real enquiry; it arrived at studio@artilier.co (10 Oct)
+- [x] **Status codes, checked in the owner's Chrome on production (10 Oct):** unknown URLs → **404** with the branded page (`noindex,follow`); `/about` → `/about/` in **1** redirect hop; `/contact` and `/enquire` → `/contact/`; `/index.html` → `/`; `/404.html` → `/404`; `/tools/build.mjs`, `/SEO_LAUNCH_CHECKLIST.md`, `/OWNER_INPUT_REQUIRED.md` → **404**. Eleven key pages → 200, canonical correct, `pages.css?v=3` referenced, every referenced asset loads, no horizontal overflow at 1,488 px
+- [x] **Google Search Console** — Domain property `artilier.co` verified; Manual actions: *No issues detected*; sitemap `https://artilier.co/sitemap.xml` read 10 Oct (*Success*, 40 discovered — before the guide existed); resubmission on 10 Oct 23:30 IST **accepted** ("Sitemap submitted successfully"). The 41-URL discovery count is not yet confirmed
+- [x] **URL Inspection (10 Oct):** on Google — `/`, `/bespoke/`, `/trade/`, `/trade/uae/`, `/trade/saudi-arabia/`, `/hospitality/`, `/fr/`, `/collection/`, `/collection/hand-knotted/`, `/collection/hand-tufted/`, `/collection/flatweave/`. `/guides/briefing-a-bespoke-rug/` was "unknown to Google" → indexing **requested and accepted** (priority crawl queue; not a guarantee)
+- [x] **"Page with redirect" (2)** identified: `http://artilier.co/` and `https://artilier.co/index.html` — both intentional
+- [x] **Cloudflare Web Analytics** — recording visits through one automatically injected beacon; no duplicate tracking and no Google Analytics (beacon loaded once on the live homepage; dashboard shows visits)
 
-### C. Pending owner action
-- [ ] **Live enquiry test** — §4 below (only you can confirm the email arrives at studio@artilier.co)
-- [ ] **Status-code check** in a browser — Chrome DevTools → Network: an unknown URL returns 404; `/about` returns one 301 to `/about/`
-- [ ] **Search Console** and **Cloudflare Web Analytics** — §5 below; neither is configured
-- [ ] Guide items still open in `OWNER_INPUT_REQUIRED.md` (revision practice, file formats, maximum widths)
+**Indexing requested ≠ indexing confirmed.** The guide is *requested* only; it is not recorded as indexed until URL Inspection says "URL is on Google".
+
+#### Snapshots recorded on 10 Oct 2026 (reference points, not business-performance baselines)
+- **Cloudflare Web Analytics, last 7 days:** 45 visits, 67 page views. Countries: India 29, US 9, Taiwan 4, Saudi Arabia 2, Canada 1. Referrers: direct 39, chatgpt.com 3, google.com 2, Instagram 1. These figures **include launch-testing visits** by the owner and Claude and are not a clean measure of business traffic
+- **Search Console Performance, last 3 months (data about 42 h old on 10 Oct):** 2 clicks, 129 impressions, 1.6% CTR, average position 7.6. Queries are predominantly misspellings of the brand name (artilier, artilie, artelier, artileir…); the only non-branded query was "can i create a custom rug from cad drawings?" (3 impressions). UAE and Saudi Arabia were not among the top 20 countries. There is not yet enough non-branded or target-market data to draw conclusions
+
+### B. Completed but not independently verified
+- [ ] **Console errors** on production — not readable from page scripts; no failed resource loads were found
+- [ ] **Redirect status code value** (301 vs 302) — hop count measured; the code itself comes from `_redirects` (301)
+
+### C. Pending
+**Follow-up A — review around 17 Oct 2026** (a review date, not an indexing deadline)
+- [ ] Search Console → URL inspection: `https://artilier.co/guides/briefing-a-bespoke-rug/` — record whether it is now "URL is on Google"; if still unknown or not indexed, record the stated reason (do not resubmit repeatedly)
+- [ ] Sitemaps: check whether `https://artilier.co/sitemap.xml` now shows **41** discovered URLs
+- [ ] Pages report: review it if Google has refreshed it past 4 Oct (4 Oct snapshot: 5 indexed / 29 not indexed — stale; URL Inspection on 10 Oct already showed 11 key pages indexed)
+
+**Follow-up B — first 28-day measurement review around 7 Nov 2026**
+- [ ] Search Console: non-branded queries by country — AE, SA, GB, FR, US — with clicks, impressions, CTR and position
+- [ ] Compare landing-page performance (market pages, guide, bespoke, hospitality, collection)
+- [ ] Export Formspree submissions; start or update the enquiry log (`SEO_MEASUREMENT_FRAMEWORK.md` §4) and reconcile it with search and analytics data
+- [ ] Separate testing traffic and test enquiries from genuine business enquiries wherever the data permits
+- [ ] Record the results in `SEO_MEASUREMENT_FRAMEWORK.md` §6
+
+**Other open items**
+- [ ] Optional: phone enquiry from `/collection/reth/` to confirm `design_reference: reth` appears
+- [ ] Owner questions still open in `OWNER_INPUT_REQUIRED.md` — time-bound: Downtown Design Dubai (4–8 Nov), EquipHotel Paris (2–5 Nov), French replies; also guide facts (revision practice, file formats, maximum widths), hospitality scope and documentation, design data
 
 ### D. Future improvements (separate PRs)
 - WCAG AA contrast — pre-existing failures: muted grey text `--tx-3` (3.3–3.7:1), footer bottom line (3.3:1), the rust "Start a project" band on `/collection/` (3.5–4.2:1), form-field underlines (1.7:1), focus outline on the rust band. The site is **not** AA-compliant overall
