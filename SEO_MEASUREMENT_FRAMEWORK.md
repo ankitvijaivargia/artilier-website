@@ -13,8 +13,8 @@ Organic search is measured by the enquiries it produces, not by traffic. Nothing
 | Google Search Console (Domain property) | Impressions, clicks, queries, average position, pages, countries, devices, index coverage | **Not confirmed** | Verify via DNS TXT in Cloudflare; submit `sitemap.xml`; add studio@artilier.co as a user |
 | Bing Webmaster Tools | Same for Bing (and partly Copilot/ChatGPT search surfaces) | Tag live (PR #7); import from GSC | Import once GSC is verified |
 | Cloudflare Web Analytics | Page views, referrers, countries, landing pages — cookieless | **Not active** in code (`CF_BEACON_TOKEN` empty) | Enable in Cloudflare dashboard (automatic set-up) |
-| GA4 (optional) | Events (`generate_lead`, `contact_click`, `whatsapp_click`) | Code ready, `GA4_ID` empty | Only if event reports are needed; consent banner required before granting storage for UK/EU visitors |
-| Formspree | Every enquiry, with sector, landing page, referrer, UTM | Live | Confirm delivery; export monthly |
+| GA4 (optional) | Events: `form_start`, `generate_lead`, `enquiry_error`, `contact_click`, `whatsapp_click` — with enquiry type, design reference and the internal CTA page (market, hospitality, design), no personal data | Code ready, `GA4_ID` empty | Only if event reports are needed; consent banner required before granting storage for UK/EU visitors |
+| Formspree | Every enquiry, with sector, landing page, referrer, UTM; from PR #11 also `cta_page` (the page whose button led to the form) and `design_reference` | Live (delivery not yet confirmed) | Confirm delivery; export monthly |
 | Enquiry log (new) | Qualification of every enquiry | **To create** — a simple sheet | Fill within 48 h of each enquiry (template §4) |
 | Semrush / Ahrefs | Volumes, rank tracking, backlinks | Semrush out of API units; Ahrefs plan insufficient | Optional: top up Semrush units for a 25-keyword tracking project |
 

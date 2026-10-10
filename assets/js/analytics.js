@@ -5,10 +5,12 @@
  *  1. Page views: Cloudflare Web Analytics (cookieless, no consent banner
  *     needed). Turn it on in the Cloudflare dashboard with automatic
  *     injection — no code change — or paste the beacon token below.
- *  2. Events: `generate_lead`, `contact_click` and `whatsapp_click` are pushed
- *     to `window.dataLayer` and, only if a GA4 measurement ID is set below,
- *     sent to GA4. Event parameters are page path, form id, link type and
- *     enquiry type — never names, emails, phone numbers or message text.
+ *  2. Events: `form_start`, `generate_lead`, `enquiry_error` (from enquiry.js),
+ *     `contact_click` and `whatsapp_click` are pushed to `window.dataLayer`
+ *     and, only if a GA4 measurement ID is set below, sent to GA4. Event
+ *     parameters are page path, form id, enquiry type, design reference, the
+ *     internal CTA page, link type and error type — never names, emails,
+ *     phone numbers or message text.
  *  3. Lead attribution without cookies: the first landing page, the referring
  *     host and any utm_* values are kept in sessionStorage for the visit and
  *     added to enquiry forms as hidden fields (see enquiry.js), so every

@@ -40,14 +40,14 @@ This baseline builds on the 10 Oct audit and PRs #5–#9, which are merged and l
 | Structured data | Organization (with `parentOrganization` Art Avenue Pvt. Ltd.), WebSite, WebPage, BreadcrumbList, Service (market/hospitality pages), VisualArtwork (designs), AboutPage/Person |
 | Open Graph | Per-page titles/descriptions; per-design 1200×630 images in `assets/og/` |
 | Forms | Contact form POSTs to Formspree with honeypot and attribution fields; `?type=` and `?design=` pre-fill fixed in PR #5 |
-| Analytics events | `generate_lead`, `contact_click`, `whatsapp_click` in `dataLayer`, no personal data — but no collector is configured |
+| Analytics events | `generate_lead`, `contact_click`, `whatsapp_click` in `dataLayer`, no personal data — but no collector is configured. PR #11 adds `form_start`, `enquiry_error` and CTA-page/design context |
 | Old branches | `feat/collaborations-page` (3 ahead) and `seo/phase-2-architecture` (4 ahead) are stale pre-merge branches; their content is on `main`. `content/whatsapp-link` = open PR #10 |
 
 ## 4. Defects found in this baseline
 
 | # | Defect | Severity | Evidence | Status |
 |---|---|---|---|---|
-| D1 | **Bold lead-ins in dark-section lists are invisible on live pages.** `.prose li b{color:var(--tx)}` = ink `#151110` on the dark ground. Affects every bullet lead-in ("Villas and private residences —", "Rug schedule —", etc.) on `/trade/uae/`, `/trade/saudi-arabia/`, `/trade/uk/`, `/hospitality/` and other generated pages using dark lists | **High** (conversion copy unreadable) | Computed style in headless Chromium; fixed value now `rgb(247,243,235)` | **Fixed on branch** |
+| D1 | **Bold lead-ins in dark-section lists are invisible on live pages.** `.prose li b{color:var(--tx)}` = ink `#151110` on the dark ground. Affects 24 bullet lead-ins ("Villas and private residences —", "Rug schedule —", etc.): 8 on `/trade/uae/`, 4 on `/trade/saudi-arabia/`, 7 on `/trade/uk/`, 5 on `/fr/`. (`/hospitality/` has no dark-section lists and was not affected — corrected in the release review) | **High** (conversion copy unreadable) | Computed style in headless Chromium; fixed value now `rgb(247,243,235)` | **Fixed on branch** |
 | D2 | `/fr/` is a French page inside an English shell: nav, header CTA, menu and footer in English; French copy says "prix et délais sont donnés projet par projet" while every English page publishes the confirmed terms | Medium | Page source; French research | **Fixed on branch** |
 | D3 | `/trade/uae/` and `/trade/uk/` do not state lead time or "no minimum" (KSA and US do) | Medium | `grep "6–12 weeks"` | **Fixed on branch** |
 | D4 | Related-design links always point to the first three designs of a collection: Chhaya, Girah, Parat get 13 internal links each; 11 designs get only 2 | Medium (internal link equity, crawl depth) | Inventory script | **Fixed on branch** — every design now receives links from three siblings |
@@ -55,6 +55,7 @@ This baseline builds on the 10 Oct audit and PRs #5–#9, which are merged and l
 | D6 | No specifier guidance content anywhere on the site | Medium (topical authority) | Page inventory | **First guide added on branch** |
 | D7 | H1s with `<br>` and no whitespace produce text such as "Made to yourdrawing,or ours." in raw text extraction | Low (Google renders `<br>` as a break) | Inventory | Not changed — cosmetic in source only |
 | D8 | Talab and Ghata descriptions near-identical | Low | `content/designs.json` | **Owner** (already listed) |
+| D9 | Same class of defect found in the release review: `/trade/` "From specification to site" grid was paper-coloured text on paper (19 elements); `/about/` founders' names ink on dark; `/craft/` "Where it is made" facts near-ink on dark | High (`/trade/`), Medium (others) | Contrast audit (<3:1) across 17 pages | **Fixed on branch** in shared CSS |
 | — | Subagent flag "US CTA `?type=residential` contradicts trade-only" | — | `residential` is the form's *project type* ("Residential interior"), not a consumer flag | **Not a defect** |
 
 ## 5. Page inventory (generated pages, `main` + branch)

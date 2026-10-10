@@ -2,7 +2,7 @@
 
 Branch: `seo/global-visibility-implementation` (from `main` @ `12f0d5c`, 7 Sept 2026)
 Baseline: *ARTILIER — Global SEO & International Visibility Audit*, 10 Oct 2026
-Status: **implemented, reviewed and re-tested on the branch; a Cloudflare preview is deployed. Not merged, not in production.** See `PR_REVIEW_REPORT.md` for the review round of 10 Oct (PM).
+Status: **PR #5 merged and live (10 Oct 2026); followed by PRs #6–#9 (merged).** The current release candidate is **PR #11** — see §13 and `SEO_LAUNCH_CHECKLIST.md`. Sections 1–12 are the historical record of PR #5.
 
 Evidence labels: **Verified** (checked in code or a test run), **Local lab** (measured on a local server, not production), **Pending** (needs the owner, an account, or Google).
 
@@ -217,10 +217,21 @@ Planning documents: `SEO_GROWTH_BASELINE.md`, `SEO_COMPETITOR_AND_KEYWORD_RESEAR
 
 | Change | Files | Test |
 |---|---|---|
-| Dark-section list lead-ins were ink on dark (unreadable on live market and hospitality pages) → paper; `pages.css?v=2` | `assets/css/pages.css`, generators, hand-maintained pages | Computed colour `rgb(247,243,235)` in Chromium |
+| Dark-section list lead-ins were ink on dark (unreadable on live `/trade/uae/`, `/trade/saudi-arabia/`, `/trade/uk/`, `/fr/`) → paper. Release review added: `/trade/` paper-on-paper grid, `/about/` names and `/craft/` facts on dark, dark-section link hover and focus ring; `pages.css?v=3` | `assets/css/pages.css`, generators, hand-maintained pages | Computed colour `rgb(247,243,235)` in Chromium |
 | `/fr/`: French nav, menu (Menu/Fermer), header CTA, footer; confirmed working terms in French; heading and wording fixes | `tools/build.mjs`, `tools/build3.mjs` | Screenshot 390/1440 px |
 | `/trade/uae/`, `/trade/uk/`: lead-time and minimum FAQ; UK title "Bespoke Rugs to the Trade — London & UK Designers" | `tools/build3.mjs` | `check.py` |
 | New `/guides/briefing-a-bespoke-rug/` (Article schema; sitemap; footer, bespoke and market links) | `tools/build3.mjs`, `tools/build.mjs`, `tools/build2.mjs` | `check.py`; screenshots |
 | Related designs rotate through siblings (inlinks 2–13 → 3–5 per design) | `tools/build.mjs` | Link count script |
 
 `check.py`: 43 pages, 41 indexable, 41 in sitemap, OK. Chromium at 360/390/768/1440 px on 8 URLs: 0 JS errors, 0 horizontal overflow. English pages other than the above changed only by the footer guide link and CSS version.
+
+### Release review (10 Oct 2026, late)
+
+- Recounted on the branch: `check.py` 43 pages / 41 indexable / 41 in sitemap; build reproducible.
+- Corrected the record: `/hospitality/` was **not** affected by the dark-list defect; `/fr/` was.
+- Contrast audit (<3:1) over 17 pages found three more instances of the same class — `/trade/` grid (paper on paper), `/about/` names and `/craft/` facts (ink on dark). Fixed in shared CSS with dark-section hover colour and focus ring; `pages.css?v=3`. Re-audit: 0 elements below 3:1.
+- Guide: four statements tightened to match published wording (colour trials "against your scheme"; requirements confirmed "and documented, before costing"; "only some of them"; "the studio's own stages").
+- French page: skip link localised ("Aller au contenu").
+- Enquiry analytics: `form_start` and `enquiry_error` events; `design_reference` and `cta_page` on events and as a hidden form field; `enquiry.js?v=2`, `analytics.js?v=2`. Mocked tests 31/31.
+- Public repository: payment terms and the named prospect list removed from the docs (they remain in earlier Git history).
+- Docs: `SEO_LAUNCH_CHECKLIST.md` rewritten for PR #11; README host, deployment wording and brand tokens corrected; PR #5 documents marked historical.

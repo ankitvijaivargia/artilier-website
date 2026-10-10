@@ -24,7 +24,7 @@ Date: 10 Oct 2026 · Markets: UAE, Saudi Arabia, France (priority 1); UK, US (pr
 | Directories / events | Downtown Design Dubai (4–8 Nov 2026), Dubai Design Week (3–8 Nov), INDEX Dubai (June) |
 | Editorial | identity (Motivate), Commercial Interior Design, Design Middle East |
 | Localisation | English is right for UAE design studios. Arabic deferred until Arabic queries appear in Search Console and Arabic replies are possible |
-| Business development | Walk Downtown Design with the sample box; follow the priority studio list already qualified (LW Design, Bishop Design, KCA, H2R, Fox Browne, Stickman Tribe) |
+| Business development | Walk Downtown Design with the sample box; follow the qualified priority-studio list (kept outside this public repository) |
 
 ## 2. Saudi Arabia
 

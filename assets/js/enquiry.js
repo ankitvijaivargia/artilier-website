@@ -6,7 +6,10 @@
  *  - honeypot spam trap (field "_gotcha", which Formspree discards);
  *  - one submission in flight at a time (no double sends);
  *  - success is reported ONLY when the endpoint accepts the post;
- *  - on success a `generate_lead` event is recorded (no personal data);
+ *  - events (no personal data): `form_start` on the first edit, `generate_lead`
+ *    on an accepted submission, `enquiry_error` when the service refuses it or
+ *    the network fails — each with form id, enquiry type, design reference and
+ *    the internal page the visitor came from (`cta_page`);
  *  - hidden attribution fields (page, landing page, referrer, utm_*) so each
  *    enquiry email shows where the visitor came from;
  *  - ?design=<slug> and ?type=<sector> pre-fill the form from CTAs.
@@ -24,7 +27,21 @@
     const status = form.querySelector('.f-status');
     const btn = form.querySelector('button[type=submit]');
     const endpoint = form.getAttribute('data-endpoint') || '';
-    let sending = false, sentAt = 0;
+    let sending = false, sentAt = 0, started = false;
+
+    /* The internal page whose CTA brought the visitor here (e.g. /trade/uae/,
+       /collection/reth/). Same-origin referrers only; external sites are
+       already captured as `referrer` in the attribution fields. */
+    let ctaPage = '';
+    try { const r = document.referrer ? new URL(document.referrer) : null; if (r && r.host === location.host && r.pathname !== location.pathname) ctaPage = r.pathname.slice(0, 100); } catch (e) {}
+    const designRef = () => (form.querySelector('input[type=hidden][name="design_reference"]') || {}).value || '';
+    const sectorOf = () => { const r = form.querySelector('input[name=sector]:checked'); return (r && r.value) || (form.querySelector('[name=sector]') || {}).value || 'general'; };
+    const evt = extra => Object.assign({ form_id: form.id || 'enquiry', enquiry_type: sectorOf(), design_reference: designRef() || undefined, cta_page: ctaPage || undefined }, extra);
+
+    form.addEventListener('input', () => {
+      if (started) return; started = true;
+      if (window.artilierTrack) window.artilierTrack('form_start', evt(), 'start|' + (form.id || 'enquiry'));
+    });
 
     /* hidden fields */
     const hidden = (name, value) => {
@@ -52,6 +69,7 @@
       }
       const touch = (window.artilierTouch && window.artilierTouch()) || {};
       hidden('page', location.pathname);
+      if (ctaPage) hidden('cta_page', ctaPage);
       hidden('landing_page', touch.landing || '');
       hidden('referrer', touch.referrer || '');
       ['utm_source', 'utm_medium', 'utm_campaign'].forEach(k => touch[k] && hidden(k, touch[k]));
@@ -72,13 +90,16 @@
       const label = btn ? btn.innerHTML : '';
       if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
       try {
-        const r = await fetch(endpoint, { method: 'POST', body: fd, headers: { Accept: 'application/json' } });
-        if (!r.ok) throw new Error(String(r.status));
+        let r;
+        try { r = await fetch(endpoint, { method: 'POST', body: fd, headers: { Accept: 'application/json' } }); }
+        catch (netErr) { throw new Error('network'); }
+        if (!r.ok) throw new Error('http_' + r.status);
         form.reset(); sentAt = Date.now();
         status.classList.add('ok');
         status.textContent = 'Received. We read every enquiry ourselves and reply individually — usually within a few working days.';
-        if (window.artilierTrack) window.artilierTrack('generate_lead', { form_id: form.id || 'enquiry', enquiry_type: sector }, 'lead|' + Date.now());
+        if (window.artilierTrack) window.artilierTrack('generate_lead', evt({ enquiry_type: String(sector) }), 'lead|' + Date.now());
       } catch (err) {
+        if (window.artilierTrack) window.artilierTrack('enquiry_error', evt({ error_type: String(err && err.message || 'unknown').slice(0, 20) }), 'err|' + Date.now());
         status.classList.add('err');
         status.innerHTML = `That did not send. Please email it to <a href="mailto:${EMAIL}">${EMAIL}</a> and we will pick it up.`;
       } finally {

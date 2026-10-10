@@ -70,12 +70,12 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <link rel="stylesheet" href="${up}assets/css/layout.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/responsive.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/collection-tweaks.css?v=2">
-<link rel="stylesheet" href="${up}assets/css/pages.css?v=2">
+<link rel="stylesheet" href="${up}assets/css/pages.css?v=3">
 <script defer src="${up}assets/js/slots.js?v=5" data-manifest="${up}assets/media/manifest.json?v=5"></script>
-<script defer src="${up}assets/js/analytics.js?v=1"></script>${scripts}${extraHead}
+<script defer src="${up}assets/js/analytics.js?v=2"></script>${scripts}${extraHead}
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>`;
+<a class="skip" href="#main">${lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}</a>`;
 
 const home = up => up || './';
 const NAV_FR = { 'Collection':'Collection','Bespoke':'Sur mesure','Collaborations':'Collaborations','Hospitality':'Hôtellerie','Process':'Processus','Trade':'Professionnels','About':'Le studio',

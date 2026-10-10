@@ -1,5 +1,7 @@
 # PR #5 — review report
 
+> Historical: PR #5 was merged on 10 Oct 2026. The current release candidate is PR #11 — see `SEO_LAUNCH_CHECKLIST.md`.
+
 Reviewed: 10 Oct 2026, commit `18c49a4` (first round) → fixes in the follow-up commit on the same branch.
 PR state at review: open, mergeable, no human reviews; **Cloudflare "Workers Builds: artilier-website" check passed** and a branch preview was deployed (`seo-global-visibility-implementation-artilier-website.ankit-vijaivargia.workers.dev`). Production (`main`) unchanged.
 

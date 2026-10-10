@@ -127,7 +127,7 @@ const contact = shell({
   lb:'Contact · Start a project', h1:'Start a<br>', h1it:'project.',
   lead:`<p class="bd">Send artwork, a drawing, a reference or an early idea with the sizes. We review it and come back with questions, possibilities and the best way to make it.</p>
     <div class="wp-meta"><span><b>Trade only</b></span><span>Reviewed individually</span><span>New Delhi</span></div>`,
-  scripts:`\n<script defer src="../assets/js/enquiry.js?v=1"></script>`,
+  scripts:`\n<script defer src="../assets/js/enquiry.js?v=2"></script>`,
   body:`
 <section class="sec">
   <div class="about">
@@ -496,7 +496,7 @@ const guide = shell({
   title:'How to Brief a Bespoke Rug: Files, Sizes, Sampling | Artilier',
   desc:'A guide for interior designers and architects: what to send for a bespoke rug, how construction and yarn are chosen, how the strike-off works, and timing.',
   lb:'Guide · For designers and architects', h1:'How to brief<br>', h1it:'a bespoke rug.',
-  lead:`<p class="bd">What to send, what gets decided and in what order, and how long each stage takes — written from the way our New Delhi studio runs commissions for interior designers, architects and hospitality teams. Use it as a checklist before you write to any rug maker, including us.</p>
+  lead:`<p class="bd">What to send, what gets decided and in what order, and how long the studio’s own stages take — written from the way our New Delhi studio runs commissions for interior designers, architects and hospitality teams. Use it as a checklist before you write to any rug maker, including us.</p>
     <div class="wp-meta"><span><b>Specifier guide</b></span><span>Files · sizes · sampling · timing</span></div>`,
   nodes:[{ '@type':'Article','@id':`${HOST}/${G}#article`,'headline':'How to brief a bespoke rug','inLanguage':'en',
     'description':'What to send for a bespoke rug, how construction and yarn are chosen, how the woven strike-off works, and how to plan the timing.',
@@ -505,7 +505,7 @@ const guide = shell({
     'audience':{'@type':'Audience','audienceType':'Interior designers, architects and hospitality designers'} }],
   body:`
 ${sec('Before you write', 'Four things', 'decide a rug.', `<div class="prose">
-    <p>Every bespoke rug comes down to four decisions: the <b>design</b> (what it shows and how much detail it carries), the <b>size and shape</b> (what the room and the furniture plan need), the <b>application</b> (how much traffic the room takes, and what sits on the rug) and the <b>programme</b> (the date the rug must be on site). A brief that covers all four can be costed and sampled. A brief that covers two can still start — we will tell you what needs resolving before anything can be costed properly.</p>
+    <p>Every bespoke rug comes down to four decisions: the <b>design</b> (what it shows and how much detail it carries), the <b>size and shape</b> (what the room and the furniture plan need), the <b>application</b> (how much traffic the room takes, and what sits on the rug) and the <b>programme</b> (the date the rug must be on site). A brief that covers all four can be costed and sampled. A brief that covers only some of them can still start — we will tell you what needs resolving before anything can be costed properly.</p>
   </div>`)}
 ${sec('The design', 'Send what exists,', 'at whatever stage.', list([
   '<b>A painting or artwork</b> — in any medium. Tell us the size of the original; it helps judge how the detail will scale to the finished rug',
@@ -529,11 +529,11 @@ ${sec('The construction', 'A technical decision,', 'not a style one.', list([
 ]) + `<p class="bd" style="margin-top:22px">You can state a preference or leave it to our recommendation. Either way, the construction is recommended from the artwork, the detail it carries, the traffic the room will take and the budget — and proved in sampling before production.</p>`, { dark:true })}
 ${sec('The yarn', 'Specified against', 'the room.', `<div class="prose">
     <p>The yarns we work with are New Zealand wool, hand-spun wool, wool-silk blends, bamboo silk, cotton (for warps and flatweaves), allo and hemp, and jute — with blends developed to the design where no single yarn does the job. Yarn, spin and dye lot are approved in the hand against your scheme before a loom is set.</p>
-    <p>So tell us where each rug sits and what it will take — a bedroom, a dining room under chairs, a hotel lobby. Yarn is specified against the construction and the traffic, and where a material is unsuitable for the room we say so. If the project sets performance, cleaning or documentation requirements, put them in the brief: we confirm what can be met before costing. More on <a href="${UPG}materials/">rug materials</a>.</p>
+    <p>So tell us where each rug sits and what it will take — a bedroom, a dining room under chairs, a hotel lobby. Yarn is specified against the construction and the traffic, and where a material is unsuitable for the room we say so. If the project sets performance, cleaning or documentation requirements, put them in the brief: we confirm what can be met, and what can be documented, before costing. More on <a href="${UPG}materials/">rug materials</a>.</p>
   </div>`)}
 ${sec('Sampling', 'Approve it in the hand', 'before the loom.', list([
   '<b>Yarn samples</b> — approved in the hand against your scheme',
-  '<b>Colour trials</b> — matched to your references',
+  '<b>Colour trials</b> — against your scheme',
   '<b>A woven strike-off</b> — ready 2–3 weeks after the design or sketch is approved. Its size depends on the design, and its cost is credited against the order',
   '<b>Then production</b> — the full rug is set on the loom only once the strike-off is approved, and is checked against it before it leaves the studio'
 ]) + `<p class="bd" style="margin-top:22px">On projects with a mock-up room, give us the mock-up date and the rug types it needs; sampling is scheduled back from it.</p>`, { dark:true })}
@@ -592,8 +592,8 @@ const syncShell = (file, up, { ctaLabel } = {}) => {
   s = s.replace(/<a class="mcta" id="mcta" href="[^"]*">([^<]*)/, (m, label) => `<a class="mcta" id="mcta" href="${up}contact/">${ctaLabel || label}`);
   s = s.split(`${up}index.html#brief`).join(`${up}contact/`).split(`${up}index.html#about`).join(`${up}about/`).split(`href="${up}index.html"`).join(`href="${up}"`);
   s = s.replace(/slots\.js\?v=4/g, 'slots.js?v=5');
-  if (!s.includes('pages.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*collection-tweaks\.css\?v=2">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/pages.css?v=2">`);
-  if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=1"></script>\n</head>`);
+  if (!s.includes('pages.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*collection-tweaks\.css\?v=2">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/pages.css?v=3">`);
+  if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=2"></script>\n</head>`);
   /* one Organization entity everywhere: replace the inline copy with the shared one */
   s = s.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/, (m, json) => {
     const data = JSON.parse(json);

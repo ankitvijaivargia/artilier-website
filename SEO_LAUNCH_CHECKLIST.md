@@ -1,90 +1,98 @@
-# SEO launch checklist — PR #5
+# Launch checklist — PR #11 (current release candidate)
 
-Nothing below has been done on any external account. Ticks are for you (or me, where marked) as each step is completed with evidence.
+PR #11 · `seo/growth-engine-p1` → `main` · *SEO growth engine P1: readable pages, French localisation, briefing guide, plans*
 
-## 1. Status at hand-over (10 Oct 2026)
+Rule: a box is ticked only with evidence (a screenshot, an email received, a dashboard showing data). Nothing on an external account (Cloudflare, Google, Bing, Formspree) has been changed by Claude.
+
+Earlier releases: PR #5 (contact page, analytics code, market and French pages) and PRs #6–#9 (positioning, Bing tag, working and commercial terms) are merged and live. Their history is in `SEO_IMPLEMENTATION_LOG.md` and `PR_REVIEW_REPORT.md`.
+
+## 1. How this site deploys
+
+- Hosting: a **Cloudflare Worker with static assets** (`wrangler.jsonc`: `assets.directory = "."`, `not_found_handling = "404-page"`). Files listed in `.assetsignore` (tools, planning documents) are not published.
+- **Every push to `main` deploys production automatically** (Cloudflare Workers Builds). Merging a PR is the deploy.
+- Every push to a PR branch builds a **preview** and posts its links on the PR (comment by *cloudflare-workers-and-pages[bot]*). The **Branch Preview URL** always shows the latest commit on the branch: `https://seo-growth-engine-p1-artilier-website.ankit-vijaivargia.workers.dev`
+- There is no build step on Cloudflare: the HTML in the repo is what is served. Pages are generated locally from `tools/build*.mjs` and committed (see `README.md`).
+
+## 2. Status of this release candidate
 
 | Item | Status | Evidence |
-| --- | --- | --- |
-| PR #5 | Open, mergeable, not merged | GitHub |
-| CI | Cloudflare "Workers Builds: artilier-website" — passed | PR checks |
-| Branch preview | Deployed | `https://seo-global-visibility-implementation-artilier-website.ankit-vijaivargia.workers.dev` |
-| Build | Reproducible: re-running the three generators produces the committed HTML | Local |
-| Automated checks | `tools/check.py` OK — 42 pages, 40 indexable, 40 in sitemap, 0 broken links | Local |
-| Browser tests | 22 URLs × 320/390/768/1440 px, real fonts: 0 JS errors, 0 horizontal scroll | Local headless Chromium |
-| Form logic | Validation, honeypot, single POST on double-click, success only on 200, error fallback, pre-fill | Local, endpoint intercepted |
-| **Form delivery** | **Not yet tested end to end** — needs one real enquiry to your own inbox | Pending (you) |
-| Analytics | Code installed, **inactive** (no token / ID). Cloudflare Web Analytics not yet enabled | Pending (you) |
-| Search Console / Bing | Not set up on the Google account checked | Pending (you) |
+|---|---|---|
+| PR #11 | Open, not merged | GitHub |
+| Build | Generators re-run on the branch reproduce the committed HTML | Local, release review |
+| `tools/check.py` | OK — **43 pages checked, 41 indexable, 41 in sitemap**; 0 broken links; titles/descriptions unique and within length; one H1; valid JSON-LD; alt text; no manufacturing locations named | Local, release review (counts re-derived from the branch) |
+| Contrast audit | No text below 3:1 on 17 key pages (was: 24 invisible lead-ins on 4 pages, 19 invisible grid items on `/trade/`, plus `/about/` and `/craft/`) | Local headless Chromium |
+| Responsive | 11 URLs × 360/390/768/1440 px: 0 JS errors, 0 horizontal overflow, header fits, one H1; mobile menu opens and closes (Escape) | Local headless Chromium |
+| Enquiry form logic | 31/31 checks passed with the Formspree endpoint **intercepted (mocked)**: validation, one POST on double-click, success only after 200, error on 500 and on network failure, honeypot, attribution, design and CTA-page capture, keyboard submit, no personal data in analytics events | Local, mocked — **not a delivery test** |
+| Cloudflare preview build | See PR checks for the latest commit | GitHub |
+| **Live enquiry delivery** | **Outstanding** — no real enquiry has been sent | Owner step §4 |
+| **Search Console** | **Outstanding** — not verified | Owner step §5 |
+| **Cloudflare Web Analytics** | **Outstanding** — not enabled in code; dashboard status unknown | Owner step §5 |
 | Production | Unchanged until merge | — |
 
-## 2. Before merging
+## 3. Before merging (pre-merge)
 
-- [ ] Open the **branch preview** and look at: `/`, `/contact/`, `/hospitality/`, `/trade/uae/`, `/fr/`, `/collection/reth/`, `/about/`, and an unknown URL such as `/xyz/` (should show the branded 404)
-- [ ] On a phone, check the header (logo, Menu, Start a project) fits and the menu opens
-- [ ] On the preview, check `/about`, `/contact`, `/projects` redirect to the new pages
-- [ ] Optional: in Formspree → form `myklqvgp` → Settings → allowed domains, add the preview host to test the form there; otherwise test on production after merge (step 4)
-- [ ] Read `OWNER_INPUT_REQUIRED.md` §A–C: anything you want live on day one?
-- [ ] Approve the merge (I will not merge without your explicit go-ahead)
+Open the **Branch Preview URL** above on a laptop and on a phone, and check:
 
-## 3. Merge and deploy
+- [ ] `/trade/uae/`, `/trade/saudi-arabia/`, `/trade/uk/` — the bold opening words in the dark bands ("Villas and private residences —", "Rug schedule —") are readable
+- [ ] `/trade/` — the "From specification to site" list is readable
+- [ ] `/fr/` — menu, buttons and footer are in French; "Délais et conditions" shows the terms; tap Menu → it reads "Fermer"
+- [ ] `/guides/briefing-a-bespoke-rug/` — **read it in full**; every statement must be true of how the studio works. Mark anything to change
+- [ ] `/collection/reth/` → "Enquire about Reth" → the contact form opens with "A collection design" selected
+- [ ] An unknown address such as `/xyz/` shows the branded "This page is not here" page
+- [ ] Do **not** submit the form on the preview unless the preview host is in Formspree's allowed domains — a blocked submission shows the error message, which is expected
+- [ ] Optional: answer anything in `OWNER_INPUT_REQUIRED.md` you want live on day one (§B French replies, §I hospitality scope)
+- [ ] Tell Claude "approved to merge" (Claude will not merge without it)
 
-1. Merge PR #5 into `main` on GitHub ("Create a merge commit").
-2. Cloudflare Workers Builds deploys `main` automatically — wait for the green check on the merge commit (2–5 min).
+## 4. Merge and post-deployment checks
 
-## 4. Within 15 minutes of deploy (post-deployment verification)
+**Merge:** GitHub → PR #11 → *Merge pull request* (merge commit). Cloudflare deploys `main` automatically; wait for the green check on the merge commit (usually 1–5 minutes).
 
-- [ ] `https://artilier.co/` shows the title "Bespoke Rugs for Interior Designers | Artilier, New Delhi"
-- [ ] **Live test enquiry** (you send it, to your own inbox): open `https://artilier.co/contact/?type=hospitality&utm_source=launch-test`, enter your own name and studio@artilier.co, message "Launch test — please ignore", submit. Confirm (a) green "Received" message, (b) the email arrives at studio@artilier.co, (c) it includes `sector: hospitality`, `page`, `landing_page`, `referrer`
-- [ ] Repeat once from a phone on mobile data, from a design page: `/collection/reth/` → "Enquire about Reth" — the email should include `design_reference: reth`
-- [ ] Unknown URL (e.g. `/does-not-exist/`) shows the branded 404 page and returns status 404 (Chrome DevTools → Network)
-- [ ] `/about`, `/contact`, `/projects`, `/enquire` resolve to the new pages; `/making` still goes to the homepage section
-- [ ] `https://artilier.co/sitemap.xml` lists 40 URLs; `https://artilier.co/tools/build.mjs` returns 404 (no longer published)
-- [ ] Social preview: paste `https://artilier.co/collection/parat/` into a WhatsApp chat to yourself — the rug image should appear
+**Within 15 minutes of the deploy:**
 
-## 5. Measurement setup (owner steps)
+- [ ] `https://artilier.co/guides/briefing-a-bespoke-rug/` opens; `https://artilier.co/sitemap.xml` lists **41** URLs
+- [ ] The dark bands on `/trade/uae/` are readable on the live site (hard refresh; the stylesheet is versioned `pages.css?v=3`)
+- [ ] **Live enquiry test (you send it, to your own inbox):** open `https://artilier.co/trade/uae/`, press "Start a UAE project", fill in your own name, `studio@artilier.co`, message "Launch test — please ignore", submit. Pass = (a) green "Received" message, (b) email arrives at studio@artilier.co, (c) it shows `sector`, `page`, `landing_page`, `referrer` and `cta_page: /trade/uae/`
+- [ ] Repeat once on a phone from `/collection/reth/` → "Enquire about Reth" — the email should include `design_reference: reth`
+- [ ] Unknown URL (e.g. `/does-not-exist/`) shows the branded 404 and returns status 404 (Chrome DevTools → Network)
+- [ ] `/about`, `/contact`, `/enquire` resolve to the real pages; `https://artilier.co/tools/build.mjs` and `https://artilier.co/SEO_LAUNCH_CHECKLIST.md` return 404
 
-### Cloudflare Web Analytics (recommended — cookieless, no consent banner)
-1. dash.cloudflare.com → your account → **Analytics & Logs → Web Analytics**.
-2. **Add a site** → hostname `artilier.co`.
-3. Because the domain is on Cloudflare, choose **automatic setup** (Cloudflare injects the beacon). If offered only the JS snippet instead, copy the `token` value and send it to me — it goes into `CF_BEACON_TOKEN` in `assets/js/analytics.js`.
-4. Verify after 24 h: the Web Analytics dashboard shows visits and top pages.
-Limits: page views, referrers, countries and Core Web Vitals only — **no custom events**. Enquiries are counted from Formspree submissions, which now carry landing page and referrer.
+Mark the live enquiry test **passed** in §2 only after the email has arrived.
 
-### GA4 (optional — only if you want event reports)
-Create a GA4 property and web stream → send me the `G-…` ID. It ships with Consent Mode set to "denied" (cookieless pings). Collecting full analytics from UK/EU visitors requires a consent banner first — decide before enabling.
+## 5. Measurement setup (owner, any time — independent of the merge)
 
-### Google Search Console
-1. search.google.com/search-console → **Add property** → **Domain** → `artilier.co`.
-2. Copy the **TXT record** shown.
-3. Cloudflare → `artilier.co` → **DNS → Records → Add record**: Type `TXT`, Name `@`, Content = the value, TTL Auto → Save.
-4. Back in Search Console → **Verify** (can take a few minutes to an hour).
-5. **Sitemaps** → enter `sitemap.xml` → Submit. Expect "Success" and 40 discovered URLs.
-6. **URL Inspection** → paste each URL → **Request indexing** (daily quota ~10–12): `/`, `/trade/`, `/bespoke/`, `/hospitality/`, `/collection/`, `/collection/hand-knotted/`, `/collection/hand-tufted/`, `/collection/flatweave/`, `/trade/uae/`, `/trade/saudi-arabia/`, `/fr/`, `/contact/`. Then `/trade/uk/`, `/trade/us/`, `/about/` the next day. Design pages follow via the sitemap.
+### Cloudflare Web Analytics (cookieless; no consent banner needed)
+1. dash.cloudflare.com → **Analytics & Logs → Web Analytics → Add a site** → `artilier.co`.
+2. Choose **automatic setup** (Cloudflare injects the beacon for the proxied domain). No code change is needed.
+3. If Cloudflare offers only a JS snippet, copy its `token` value and send it to Claude — it goes into `CF_BEACON_TOKEN` in `assets/js/analytics.js` (one-line change, new PR). Do not enable both.
+4. Evidence: after 24 hours the dashboard shows visits and top pages.
+Limit: page views, referrers and countries only — no custom events. Enquiries are counted from Formspree (each email carries landing page, referrer and CTA page).
+
+### Google Search Console (Domain property)
+1. search.google.com/search-console → **Add property → Domain** → `artilier.co`.
+2. Copy the **TXT record** Google shows.
+3. Cloudflare → `artilier.co` → **DNS → Records → Add record**: Type `TXT`, Name `@`, Content = the value, TTL Auto → Save. Change no other record.
+4. Search Console → **Verify** (minutes to an hour).
+5. **Sitemaps** → `sitemap.xml` → Submit. Evidence: status "Success" with 41 discovered URLs once this PR is live (40 before).
+6. **URL Inspection → Request indexing**, in this order (daily quota is limited): `/`, `/trade/uae/`, `/trade/saudi-arabia/`, `/guides/briefing-a-bespoke-rug/`, `/bespoke/`, `/hospitality/`, `/trade/`, `/fr/`, `/collection/`; next day `/trade/uk/`, `/trade/us/` and the three category pages.
 7. **Security & Manual actions → Manual actions**: expect "No issues detected".
-8. Weekly: **Pages** report → check "Not indexed" reasons (Crawled – currently not indexed, Duplicate, etc.).
+8. Settings → Users: add whoever will review reports.
 A request is not an index: count a URL as indexed only when URL Inspection says "URL is on Google".
 
 ### Bing Webmaster Tools
-1. bing.com/webmasters → sign in → **Import your sites from Google Search Console** (after GSC is verified) → select `artilier.co`.
-2. **Sitemaps** → confirm `https://artilier.co/sitemap.xml` is listed (submit if not).
-3. **URL Submission** → submit the same priority URLs.
-Alternative if not importing: Add site manually → verify with the CNAME or TXT record Bing shows, added in Cloudflare DNS.
+The verification tag is already live (PR #7). bing.com/webmasters → **Import from Google Search Console** after step 4 → confirm the sitemap is listed.
 
-## 6. Performance (after deploy)
+### GA4 (optional)
+Only if you want event reports (`form_start`, `generate_lead`, `enquiry_error`, `contact_click`, `whatsapp_click`). Send Claude the `G-…` ID. It starts with consent denied (cookieless pings); a consent banner is needed before collecting full analytics from UK/EU visitors.
 
-- [ ] PageSpeed Insights (pagespeed.web.dev), **mobile and desktop**, for `/`, `/contact/`, `/collection/reth/` — record LCP, CLS, INP/TBT and the date. Production before this PR could not be measured on 10 Oct (Google's free quota was exhausted); local lab only: homepage mobile LCP 2.2 s → 1.1 s
-- [ ] Repeat a week later for field data (CrUX appears only with enough traffic)
+## 6. Rollback
 
-## 7. Rollback
+- **Fastest:** Cloudflare dashboard → **Workers & Pages → artilier-website → Deployments** → choose the deployment before the merge → **Rollback**. Instant; no Git change.
+- **Then (or instead):** GitHub → PR #11 → **Revert** → merge the revert PR, so `main` matches what is live. Cloudflare redeploys automatically.
+- This PR changes no DNS, email, form or account settings, so either route is a complete rollback.
 
-- GitHub → PR #5 → **Revert** → merge the revert PR. Cloudflare redeploys the previous site from `main` in minutes.
-- Or Cloudflare dashboard → Workers & Pages → `artilier-website` → **Deployments** → roll back to the previous version (instant, no Git change; follow with a Git revert so `main` matches).
-- Nothing in this PR changes DNS, email, or account settings, so a rollback is complete.
+## 7. First 72 hours after deploy
 
-## 8. After launch — first 72 hours
-
-- [ ] Formspree: every submission arriving; spam filter on
-- [ ] Search Console: sitemap processed; no "Page with redirect" or "Not found (404)" for sitemap URLs
-- [ ] Cloudflare Web Analytics receiving data
-- [ ] No new 404s for old URLs (Cloudflare → Workers → Observability / logs)
+- [ ] Formspree: submissions arriving; spam filtering on
+- [ ] Search Console (once verified): sitemap processed; no "Not found (404)" or "Page with redirect" for sitemap URLs
+- [ ] Cloudflare Web Analytics receiving data (once enabled)
+- [ ] Start the enquiry log (`SEO_MEASUREMENT_FRAMEWORK.md` §4)

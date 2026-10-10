@@ -15,7 +15,7 @@ Currently the site says: *"Costing and lead times follow once construction, mate
 - [x] **Packaging** — mostly rolled (owner, 10 Oct 2026) — published. Still open: any fumigation/moisture treatment
 - [x] **Shipping terms** — usually ex-works; FOB or DDP quoted separately on request (owner) — published
 - [x] **Currencies quoted** — USD or EUR (owner) — published
-- [x] **Payment terms** — 50% advance, 50% before shipping (owner) — kept off the site by owner choice; stated in quotes only
+- [x] **Payment terms** — confirmed by the owner; kept off the site by owner choice and stated in quotes only. (Removed from this public repository on 10 Oct; earlier commits still contain them — see release notes.)
 
 ## B. Contact and language
 
