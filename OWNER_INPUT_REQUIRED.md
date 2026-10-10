@@ -11,7 +11,7 @@ Currently the site says: *"Costing and lead times follow once construction, mate
 - [x] **Minimum order** — none; single pieces welcome (owner, 10 Oct 2026) — published
 - [x] **Typical lead time** — usually 6–12 weeks, up to 6 months in some cases (owner, 10 Oct 2026) — published. measured from strike-off approval (owner) — published. Differs by construction (owner); per-construction ranges not given, so the site keeps 'hand-knotting takes longest'
 - [x] **Strike-off timing** — 2–3 weeks after design/sketch approval (owner, 10 Oct 2026) — published. Strike-off cost is credited against the order (owner) — published. Strike-off size depends on the design (owner) — published
-- [ ] **Approval stages** — confirm the six stages on `/process/` are how projects actually run
+- [ ] **Approval stages** — confirm the six stages on `/process/` are how projects actually run. In particular: is every finished rug checked against its approved strike-off (and specification) before dispatch? The guide no longer states this until you confirm
 - [x] **Packaging** — mostly rolled (owner, 10 Oct 2026) — published. Still open: any fumigation/moisture treatment
 - [x] **Shipping terms** — usually ex-works; FOB or DDP quoted separately on request (owner) — published
 - [x] **Currencies quoted** — USD or EUR (owner) — published

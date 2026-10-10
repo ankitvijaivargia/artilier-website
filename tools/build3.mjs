@@ -515,15 +515,15 @@ ${sec('The design', 'Send what exists,', 'at whatever stage.', list([
   '<b>A collection design</b> — any design in <a href="'+UPG+'collection/">the collection</a> can be re-scaled, re-proportioned and re-coloured to your scheme'
 ]) + `<p class="bd" style="margin-top:22px">A rough idea and a floor plan are enough to begin. Development — construction, yarn, colour separation and scale — is worked out with you, so the brief does not need to be finished artwork.</p>`, { dark:true })}
 ${sec('The size', 'Resolve it', 'from the plan.', `<div class="prose">
-    <p>Every rug is made to order, so the size follows the room rather than a standard size, and the shape can follow the room too. The most useful thing you can send is the floor plan with the furniture layout, so proportions can be resolved before sampling. On the plan, mark:</p>
+    <p>Rugs are made to order, so the size is set by the room rather than by a standard range. What is achievable still depends on the design and the construction, so very large or unusually shaped pieces are confirmed with you before sampling. The most useful thing you can send is the floor plan with the furniture layout, so proportions can be resolved before sampling. On the plan, mark:</p>
   </div>` + list([
   '<b>The rug outline you intend</b> — with dimensions in metres, centimetres or feet and inches, whichever your drawings use',
   '<b>Furniture positions</b> — which pieces sit on the rug and which sit off it',
   '<b>Doors, thresholds and fixed features</b> — anything the rug edge has to clear or align with',
   '<b>Several rugs?</b> — send a rug schedule: room, quantity and size for each'
-]) + `<p class="bd" style="margin-top:22px">For very large rooms, any size limit for the chosen construction is confirmed before sampling, not after.</p>`)}
+]) + `<p class="bd" style="margin-top:22px">For very large rooms, any size limit for the chosen construction is confirmed before sampling.</p>`)}
 ${sec('The construction', 'A technical decision,', 'not a style one.', list([
-  '<b>Hand-knotted</b> — knot by knot on the loom: the finest definition, the construction that carries painterly artwork best, and the longest to make. <a href="'+UPG+'collection/hand-knotted/">Hand-knotted designs</a>',
+  '<b>Hand-knotted</b> — knot by knot on the loom: suited to fine detail and painterly artwork, and the longest to make. <a href="'+UPG+'collection/hand-knotted/">Hand-knotted designs</a>',
   '<b>Hand-tufted</b> — carving, mixed pile heights and loop-and-cut surfaces, with a shorter lead time than hand-knotting. <a href="'+UPG+'collection/hand-tufted/">Hand-tufted designs</a>',
   '<b>Flatweave</b> — low, graphic and lighter: for geometric work, layering and rooms where a pile would sit too high. <a href="'+UPG+'collection/flatweave/">Flatweave designs</a>'
 ]) + `<p class="bd" style="margin-top:22px">You can state a preference or leave it to our recommendation. Either way, the construction is recommended from the artwork, the detail it carries, the traffic the room will take and the budget — and proved in sampling before production.</p>`, { dark:true })}
@@ -535,10 +535,10 @@ ${sec('Sampling', 'Approve it in the hand', 'before the loom.', list([
   '<b>Yarn samples</b> — approved in the hand against your scheme',
   '<b>Colour trials</b> — against your scheme',
   '<b>A woven strike-off</b> — ready 2–3 weeks after the design or sketch is approved. Its size depends on the design, and its cost is credited against the order',
-  '<b>Then production</b> — the full rug is set on the loom only once the strike-off is approved, and is checked against it before it leaves the studio'
+  '<b>Then production</b> — the full rug is set on the loom only once the strike-off is approved'
 ]) + `<p class="bd" style="margin-top:22px">On projects with a mock-up room, give us the mock-up date and the rug types it needs; sampling is scheduled back from it.</p>`, { dark:true })}
 ${sec('Timing and terms', 'Plan back from', 'the site date.', list([
-  '<b>Strike-off</b> — 2–3 weeks after the design is approved',
+  '<b>Strike-off</b> — 2–3 weeks after the design or sketch is approved',
   '<b>Production</b> — usually 6–12 weeks from strike-off approval, up to six months in some cases; hand-knotting takes longest, hand-tufting is shorter',
   '<b>Minimum order</b> — none; a single rug is welcome',
   '<b>Quotes</b> — in USD or EUR, usually ex-works; FOB or DDP quoted separately on request',
@@ -556,8 +556,8 @@ ${sec('Checklist', 'A brief', 'we can cost.', list([
 ${sec('Questions', 'Asked before', 'the first brief.', qa([
   ['Can we start from a rough sketch?', 'Yes. A rough idea and a floor plan are enough to begin; construction, yarn, colour separation and scale are developed with you, and we tell you what needs resolving before costing.'],
   ['Do you work with private clients?', `No. Artilier works to the trade only — interior designers, architects, hospitality teams and design practices. See <a href="${UPG}trade/">trade</a>.`],
-  ['Can one rug be adapted from the collection rather than developed from scratch?', 'Yes. Collection designs can be re-scaled, re-proportioned and re-coloured to your scheme and made to any size.'],
-  ['What happens if the strike-off is not right?', 'The full rug is not set on the loom until the strike-off is approved. Development continues — colour trials and strike-offs — until it reads right.']]))}
+  ['Can one rug be adapted from the collection rather than developed from scratch?', 'Yes. Collection designs can be re-scaled, re-proportioned and re-coloured to your scheme, and made to the size the room needs within what the design and construction allow.'],
+  ['What happens if the strike-off is not right?', 'The full rug is not set on the loom until the strike-off is approved. If it is not right, tell us what needs to change; what a revision involves is agreed with you before anything further is made.']]))}
 ${ctaBlock(UPG, 'contact/?type=bespoke', 'Send a brief', [['bespoke/','Bespoke development'],['process/','The process'],['hospitality/','Hospitality'],['trade/','Trade']])}`
 });
 

@@ -20,7 +20,8 @@ Earlier releases: PR #5 (contact page, analytics code, market and French pages) 
 | PR #11 | Open, not merged | GitHub |
 | Build | Generators re-run on the branch reproduce the committed HTML | Local, release review |
 | `tools/check.py` | OK — **43 pages checked, 41 indexable, 41 in sitemap**; 0 broken links; titles/descriptions unique and within length; one H1; valid JSON-LD; alt text; no manufacturing locations named | Local, release review (counts re-derived from the branch) |
-| Contrast audit | No text below 3:1 on 17 key pages (was: 24 invisible lead-ins on 4 pages, 19 invisible grid items on `/trade/`, plus `/about/` and `/craft/`) | Local headless Chromium |
+| Contrast — defects fixed by this PR | Invisible or near-invisible text removed: 24 lead-ins on `/trade/uae/`, `/trade/saudi-arabia/`, `/trade/uk/`, `/fr/`; 19 grid items on `/trade/`; names on `/about/`; facts on `/craft/`. Every component styled by this PR passes WCAG AA | Local headless Chromium |
+| WCAG AA contrast (1.4.3 / 1.4.11) | **Not compliant site-wide — pre-existing.** Audit of 20 pages at 1440 and 390 px with 4.5:1 for normal text, 3:1 for large text (≥24 px, or ≥18.66 px bold) and 3:1 for UI boundaries and focus indicators: 430 text instances below threshold (538 on `main`), all from four shared styles that predate this PR — muted text `--tx-3` (3.3–3.7:1), footer bottom line (3.3:1), the "Start a project" band on rust (3.5–4.2:1); plus form-field underlines (1.7:1) and the focus ring on the rust band. None blocks this release; fixing them changes palette values and needs a separate, owner-approved PR | Local headless Chromium |
 | Responsive | 11 URLs × 360/390/768/1440 px: 0 JS errors, 0 horizontal overflow, header fits, one H1; mobile menu opens and closes (Escape) | Local headless Chromium |
 | Enquiry form logic | 31/31 checks passed with the Formspree endpoint **intercepted (mocked)**: validation, one POST on double-click, success only after 200, error on 500 and on network failure, honeypot, attribution, design and CTA-page capture, keyboard submit, no personal data in analytics events | Local, mocked — **not a delivery test** |
 | Cloudflare preview build | See PR checks for the latest commit | GitHub |
@@ -36,7 +37,7 @@ Open the **Branch Preview URL** above on a laptop and on a phone, and check:
 - [ ] `/trade/uae/`, `/trade/saudi-arabia/`, `/trade/uk/` — the bold opening words in the dark bands ("Villas and private residences —", "Rug schedule —") are readable
 - [ ] `/trade/` — the "From specification to site" list is readable
 - [ ] `/fr/` — menu, buttons and footer are in French; "Délais et conditions" shows the terms; tap Menu → it reads "Fermer"
-- [ ] `/guides/briefing-a-bespoke-rug/` — **read it in full**; every statement must be true of how the studio works. Mark anything to change
+- [ ] `/guides/briefing-a-bespoke-rug/` — **read it in full**; every statement must be true of how the studio works. Mark anything to change. (It no longer says every rug is checked against its strike-off before dispatch, or that revisions continue until right — confirm those in `OWNER_INPUT_REQUIRED.md` §A and §H if you want them stated)
 - [ ] `/collection/reth/` → "Enquire about Reth" → the contact form opens with "A collection design" selected
 - [ ] An unknown address such as `/xyz/` shows the branded "This page is not here" page
 - [ ] Do **not** submit the form on the preview unless the preview host is in Formspree's allowed domains — a blocked submission shows the error message, which is expected
