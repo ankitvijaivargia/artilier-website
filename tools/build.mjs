@@ -284,8 +284,9 @@ function designPage(d) {
     ['Reference size', d.referenceSize],
     ['Size', (d.availableSizes||[]).join(' · ') || 'Any dimension — made to order'],
     ['Colourway', (d.palette||[]).length ? '' : 'Re-coloured to your scheme'],
-    ['Sampling', 'Yarn, colour and strike-off approved before weaving'],
-    ['Lead time', d.leadTime || 'Given per project, once construction, size and sampling are agreed']
+    ['Sampling', 'Strike-off in 2–3 weeks once the design is approved; its cost is credited against the order'],
+    ['Lead time', d.leadTime || 'Usually 6–12 weeks from strike-off approval; up to six months in some cases'],
+    ['Minimum order', 'None — a single rug is welcome']
   ].filter(([,v]) => v).map(([k,v]) => `<div><b>${esc(k)}</b><span>${esc(v)}</span></div>`).join('\n        ');
 
   return head({
@@ -402,7 +403,7 @@ function categoryPage(cat) {
   <div class="sec-hd"><div><span class="lb">Specifying ${esc(coll.name.toLowerCase())}</span><h2 class="d2">When to specify<br><span class="it">${esc(coll.name.toLowerCase())}.</span></h2></div>
   <p class="bd">${esc(CAT_COPY[cat.slug].when)}</p></div>
   <div class="sec-hd"><div><span class="lb">Yarn and sampling</span><h2 class="d2">Yarn, colour<br>and <span class="it">specification.</span></h2></div>
-  <p class="bd">${esc(CAT_COPY[cat.slug].yarn)} Yarn, spin and dye lot are approved in the hand against your scheme, and a woven strike-off is approved before the full rug is set on the loom. Lead time is given per project once construction, size and sampling are agreed. <a href="${up}materials/">Rug materials</a> · <a href="${up}process/">The process</a> · <a href="${up}contact/?type=bespoke">Brief a ${esc(coll.name.toLowerCase())} rug</a></p></div>
+  <p class="bd">${esc(CAT_COPY[cat.slug].yarn)} Yarn, spin and dye lot are approved in the hand against your scheme, and a woven strike-off — ready in 2–3 weeks once the design is approved — is signed off before the full rug is set on the loom. Lead times usually run 6–12 weeks from strike-off approval, up to six months in some cases. There is no minimum order. <a href="${up}materials/">Rug materials</a> · <a href="${up}process/">The process</a> · <a href="${up}contact/?type=bespoke">Brief a ${esc(coll.name.toLowerCase())} rug</a></p></div>
 </section>
 <div class="backhome">
   <a href="${up}collection/" class="cta ol"><span aria-hidden="true">←</span> The whole collection</a>
