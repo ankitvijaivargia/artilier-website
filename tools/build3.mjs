@@ -466,16 +466,16 @@ ${sec('Le processus', 'Six étapes,', 'des validations à chaque étape.', `<div
     <div class="pstep"><span class="pn">06</span><span class="pt">Livrer</span><span class="pd">Emballage, documents d’exportation et fret coordonnés avec nos partenaires logistiques.</span></div>
   </div>`)}
 ${sec('Délais et conditions', 'Échantillon, délais,', 'devis.', `<div class="mats">
-    <div>Commande minimum <span>Aucune — pièce unique acceptée</span></div>
-    <div>Échantillon tissé <span>2 à 3 semaines après validation du dessin</span></div>
+    <div>Minimum de commande <span>Aucun — une pièce unique est la bienvenue</span></div>
+    <div>Échantillon tissé (strike-off) <span>2 à 3 semaines après validation du dessin</span></div>
     <div>Coût de l’échantillon <span>Déduit de la commande</span></div>
     <div>Délai de fabrication <span>En général 6 à 12 semaines après validation de l’échantillon</span></div>
     <div>Devis <span>En USD ou en EUR, en général départ usine (EXW)</span></div>
-    <div>Expédition <span>FOB ou DDP chiffrés sur demande · tapis expédiés roulés</span></div>
+    <div>Expédition <span>FOB ou DDP chiffrés séparément, sur demande · tapis expédiés roulés</span></div>
   </div>
   <p class="proc-note" style="color:rgba(247,243,235,.62)">Le délai peut aller jusqu’à six mois selon la pièce : le noué main est la technique la plus longue, le tufté main est plus rapide. La taille de l’échantillon dépend du dessin. Les conditions de paiement figurent dans le devis, et le chiffrage se précise à mesure que la technique, les matières, les dimensions et l’échantillonnage sont définis.</p>`, { dark:true })}
 ${sec('Contractualisation', 'Devis, contrat', 'et export.', `<div class="prose">
-    <p>Artilier est le studio professionnel d’Art Avenue Pvt. Ltd., notre société de fabrication à New Delhi. Les commandes sont contractées, facturées et exportées par cette entité : un seul fournisseur, un seul interlocuteur, du premier dessin à l’expédition.</p>
+    <p>Artilier est le studio professionnel d’Art Avenue Pvt. Ltd., notre société de fabrication à New Delhi. Les commandes sont passées, facturées et exportées par cette entité : un seul fournisseur, un seul interlocuteur, du premier dessin à l’expédition.</p>
     <p>Pour démarrer, écrivez-nous à <a href="mailto:studio@artilier.co">studio@artilier.co</a> en joignant vos dessins, les dimensions et le calendrier du projet, ou utilisez notre <a href="../contact/" hreflang="en">formulaire de contact</a> (en anglais).</p>
   </div>`)}
 <div class="backhome">
@@ -529,7 +529,7 @@ ${sec('The construction', 'A technical decision,', 'not a style one.', list([
 ]) + `<p class="bd" style="margin-top:22px">You can state a preference or leave it to our recommendation. Either way, the construction is recommended from the artwork, the detail it carries, the traffic the room will take and the budget — and proved in sampling before production.</p>`, { dark:true })}
 ${sec('The yarn', 'Specified against', 'the room.', `<div class="prose">
     <p>The yarns we work with are New Zealand wool, hand-spun wool, wool-silk blends, bamboo silk, cotton (for warps and flatweaves), allo and hemp, and jute — with blends developed to the design where no single yarn does the job. Yarn, spin and dye lot are approved in the hand against your scheme before a loom is set.</p>
-    <p>So tell us where each rug sits and what it will take — a bedroom, a dining room under chairs, a hotel lobby. Yarn is specified against the construction and the traffic, and where a material is unsuitable for the room we say so. If the project sets performance, cleaning or documentation requirements, put them in the brief: we confirm what can be met before sampling. More on <a href="${UPG}materials/">rug materials</a>.</p>
+    <p>So tell us where each rug sits and what it will take — a bedroom, a dining room under chairs, a hotel lobby. Yarn is specified against the construction and the traffic, and where a material is unsuitable for the room we say so. If the project sets performance, cleaning or documentation requirements, put them in the brief: we confirm what can be met before costing. More on <a href="${UPG}materials/">rug materials</a>.</p>
   </div>`)}
 ${sec('Sampling', 'Approve it in the hand', 'before the loom.', list([
   '<b>Yarn samples</b> — approved in the hand against your scheme',
