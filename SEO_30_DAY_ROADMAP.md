@@ -1,5 +1,7 @@
 # First 30 days — SEO and international visibility
 
+> Superseded for planning by `SEO_90_DAY_EXECUTION_PLAN.md` (10 Oct 2026). Kept for history.
+
 Ordered by commercial value: first make sure enquiries arrive and are measured, then make the site findable, then make it worth choosing. No rankings or traffic figures are promised; each week ends with what the evidence shows.
 
 | When | Action | Who | Done when |

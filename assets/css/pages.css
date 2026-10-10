@@ -16,6 +16,18 @@
 .sec.dark .prose p,.sec.dark .prose li{color:rgba(247,243,235,.78)}
 .sec.dark .prose li{border-color:rgba(247,243,235,.14)}
 .sec.dark .prose ul{border-color:rgba(247,243,235,.14)}
+/* Dark-section overrides. Components below were styled for the paper ground and
+   rendered ink (or near-ink) on the dark ground — invisible or near-invisible. */
+.sec.dark .prose li b,.sec.dark .prose h3{color:var(--paper)}
+.sec.dark .prose a{color:inherit}
+.sec.dark .prose a:hover,.sec.dark .bd a:hover{color:var(--brass-l)}   /* rust on espresso is 2.8:1 */
+.sec.dark :focus-visible,footer :focus-visible{outline-color:var(--brass-l)}   /* keep the focus ring ≥3:1 on dark grounds */
+.sec.dark .facts{border-top-color:rgba(247,243,235,.14)}
+.sec.dark .facts div{color:rgba(247,243,235,.78);border-bottom-color:rgba(247,243,235,.14)}
+.sec.dark .facts b{color:var(--brass-l)}
+/* .mats is a dark-section component; on the paper ground (/trade/) its text was paper on paper. */
+.sec:not(.dark) .mats div{color:var(--tx-2);border-bottom-color:var(--sand)}
+.sec:not(.dark) .mats div span{color:var(--rust)}
 
 /* Two-column text grid. */
 .cols2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:start}

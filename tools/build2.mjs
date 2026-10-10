@@ -54,7 +54,7 @@ const bespoke = page({
   desc:'Custom rugs developed from your artwork, CAD file or palette: construction, yarn, colour and scale resolved in sampling before production. Trade only.',
   h1:'Your artwork.<br>Our ', h1it:'development.',
   lead:`<p class="bd">Send artwork, a painting, a CAD file, a colour scheme, a reference image or a floor plan, and we develop it into a finished rug — construction, yarn, colour, scale and finish worked out with you, then proved in a sample before production.</p>
-    <div class="wp-meta"><span><b>Made to order</b></span><span>Any dimension</span><span>Custom colourways</span></div>`,
+    <div class="wp-meta"><span><b>Made to order</b></span><span>Made to size</span><span>Custom colourways</span></div>`,
   service:{ name:'Bespoke rug development', serviceType:'Custom rug design and manufacture',
     description:'Development of bespoke hand-knotted, hand-tufted and flatweave rugs from a designer’s own artwork, drawing, CAD file, reference image or colour scheme, including construction, yarn and colour development, sampling and production.' },
   body:`
@@ -76,7 +76,7 @@ const bespoke = page({
     <div>A reference image <span>Starting point</span></div>
     <div>A colour scheme <span>Matched by hand</span></div>
     <div>A floor plan <span>Sizes resolved</span></div>
-    <div>Rug dimensions <span>Any size or shape</span></div>
+    <div>Rug dimensions <span>Sized to the project · confirmed before sampling</span></div>
   </div>
 </section>
 <section class="sec">
@@ -96,7 +96,7 @@ const bespoke = page({
     <div>Progress photography <span>At agreed points</span></div>
     <div>Pricing <span>USD or EUR · usually ex-works</span></div>
   </div>
-  <p class="proc-note" style="color:rgba(247,243,235,.62)">Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases; we confirm the timeline for each project, and costing becomes more precise as the artwork, construction, materials and sampling are resolved. Hand-made production varies with construction, yarn availability and loom capacity — hand-knotting takes longest, hand-tufting is shorter — and we tell you about changes as they arise, not after the fact.</p>
+  <p class="proc-note" style="color:rgba(247,243,235,.62)">Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases; we confirm the timeline for each project, and costing becomes more precise as the artwork, construction, materials and sampling are resolved. Hand-made production varies with construction, yarn availability and loom capacity — hand-knotting takes longest, hand-tufting is shorter — and we tell you about changes as they arise, not after the fact. Before you write, our <a href="${up}guides/briefing-a-bespoke-rug/" style="color:inherit">guide to briefing a bespoke rug</a> sets out what to send.</p>
 </section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">Start here</span><h2 class="d2">Send the artwork<br>and the <span class="it">room.</span></h2></div>

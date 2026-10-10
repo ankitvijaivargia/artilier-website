@@ -2,7 +2,7 @@
 
 Branch: `seo/global-visibility-implementation` (from `main` @ `12f0d5c`, 7 Sept 2026)
 Baseline: *ARTILIER — Global SEO & International Visibility Audit*, 10 Oct 2026
-Status: **implemented, reviewed and re-tested on the branch; a Cloudflare preview is deployed. Not merged, not in production.** See `PR_REVIEW_REPORT.md` for the review round of 10 Oct (PM).
+Status: **PR #5 merged and live (10 Oct 2026); followed by PRs #6–#9 (merged).** The current release candidate is **PR #11** — see §13 and `SEO_LAUNCH_CHECKLIST.md`. Sections 1–12 are the historical record of PR #5.
 
 Evidence labels: **Verified** (checked in code or a test run), **Local lab** (measured on a local server, not production), **Pending** (needs the owner, an account, or Google).
 
@@ -210,3 +210,40 @@ Details and evidence: `PR_REVIEW_REPORT.md`. Fixes are in the follow-up commit o
 - French enquiry form (depends on French replies)
 - Self-hosted fonts (only if PageSpeed shows font loading as an LCP or CLS cost)
 - Arabic content (only if Arabic queries appear in Search Console)
+
+## 13. Growth-engine round (10 Oct 2026, evening) — branch `seo/growth-engine-p1`
+
+Planning documents: `SEO_GROWTH_BASELINE.md`, `SEO_COMPETITOR_AND_KEYWORD_RESEARCH.md`, `SEO_SITE_ARCHITECTURE.md`, `SEO_EDITORIAL_ROADMAP.md`, `INTERNATIONAL_SEO_STRATEGY.md`, `SEO_AUTHORITY_BUILDING_PLAN.md`, `SEO_MEASUREMENT_FRAMEWORK.md`, `SEO_90_DAY_EXECUTION_PLAN.md`; `OWNER_INPUT_REQUIRED.md` §H–K added. All excluded from the deploy via `.assetsignore`.
+
+| Change | Files | Test |
+|---|---|---|
+| Dark-section list lead-ins were ink on dark (unreadable on live `/trade/uae/`, `/trade/saudi-arabia/`, `/trade/uk/`, `/fr/`) → paper. Release review added: `/trade/` paper-on-paper grid, `/about/` names and `/craft/` facts on dark, dark-section link hover and focus ring; `pages.css?v=3` | `assets/css/pages.css`, generators, hand-maintained pages | Computed colour `rgb(247,243,235)` in Chromium |
+| `/fr/`: French nav, menu (Menu/Fermer), header CTA, footer; confirmed working terms in French; heading and wording fixes | `tools/build.mjs`, `tools/build3.mjs` | Screenshot 390/1440 px |
+| `/trade/uae/`, `/trade/uk/`: lead-time and minimum FAQ; UK title "Bespoke Rugs to the Trade — London & UK Designers" | `tools/build3.mjs` | `check.py` |
+| New `/guides/briefing-a-bespoke-rug/` (Article schema; sitemap; footer, bespoke and market links) | `tools/build3.mjs`, `tools/build.mjs`, `tools/build2.mjs` | `check.py`; screenshots |
+| Related designs rotate through siblings (inlinks 2–13 → 3–5 per design) | `tools/build.mjs` | Link count script |
+
+`check.py`: 43 pages, 41 indexable, 41 in sitemap, OK. Chromium at 360/390/768/1440 px on 8 URLs: 0 JS errors, 0 horizontal overflow. English pages other than the above changed only by the footer guide link and CSS version.
+
+### Release review (10 Oct 2026, late)
+
+- Recounted on the branch: `check.py` 43 pages / 41 indexable / 41 in sitemap; build reproducible.
+- Corrected the record: `/hospitality/` was **not** affected by the dark-list defect; `/fr/` was.
+- Contrast audit (<3:1) over 17 pages found three more instances of the same class — `/trade/` grid (paper on paper), `/about/` names and `/craft/` facts (ink on dark). Fixed in shared CSS with dark-section hover colour and focus ring; `pages.css?v=3`. Re-audit: 0 elements below 3:1 (a defect screen, not a WCAG AA test).
+- Guide: four statements tightened to match published wording (colour trials "against your scheme"; requirements confirmed "and documented, before costing"; "only some of them"; "the studio's own stages").
+- French page: skip link localised ("Aller au contenu").
+- Enquiry analytics: `form_start` and `enquiry_error` events; `design_reference` and `cta_page` on events and as a hidden form field; `enquiry.js?v=2`, `analytics.js?v=2`. Mocked tests 31/31.
+- Public repository: payment terms and the named prospect list removed from the docs (they remain in earlier Git history).
+- Docs: `SEO_LAUNCH_CHECKLIST.md` rewritten for PR #11; README host, deployment wording and brand tokens corrected; PR #5 documents marked historical.
+
+### Final verification pass (10 Oct 2026, 22:30 IST)
+
+- Guide: removed "checked against the strike-off before it leaves the studio" (published on `/process/` but not owner-confirmed — §A); replaced "development continues until it reads right" with "what a revision involves is agreed with you"; "any size" replaced by size limited by design and construction; hand-knotting "suited to fine detail and painterly artwork" instead of "carries painterly artwork best"; strike-off timing now "design or sketch".
+- WCAG AA audit (20 pages × 1440/390 px; 4.5:1 normal text, 3:1 large text, 3:1 non-text and focus): branch 430 failing text instances vs 538 on `main`; all remaining failures come from pre-existing shared styles (see `SEO_LAUNCH_CHECKLIST.md` §2). Components added by this PR pass.
+- Build reproducible at HEAD; `check.py` 43/41/41; independent count: 44 HTML files, 41 indexable = 41 sitemap URLs (same set); 44/44 responsive combinations clean; mocked enquiry tests 31/31.
+
+### Copy correction (10 Oct 2026, 22:45 IST)
+
+- Owner confirmed: every finished rug is checked against its approved strike-off — restored in the guide ("before dispatch") and recorded in `OWNER_INPUT_REQUIRED.md` §A.
+- Removed every absolute size claim ("any size", "any dimension", "Toutes dimensions", "Any design, any dimension") from sources and regenerated output: titles (design and category pages now "Made to Size"), meta/Open Graph/Twitter descriptions, JSON-LD, page copy, spec rows, footer (EN/FR), `content/designs.json`, `content/categories.json`, `assets/js/content.js`, and the hand-maintained homepage, collection hub and collaborations pages. Wording now says rugs are made to order and sized to the project, within what the design and construction allow. Only "any size limit … is confirmed before sampling" remains (not a claim).
+- `check.py` 43/41/41 OK; regeneration produces no diff; 41 indexable pages = 41 sitemap URLs; canonicals unchanged; 44/44 responsive combinations clean; mocked enquiry tests 31/31.

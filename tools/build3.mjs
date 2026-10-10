@@ -36,7 +36,7 @@ const shell = ({ path, up, title, desc, lb, h1, h1it, lead, body, nodes = [], la
     ...nodes
   ]);
   return head({ title, desc, canonical:url, up, schema, robots, lang, locale, scripts })
-    + nav(up) + crumb(crumbs.map(c => ({ name:c.name, href:c.href }))) + `
+    + nav(up, lang) + crumb(crumbs.map(c => ({ name:c.name, href:c.href }))) + `
 <main id="main">
 <header class="wp-hd">
   <div>
@@ -127,7 +127,7 @@ const contact = shell({
   lb:'Contact · Start a project', h1:'Start a<br>', h1it:'project.',
   lead:`<p class="bd">Send artwork, a drawing, a reference or an early idea with the sizes. We review it and come back with questions, possibilities and the best way to make it.</p>
     <div class="wp-meta"><span><b>Trade only</b></span><span>Reviewed individually</span><span>New Delhi</span></div>`,
-  scripts:`\n<script defer src="../assets/js/enquiry.js?v=1"></script>`,
+  scripts:`\n<script defer src="../assets/js/enquiry.js?v=2"></script>`,
   body:`
 <section class="sec">
   <div class="about">
@@ -151,7 +151,7 @@ const contact = shell({
 </section>
 ${sec('Before you write', 'Questions we are', 'often asked.', qa([
   ['Do you sell to private clients?', 'No. Artilier works trade only — with interior designers, architects, design practices and the hospitality teams who specify with them.'],
-  ['Can a collection design be changed?', 'Yes. Every design is a starting point: it can be re-scaled, re-proportioned and re-coloured to your scheme, and woven to any dimension.'],
+  ['Can a collection design be changed?', 'Yes. Every design is a starting point: it can be re-scaled, re-proportioned and re-coloured to your scheme, and made to the size the room needs within what the design and construction allow.'],
   ['Can we see samples first?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom. The strike-off takes 2–3 weeks once the design or sketch is approved, and its cost is credited against the order.'],
   ['Is there a minimum order?', 'No. We make single pieces as readily as multi-rug schedules.'],
   ['How are prices quoted?', 'Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment terms are set out in the quote, and rugs are usually shipped rolled.'],
@@ -234,7 +234,7 @@ ${sec('What we make for hospitality', 'Custom rugs,', 'not stock.', `<div class=
     <div>Hand-knotted <span>Finest definition</span></div>
     <div>Hand-tufted <span>Carving · shorter lead time</span></div>
     <div>Flatweave <span>Low profile · graphic</span></div>
-    <div>Any dimension <span>Made to each room</span></div>
+    <div>Sized to each room <span>Made to order</span></div>
     <div>Custom colourways <span>Matched to the scheme</span></div>
     <div>Multi-rug schedules <span>One project, many rooms</span></div>
     <div>No minimum <span>Single pieces welcome</span></div>
@@ -276,7 +276,7 @@ const UP2 = '../../';
 const marketLinks = self => [['trade/uae/','UAE'],['trade/saudi-arabia/','Saudi Arabia'],['trade/uk/','United Kingdom'],['trade/us/','United States']].filter(([h]) => !h.includes(self));
 const common = {
   samples: ['Can we approve samples before production?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom; the strike-off takes 2–3 weeks once the design is approved, and its cost is credited against the order.'],
-  adapt: ['Can a collection design be adapted?', `Yes. Every design in <a href="${UP2}collection/">the collection</a> can be re-scaled, re-proportioned and re-coloured to your scheme and woven to any size.`],
+  adapt: ['Can a collection design be adapted?', `Yes. Every design in <a href="${UP2}collection/">the collection</a> can be re-scaled, re-proportioned and re-coloured to your scheme, and made to the size the room needs within what the design and construction allow.`],
   contract: ['Who do we contract with?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio; orders are contracted, invoiced and exported through that entity.'],
   pricing: ['How are prices quoted, and on what terms?', 'Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment terms are set out in the quote, and rugs are usually shipped rolled.'],
   time: ['What are the lead times, and is there a minimum?', 'Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases. There is no minimum order — a single rug is welcome. Costing follows once construction, materials, dimensions and sampling are understood.']
@@ -288,7 +288,7 @@ const uae = market({
   desc:'Custom rugs for villas, residences and hospitality in Dubai and Abu Dhabi — developed from your scheme in New Delhi and made to size. Trade only.',
   lb:'Trade · United Arab Emirates', h1:'Bespoke rugs for<br>', h1it:'Dubai and Abu Dhabi.',
   lead:'For interior designers, architects and hospitality teams in Dubai and Abu Dhabi: rugs developed from your scheme or artwork in our New Delhi studio, approved in sample, and made to the dimensions of each room.',
-  meta:['UAE projects','Any dimension','Sampled for approval'],
+  meta:['UAE projects','Made to size','Sampled for approval'],
   serviceName:'Bespoke rugs for UAE design projects', area:[country('United Arab Emirates','AE')],
   serviceDesc:'Custom hand-knotted, hand-tufted and flatweave rugs for residential and hospitality projects in Dubai, Abu Dhabi and the wider UAE, developed and sampled in New Delhi and made to each room’s dimensions.',
   body:`
@@ -312,10 +312,11 @@ ${sec('What to send', 'A useful', 'UAE brief.', list([
 ]), { dark:true })}
 ${sec('Questions', 'From UAE', 'practices.', qa([
   common.samples,
+  common.time,
   common.pricing,
   ['Can you make a rug for a majlis or a very large room?', 'Every rug is made to order, so the size follows the room rather than a standard size. Send the floor plan: proportions are resolved with you before sampling, and any size limit for the chosen construction is confirmed at that stage.'],
   ['Carpet or rug — does the wording matter?', 'No. Brief us in the term your drawings use; we confirm the construction, size and finish in the specification.']]))}
-${ctaBlock(UP2, 'contact/?type=residential', 'Start a UAE project', [...marketLinks('uae'), ['hospitality/','Hospitality']])}`
+${ctaBlock(UP2, 'contact/?type=residential', 'Start a UAE project', [...marketLinks('uae'), ['hospitality/','Hospitality'], ['guides/briefing-a-bespoke-rug/','Briefing guide']])}`
 });
 
 const ksa = market({
@@ -351,18 +352,18 @@ ${sec('Questions', 'From Saudi', 'practices.', qa([
   ['Can one supplier cover several rug types?', 'Yes. Hand-knotted, hand-tufted and flatweave rugs can sit in one schedule, developed by Artilier and contracted, invoiced and exported through one entity, Art Avenue Pvt. Ltd.'],
   common.time,
   common.pricing]))}
-${ctaBlock(UP2, 'contact/?type=hospitality', 'Start a Saudi project', [...marketLinks('saudi-arabia'), ['hospitality/','Hospitality']])}`
+${ctaBlock(UP2, 'contact/?type=hospitality', 'Start a Saudi project', [...marketLinks('saudi-arabia'), ['hospitality/','Hospitality'], ['guides/briefing-a-bespoke-rug/','Briefing guide']])}`
 });
 
 const uk = market({
   slug:'uk', crumb:'United Kingdom',
-  title:'Bespoke Rugs for London Interior Designers | Artilier, Trade',
-  desc:'Bespoke hand-knotted, hand-tufted and flatweave rugs for UK interior designers — developed from your artwork, sampled, made to any size. Trade only.',
+  title:'Bespoke Rugs to the Trade — London & UK Designers | Artilier',
+  desc:'Bespoke hand-knotted, hand-tufted and flatweave rugs for UK interior designers — developed from your artwork, sampled, made to size. Trade only.',
   lb:'Trade · United Kingdom', h1:'Bespoke rugs<br>for ', h1it:'London practices.',
-  lead:'For interior designers and architects in London and across the UK: bespoke rugs developed from your artwork or scheme in our New Delhi studio, proved in a strike-off, and made to any size — to the trade only.',
-  meta:['To the trade','Any dimension','Strike-off approved'],
+  lead:'For interior designers and architects in London and across the UK: bespoke rugs developed from your artwork or scheme in our New Delhi studio, proved in a strike-off, and made to the size each room needs — to the trade only.',
+  meta:['To the trade','Made to size','Strike-off approved'],
   serviceName:'Bespoke rugs for UK interior designers', area:[country('United Kingdom','GB')],
-  serviceDesc:'Bespoke hand-knotted, hand-tufted and flatweave rugs for interior designers and architects in London and the UK, developed from the designer’s artwork or scheme and made to order in any dimension.',
+  serviceDesc:'Bespoke hand-knotted, hand-tufted and flatweave rugs for interior designers and architects in London and the UK, developed from the designer’s artwork or scheme and made to order and sized to each project.',
   body:`
 ${sec('Bespoke, to the trade', 'Your drawing,', 'developed properly.', `<div class="prose">
     <p>We work only with practices — no showroom retail, no consumer pricing. Send a painting, drawing, CAD file or colour scheme; we develop construction, yarn, colour separation and scale with you, then prove it in a woven strike-off before the rug is set on the loom. Collection designs can equally be re-coloured and re-scaled to your scheme.</p>
@@ -385,19 +386,20 @@ ${sec('Questions', 'From UK', 'practices.', qa([
   ['Can the rug be credited to the artist or designer?', `Yes. Rugs developed from a designer's or artist's own work can be credited to both names — see <a href="${UP2}collaborations/">collaborations</a>.`],
   common.adapt,
   common.samples,
+  common.time,
   common.pricing]))}
-${ctaBlock(UP2, 'contact/?type=bespoke', 'Start a UK project', [...marketLinks('uk'), ['bespoke/','Bespoke development']])}`
+${ctaBlock(UP2, 'contact/?type=bespoke', 'Start a UK project', [...marketLinks('uk'), ['bespoke/','Bespoke development'], ['guides/briefing-a-bespoke-rug/','Briefing guide']])}`
 });
 
 const us = market({
   slug:'us', crumb:'United States',
   title:'Custom Rugs to the Trade — New York & Texas | Artilier',
-  desc:'Custom hand-knotted and hand-tufted rugs for interior designers in New York, Dallas, Houston and Austin — developed from your artwork, made to any size.',
+  desc:'Custom hand-knotted and hand-tufted rugs for interior designers in New York, Dallas, Houston and Austin — developed from your artwork, made to size.',
   lb:'Trade · United States', h1:'Custom rugs<br>', h1it:'to the trade.',
-  lead:'For interior designers and architects in New York, the Hamptons, Dallas, Houston and Austin: custom rugs developed from your artwork or scheme in our New Delhi studio, approved in a strike-off, and made to any size.',
+  lead:'For interior designers and architects in New York, the Hamptons, Dallas, Houston and Austin: custom rugs developed from your artwork or scheme in our New Delhi studio, approved in a strike-off, and made to the size each room needs.',
   meta:['To the trade','Feet or metres','Strike-off approved'],
   serviceName:'Custom rugs for US interior designers', area:[country('United States','US')],
-  serviceDesc:'Custom hand-knotted, hand-tufted and flatweave rugs for interior designers and architects in New York and Texas, developed from the designer’s artwork or scheme and made to order in any dimension.',
+  serviceDesc:'Custom hand-knotted, hand-tufted and flatweave rugs for interior designers and architects in New York and Texas, developed from the designer’s artwork or scheme and made to order and sized to each project.',
   body:`
 ${sec('New York', 'Manhattan', 'and the Hamptons.', `<div class="prose">
     <p>Apartments and townhouses where a rug has to work to an exact furniture plan, and Hamptons houses briefed against the date the house opens for the season. Tell us the date the rug must be on site; sampling and production are planned back from it.</p>
@@ -413,7 +415,7 @@ ${sec('Questions', 'From US', 'practices.', qa([
   ['Can a Hamptons rug be timed to the season?', 'Tell us the date the rug must be on site. Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases, so the earlier the brief, the more options remain open.'],
   common.contract,
   common.pricing]))}
-${ctaBlock(UP2, 'contact/?type=residential', 'Start a US project', [...marketLinks('us'), ['collection/','The collection']])}`
+${ctaBlock(UP2, 'contact/?type=residential', 'Start a US project', [...marketLinks('us'), ['collection/','The collection'], ['guides/briefing-a-bespoke-rug/','Briefing guide']])}`
 });
 
 /* ── /fr/ — French trade page ──────────────────────────────────────── */
@@ -423,13 +425,13 @@ const fr = shell({
   desc:'Tapis noués main, tuftés main et tissés à plat, réalisés sur mesure d’après vos dessins pour architectes d’intérieur. Studio à New Delhi, professionnels.',
   lb:'Tapis sur mesure · Réservé aux professionnels', h1:'Votre dessin.<br>Notre ', h1it:'savoir-faire.',
   lead:`<p class="bd">Artilier est un studio de création de tapis basé à New Delhi, qui travaille exclusivement avec les architectes d’intérieur, les architectes et les agences de design. Chaque tapis est réalisé sur mesure — technique, matière, coloris et dimensions — d’après une pièce de notre collection ou d’après votre propre dessin.</p>
-    <div class="wp-meta"><span><b>Professionnels uniquement</b></span><span>Toutes dimensions</span><span>Coloris sur mesure</span></div>`,
+    <div class="wp-meta"><span><b>Professionnels uniquement</b></span><span>Dimensions sur mesure</span><span>Coloris sur mesure</span></div>`,
   nodes:[ service('fr/', 'Tapis sur mesure pour architectes d’intérieur', 'Conception et fabrication de tapis sur mesure',
     'Développement de tapis noués main, tuftés main et tissés à plat d’après le dessin, l’œuvre ou la palette de l’architecte d’intérieur, avec échantillonnage avant production.',
     'Architectes d’intérieur, architectes et agences de design') ],
   body:`
 ${sec('Le tapis sur mesure', 'Un tapis de décoration,', 'pas un tapis de sol standard.', `<div class="prose">
-    <p>Nous concevons des tapis d’intérieur haut de gamme pour des projets résidentiels et d’hôtellerie : pièces uniques réalisées aux dimensions exactes de la pièce, d’après un tableau, un dessin, un fichier CAO ou une palette de couleurs. Il s’agit de tapis de décoration intérieure — non de tapis de voiture ou de paillassons.</p>
+    <p>Nous concevons des tapis d’intérieur haut de gamme pour des projets résidentiels et d’hôtellerie : pièces uniques réalisées aux dimensions exactes de la pièce, d’après un tableau, un dessin, un fichier CAO ou une palette de couleurs. Ce sont des pièces de décoration intérieure, conçues pour une pièce précise — ni tapis d’entrée, ni tapis de sol standard.</p>
   </div>`)}
 ${sec('Ce que vous pouvez nous envoyer', 'Là où en est', 'votre projet.', list([
   '<b>Une œuvre ou un tableau</b> — quel que soit le support',
@@ -438,7 +440,7 @@ ${sec('Ce que vous pouvez nous envoyer', 'Là où en est', 'votre projet.', list
   '<b>Une palette de couleurs</b> — reproduite à la main',
   '<b>Un plan</b> — pour définir les dimensions'
 ]) + `<p class="bd" style="margin-top:22px">S’il manque des informations, nous vous indiquons ce qui doit être précisé avant de pouvoir chiffrer correctement le projet.</p>`, { dark:true })}
-${sec('Trois techniques', 'Le choix de la technique', 'est technique.', `<div class="proc">
+${sec('Trois techniques', 'Noué main, tufté main ou tissé à plat :', 'quelle technique pour votre projet ?', `<div class="proc">
     <div class="pstep"><span class="pn">01</span><span class="pt">Noué main</span><span class="pd">Nœud par nœud sur le métier : la définition la plus fine, celle qui restitue le mieux une œuvre picturale — et le délai le plus long. <a href="../collection/hand-knotted/">Voir les modèles</a></span></div>
     <div class="pstep"><span class="pn">02</span><span class="pt">Tufté main</span><span class="pd">Sculpture, hauteurs de velours multiples, surfaces bouclées et coupées, pour un délai plus court que le noué main. <a href="../collection/hand-tufted/">Voir les modèles</a></span></div>
     <div class="pstep"><span class="pn">03</span><span class="pt">Tissé à plat</span><span class="pd">Bas, graphique, plus léger : pour le travail géométrique, la superposition et les pièces où un velours serait trop haut. <a href="../collection/flatweave/">Voir les modèles</a></span></div>
@@ -450,7 +452,7 @@ ${sec('Matières', 'Le choix de la matière', 'fait partie du dessin.', `<div cl
     <div>Laine et soie <span>Velours · reflets</span></div>
     <div>Soie de bambou <span>Velours · brillance</span></div>
     <div>Coton <span>Chaîne · tissé à plat</span></div>
-    <div>Allo / chanvre <span>Texture · naturelle</span></div>
+    <div>Ortie de l’Himalaya (allo) / chanvre <span>Texture · naturelle</span></div>
     <div>Jute <span>Tissé à plat · naturel</span></div>
     <div>Mélanges développés <span>Selon le dessin</span></div>
   </div>
@@ -463,14 +465,100 @@ ${sec('Le processus', 'Six étapes,', 'des validations à chaque étape.', `<div
     <div class="pstep"><span class="pn">05</span><span class="pt">Contrôler</span><span class="pd">Contrôle qualité à New Delhi, d’après la spécification et l’échantillon validé : dimensions, velours, couleur, finitions.</span></div>
     <div class="pstep"><span class="pn">06</span><span class="pt">Livrer</span><span class="pd">Emballage, documents d’exportation et fret coordonnés avec nos partenaires logistiques.</span></div>
   </div>`)}
-${sec('Contractualisation', 'Un seul fournisseur,', 'un seul interlocuteur.', `<div class="prose">
-    <p>Artilier est le studio professionnel d’Art Avenue Pvt. Ltd., notre société de fabrication à New Delhi. Les commandes sont contractées, facturées et exportées par cette entité. Prix et délais sont donnés projet par projet, une fois la technique, les matières, les dimensions et l’échantillonnage définis.</p>
-    <p>Pour démarrer, écrivez-nous à <a href="mailto:studio@artilier.co">studio@artilier.co</a> ou utilisez notre <a href="../contact/">formulaire de contact</a> (en anglais), en joignant vos dessins et les dimensions.</p>
-  </div>`, { dark:true })}
+${sec('Délais et conditions', 'Échantillon, délais,', 'devis.', `<div class="mats">
+    <div>Minimum de commande <span>Aucun — une pièce unique est la bienvenue</span></div>
+    <div>Échantillon tissé (strike-off) <span>2 à 3 semaines après validation du dessin</span></div>
+    <div>Coût de l’échantillon <span>Déduit de la commande</span></div>
+    <div>Délai de fabrication <span>En général 6 à 12 semaines après validation de l’échantillon</span></div>
+    <div>Devis <span>En USD ou en EUR, en général départ usine (EXW)</span></div>
+    <div>Expédition <span>FOB ou DDP chiffrés séparément, sur demande · tapis expédiés roulés</span></div>
+  </div>
+  <p class="proc-note" style="color:rgba(247,243,235,.62)">Le délai peut aller jusqu’à six mois selon la pièce : le noué main est la technique la plus longue, le tufté main est plus rapide. La taille de l’échantillon dépend du dessin. Les conditions de paiement figurent dans le devis, et le chiffrage se précise à mesure que la technique, les matières, les dimensions et l’échantillonnage sont définis.</p>`, { dark:true })}
+${sec('Contractualisation', 'Devis, contrat', 'et export.', `<div class="prose">
+    <p>Artilier est le studio professionnel d’Art Avenue Pvt. Ltd., notre société de fabrication à New Delhi. Les commandes sont passées, facturées et exportées par cette entité : un seul fournisseur, un seul interlocuteur, du premier dessin à l’expédition.</p>
+    <p>Pour démarrer, écrivez-nous à <a href="mailto:studio@artilier.co">studio@artilier.co</a> en joignant vos dessins, les dimensions et le calendrier du projet, ou utilisez notre <a href="../contact/" hreflang="en">formulaire de contact</a> (en anglais).</p>
+  </div>`)}
 <div class="backhome">
   <a href="mailto:studio@artilier.co" class="cta">Démarrer un projet <span>→</span></a>
   <div class="backhome-l"><a href="../collection/">La collection</a><a href="../bespoke/" hreflang="en">Bespoke (en anglais)</a><a href="../hospitality/" hreflang="en">Hôtellerie (en anglais)</a></div>
 </div>`
+});
+
+/* ── /guides/briefing-a-bespoke-rug/ — specifier guide ─────────────────
+ * Every statement restates how the studio already describes its process on
+ * /bespoke/, /process/, /materials/ and the market pages, or owner-confirmed
+ * working terms (10 Oct 2026). No file formats, knot counts, pile heights,
+ * size limits, test results or prices are asserted. */
+const G = 'guides/briefing-a-bespoke-rug/';
+const UPG = '../../';
+const guide = shell({
+  path:G, up:UPG, crumbName:'Briefing a bespoke rug', pageType:'WebPage',
+  title:'How to Brief a Bespoke Rug: Files, Sizes, Sampling | Artilier',
+  desc:'A guide for interior designers and architects: what to send for a bespoke rug, how construction and yarn are chosen, how the strike-off works, and timing.',
+  lb:'Guide · For designers and architects', h1:'How to brief<br>', h1it:'a bespoke rug.',
+  lead:`<p class="bd">What to send, what gets decided and in what order, and how long the studio’s own stages take — written from the way our New Delhi studio runs commissions for interior designers, architects and hospitality teams. Use it as a checklist before you write to any rug maker, including us.</p>
+    <div class="wp-meta"><span><b>Specifier guide</b></span><span>Files · sizes · sampling · timing</span></div>`,
+  nodes:[{ '@type':'Article','@id':`${HOST}/${G}#article`,'headline':'How to brief a bespoke rug','inLanguage':'en',
+    'description':'What to send for a bespoke rug, how construction and yarn are chosen, how the woven strike-off works, and how to plan the timing.',
+    'author':{'@id':`${HOST}/#organization`},'publisher':{'@id':`${HOST}/#organization`},
+    'mainEntityOfPage':{'@id':`${HOST}/${G}#webpage`},'datePublished':'2026-10-10','dateModified':'2026-10-10',
+    'audience':{'@type':'Audience','audienceType':'Interior designers, architects and hospitality designers'} }],
+  body:`
+${sec('Before you write', 'Four things', 'decide a rug.', `<div class="prose">
+    <p>Every bespoke rug comes down to four decisions: the <b>design</b> (what it shows and how much detail it carries), the <b>size and shape</b> (what the room and the furniture plan need), the <b>application</b> (how much traffic the room takes, and what sits on the rug) and the <b>programme</b> (the date the rug must be on site). A brief that covers all four can be costed and sampled. A brief that covers only some of them can still start — we will tell you what needs resolving before anything can be costed properly.</p>
+  </div>`)}
+${sec('The design', 'Send what exists,', 'at whatever stage.', list([
+  '<b>A painting or artwork</b> — in any medium. Tell us the size of the original; it helps judge how the detail will scale to the finished rug',
+  '<b>A drawing or CAD file</b> — vector or scanned. Mark the intended finished size and anything that must stay fixed, such as a border width or a motif that must align with a room feature',
+  '<b>A reference image</b> — a starting point rather than a design to copy; say what you want to keep from it',
+  '<b>A colour scheme</b> — colours are matched by hand and approved in the hand, so send the references the scheme already uses',
+  '<b>A collection design</b> — any design in <a href="'+UPG+'collection/">the collection</a> can be re-scaled, re-proportioned and re-coloured to your scheme'
+]) + `<p class="bd" style="margin-top:22px">A rough idea and a floor plan are enough to begin. Development — construction, yarn, colour separation and scale — is worked out with you, so the brief does not need to be finished artwork.</p>`, { dark:true })}
+${sec('The size', 'Resolve it', 'from the plan.', `<div class="prose">
+    <p>Rugs are made to order, so the size is set by the room rather than by a standard range. What is achievable still depends on the design and the construction, so very large or unusually shaped pieces are confirmed with you before sampling. The most useful thing you can send is the floor plan with the furniture layout, so proportions can be resolved before sampling. On the plan, mark:</p>
+  </div>` + list([
+  '<b>The rug outline you intend</b> — with dimensions in metres, centimetres or feet and inches, whichever your drawings use',
+  '<b>Furniture positions</b> — which pieces sit on the rug and which sit off it',
+  '<b>Doors, thresholds and fixed features</b> — anything the rug edge has to clear or align with',
+  '<b>Several rugs?</b> — send a rug schedule: room, quantity and size for each'
+]) + `<p class="bd" style="margin-top:22px">For very large rooms, any size limit for the chosen construction is confirmed before sampling.</p>`)}
+${sec('The construction', 'A technical decision,', 'not a style one.', list([
+  '<b>Hand-knotted</b> — knot by knot on the loom: suited to fine detail and painterly artwork, and the longest to make. <a href="'+UPG+'collection/hand-knotted/">Hand-knotted designs</a>',
+  '<b>Hand-tufted</b> — carving, mixed pile heights and loop-and-cut surfaces, with a shorter lead time than hand-knotting. <a href="'+UPG+'collection/hand-tufted/">Hand-tufted designs</a>',
+  '<b>Flatweave</b> — low, graphic and lighter: for geometric work, layering and rooms where a pile would sit too high. <a href="'+UPG+'collection/flatweave/">Flatweave designs</a>'
+]) + `<p class="bd" style="margin-top:22px">You can state a preference or leave it to our recommendation. Either way, the construction is recommended from the artwork, the detail it carries, the traffic the room will take and the budget — and proved in sampling before production.</p>`, { dark:true })}
+${sec('The yarn', 'Specified against', 'the room.', `<div class="prose">
+    <p>The yarns we work with are New Zealand wool, hand-spun wool, wool-silk blends, bamboo silk, cotton (for warps and flatweaves), allo and hemp, and jute — with blends developed to the design where no single yarn does the job. Yarn, spin and dye lot are approved in the hand against your scheme before a loom is set.</p>
+    <p>So tell us where each rug sits and what it will take — a bedroom, a dining room under chairs, a hotel lobby. Yarn is specified against the construction and the traffic, and where a material is unsuitable for the room we say so. If the project sets performance, cleaning or documentation requirements, put them in the brief: we confirm what can be met, and what can be documented, before costing. More on <a href="${UPG}materials/">rug materials</a>.</p>
+  </div>`)}
+${sec('Sampling', 'Approve it in the hand', 'before the loom.', list([
+  '<b>Yarn samples</b> — approved in the hand against your scheme',
+  '<b>Colour trials</b> — against your scheme',
+  '<b>A woven strike-off</b> — ready 2–3 weeks after the design or sketch is approved. Its size depends on the design, and its cost is credited against the order',
+  '<b>Then production</b> — the full rug is set on the loom only once the strike-off is approved, and every finished rug is checked against the approved strike-off before dispatch'
+]) + `<p class="bd" style="margin-top:22px">On projects with a mock-up room, give us the mock-up date and the rug types it needs; sampling is scheduled back from it.</p>`, { dark:true })}
+${sec('Timing and terms', 'Plan back from', 'the site date.', list([
+  '<b>Strike-off</b> — 2–3 weeks after the design or sketch is approved',
+  '<b>Production</b> — usually 6–12 weeks from strike-off approval, up to six months in some cases; hand-knotting takes longest, hand-tufting is shorter',
+  '<b>Minimum order</b> — none; a single rug is welcome',
+  '<b>Quotes</b> — in USD or EUR, usually ex-works; FOB or DDP quoted separately on request',
+  '<b>Shipping</b> — rugs usually travel rolled; payment terms are set out in the quote'
+]) + `<p class="bd" style="margin-top:22px">To plan a programme, add together the time to approve the design, 2–3 weeks for the strike-off, your approval of it, production, and freight to site. We confirm the timeline for each project and tell you about changes as they arise. Orders are contracted, invoiced and exported through one entity, Art Avenue Pvt. Ltd., of which Artilier is the trade studio.</p>`)}
+${sec('Checklist', 'A brief', 'we can cost.', list([
+  'Design: artwork, CAD file, reference or collection design — with the size of the original',
+  'Size and shape: outline on the floor plan, units stated, furniture marked',
+  'Construction: a preference, or “recommend one”',
+  'Application: room type and traffic, plus any performance or documentation requirements',
+  'Colour: the scheme’s references',
+  'Programme: the date the rug must be on site, any mock-up date, delivery city',
+  'Quantity: one rug, or a schedule of several'
+]), { dark:true })}
+${sec('Questions', 'Asked before', 'the first brief.', qa([
+  ['Can we start from a rough sketch?', 'Yes. A rough idea and a floor plan are enough to begin; construction, yarn, colour separation and scale are developed with you, and we tell you what needs resolving before costing.'],
+  ['Do you work with private clients?', `No. Artilier works to the trade only — interior designers, architects, hospitality teams and design practices. See <a href="${UPG}trade/">trade</a>.`],
+  ['Can one rug be adapted from the collection rather than developed from scratch?', 'Yes. Collection designs can be re-scaled, re-proportioned and re-coloured to your scheme, and made to the size the room needs within what the design and construction allow.'],
+  ['What happens if the strike-off is not right?', 'The full rug is not set on the loom until the strike-off is approved. If it is not right, tell us what needs to change; what a revision involves is agreed with you before anything further is made.']]))}
+${ctaBlock(UPG, 'contact/?type=bespoke', 'Send a brief', [['bespoke/','Bespoke development'],['process/','The process'],['hospitality/','Hospitality'],['trade/','Trade']])}`
 });
 
 /* ── 404 ───────────────────────────────────────────────────────────── */
@@ -488,7 +576,7 @@ const notFound = head({ title:'Page not found | Artilier', desc:'This page does 
 
 /* ── write ─────────────────────────────────────────────────────────── */
 const built = { 'contact/index.html':contact, 'about/index.html':about, 'projects/index.html':projects, 'hospitality/index.html':hospitality,
-  'trade/uae/index.html':uae, 'trade/saudi-arabia/index.html':ksa, 'trade/uk/index.html':uk, 'trade/us/index.html':us, 'fr/index.html':fr, '404.html':notFound };
+  'trade/uae/index.html':uae, 'trade/saudi-arabia/index.html':ksa, 'trade/uk/index.html':uk, 'trade/us/index.html':us, 'fr/index.html':fr, [G + 'index.html']:guide, '404.html':notFound };
 for (const [f, html] of Object.entries(built)) write(f, html);
 console.log(`built ${Object.keys(built).length} phase-3 pages`);
 
@@ -504,8 +592,8 @@ const syncShell = (file, up, { ctaLabel } = {}) => {
   s = s.replace(/<a class="mcta" id="mcta" href="[^"]*">([^<]*)/, (m, label) => `<a class="mcta" id="mcta" href="${up}contact/">${ctaLabel || label}`);
   s = s.split(`${up}index.html#brief`).join(`${up}contact/`).split(`${up}index.html#about`).join(`${up}about/`).split(`href="${up}index.html"`).join(`href="${up}"`);
   s = s.replace(/slots\.js\?v=4/g, 'slots.js?v=5');
-  if (!s.includes('pages.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*collection-tweaks\.css\?v=2">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/pages.css?v=1">`);
-  if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=1"></script>\n</head>`);
+  if (!s.includes('pages.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*collection-tweaks\.css\?v=2">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/pages.css?v=3">`);
+  if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=2"></script>\n</head>`);
   /* one Organization entity everywhere: replace the inline copy with the shared one */
   s = s.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/, (m, json) => {
     const data = JSON.parse(json);
@@ -543,7 +631,7 @@ const urls = [
   ['', '1.0'], ['collection/', '0.9'], ...CATS.map(c => [`collection/${c.slug}/`, '0.8']),
   ['bespoke/', '0.9'], ['hospitality/', '0.9'], ['trade/', '0.8'], ['collaborations/', '0.8'], ['contact/', '0.8'], ['about/', '0.7'],
   ['trade/uae/', '0.8'], ['trade/saudi-arabia/', '0.8'], ['trade/uk/', '0.7'], ['trade/us/', '0.7'], ['fr/', '0.8'],
-  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'],
+  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], [G, '0.7'],
   ...(hasProjects ? [['projects/', '0.7']] : []),
   ...indexable.slice().sort(by).map(d => [`collection/${d.slug}/`, '0.6'])
 ];

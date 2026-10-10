@@ -1,6 +1,6 @@
 # Artilier — website
 
-Production source for **www.artilier.co**.
+Production source for **artilier.co** (`www.artilier.co` redirects to it).
 
 Artilier is a design-led studio in New Delhi working through art, material and
 making. The current collection is rugs: hand-knotted, hand-tufted and flatweave,
@@ -45,9 +45,24 @@ served from this repository.
 ├── apple-touch-icon.png
 ├── robots.txt
 ├── sitemap.xml
-├── _headers                 Cloudflare Pages — caching and security headers
-└── _redirects               Cloudflare Pages — section and legacy URLs
+├── _headers                 Cloudflare static assets — caching and security headers
+└── _redirects               Cloudflare static assets — section and legacy URLs
 ```
+
+## Brand tokens (source of truth: `assets/css/base.css`)
+
+| Role | Token | Value |
+| --- | --- | --- |
+| Display serif (headings) | `--d` | Cormorant Garamond (300/400/500, italic 300/400) |
+| Sans (body, labels, UI) | `--s` | Jost (300/400/500) |
+| Ground | `--paper` / `--bone` / `--stone` / `--sand` | `#F7F3EB` / `#EFE8DC` / `#DDD3C2` / `#C9BCA6` |
+| Text and dark grounds | `--ink` (= `--tx`) / `--espresso` / `--chocolate` | `#151110` / `#241C16` / `#3E2E22` |
+| Secondary text | `--tx-2` / `--tx-3` | `#5C5044` / `#8A7C6C` |
+| Accents | `--rust` / `--rust-d` / `--brass` / `--brass-l` / `--olive` | `#A04A29` / `#7E3820` / `#A98B4E` / `#C4A667` / `#4A4F3C` |
+
+Fonts load from Google Fonts (`Cormorant+Garamond` and `Jost`). Tenor Sans, DM Mono,
+Instrument Serif, `#b8923a` and `#f4efe6` are not used anywhere in the site.
+On dark sections use paper or `--brass-l` for text and accents; rust on espresso is 2.8:1.
 
 ## Running locally
 
@@ -63,7 +78,7 @@ npx serve .
 ## Building
 
 Pages under `collection/`, `bespoke/`, `trade/`, `materials/`, `process/`,
-`craft/`, `contact/`, `about/`, `projects/`, `hospitality/`, `fr/` and
+`craft/`, `contact/`, `about/`, `projects/`, `hospitality/`, `fr/`, `guides/` and
 `404.html` are **generated** from `/content` by the scripts in `tools/`. Edit the
 generator (or the content), never the generated HTML, then run:
 
@@ -71,7 +86,7 @@ generator (or the content), never the generated HTML, then run:
 python3 tools/og.py          # social preview images for design pages (needs Pillow)
 node tools/build.mjs         # design and category pages
 node tools/build2.mjs        # bespoke, trade, materials, process, craft; collection hub
-node tools/build3.mjs        # contact, about, projects, hospitality, market pages, /fr/, 404,
+node tools/build3.mjs        # contact, about, projects, hospitality, market pages, /fr/, guides, 404,
                              # shared shell for collaborations + collection hub, homepage footer, sitemap
 python3 tools/check.py       # links, metadata, schema, sitemap, discretion checks — must print OK
 ```
