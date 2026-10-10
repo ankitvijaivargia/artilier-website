@@ -161,10 +161,10 @@ ${sec('Before you write', 'Questions we are', 'often asked.', qa([
 /* ── /about/ ───────────────────────────────────────────────────────── */
 const about = shell({
   path:'about/', up:'../', pageType:'AboutPage',
-  title:'About Artilier — Rug Design Studio in New Delhi',
-  desc:'Design-led rug studio in New Delhi, working trade only — led by an interior designer and over a decade of custom manufacturing, contracted via Art Avenue.',
+  title:'About Artilier — Craft Studio for Interiors, New Delhi',
+  desc:'Design-led craft studio for interiors in New Delhi, working trade only — rugs first, led by an interior designer and over a decade of custom manufacturing.',
   lb:'About the studio', h1:'A design studio<br>in ', h1it:'New Delhi.',
-  lead:`<p class="bd">Artilier is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. We work trade only, with interior designers, architects and design practices internationally. Our first collection is rugs.</p>
+  lead:`<p class="bd">Artilier is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. We work trade only, with interior designers, architects and design practices internationally. We begin with rugs; embroidery and design objects follow.</p>
     <div class="wp-meta"><span><b>Founded on making</b></span><span>Led by design</span><span>Trade only</span></div>`,
   nodes:[
     { '@type':'Person','@id':`${HOST}/about/#ankit`,'name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development','worksFor':{'@id':`${HOST}/#organization`} },
