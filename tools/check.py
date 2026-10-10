@@ -13,7 +13,7 @@ HOST = 'https://artilier.co'
 BANNED = re.compile(r'\b(bhadohi|mirzapur|jaipur|sitapura|panipat)\b', re.I)
 # Absolute size promises. Rugs are made to order and sized to the project, within what the
 # design and construction allow; 'any size limit ... is confirmed' is a caveat and allowed.
-SIZE_CLAIM = re.compile(r'\bany\s+(size|dimensions?|shape)\b(?!\s+limit)|\btoutes?\s+(les\s+)?dimensions\b|\btout dessin\b', re.I)
+SIZE_CLAIM = re.compile(r'\bany\s+(sizes?|dimensions?|shapes?)\b(?!\s+limits?)|\btoutes?\s+(les\s+)?dimensions?\b|\btout dessin\b', re.I)
 SKIP = {'collection/design.html'}
 errs, warns = [], []
 
@@ -63,7 +63,8 @@ for f in pages:
     text = b.get_text(' ')
     if BANNED.search(text) or BANNED.search(s): errs.append(f'{f}: names a manufacturing location')
     metas = ' '.join(m.get('content', '') for m in b.find_all('meta') if m.get('content'))
-    for m in SIZE_CLAIM.finditer(text + ' ' + metas + ' ' + t):
+    jsonld = ' '.join(x.string or '' for x in b.find_all('script', type='application/ld+json'))
+    for m in SIZE_CLAIM.finditer(text + ' ' + metas + ' ' + t + ' ' + jsonld):
         errs.append(f'{f}: absolute size claim "{m.group(0)}"')
     base = posixpath.dirname('/' + f) + '/'
     for a in b.find_all('a', href=True):

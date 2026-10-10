@@ -1,6 +1,6 @@
 # Launch checklist — PR #11 (released 10 Oct 2026)
 
-PR #11 · `seo/growth-engine-p1` → `main` · merged by the owner on 10 Oct 2026, 22:50 IST (merge commit `b5814bd`, head `ae27880`). Follow-up: PR #12 removes the last homepage size claim (see §2 C).
+PR #11 · `seo/growth-engine-p1` → `main` · merged by the owner on 10 Oct 2026, 22:50 IST (merge commit `b5814bd`, head `ae27880`). Follow-up: PR #12 removed the last homepage size claim (see §2 B).
 
 Rule: a box is ticked only with evidence (a screenshot, an email received, a dashboard showing data). Nothing on an external account (Cloudflare, Google, Bing, Formspree) has been changed by Claude.
 
@@ -22,12 +22,12 @@ Earlier releases: PR #5 (contact page, analytics code, market and French pages) 
 - [x] Live content read back from artilier.co after deploy (web fetch): sitemap lists **41** URLs including `/guides/briefing-a-bespoke-rug/`; `robots.txt` allows all and references the sitemap; `pages.css?v=3` serves the new rules; canonical and `og:url` correct on `/`, `/contact/`, `/about/`, `/trade/`, `/hospitality/`, `/craft/`, `/collection/`, `/fr/`, the guide; `/fr/` shows French navigation, footer and terms with `og:locale fr_FR`; `/404.html` shows the branded page with `noindex,follow`; `/about` (no slash) resolves to the About page; header "Start a project" links directly to `/contact/`; no town names, certifications, clients or projects found on the pages checked
 
 ### B. Completed but not independently verified
+- [ ] **PR #12 on production** — the homepage "Values" strip said "Any *dimension*" (split by markup, missed by earlier scans). PR #12 replaces it with "Made to *size*" (sized to the project, within what the design and construction allow) and adds a `check.py` guard covering visible text, meta tags, titles and JSON-LD, including phrases split by markup. Verified in the repository; production read-back recorded in the PR #12 release report
 - [ ] **HTTP status codes and console errors on production.** The workspace cannot reach artilier.co directly and no browser was available, so pages were read by a fetch tool that does not report status codes, redirect hops or console output. A nonexistent URL returned a client error (consistent with 404, code not visible)
 - [ ] **Stylesheet reference on live pages.** `pages.css?v=3` itself is served; that every live page references `v=3` was verified in the repository, not in production HTML
 - [ ] **Enquiry form on production.** Logic tested 31/31 against a mocked endpoint; no real submission was made
 
 ### C. Pending owner action
-- [ ] Merge **PR #12** — the homepage "Values" strip still says "Any *dimension*" (split by markup, missed by every earlier text scan). PR #12 replaces it and adds a `check.py` guard so it cannot return
 - [ ] **Live enquiry test** — §4 below (only you can confirm the email arrives at studio@artilier.co)
 - [ ] **Status-code check** in a browser — Chrome DevTools → Network: an unknown URL returns 404; `/about` returns one 301 to `/about/`
 - [ ] **Search Console** and **Cloudflare Web Analytics** — §5 below; neither is configured
