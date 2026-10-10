@@ -70,7 +70,7 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <link rel="stylesheet" href="${up}assets/css/layout.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/responsive.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/collection-tweaks.css?v=2">
-<link rel="stylesheet" href="${up}assets/css/pages.css?v=1">
+<link rel="stylesheet" href="${up}assets/css/pages.css?v=2">
 <script defer src="${up}assets/js/slots.js?v=5" data-manifest="${up}assets/media/manifest.json?v=5"></script>
 <script defer src="${up}assets/js/analytics.js?v=1"></script>${scripts}${extraHead}
 </head>
@@ -78,24 +78,30 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <a class="skip" href="#main">Skip to content</a>`;
 
 const home = up => up || './';
-const nav = up => `
+const NAV_FR = { 'Collection':'Collection','Bespoke':'Sur mesure','Collaborations':'Collaborations','Hospitality':'Hôtellerie','Process':'Processus','Trade':'Professionnels','About':'Le studio',
+  'Home':'Accueil','The collection':'La collection','Bespoke development':'Développement sur mesure','Hospitality &amp; contract':'Hôtellerie &amp; contract','Materials':'Matières','The craft':'Le savoir-faire','About the studio':'Le studio','Contact':'Contact','Start a project':'Démarrer un projet' };
+const nav = (up, lang = 'en') => {
+  const t = k => lang === 'fr' ? (NAV_FR[k] || k) : k;
+  const l = (h, k) => `<a href="${up}${h}"${lang === 'fr' ? ' hreflang="en"' : ''}>${t(k)}</a>`;
+  return `
 <nav id="nav" class="s">
   <a href="${home(up)}" class="logo">Artilier<em>Art. Made Material.</em></a>
   <ul class="nl">
-    <li><a href="${up}collection/">Collection</a></li>
-    <li><a href="${up}bespoke/">Bespoke</a></li>
-    <li><a href="${up}collaborations/">Collaborations</a></li>
-    <li><a href="${up}hospitality/">Hospitality</a></li>
-    <li><a href="${up}process/">Process</a></li>
-    <li><a href="${up}trade/">Trade</a></li>
-    <li><a href="${up}about/">About</a></li>
+    <li>${l('collection/','Collection')}</li>
+    <li>${l('bespoke/','Bespoke')}</li>
+    <li>${l('collaborations/','Collaborations')}</li>
+    <li>${l('hospitality/','Hospitality')}</li>
+    <li>${l('process/','Process')}</li>
+    <li>${l('trade/','Trade')}</li>
+    <li>${l('about/','About')}</li>
   </ul>
   <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav">Menu <span aria-hidden="true">≡</span></button>
-  <a href="${up}contact/" class="cta">Start a project <span>→</span></a>
+  <a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
 </nav>
 <div class="mnav" id="mnav" hidden>
-  <a href="${home(up)}">Home</a><a href="${up}collection/">The collection</a><a href="${up}bespoke/">Bespoke development</a><a href="${up}collaborations/">Collaborations</a><a href="${up}hospitality/">Hospitality &amp; contract</a><a href="${up}materials/">Materials</a><a href="${up}process/">Process</a><a href="${up}craft/">The craft</a><a href="${up}trade/">Trade</a><a href="${up}about/">About the studio</a><a href="${up}contact/">Contact</a><a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a><a href="${up}contact/" class="cta">Start a project <span>→</span></a>
+  <a href="${home(up)}">${t('Home')}</a>${l('collection/','The collection')}${l('bespoke/','Bespoke development')}${l('collaborations/','Collaborations')}${l('hospitality/','Hospitality &amp; contract')}${l('materials/','Materials')}${l('process/','Process')}${l('craft/','The craft')}${l('trade/','Trade')}${l('about/','About the studio')}${l('contact/','Contact')}<a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a><a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
 </div>`;
+};
 
 const crumb = items => `
 <div class="crumb" role="navigation" aria-label="Breadcrumb">${items.map((it,i) =>
@@ -103,7 +109,32 @@ const crumb = items => `
     ? `<span aria-current="page">${esc(it.name)}</span>`
     : `<a href="${it.href}">${esc(it.name)}</a><span aria-hidden="true">/</span>`).join('')}</div>`;
 
-const footer = (up, { lang = 'en' } = {}) => `
+const FOOT_FR = {'Collection': 'Collection',
+  'Hand-knotted rugs': 'Tapis noués main',
+  'Hand-tufted rugs': 'Tapis tuftés main',
+  'Flatweave rugs': 'Tapis tissés à plat',
+  'All designs': 'Tous les modèles',
+  'Rug materials': 'Matières',
+  'Studio': 'Studio',
+  'Bespoke development': 'Développement sur mesure',
+  'Collaborations': 'Collaborations',
+  'Hospitality &amp; contract': 'Hôtellerie &amp; contract',
+  'Process': 'Processus',
+  'The craft': 'Le savoir-faire',
+  'About the studio': 'Le studio',
+  'How to brief a rug': 'Guide : briefer un tapis (en anglais)',
+  'Trade': 'Professionnels',
+  'Working with us': 'Travailler avec nous',
+  'UAE': 'Émirats arabes unis',
+  'Saudi Arabia': 'Arabie saoudite',
+  'United Kingdom': 'Royaume-Uni',
+  'United States': 'États-Unis',
+  'Contact': 'Contact',
+  'New Delhi, India': 'New Delhi, Inde',
+  '© 2026 Artilier — a studio of Art Avenue Pvt. Ltd.': '© 2026 Artilier — un studio d’Art Avenue Pvt. Ltd.',
+  'New Delhi · Woven across India': 'New Delhi · Ateliers de tissage en Inde',
+  'Trade only · Any design, any dimension': 'Réservé aux professionnels · Tout dessin, toute dimension'};
+const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (FOOT_FR[k] || k) : k; return `
 <footer>
   <div class="f-top">
     <div>
@@ -112,40 +143,41 @@ const footer = (up, { lang = 'en' } = {}) => `
         ? 'Art. Made Material. Studio de création à New Delhi, réservé aux professionnels. Notre première collection : les tapis — noués main, tuftés main et tissés à plat, réalisés sur mesure à toutes les dimensions.'
         : 'Art. Made Material. A craft studio for interiors in New Delhi, working trade only. We begin with rugs — hand-knotted, hand-tufted and flatweave, made to any dimension, from our collection or your own artwork. Embroidery and design objects follow.'}</p>
     </div>
-    <div class="f-col"><h5>Collection</h5><ul>
-      <li><a href="${up}collection/hand-knotted/">Hand-knotted rugs</a></li>
-      <li><a href="${up}collection/hand-tufted/">Hand-tufted rugs</a></li>
-      <li><a href="${up}collection/flatweave/">Flatweave rugs</a></li>
-      <li><a href="${up}collection/">All designs</a></li>
-      <li><a href="${up}materials/">Rug materials</a></li>
+    <div class="f-col"><h5>${T('Collection')}</h5><ul>
+      <li><a href="${up}collection/hand-knotted/">${T('Hand-knotted rugs')}</a></li>
+      <li><a href="${up}collection/hand-tufted/">${T('Hand-tufted rugs')}</a></li>
+      <li><a href="${up}collection/flatweave/">${T('Flatweave rugs')}</a></li>
+      <li><a href="${up}collection/">${T('All designs')}</a></li>
+      <li><a href="${up}materials/">${T('Rug materials')}</a></li>
     </ul></div>
-    <div class="f-col"><h5>Studio</h5><ul>
-      <li><a href="${up}bespoke/">Bespoke development</a></li>
-      <li><a href="${up}collaborations/">Collaborations</a></li>
-      <li><a href="${up}hospitality/">Hospitality &amp; contract</a></li>
-      <li><a href="${up}process/">Process</a></li>
-      <li><a href="${up}craft/">The craft</a></li>
-      <li><a href="${up}about/">About the studio</a></li>
+    <div class="f-col"><h5>${T('Studio')}</h5><ul>
+      <li><a href="${up}bespoke/">${T('Bespoke development')}</a></li>
+      <li><a href="${up}collaborations/">${T('Collaborations')}</a></li>
+      <li><a href="${up}hospitality/">${T('Hospitality &amp; contract')}</a></li>
+      <li><a href="${up}process/">${T('Process')}</a></li>
+      <li><a href="${up}craft/">${T('The craft')}</a></li>
+      <li><a href="${up}about/">${T('About the studio')}</a></li>
+      <li><a href="${up}guides/briefing-a-bespoke-rug/"${lang === 'fr' ? ' hreflang="en"' : ''}>${T('How to brief a rug')}</a></li>
     </ul></div>
-    <div class="f-col"><h5>Trade</h5><ul>
-      <li><a href="${up}trade/">Working with us</a></li>
-      <li><a href="${up}trade/uae/">UAE</a></li>
-      <li><a href="${up}trade/saudi-arabia/">Saudi Arabia</a></li>
-      <li><a href="${up}trade/uk/">United Kingdom</a></li>
-      <li><a href="${up}trade/us/">United States</a></li>
+    <div class="f-col"><h5>${T('Trade')}</h5><ul>
+      <li><a href="${up}trade/">${T('Working with us')}</a></li>
+      <li><a href="${up}trade/uae/">${T('UAE')}</a></li>
+      <li><a href="${up}trade/saudi-arabia/">${T('Saudi Arabia')}</a></li>
+      <li><a href="${up}trade/uk/">${T('United Kingdom')}</a></li>
+      <li><a href="${up}trade/us/">${T('United States')}</a></li>
       <li><a href="${up}fr/" hreflang="fr" lang="fr">Français</a></li>
     </ul></div>
-    <div class="f-col"><h5>Contact</h5><ul>
+    <div class="f-col"><h5>${T('Contact')}</h5><ul>
       <li><a href="mailto:studio@artilier.co">studio@artilier.co</a></li>
       <li><a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="${up}contact/">${lang === 'fr' ? 'Démarrer un projet' : 'Start a project'}</a></li>
-      <li><a href="${up}about/">New Delhi, India</a></li>
+      <li><a href="${up}about/">${T('New Delhi, India')}</a></li>
     </ul></div>
   </div>
   <div class="f-bot">
-    <span>© 2026 Artilier — a studio of Art Avenue Pvt. Ltd.</span>
-    <span>New Delhi · Woven across India</span>
-    <span>Trade only · Any design, any dimension</span>
+    <span>${T('© 2026 Artilier — a studio of Art Avenue Pvt. Ltd.')}</span>
+    <span>${T('New Delhi · Woven across India')}</span>
+    <span>${T('Trade only · Any design, any dimension')}</span>
   </div>
 </footer>
 
@@ -153,7 +185,7 @@ const footer = (up, { lang = 'en' } = {}) => `
 <script>
 const bg=document.getElementById('burger'),mn=document.getElementById('mnav');
 if(bg&&mn){
-  const setMenu=o=>{o?mn.removeAttribute('hidden'):mn.setAttribute('hidden','');bg.setAttribute('aria-expanded',String(o));document.body.classList.toggle('menu-open',o);bg.firstChild.nodeValue=o?'Close ':'Menu '};
+  const setMenu=o=>{o?mn.removeAttribute('hidden'):mn.setAttribute('hidden','');bg.setAttribute('aria-expanded',String(o));document.body.classList.toggle('menu-open',o);bg.firstChild.nodeValue=o?'${lang === 'fr' ? 'Fermer' : 'Close'} ':'Menu '};
   bg.addEventListener('click',()=>setMenu(mn.hasAttribute('hidden')));
   mn.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false)});
   addEventListener('keydown',e=>{if(e.key==='Escape'&&!mn.hasAttribute('hidden')){setMenu(false);bg.focus()}});
@@ -163,7 +195,7 @@ const mc=document.getElementById('mcta');
 if(mc){addEventListener('scroll',()=>mc.classList.toggle('on',scrollY>innerHeight*.5),{passive:true})}
 </script>
 </body>
-</html>`;
+</html>`; };
 
 /* ── pre-rendered media ─────────────────────────────────────────────── */
 /* A real <img> inside the slot so the markup is crawlable. slots.js adopts
@@ -241,7 +273,12 @@ function designPage(d) {
   const url = `${HOST}/collection/${d.slug}/`;
   const catUrl = cat ? `${HOST}/collection/${cat.slug}/` : `${HOST}/collection/`;
   const terms = (d.terms||[]).map(termName).filter(Boolean);
-  const peers = indexable.filter(x => x.collection === d.collection && x.slug !== d.slug).sort(by).slice(0,3);
+  // Rotate through the siblings (the next three after this design, wrapping round) so every
+  // design receives links from its neighbours — taking the first three for every page sent
+  // all related-design links to the same three designs and left the rest with two inlinks.
+  const sibs = indexable.filter(x => x.collection === d.collection).sort(by);
+  const at = sibs.findIndex(x => x.slug === d.slug);
+  const peers = sibs.length > 1 ? [1,2,3].map(k => sibs[(at + k) % sibs.length]).filter((x,i,a) => x.slug !== d.slug && a.indexOf(x) === i) : [];
   const cx = CONSTRUCTION[d.construction] || {};
 
   const crumbs = [

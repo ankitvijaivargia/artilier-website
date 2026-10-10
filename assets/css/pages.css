@@ -16,6 +16,9 @@
 .sec.dark .prose p,.sec.dark .prose li{color:rgba(247,243,235,.78)}
 .sec.dark .prose li{border-color:rgba(247,243,235,.14)}
 .sec.dark .prose ul{border-color:rgba(247,243,235,.14)}
+/* Lead-ins and links in dark sections: --tx is ink, which disappeared on the dark ground. */
+.sec.dark .prose li b{color:var(--paper)}
+.sec.dark .prose a{color:inherit}
 
 /* Two-column text grid. */
 .cols2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:start}
