@@ -151,7 +151,7 @@ const contact = shell({
 </section>
 ${sec('Before you write', 'Questions we are', 'often asked.', qa([
   ['Do you sell to private clients?', 'No. Artilier works trade only — with interior designers, architects, design practices and the hospitality teams who specify with them.'],
-  ['Can a collection design be changed?', 'Yes. Every design is a starting point: it can be re-scaled, re-proportioned and re-coloured to your scheme, and woven to any dimension.'],
+  ['Can a collection design be changed?', 'Yes. Every design is a starting point: it can be re-scaled, re-proportioned and re-coloured to your scheme, and made to the size the room needs within what the design and construction allow.'],
   ['Can we see samples first?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom. The strike-off takes 2–3 weeks once the design or sketch is approved, and its cost is credited against the order.'],
   ['Is there a minimum order?', 'No. We make single pieces as readily as multi-rug schedules.'],
   ['How are prices quoted?', 'Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment terms are set out in the quote, and rugs are usually shipped rolled.'],
@@ -234,7 +234,7 @@ ${sec('What we make for hospitality', 'Custom rugs,', 'not stock.', `<div class=
     <div>Hand-knotted <span>Finest definition</span></div>
     <div>Hand-tufted <span>Carving · shorter lead time</span></div>
     <div>Flatweave <span>Low profile · graphic</span></div>
-    <div>Any dimension <span>Made to each room</span></div>
+    <div>Sized to each room <span>Made to order</span></div>
     <div>Custom colourways <span>Matched to the scheme</span></div>
     <div>Multi-rug schedules <span>One project, many rooms</span></div>
     <div>No minimum <span>Single pieces welcome</span></div>
@@ -276,7 +276,7 @@ const UP2 = '../../';
 const marketLinks = self => [['trade/uae/','UAE'],['trade/saudi-arabia/','Saudi Arabia'],['trade/uk/','United Kingdom'],['trade/us/','United States']].filter(([h]) => !h.includes(self));
 const common = {
   samples: ['Can we approve samples before production?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom; the strike-off takes 2–3 weeks once the design is approved, and its cost is credited against the order.'],
-  adapt: ['Can a collection design be adapted?', `Yes. Every design in <a href="${UP2}collection/">the collection</a> can be re-scaled, re-proportioned and re-coloured to your scheme and woven to any size.`],
+  adapt: ['Can a collection design be adapted?', `Yes. Every design in <a href="${UP2}collection/">the collection</a> can be re-scaled, re-proportioned and re-coloured to your scheme, and made to the size the room needs within what the design and construction allow.`],
   contract: ['Who do we contract with?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio; orders are contracted, invoiced and exported through that entity.'],
   pricing: ['How are prices quoted, and on what terms?', 'Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment terms are set out in the quote, and rugs are usually shipped rolled.'],
   time: ['What are the lead times, and is there a minimum?', 'Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases. There is no minimum order — a single rug is welcome. Costing follows once construction, materials, dimensions and sampling are understood.']
@@ -288,7 +288,7 @@ const uae = market({
   desc:'Custom rugs for villas, residences and hospitality in Dubai and Abu Dhabi — developed from your scheme in New Delhi and made to size. Trade only.',
   lb:'Trade · United Arab Emirates', h1:'Bespoke rugs for<br>', h1it:'Dubai and Abu Dhabi.',
   lead:'For interior designers, architects and hospitality teams in Dubai and Abu Dhabi: rugs developed from your scheme or artwork in our New Delhi studio, approved in sample, and made to the dimensions of each room.',
-  meta:['UAE projects','Any dimension','Sampled for approval'],
+  meta:['UAE projects','Made to size','Sampled for approval'],
   serviceName:'Bespoke rugs for UAE design projects', area:[country('United Arab Emirates','AE')],
   serviceDesc:'Custom hand-knotted, hand-tufted and flatweave rugs for residential and hospitality projects in Dubai, Abu Dhabi and the wider UAE, developed and sampled in New Delhi and made to each room’s dimensions.',
   body:`
@@ -358,12 +358,12 @@ ${ctaBlock(UP2, 'contact/?type=hospitality', 'Start a Saudi project', [...market
 const uk = market({
   slug:'uk', crumb:'United Kingdom',
   title:'Bespoke Rugs to the Trade — London & UK Designers | Artilier',
-  desc:'Bespoke hand-knotted, hand-tufted and flatweave rugs for UK interior designers — developed from your artwork, sampled, made to any size. Trade only.',
+  desc:'Bespoke hand-knotted, hand-tufted and flatweave rugs for UK interior designers — developed from your artwork, sampled, made to size. Trade only.',
   lb:'Trade · United Kingdom', h1:'Bespoke rugs<br>for ', h1it:'London practices.',
-  lead:'For interior designers and architects in London and across the UK: bespoke rugs developed from your artwork or scheme in our New Delhi studio, proved in a strike-off, and made to any size — to the trade only.',
-  meta:['To the trade','Any dimension','Strike-off approved'],
+  lead:'For interior designers and architects in London and across the UK: bespoke rugs developed from your artwork or scheme in our New Delhi studio, proved in a strike-off, and made to the size each room needs — to the trade only.',
+  meta:['To the trade','Made to size','Strike-off approved'],
   serviceName:'Bespoke rugs for UK interior designers', area:[country('United Kingdom','GB')],
-  serviceDesc:'Bespoke hand-knotted, hand-tufted and flatweave rugs for interior designers and architects in London and the UK, developed from the designer’s artwork or scheme and made to order in any dimension.',
+  serviceDesc:'Bespoke hand-knotted, hand-tufted and flatweave rugs for interior designers and architects in London and the UK, developed from the designer’s artwork or scheme and made to order and sized to each project.',
   body:`
 ${sec('Bespoke, to the trade', 'Your drawing,', 'developed properly.', `<div class="prose">
     <p>We work only with practices — no showroom retail, no consumer pricing. Send a painting, drawing, CAD file or colour scheme; we develop construction, yarn, colour separation and scale with you, then prove it in a woven strike-off before the rug is set on the loom. Collection designs can equally be re-coloured and re-scaled to your scheme.</p>
@@ -394,12 +394,12 @@ ${ctaBlock(UP2, 'contact/?type=bespoke', 'Start a UK project', [...marketLinks('
 const us = market({
   slug:'us', crumb:'United States',
   title:'Custom Rugs to the Trade — New York & Texas | Artilier',
-  desc:'Custom hand-knotted and hand-tufted rugs for interior designers in New York, Dallas, Houston and Austin — developed from your artwork, made to any size.',
+  desc:'Custom hand-knotted and hand-tufted rugs for interior designers in New York, Dallas, Houston and Austin — developed from your artwork, made to size.',
   lb:'Trade · United States', h1:'Custom rugs<br>', h1it:'to the trade.',
-  lead:'For interior designers and architects in New York, the Hamptons, Dallas, Houston and Austin: custom rugs developed from your artwork or scheme in our New Delhi studio, approved in a strike-off, and made to any size.',
+  lead:'For interior designers and architects in New York, the Hamptons, Dallas, Houston and Austin: custom rugs developed from your artwork or scheme in our New Delhi studio, approved in a strike-off, and made to the size each room needs.',
   meta:['To the trade','Feet or metres','Strike-off approved'],
   serviceName:'Custom rugs for US interior designers', area:[country('United States','US')],
-  serviceDesc:'Custom hand-knotted, hand-tufted and flatweave rugs for interior designers and architects in New York and Texas, developed from the designer’s artwork or scheme and made to order in any dimension.',
+  serviceDesc:'Custom hand-knotted, hand-tufted and flatweave rugs for interior designers and architects in New York and Texas, developed from the designer’s artwork or scheme and made to order and sized to each project.',
   body:`
 ${sec('New York', 'Manhattan', 'and the Hamptons.', `<div class="prose">
     <p>Apartments and townhouses where a rug has to work to an exact furniture plan, and Hamptons houses briefed against the date the house opens for the season. Tell us the date the rug must be on site; sampling and production are planned back from it.</p>
@@ -425,7 +425,7 @@ const fr = shell({
   desc:'Tapis noués main, tuftés main et tissés à plat, réalisés sur mesure d’après vos dessins pour architectes d’intérieur. Studio à New Delhi, professionnels.',
   lb:'Tapis sur mesure · Réservé aux professionnels', h1:'Votre dessin.<br>Notre ', h1it:'savoir-faire.',
   lead:`<p class="bd">Artilier est un studio de création de tapis basé à New Delhi, qui travaille exclusivement avec les architectes d’intérieur, les architectes et les agences de design. Chaque tapis est réalisé sur mesure — technique, matière, coloris et dimensions — d’après une pièce de notre collection ou d’après votre propre dessin.</p>
-    <div class="wp-meta"><span><b>Professionnels uniquement</b></span><span>Toutes dimensions</span><span>Coloris sur mesure</span></div>`,
+    <div class="wp-meta"><span><b>Professionnels uniquement</b></span><span>Dimensions sur mesure</span><span>Coloris sur mesure</span></div>`,
   nodes:[ service('fr/', 'Tapis sur mesure pour architectes d’intérieur', 'Conception et fabrication de tapis sur mesure',
     'Développement de tapis noués main, tuftés main et tissés à plat d’après le dessin, l’œuvre ou la palette de l’architecte d’intérieur, avec échantillonnage avant production.',
     'Architectes d’intérieur, architectes et agences de design') ],
@@ -535,7 +535,7 @@ ${sec('Sampling', 'Approve it in the hand', 'before the loom.', list([
   '<b>Yarn samples</b> — approved in the hand against your scheme',
   '<b>Colour trials</b> — against your scheme',
   '<b>A woven strike-off</b> — ready 2–3 weeks after the design or sketch is approved. Its size depends on the design, and its cost is credited against the order',
-  '<b>Then production</b> — the full rug is set on the loom only once the strike-off is approved'
+  '<b>Then production</b> — the full rug is set on the loom only once the strike-off is approved, and every finished rug is checked against the approved strike-off before dispatch'
 ]) + `<p class="bd" style="margin-top:22px">On projects with a mock-up room, give us the mock-up date and the rug types it needs; sampling is scheduled back from it.</p>`, { dark:true })}
 ${sec('Timing and terms', 'Plan back from', 'the site date.', list([
   '<b>Strike-off</b> — 2–3 weeks after the design or sketch is approved',

@@ -133,15 +133,15 @@ const FOOT_FR = {'Collection': 'Collection',
   'New Delhi, India': 'New Delhi, Inde',
   '© 2026 Artilier — a studio of Art Avenue Pvt. Ltd.': '© 2026 Artilier — un studio d’Art Avenue Pvt. Ltd.',
   'New Delhi · Woven across India': 'New Delhi · Ateliers de tissage en Inde',
-  'Trade only · Any design, any dimension': 'Réservé aux professionnels · Tout dessin, toute dimension'};
+  'Trade only · Made to order, sized to each project': 'Réservé aux professionnels · Sur mesure, aux dimensions de chaque projet'};
 const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (FOOT_FR[k] || k) : k; return `
 <footer>
   <div class="f-top">
     <div>
       <h4>Artilier</h4>
       <p>${lang === 'fr'
-        ? 'Art. Made Material. Studio de création à New Delhi, réservé aux professionnels. Notre première collection : les tapis — noués main, tuftés main et tissés à plat, réalisés sur mesure à toutes les dimensions.'
-        : 'Art. Made Material. A craft studio for interiors in New Delhi, working trade only. We begin with rugs — hand-knotted, hand-tufted and flatweave, made to any dimension, from our collection or your own artwork. Embroidery and design objects follow.'}</p>
+        ? 'Art. Made Material. Studio de création à New Delhi, réservé aux professionnels. Notre première collection : les tapis — noués main, tuftés main et tissés à plat, réalisés sur mesure, aux dimensions de chaque projet.'
+        : 'Art. Made Material. A craft studio for interiors in New Delhi, working trade only. We begin with rugs — hand-knotted, hand-tufted and flatweave, made to order and sized to each project, from our collection or your own artwork. Embroidery and design objects follow.'}</p>
     </div>
     <div class="f-col"><h5>${T('Collection')}</h5><ul>
       <li><a href="${up}collection/hand-knotted/">${T('Hand-knotted rugs')}</a></li>
@@ -177,7 +177,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
   <div class="f-bot">
     <span>${T('© 2026 Artilier — a studio of Art Avenue Pvt. Ltd.')}</span>
     <span>${T('New Delhi · Woven across India')}</span>
-    <span>${T('Trade only · Any design, any dimension')}</span>
+    <span>${T('Trade only · Made to order, sized to each project')}</span>
   </div>
 </footer>
 
@@ -215,7 +215,7 @@ const slotImg = (id, ph, up, eager = false) => {
 const ORG = {
   '@type':'Organization','@id':`${HOST}/#organization`,'name':'Artilier','url':`${HOST}/`,
   'email':'studio@artilier.co','sameAs':['https://www.instagram.com/artilier.co/'],
-  'description':"Design-led craft studio for interiors in New Delhi, working trade only. Rugs first — hand-knotted, hand-tufted and flatweave, made to any dimension, from the studio collection or a designer's own artwork — with embroidery and design objects to follow.",
+  'description':"Design-led craft studio for interiors in New Delhi, working trade only. Rugs first — hand-knotted, hand-tufted and flatweave, made to order and sized to each project, from the studio collection or a designer's own artwork — with embroidery and design objects to follow.",
   'founder':{'@type':'Person','name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development'},
   'employee':{'@type':'Person','name':'Payal Samal','jobTitle':'Design Head — Interior Designer'},
   'address':{'@type':'PostalAddress','addressLocality':'New Delhi','addressCountry':'IN'},
@@ -257,8 +257,8 @@ const sentence1 = t => (String(t).match(/^.*?[.!?](\s|$)/) || [String(t)])[0].tr
 /* A complete meta description — never cut mid-sentence. */
 const designDesc = d => {
   const first = sentence1(d.description);
-  const tail = `${d.construction} rug, woven to order in any size and colourway.`;
-  for (const c of [`${first} ${tail} Trade only.`, `${first} ${tail}`, `${first} ${d.construction}, made to order in any size.`, first])
+  const tail = `${d.construction} rug, woven to order, sized and coloured to the project.`;
+  for (const c of [`${first} ${tail} Trade only.`, `${first} ${tail}`, `${first} ${d.construction}, made to order and sized to the project.`, first])
     if (c.length <= 158) return c;
   return first.slice(0, first.lastIndexOf(',', 150)) + '.';
 };
@@ -319,7 +319,7 @@ function designPage(d) {
     ['Yarn options', !d.material && cx.yarns ? `${cx.yarns} — specified per project` : ''],
     ['Pile height', d.pileHeight],
     ['Reference size', d.referenceSize],
-    ['Size', (d.availableSizes||[]).join(' · ') || 'Any dimension — made to order'],
+    ['Size', (d.availableSizes||[]).join(' · ') || 'Made to order and sized to the project; limits for the construction confirmed before sampling'],
     ['Colourway', (d.palette||[]).length ? '' : 'Re-coloured to your scheme'],
     ['Sampling', 'Strike-off in 2–3 weeks once the design is approved; its cost is credited against the order'],
     ['Lead time', d.leadTime || 'Usually 6–12 weeks from strike-off approval; up to six months in some cases'],
@@ -327,7 +327,7 @@ function designPage(d) {
   ].filter(([,v]) => v).map(([k,v]) => `<div><b>${esc(k)}</b><span>${esc(v)}</span></div>`).join('\n        ');
 
   return head({
-    title:`${d.name} — Custom ${titleCaseC(d.construction)} Rug, Any Size | Artilier`,
+    title:`${d.name} — Custom ${titleCaseC(d.construction)} Rug, Made to Size | Artilier`,
     desc:designDesc(d),
     canonical:url, up,
     ogTitle:`${d.name} — ${d.construction} rug by Artilier`,
@@ -341,7 +341,7 @@ function designPage(d) {
   </div>
   <div>
     <p class="bd">${esc(d.description)}</p>
-    <div class="wp-meta"><span><b>${esc(d.construction||'')}</b></span><span>Any dimension</span><span>Custom colourways</span></div>
+    <div class="wp-meta"><span><b>${esc(d.construction||'')}</b></span><span>Made to size</span><span>Custom colourways</span></div>
   </div>
 </header>
 <section class="sec dtl">
@@ -378,17 +378,17 @@ ${peers.length ? `<section class="sec">
 /* Category copy — every claim restates /craft/, /materials/ or collections.json. */
 const CAT_COPY = {
   'hand-knotted': {
-    desc: n => `${n} hand-knotted rug designs, each woven to order in any size and colourway, with knot count, yarn and dye lot set per design. Trade only, New Delhi.`,
+    desc: n => `${n} hand-knotted rug designs, each woven to order, sized and coloured to the project, with knot count, yarn and dye lot set per design. Trade only, New Delhi.`,
     when: 'Specify hand-knotting when the artwork carries fine detail, tonal gradation or painterly marks, or when the rug is the focal piece of a formal room. It holds the finest definition of the three constructions, and it has the longest lead time — plan the programme around it.',
     yarn: 'Pile yarns are selected per design from New Zealand wool, hand-spun wool, wool-silk blends, bamboo silk and developed blends; knot count is set to the detail the artwork needs.'
   },
   'hand-tufted': {
-    desc: n => `${n} hand-tufted rug designs with carved outlines and high-low pile, woven to order in any size and colourway at shorter lead times. Trade only.`,
+    desc: n => `${n} hand-tufted rug designs with carved outlines and high-low pile, woven to order, sized and coloured to the project at shorter lead times. Trade only.`,
     when: 'Specify hand-tufting for carved outlines, sculpted relief, mixed pile heights and loop-and-cut surfaces — or where the programme needs a shorter lead time than hand-knotting allows.',
     yarn: 'Pile yarns are selected per design from New Zealand wool, hand-spun wool, wool-silk blends, bamboo silk and developed blends; pile heights and carving are drawn into the specification.'
   },
   'flatweave': {
-    desc: n => `${n} flatweave rug designs for graphic work, layering and low-profile rooms, woven to order in any size and colourway. Trade only, New Delhi.`,
+    desc: n => `${n} flatweave rug designs for graphic work, layering and low-profile rooms, woven to order, sized and coloured to the project. Trade only, New Delhi.`,
     when: 'Specify flatweave for graphic and geometric work, for layering, and for rooms where a pile would sit too high. It is lower and lighter underfoot than a pile rug, and reversible in some constructions.',
     yarn: 'Flatweaves are specified in cotton, jute, allo / hemp and developed blends, chosen for the surface the room needs.'
   }
@@ -416,7 +416,7 @@ function categoryPage(cat) {
     { ...breadcrumb(crumbs), '@id':`${url}#breadcrumb` }
   ]);
   return head({
-    title:`${titleCaseC(coll.name)} Rugs — Custom Designs, Any Size | Artilier`,
+    title:`${titleCaseC(coll.name)} Rugs — Custom Designs, Made to Size | Artilier`,
     desc:CAT_COPY[cat.slug].desc(ds.length),
     canonical:url, up, schema
   }) + nav(up) + crumb(crumbs.map(c=>({name:c.name,href:c.href}))) + `
@@ -429,7 +429,7 @@ function categoryPage(cat) {
   <div>
     <p class="bd">${esc(coll.intro)}</p>
     <p class="bd" style="margin-top:16px">${esc(coll.subtitle)} Every design here is made to order: re-coloured, re-scaled and re-proportioned for the project. Nothing is stock.</p>
-    <div class="wp-meta"><span><b>${ds.length} designs</b></span><span>Any dimension</span><span>Custom colourways</span></div>
+    <div class="wp-meta"><span><b>${ds.length} designs</b></span><span>Made to size</span><span>Custom colourways</span></div>
   </div>
 </header>
 <section class="cgs" data-subcategory="${esc(cat.coll)}">

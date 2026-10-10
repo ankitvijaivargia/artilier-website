@@ -54,7 +54,7 @@ const bespoke = page({
   desc:'Custom rugs developed from your artwork, CAD file or palette: construction, yarn, colour and scale resolved in sampling before production. Trade only.',
   h1:'Your artwork.<br>Our ', h1it:'development.',
   lead:`<p class="bd">Send artwork, a painting, a CAD file, a colour scheme, a reference image or a floor plan, and we develop it into a finished rug — construction, yarn, colour, scale and finish worked out with you, then proved in a sample before production.</p>
-    <div class="wp-meta"><span><b>Made to order</b></span><span>Any dimension</span><span>Custom colourways</span></div>`,
+    <div class="wp-meta"><span><b>Made to order</b></span><span>Made to size</span><span>Custom colourways</span></div>`,
   service:{ name:'Bespoke rug development', serviceType:'Custom rug design and manufacture',
     description:'Development of bespoke hand-knotted, hand-tufted and flatweave rugs from a designer’s own artwork, drawing, CAD file, reference image or colour scheme, including construction, yarn and colour development, sampling and production.' },
   body:`
@@ -76,7 +76,7 @@ const bespoke = page({
     <div>A reference image <span>Starting point</span></div>
     <div>A colour scheme <span>Matched by hand</span></div>
     <div>A floor plan <span>Sizes resolved</span></div>
-    <div>Rug dimensions <span>Any size or shape</span></div>
+    <div>Rug dimensions <span>Sized to the project · confirmed before sampling</span></div>
   </div>
 </section>
 <section class="sec">

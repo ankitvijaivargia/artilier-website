@@ -115,7 +115,7 @@
   <div>
     ${d.description ? `<p class="bd">${esc(d.description)}</p>` : ''}
     ${d.intent ? `<p class="bd" style="margin-top:16px">${esc(d.intent)}</p>` : ''}
-    <div class="wp-meta"><span><b>${esc(d.construction || '')}</b></span><span>Any dimension</span><span>Custom colourways</span></div>
+    <div class="wp-meta"><span><b>${esc(d.construction || '')}</b></span><span>Made to size</span><span>Custom colourways</span></div>
   </div>
 </header>
 <section class="sec dtl">
