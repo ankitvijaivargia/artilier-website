@@ -186,7 +186,7 @@ Details and evidence: `PR_REVIEW_REPORT.md`. Fixes are in the follow-up commit o
 
 **Verified and resolved**
 - Contact form crash on `?type=` links (hospitality, market, bespoke, category CTAs) — submit handler now attached before pre-fill; radio pre-fill works; forms POST to Formspree even without JavaScript (never GET)
-- Mobile header overflow (pre-existing) — fits from 320 px to 1440 px with real fonts
+- Mobile header overflow (pre-existing) — fits from 320 px to 1440 px with real fonts, including Android enlarged text (scale 1.15 and 1.3): icon-only ≡ menu ≤ 440 px, "Start a project" wraps instead of clipping
 - Design schema `CreativeWork.artMedium` → `VisualArtwork` with `artform`/`artMedium`
 - Market-page copy overlap 18–27% → 2–10% (market-specific FAQs)
 - Design pages: "Pattern" and "Colours shown" from each design's own description; keywords in schema
