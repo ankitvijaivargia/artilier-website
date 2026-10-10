@@ -9,7 +9,7 @@
  *
  * Rule carried over from Phases 1–2: every factual statement restates existing
  * site copy, repository data, or a public fact (time zones, working weeks).
- * Nothing is asserted about MOQs, lead times, prices, certifications, fire or
+ * Minimum order, strike-off timing and lead-time range are owner-confirmed (10 Oct 2026). Nothing is asserted about prices, certifications, fire or
  * performance ratings, client names, delivery terms or production locations.
  * Anything that needs the owner's confirmation is listed in
  * SEO_IMPLEMENTATION_LOG.md, not written here.
@@ -117,7 +117,7 @@ const enquiryForm = (id = 'contactForm') => `
   <div class="f"><label>Artwork, drawings or floor plans</label><span class="f-hint">Email them to <a href="mailto:studio@artilier.co">studio@artilier.co</a> with your name in the subject and we will match them to this enquiry.</span></div>
   <button type="submit" class="cta" style="justify-content:center">Send the enquiry <span>→</span></button>
   <p class="f-status" id="${id}Status" role="status" aria-live="polite"></p>
-  <p class="f-note">Trade only. We read every enquiry ourselves and reply individually. Costing and lead times follow once construction, materials, dimensions and sampling are understood. Your details are used only to reply to this enquiry.</p>
+  <p class="f-note">Trade only, no minimum order. We read every enquiry ourselves and reply individually. Lead times usually run 6–12 weeks; costing follows once construction, materials, dimensions and sampling are understood. Your details are used only to reply to this enquiry.</p>
 </form>`;
 
 const contact = shell({
@@ -152,9 +152,10 @@ const contact = shell({
 ${sec('Before you write', 'Questions we are', 'often asked.', qa([
   ['Do you sell to private clients?', 'No. Artilier works trade only — with interior designers, architects, design practices and the hospitality teams who specify with them.'],
   ['Can a collection design be changed?', 'Yes. Every design is a starting point: it can be re-scaled, re-proportioned and re-coloured to your scheme, and woven to any dimension.'],
-  ['Can we see samples first?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom.'],
+  ['Can we see samples first?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom. The strike-off takes 2–3 weeks once the design or sketch is approved.'],
+  ['Is there a minimum order?', 'No. We make single pieces as readily as multi-rug schedules.'],
   ['Who contracts and invoices?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio — one supplier and one point of coordination.'],
-  ['How long does it take?', 'Lead time is given per project, once construction, size and sampling are agreed. Hand-knotting takes longest; hand-tufting is shorter.']
+  ['How long does it take?', 'Usually 6–12 weeks, and up to six months in some cases; we confirm the timeline for each project. Hand-knotting takes longest; hand-tufting is shorter.']
 ]))}`
 });
 
@@ -235,11 +236,13 @@ ${sec('What we make for hospitality', 'Custom rugs,', 'not stock.', `<div class=
     <div>Any dimension <span>Made to each room</span></div>
     <div>Custom colourways <span>Matched to the scheme</span></div>
     <div>Multi-rug schedules <span>One project, many rooms</span></div>
+    <div>No minimum <span>Single pieces welcome</span></div>
+    <div>Lead time <span>Usually 6–12 weeks</span></div>
   </div>`, { dark:true, intro:'Every rug is made to order in the construction, material, colourway and dimensions the project needs. Collection designs can be adapted to a scheme, or a rug developed from the designer’s own artwork.' })}
 ${sec('How a hospitality project runs', 'From schedule', 'to site.', `<div class="proc">
     <div class="pstep"><span class="pn">01</span><span class="pt">Understand</span><span class="pd">The rug schedule — rooms, quantities, sizes — with drawings, scheme and application. We come back with our thoughts, questions and what still needs resolving.</span></div>
     <div class="pstep"><span class="pn">02</span><span class="pt">Develop</span><span class="pd">Construction, yarn, pile and colour worked through for each rug type. Where there is enough information, an initial cost range follows.</span></div>
-    <div class="pstep"><span class="pn">03</span><span class="pt">Sample</span><span class="pd">Yarn samples, colour trials and woven strike-offs, approved in the hand before production — plan them against any mock-up room date.</span></div>
+    <div class="pstep"><span class="pn">03</span><span class="pt">Sample</span><span class="pd">Yarn samples, colour trials and woven strike-offs, approved in the hand before production. A strike-off takes 2–3 weeks once the design is approved — plan it against any mock-up room date.</span></div>
     <div class="pstep"><span class="pn">04</span><span class="pt">Make</span><span class="pd">Weaving, tufting or flatweaving to each size, in the workshop suited to the construction, with progress photography at agreed points.</span></div>
     <div class="pstep"><span class="pn">05</span><span class="pt">Check</span><span class="pd">Quality control against the specification and approved sample — dimensions, pile, colour, binding, backing and finishing — reviewed in Delhi.</span></div>
     <div class="pstep"><span class="pn">06</span><span class="pt">Deliver</span><span class="pd">Rolling, wrapping, export documentation and freight coordinated through our logistics partners.</span></div>
@@ -271,10 +274,10 @@ const market = m => shell({
 const UP2 = '../../';
 const marketLinks = self => [['trade/uae/','UAE'],['trade/saudi-arabia/','Saudi Arabia'],['trade/uk/','United Kingdom'],['trade/us/','United States']].filter(([h]) => !h.includes(self));
 const common = {
-  samples: ['Can we approve samples before production?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom.'],
+  samples: ['Can we approve samples before production?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom; the strike-off takes 2–3 weeks once the design is approved.'],
   adapt: ['Can a collection design be adapted?', `Yes. Every design in <a href="${UP2}collection/">the collection</a> can be re-scaled, re-proportioned and re-coloured to your scheme and woven to any size.`],
   contract: ['Who do we contract with?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio; orders are contracted, invoiced and exported through that entity.'],
-  time: ['How are cost and lead time given?', 'Per project. They follow once construction, materials, dimensions and sampling are understood, and become more precise as the artwork is resolved.']
+  time: ['What are the lead times, and is there a minimum?', 'Lead times usually run 6–12 weeks and can extend to six months in some cases. There is no minimum order — a single rug is welcome. Costing follows once construction, materials, dimensions and sampling are understood.']
 };
 
 const uae = market({
@@ -402,7 +405,7 @@ ${sec('Working together', 'Briefed by email,', 'approved in hand.', `<div class=
   </div>`)}
 ${sec('Questions', 'From US', 'practices.', qa([
   ['Do you work with private clients?', 'No — Artilier works to the trade only, with interior designers, architects and design practices.'],
-  ['Can a Hamptons rug be timed to the season?', 'Tell us the date the rug must be on site. Lead time is given per project once construction, size and sampling are agreed, so the earlier the brief, the more options remain open.'],
+  ['Can a Hamptons rug be timed to the season?', 'Tell us the date the rug must be on site. Lead times usually run 6–12 weeks and can extend to six months in some cases, so the earlier the brief, the more options remain open.'],
   common.contract]))}
 ${ctaBlock(UP2, 'contact/?type=residential', 'Start a US project', [...marketLinks('us'), ['collection/','The collection']])}`
 });

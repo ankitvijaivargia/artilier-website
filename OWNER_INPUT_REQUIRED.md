@@ -6,9 +6,9 @@ Facts and access only you can supply. Nothing below has been guessed or borrowed
 
 Currently the site says: *"Costing and lead times follow once construction, materials, dimensions and sampling are understood."*
 
-- [ ] **Minimum order** — is there one (per rug, per order, per square metre)? Or "no minimum"?
-- [ ] **Typical lead-time ranges** after sample approval — hand-knotted / hand-tufted / flatweave (e.g. "x–y weeks for a 3 × 4 m rug")
-- [ ] **Sampling** — what is supplied (yarn poms, colour trials, woven strike-off size), timing for each, and whether samples are charged / credited against the order
+- [x] **Minimum order** — none; single pieces welcome (owner, 10 Oct 2026) — published
+- [x] **Typical lead time** — usually 6–12 weeks, up to 6 months in some cases (owner, 10 Oct 2026) — published. Still open: the point it is measured from (brief, design approval or strike-off approval) and any split by construction
+- [x] **Strike-off timing** — 2–3 weeks after design/sketch approval (owner, 10 Oct 2026) — published. Still open: strike-off size, and whether samples are charged or credited against the order
 - [ ] **Approval stages** — confirm the six stages on `/process/` are how projects actually run
 - [ ] **Packaging** — rolled, wrapped, crated? Any moisture/fumigation treatment for export?
 - [ ] **Shipping terms** — usual Incoterms (EXW, FOB, CIF, DAP, DDP?), air vs sea, who handles import duties
