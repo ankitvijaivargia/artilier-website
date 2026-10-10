@@ -154,7 +154,7 @@ ${sec('Before you write', 'Questions we are', 'often asked.', qa([
   ['Can a collection design be changed?', 'Yes. Every design is a starting point: it can be re-scaled, re-proportioned and re-coloured to your scheme, and woven to any dimension.'],
   ['Can we see samples first?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom. The strike-off takes 2–3 weeks once the design or sketch is approved, and its cost is credited against the order.'],
   ['Is there a minimum order?', 'No. We make single pieces as readily as multi-rug schedules.'],
-  ['How are prices quoted and paid?', 'Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment is 50% in advance and 50% before shipping, and rugs are usually shipped rolled.'],
+  ['How are prices quoted?', 'Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment terms are set out in the quote, and rugs are usually shipped rolled.'],
   ['Who contracts and invoices?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio — one supplier and one point of coordination.'],
   ['How long does it take?', 'Usually 6–12 weeks from strike-off approval, and up to six months in some cases; we confirm the timeline for each project. Hand-knotting takes longest; hand-tufting is shorter.']
 ]))}`
@@ -278,7 +278,7 @@ const common = {
   samples: ['Can we approve samples before production?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom; the strike-off takes 2–3 weeks once the design is approved, and its cost is credited against the order.'],
   adapt: ['Can a collection design be adapted?', `Yes. Every design in <a href="${UP2}collection/">the collection</a> can be re-scaled, re-proportioned and re-coloured to your scheme and woven to any size.`],
   contract: ['Who do we contract with?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio; orders are contracted, invoiced and exported through that entity.'],
-  pricing: ['How are prices quoted, and on what terms?', 'Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment is 50% in advance and 50% before shipping, and rugs are usually shipped rolled.'],
+  pricing: ['How are prices quoted, and on what terms?', 'Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment terms are set out in the quote, and rugs are usually shipped rolled.'],
   time: ['What are the lead times, and is there a minimum?', 'Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases. There is no minimum order — a single rug is welcome. Costing follows once construction, materials, dimensions and sampling are understood.']
 };
 
