@@ -110,7 +110,7 @@ const footer = (up, { lang = 'en' } = {}) => `
       <h4>Artilier</h4>
       <p>${lang === 'fr'
         ? 'Art. Made Material. Studio de création à New Delhi, réservé aux professionnels. Notre première collection : les tapis — noués main, tuftés main et tissés à plat, réalisés sur mesure à toutes les dimensions.'
-        : 'Art. Made Material. A design-led studio in New Delhi, working trade only. Our first collection is rugs — hand-knotted, hand-tufted and flatweave, made to any dimension, from our collection or developed from your own artwork.'}</p>
+        : 'Art. Made Material. A craft studio for interiors in New Delhi, working trade only. We begin with rugs — hand-knotted, hand-tufted and flatweave, made to any dimension, from our collection or your own artwork. Embroidery and design objects follow.'}</p>
     </div>
     <div class="f-col"><h5>Collection</h5><ul>
       <li><a href="${up}collection/hand-knotted/">Hand-knotted rugs</a></li>
@@ -183,7 +183,7 @@ const slotImg = (id, ph, up, eager = false) => {
 const ORG = {
   '@type':'Organization','@id':`${HOST}/#organization`,'name':'Artilier','url':`${HOST}/`,
   'email':'studio@artilier.co','sameAs':['https://www.instagram.com/artilier.co/'],
-  'description':"Design-led, trade-focused studio in New Delhi. First collection: rugs. Hand-knotted, hand-tufted and flatweave rugs, made to any dimension, from the studio collection or developed from a designer's own artwork.",
+  'description':"Design-led craft studio for interiors in New Delhi, working trade only. Rugs first — hand-knotted, hand-tufted and flatweave, made to any dimension, from the studio collection or a designer's own artwork — with embroidery and design objects to follow.",
   'founder':{'@type':'Person','name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development'},
   'employee':{'@type':'Person','name':'Payal Samal','jobTitle':'Design Head — Interior Designer'},
   'address':{'@type':'PostalAddress','addressLocality':'New Delhi','addressCountry':'IN'},
