@@ -4,6 +4,7 @@
   "workers_dev": true,
   "observability": { "enabled": true },
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "not_found_handling": "404-page"
   }
 }

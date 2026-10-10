@@ -148,7 +148,17 @@
          motion. The observer is an optimisation only — a viewport check runs
          immediately so a delayed or suppressed callback cannot strand the
          film, which is exactly what happens to a hero above the fold. */
-      if (inView() || this.hasAttribute('data-eager')) { start(); return; }
+      /* Performance: films never compete with the first paint. On a data-saver
+         or slow connection, or under reduced motion, the poster stands in and
+         the film is not downloaded at all. Otherwise above-the-fold films start
+         only after the page has loaded (the poster is the first paint). */
+      const c = navigator.connection || {};
+      if (c.saveData || /(^|-)2g|3g/.test(c.effectiveType || '') || reduce.matches) return;
+      const afterLoad = fn => {
+        const idle = () => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 600));
+        document.readyState === 'complete' ? idle() : addEventListener('load', idle, { once: true });
+      };
+      if (inView() || this.hasAttribute('data-eager')) { afterLoad(start); return; }
       if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { start(); io.disconnect(); } }), { rootMargin: '200px' });
         io.observe(this);
