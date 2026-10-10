@@ -154,6 +154,7 @@ ${sec('Before you write', 'Questions we are', 'often asked.', qa([
   ['Can a collection design be changed?', 'Yes. Every design is a starting point: it can be re-scaled, re-proportioned and re-coloured to your scheme, and woven to any dimension.'],
   ['Can we see samples first?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom. The strike-off takes 2–3 weeks once the design or sketch is approved, and its cost is credited against the order.'],
   ['Is there a minimum order?', 'No. We make single pieces as readily as multi-rug schedules.'],
+  ['How are prices quoted?', 'Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment terms are set out in the quote, and rugs are usually shipped rolled.'],
   ['Who contracts and invoices?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio — one supplier and one point of coordination.'],
   ['How long does it take?', 'Usually 6–12 weeks from strike-off approval, and up to six months in some cases; we confirm the timeline for each project. Hand-knotting takes longest; hand-tufting is shorter.']
 ]))}`
@@ -245,7 +246,7 @@ ${sec('How a hospitality project runs', 'From schedule', 'to site.', `<div class
     <div class="pstep"><span class="pn">03</span><span class="pt">Sample</span><span class="pd">Yarn samples, colour trials and woven strike-offs, approved in the hand before production. A strike-off takes 2–3 weeks once the design is approved, and its cost is credited against the order — plan it against any mock-up room date.</span></div>
     <div class="pstep"><span class="pn">04</span><span class="pt">Make</span><span class="pd">Weaving, tufting or flatweaving to each size, in the workshop suited to the construction, with progress photography at agreed points.</span></div>
     <div class="pstep"><span class="pn">05</span><span class="pt">Check</span><span class="pd">Quality control against the specification and approved sample — dimensions, pile, colour, binding, backing and finishing — reviewed in Delhi.</span></div>
-    <div class="pstep"><span class="pn">06</span><span class="pt">Deliver</span><span class="pd">Rolling, wrapping, export documentation and freight coordinated through our logistics partners.</span></div>
+    <div class="pstep"><span class="pn">06</span><span class="pt">Deliver</span><span class="pd">Rugs are usually shipped rolled and wrapped, with export documentation and freight coordinated through our logistics partners. Prices are usually quoted ex-works in USD or EUR; FOB or DDP on request.</span></div>
   </div>`)}
 ${sec('Specification', 'Tell us what the', 'specification requires.', `<div class="prose">
     <p>Hotel specifications often carry requirements beyond design — fire performance, wear, cleaning or documentation. Include them in the brief. We confirm what can be met, and what can be documented, before costing rather than after, and we say plainly where a material or construction is unsuited to the traffic a room will take.</p>
@@ -277,6 +278,7 @@ const common = {
   samples: ['Can we approve samples before production?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom; the strike-off takes 2–3 weeks once the design is approved, and its cost is credited against the order.'],
   adapt: ['Can a collection design be adapted?', `Yes. Every design in <a href="${UP2}collection/">the collection</a> can be re-scaled, re-proportioned and re-coloured to your scheme and woven to any size.`],
   contract: ['Who do we contract with?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio; orders are contracted, invoiced and exported through that entity.'],
+  pricing: ['How are prices quoted, and on what terms?', 'Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment terms are set out in the quote, and rugs are usually shipped rolled.'],
   time: ['What are the lead times, and is there a minimum?', 'Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases. There is no minimum order — a single rug is welcome. Costing follows once construction, materials, dimensions and sampling are understood.']
 };
 
@@ -310,6 +312,7 @@ ${sec('What to send', 'A useful', 'UAE brief.', list([
 ]), { dark:true })}
 ${sec('Questions', 'From UAE', 'practices.', qa([
   common.samples,
+  common.pricing,
   ['Can you make a rug for a majlis or a very large room?', 'Every rug is made to order, so the size follows the room rather than a standard size. Send the floor plan: proportions are resolved with you before sampling, and any size limit for the chosen construction is confirmed at that stage.'],
   ['Carpet or rug — does the wording matter?', 'No. Brief us in the term your drawings use; we confirm the construction, size and finish in the specification.']]))}
 ${ctaBlock(UP2, 'contact/?type=residential', 'Start a UAE project', [...marketLinks('uae'), ['hospitality/','Hospitality']])}`
@@ -346,7 +349,8 @@ ${sec('What to send', 'A useful', 'Saudi brief.', list([
 ${sec('Questions', 'From Saudi', 'practices.', qa([
   ['Can sampling be planned around a mock-up room?', 'Yes. Give us the mock-up date and the rug types it needs; yarn samples, colour trials and strike-offs are scheduled back from it and approved in the hand.'],
   ['Can one supplier cover several rug types?', 'Yes. Hand-knotted, hand-tufted and flatweave rugs can sit in one schedule, developed by Artilier and contracted, invoiced and exported through one entity, Art Avenue Pvt. Ltd.'],
-  common.time]))}
+  common.time,
+  common.pricing]))}
 ${ctaBlock(UP2, 'contact/?type=hospitality', 'Start a Saudi project', [...marketLinks('saudi-arabia'), ['hospitality/','Hospitality']])}`
 });
 
@@ -380,7 +384,8 @@ ${sec('What to send', 'A useful', 'UK brief.', list([
 ${sec('Questions', 'From UK', 'practices.', qa([
   ['Can the rug be credited to the artist or designer?', `Yes. Rugs developed from a designer's or artist's own work can be credited to both names — see <a href="${UP2}collaborations/">collaborations</a>.`],
   common.adapt,
-  common.samples]))}
+  common.samples,
+  common.pricing]))}
 ${ctaBlock(UP2, 'contact/?type=bespoke', 'Start a UK project', [...marketLinks('uk'), ['bespoke/','Bespoke development']])}`
 });
 
@@ -406,7 +411,8 @@ ${sec('Working together', 'Briefed by email,', 'approved in hand.', `<div class=
 ${sec('Questions', 'From US', 'practices.', qa([
   ['Do you work with private clients?', 'No — Artilier works to the trade only, with interior designers, architects and design practices.'],
   ['Can a Hamptons rug be timed to the season?', 'Tell us the date the rug must be on site. Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases, so the earlier the brief, the more options remain open.'],
-  common.contract]))}
+  common.contract,
+  common.pricing]))}
 ${ctaBlock(UP2, 'contact/?type=residential', 'Start a US project', [...marketLinks('us'), ['collection/','The collection']])}`
 });
 
