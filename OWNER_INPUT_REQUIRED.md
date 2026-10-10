@@ -1,0 +1,86 @@
+# Owner input required
+
+Facts and access only you can supply. Nothing below has been guessed or borrowed from competitors; until each item is answered, the site either omits the claim or keeps the cautious wording noted. Reply in any form — a voice note or a list is fine — and the pages are regenerated from it.
+
+## A. Working terms (Trade, Bespoke, Hospitality pages)
+
+Currently the site says: *"Costing and lead times follow once construction, materials, dimensions and sampling are understood."*
+
+- [ ] **Minimum order** — is there one (per rug, per order, per square metre)? Or "no minimum"?
+- [ ] **Typical lead-time ranges** after sample approval — hand-knotted / hand-tufted / flatweave (e.g. "x–y weeks for a 3 × 4 m rug")
+- [ ] **Sampling** — what is supplied (yarn poms, colour trials, woven strike-off size), timing for each, and whether samples are charged / credited against the order
+- [ ] **Approval stages** — confirm the six stages on `/process/` are how projects actually run
+- [ ] **Packaging** — rolled, wrapped, crated? Any moisture/fumigation treatment for export?
+- [ ] **Shipping terms** — usual Incoterms (EXW, FOB, CIF, DAP, DDP?), air vs sea, who handles import duties
+- [ ] **Currencies quoted** (USD, EUR, GBP, AED, INR)
+- [ ] **Payment terms** if you want them public (e.g. deposit on order)
+
+## B. Contact and language
+
+- [ ] **WhatsApp business number for ARTILIER** (not the Art Avenue retail number unless you want them shared). Click tracking is ready; no number is published today
+- [ ] **French**: can the studio reply in French? If yes, `/fr/` will say so and a French enquiry form becomes worthwhile. If no, the page keeps pointing to email
+- [ ] **Arabic**: any capability? (Not needed now; recorded for later)
+- [ ] **Usual reply time** you are comfortable promising (currently "usually within a few working days" in the form confirmation — confirm or change)
+
+## C. Hospitality specification
+
+The page asks clients to state requirements and says you will confirm what can be met. To say more:
+
+- [ ] Fire-performance standards you can **document today** for specific constructions (with test reports)
+- [ ] Wear / traffic classifications, if any are tested
+- [ ] Cleaning and maintenance guidance you supply with rugs
+- [ ] Any hospitality projects completed that can be named (with permission)
+
+## D. Market pages
+
+- [ ] Do samples ship to the UAE and Saudi Arabia, and on what terms?
+- [ ] Any local partner, agent or showroom in a market? (none is claimed)
+- [ ] Confirm the working-week notes suit how you work: UAE Monday–Friday, Saudi Arabia Sunday–Thursday
+- [ ] Planned visits (e.g. Downtown Design Dubai, 4–8 Nov 2026) — publish or keep private?
+
+## E. Design data — per-design completion report
+
+`Pattern` and `Colours shown` were filled **only by restating each design's existing studio description** — please confirm or correct. Everything else is empty in `content/designs.json`, so the pages show the studio-wide wording instead (yarn "specified per project", size "any dimension", lead time "given per project").
+
+Also needed: **distinct descriptions for Talab and Ghata** — both currently read as "an ivory and gold medallion".
+
+| Design | Construction | Pattern (from description) | Colours (from description) | Confirm pattern/colours | Yarn / material used in the photographed rug | Size of the photographed rug | Pile height / knot count (if known) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Shakti (`shakti`) | Hand-knotted | Large-scale chevron, geometric | Gold · Warm brown | [ ] | [ ] | [ ] | [ ] |
+| Dua (`dua`) | Hand-knotted | All-over botanical, low contrast | Antique gold | [ ] | [ ] | [ ] | [ ] |
+| Anhad (`anhad`) | Hand-knotted | Classical floral field with a deep border | Black · Ivory · Gold | [ ] | [ ] | [ ] | [ ] |
+| Nazm (`nazm`) | Hand-knotted | Crackled, branching abstract | Rust · Charcoal | [ ] | [ ] | [ ] | [ ] |
+| Rooh (`rooh`) | Hand-knotted | Oushak-inflected floral | Soft blue · Grey | [ ] | [ ] | [ ] | [ ] |
+| Zameen (`zameen`) | Hand-knotted | All-over classical floral with a defined border | Deep indigo | [ ] | [ ] | [ ] | [ ] |
+| Mehr (`mehr`) | Hand-knotted | Oushak manner, widely spaced motifs | Pale blue · Grey | [ ] | [ ] | [ ] | [ ] |
+| Chhaya (`chhaya`) | Hand-tufted | Ikat, all-over repeat | Navy · Multicolour | [ ] | [ ] | [ ] | [ ] |
+| Girah (`girah`) | Hand-tufted | Painterly abstract | Grey · Black | [ ] | [ ] | [ ] | [ ] |
+| Parat (`parat`) | Hand-tufted | Oversized marigold florals with foliage and birds | Cream · Orange · Rose · Blue · Green · Navy | [ ] | [ ] | [ ] | [ ] |
+| Silai (`silai`) | Hand-tufted | Bands of small repeating motifs | Red · Gold · Pale blue-green | [ ] | [ ] | [ ] | [ ] |
+| Uchaan (`uchaan`) | Hand-tufted | All-over classical floral | Black | [ ] | [ ] | [ ] | [ ] |
+| Talab (`talab`) | Hand-tufted | Medallion within a full border | Ivory · Gold | [ ] | [ ] | [ ] | [ ] |
+| Bhanwar (`bhanwar`) | Hand-tufted | All-over classical floral | Soft rose · Beige | [ ] | [ ] | [ ] | [ ] |
+| Ojas (`ojas`) | Hand-tufted | Plain ground with a wide classical border | Dark brown · Ivory | [ ] | [ ] | [ ] | [ ] |
+| Ghata (`ghata`) | Hand-tufted | Traditional medallion | Ivory · Gold | [ ] | [ ] | [ ] | [ ] |
+| Vartul (`vartul`) | Hand-tufted | Contemporary landscape of curved bands, carved | Terracotta · Blue · Sand | [ ] | [ ] | [ ] | [ ] |
+| Kalp (`kalp`) | Hand-tufted | Distressed, layered painterly abstract | Blue · Rust · Grey | [ ] | [ ] | [ ] | [ ] |
+| Reth (`reth`) | Hand-tufted | Single circular motif with loose marks | Sand | [ ] | [ ] | [ ] | [ ] |
+| Seedha (`seedha`) | Flatweave | Near-plain, faint linear detail | Camel | [ ] | [ ] | [ ] | [ ] |
+| Rekha (`rekha`) | Flatweave | Diamond pattern | Natural fibre · Brown | [ ] | [ ] | [ ] | [ ] |
+
+Each filled field appears automatically on that design's page and in its structured data on the next build.
+
+## F. Projects and proof
+
+- [ ] Completed projects with photographs and the designer's permission → `content/projects.json` (`/projects/` stays hidden from Google until the first one)
+- [ ] Designer or client quotes you have permission to use (none are on the site)
+
+## G. Profiles and access
+
+- [ ] **LinkedIn company page** URL (to add to the Organization schema)
+- [ ] **Cloudflare dashboard** — enable Web Analytics (steps in `SEO_LAUNCH_CHECKLIST.md`), or share the token
+- [ ] **Google Search Console** — Domain property for `artilier.co` (you, or add studio@artilier.co / a delegate as Owner)
+- [ ] **Bing Webmaster Tools** — import from Search Console
+- [ ] **Formspree** — confirm form `myklqvgp` delivers to studio@artilier.co; check its "allowed domains" setting includes `artilier.co` (and the `*.workers.dev` preview if you want to test there)
+- [ ] **GA4** — only if you want event reports; a consent banner is then needed for UK/EU visitors
+- [ ] **Backlinks** — confirm no link-building service was ever paid for artilier.co

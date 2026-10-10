@@ -254,11 +254,11 @@ function designPage(d) {
   /* Only properties with real values are emitted. material / size / pile
      height are absent from the data and are therefore absent here. */
   const work = {
-    '@type':'CreativeWork','@id':`${url}#design`,'name':d.name,'url':url,
+    '@type':'VisualArtwork','@id':`${url}#design`,'name':d.name,'url':url,
     'description':d.description,'creator':{'@id':`${HOST}/#organization`},
     'isPartOf':{'@id':`${catUrl}#collection`},
-    'inLanguage':'en','genre':'Rug design',
-    ...(terms.length ? { 'keywords':terms.join(', ') } : {}),
+    'inLanguage':'en','artform':'Rug',
+    'keywords':[...terms, d.pattern, ...(d.palette||[])].filter(Boolean).join(', '),
     ...(d.construction ? { 'artMedium':d.construction } : {}),
     ...(m.src ? { 'image':{ '@type':'ImageObject','@id':`${url}#primaryimage`,
         'url':`${HOST}/assets/media/${String(m.src).split('?')[0]}`,
@@ -276,12 +276,14 @@ function designPage(d) {
 
   const facts = [
     ['Construction', d.construction],
+    ['Pattern', d.pattern],
+    ['Colours shown', (d.palette||[]).length ? `${d.palette.join(' · ')} — re-colourable to your scheme` : ''],
     ['Material', d.material],
     ['Yarn options', !d.material && cx.yarns ? `${cx.yarns} — specified per project` : ''],
     ['Pile height', d.pileHeight],
     ['Reference size', d.referenceSize],
     ['Size', (d.availableSizes||[]).join(' · ') || 'Any dimension — made to order'],
-    ['Colourway', 'Re-coloured to your scheme'],
+    ['Colourway', (d.palette||[]).length ? '' : 'Re-coloured to your scheme'],
     ['Sampling', 'Yarn, colour and strike-off approved before weaving'],
     ['Lead time', d.leadTime || 'Given per project, once construction, size and sampling are agreed']
   ].filter(([,v]) => v).map(([k,v]) => `<div><b>${esc(k)}</b><span>${esc(v)}</span></div>`).join('\n        ');

@@ -71,7 +71,7 @@ const country = (name, code) => ({ '@type':'Country','name':name,'identifier':co
 
 /* ── /contact/ ─────────────────────────────────────────────────────── */
 const enquiryForm = (id = 'contactForm') => `
-<form class="fx" id="${id}" data-enquiry data-endpoint="${FORM_ENDPOINT}" novalidate>
+<form class="fx" id="${id}" action="${FORM_ENDPOINT}" method="post" data-enquiry data-endpoint="${FORM_ENDPOINT}" novalidate>
   <fieldset>
     <legend>What is the project?</legend>
     <div class="chips">
@@ -305,7 +305,10 @@ ${sec('What to send', 'A useful', 'UAE brief.', list([
   '<b>Application</b> — where each rug sits (majlis, bedroom, lobby…) so material and construction suit the traffic',
   '<b>Delivery</b> — emirate and city, the site contact or fit-out contractor, and the target handover date'
 ]), { dark:true })}
-${sec('Questions', 'From UAE', 'practices.', qa([common.samples, common.adapt, common.time, common.contract]))}
+${sec('Questions', 'From UAE', 'practices.', qa([
+  common.samples,
+  ['Can you make a rug for a majlis or a very large room?', 'Every rug is made to order, so the size follows the room rather than a standard size. Send the floor plan: proportions are resolved with you before sampling, and any size limit for the chosen construction is confirmed at that stage.'],
+  ['Carpet or rug — does the wording matter?', 'No. Brief us in the term your drawings use; we confirm the construction, size and finish in the specification.']]))}
 ${ctaBlock(UP2, 'contact/?type=residential', 'Start a UAE project', [...marketLinks('uae'), ['hospitality/','Hospitality']])}`
 });
 
@@ -337,7 +340,10 @@ ${sec('What to send', 'A useful', 'Saudi brief.', list([
   '<b>Specification requirements</b> — any performance, cleaning or documentation standards the project sets',
   '<b>Programme</b> — mock-up date, delivery city and target handover'
 ]), { dark:true })}
-${sec('Questions', 'From Saudi', 'practices.', qa([common.samples, common.adapt, common.time, common.contract]))}
+${sec('Questions', 'From Saudi', 'practices.', qa([
+  ['Can sampling be planned around a mock-up room?', 'Yes. Give us the mock-up date and the rug types it needs; yarn samples, colour trials and strike-offs are scheduled back from it and approved in the hand.'],
+  ['Can one supplier cover several rug types?', 'Yes. Hand-knotted, hand-tufted and flatweave rugs can sit in one schedule, developed by Artilier and contracted, invoiced and exported through one entity, Art Avenue Pvt. Ltd.'],
+  common.time]))}
 ${ctaBlock(UP2, 'contact/?type=hospitality', 'Start a Saudi project', [...marketLinks('saudi-arabia'), ['hospitality/','Hospitality']])}`
 });
 
@@ -368,7 +374,10 @@ ${sec('What to send', 'A useful', 'UK brief.', list([
   '<b>Construction</b> — a preference, or leave it to our recommendation',
   '<b>Programme</b> — target date on site and delivery address'
 ]), { dark:true })}
-${sec('Questions', 'From UK', 'practices.', qa([common.samples, common.adapt, common.time, common.contract]))}
+${sec('Questions', 'From UK', 'practices.', qa([
+  ['Can the rug be credited to the artist or designer?', `Yes. Rugs developed from a designer's or artist's own work can be credited to both names — see <a href="${UP2}collaborations/">collaborations</a>.`],
+  common.adapt,
+  common.samples]))}
 ${ctaBlock(UP2, 'contact/?type=bespoke', 'Start a UK project', [...marketLinks('uk'), ['bespoke/','Bespoke development']])}`
 });
 
@@ -393,7 +402,8 @@ ${sec('Working together', 'Briefed by email,', 'approved in hand.', `<div class=
   </div>`)}
 ${sec('Questions', 'From US', 'practices.', qa([
   ['Do you work with private clients?', 'No — Artilier works to the trade only, with interior designers, architects and design practices.'],
-  common.samples, common.adapt, common.time, common.contract]))}
+  ['Can a Hamptons rug be timed to the season?', 'Tell us the date the rug must be on site. Lead time is given per project once construction, size and sampling are agreed, so the earlier the brief, the more options remain open.'],
+  common.contract]))}
 ${ctaBlock(UP2, 'contact/?type=residential', 'Start a US project', [...marketLinks('us'), ['collection/','The collection']])}`
 });
 

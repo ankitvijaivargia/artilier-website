@@ -55,7 +55,10 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Gold",
+        "Warm brown"
+      ],
       "description": "A bold chevron in gold and warm brown, drawn at a large scale so the geometry reads clearly across an open floor. Hand-knotted, and one of the more graphic pieces in the collection.",
       "intent": "",
       "leadTime": null,
@@ -63,7 +66,8 @@
       "order": 2,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Large-scale chevron, geometric"
     },
     {
       "slug": "dua",
@@ -87,7 +91,9 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Antique gold"
+      ],
       "description": "An all-over botanical in antique gold, densely drawn and low in contrast, so it reads as texture from standing height and as pattern up close. Hand-knotted.",
       "intent": "",
       "leadTime": null,
@@ -95,7 +101,8 @@
       "order": 3,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "All-over botanical, low contrast"
     },
     {
       "slug": "anhad",
@@ -119,7 +126,11 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Black",
+        "Ivory",
+        "Gold"
+      ],
       "description": "A classical floral field on a black ground, framed by a deep border in ivory and gold. Hand-knotted, and built for rooms that can carry a dark, formal floor.",
       "intent": "",
       "leadTime": null,
@@ -127,7 +138,8 @@
       "order": 4,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Classical floral field with a deep border"
     },
     {
       "slug": "nazm",
@@ -151,7 +163,10 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Rust",
+        "Charcoal"
+      ],
       "description": "A crackled, branching structure in rust and charcoal — closer to a drawing than a repeat. Hand-knotted, and the kind of piece that works as the single strong element in a restrained room.",
       "intent": "",
       "leadTime": null,
@@ -159,7 +174,8 @@
       "order": 5,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Crackled, branching abstract"
     },
     {
       "slug": "sahar",
@@ -215,7 +231,10 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Soft blue",
+        "Grey"
+      ],
       "description": "An Oushak-inflected floral in soft blues and greys, open and unhurried in its drawing. Hand-knotted, and easy to place in a light interior.",
       "intent": "",
       "leadTime": null,
@@ -223,7 +242,8 @@
       "order": 7,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Oushak-inflected floral"
     },
     {
       "slug": "zameen",
@@ -247,7 +267,9 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Deep indigo"
+      ],
       "description": "A deep indigo ground carrying an all-over classical floral and a defined border. Hand-knotted, and the most saturated piece in the knotted group.",
       "intent": "",
       "leadTime": null,
@@ -255,7 +277,8 @@
       "order": 8,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "All-over classical floral with a defined border"
     },
     {
       "slug": "mehr",
@@ -279,7 +302,10 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Pale blue",
+        "Grey"
+      ],
       "description": "Pale blue and grey, drawn in the Oushak manner with generous spacing between motifs. Hand-knotted, and suited to rooms with a lot of natural light.",
       "intent": "",
       "leadTime": null,
@@ -287,7 +313,8 @@
       "order": 9,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Oushak manner, widely spaced motifs"
     },
     {
       "slug": "aab",
@@ -503,7 +530,10 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Navy",
+        "Multicolour"
+      ],
       "description": "A multicoloured ikat on a navy ground, dense and rhythmic across the whole field. Hand-tufted, which suits the saturated colour and repeated motif.",
       "intent": "",
       "leadTime": null,
@@ -511,7 +541,8 @@
       "order": 1,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Ikat, all-over repeat"
     },
     {
       "slug": "girah",
@@ -535,7 +566,10 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Grey",
+        "Black"
+      ],
       "description": "A painterly abstract in grey and black, drawn with the freedom of a brush rather than a repeat. Hand-tufted, so the artwork can be followed closely.",
       "intent": "",
       "leadTime": null,
@@ -543,7 +577,8 @@
       "order": 2,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Painterly abstract"
     },
     {
       "slug": "parat",
@@ -567,7 +602,14 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Cream",
+        "Orange",
+        "Rose",
+        "Blue",
+        "Green",
+        "Navy"
+      ],
       "description": "A cream ground carrying oversized marigold blooms in orange and rose, with blue and green foliage and navy birds worked across the field. Hand-tufted.",
       "intent": "",
       "leadTime": null,
@@ -575,7 +617,8 @@
       "order": 3,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Oversized marigold florals with foliage and birds"
     },
     {
       "slug": "silai",
@@ -599,7 +642,11 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Red",
+        "Gold",
+        "Pale blue-green"
+      ],
       "description": "Bands of small repeating motifs in red and gold across a pale blue-green ground. Hand-tufted.",
       "intent": "",
       "leadTime": null,
@@ -607,7 +654,8 @@
       "order": 4,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Bands of small repeating motifs"
     },
     {
       "slug": "uchaan",
@@ -631,7 +679,9 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Black"
+      ],
       "description": "An all-over classical floral on a black ground. Hand-tufted, and a straightforward way to bring a formal pattern into a room at a shorter lead time.",
       "intent": "",
       "leadTime": null,
@@ -639,7 +689,8 @@
       "order": 5,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "All-over classical floral"
     },
     {
       "slug": "talab",
@@ -663,7 +714,10 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Ivory",
+        "Gold"
+      ],
       "description": "An ivory and gold medallion held inside a full border. Hand-tufted.",
       "intent": "",
       "leadTime": null,
@@ -671,7 +725,8 @@
       "order": 6,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Medallion within a full border"
     },
     {
       "slug": "bhanwar",
@@ -695,7 +750,10 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Soft rose",
+        "Beige"
+      ],
       "description": "A soft rose and beige classical floral, even across the field. Hand-tufted.",
       "intent": "",
       "leadTime": null,
@@ -703,7 +761,8 @@
       "order": 7,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "All-over classical floral"
     },
     {
       "slug": "ojas",
@@ -727,7 +786,10 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Dark brown",
+        "Ivory"
+      ],
       "description": "A dark brown ground framed by a wide ivory classical border. Hand-tufted.",
       "intent": "",
       "leadTime": null,
@@ -735,7 +797,8 @@
       "order": 8,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Plain ground with a wide classical border"
     },
     {
       "slug": "ghata",
@@ -759,7 +822,10 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Ivory",
+        "Gold"
+      ],
       "description": "An ivory and gold medallion, traditionally drawn. Hand-tufted.",
       "intent": "",
       "leadTime": null,
@@ -767,7 +833,8 @@
       "order": 9,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Traditional medallion"
     },
     {
       "slug": "vartul",
@@ -791,7 +858,11 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Terracotta",
+        "Blue",
+        "Sand"
+      ],
       "description": "Curved bands of terracotta, blue and sand meeting across the field — a contemporary landscape rather than a pattern. Hand-tufted, with carving used to separate the colour areas.",
       "intent": "",
       "leadTime": null,
@@ -799,7 +870,8 @@
       "order": 10,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Contemporary landscape of curved bands, carved"
     },
     {
       "slug": "kalp",
@@ -823,7 +895,11 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Blue",
+        "Rust",
+        "Grey"
+      ],
       "description": "A distressed painterly abstract in blue, rust and grey, built up in layers. Hand-tufted, which lets the mixed pile heights carry the depth of the artwork.",
       "intent": "",
       "leadTime": null,
@@ -831,7 +907,8 @@
       "order": 11,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Distressed, layered painterly abstract"
     },
     {
       "slug": "reth",
@@ -855,7 +932,9 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Sand"
+      ],
       "description": "A sand ground interrupted by a single circular motif and loose marks. Hand-tufted, and one of the most graphic pieces in the collection.",
       "intent": "",
       "leadTime": null,
@@ -863,7 +942,8 @@
       "order": 12,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Single circular motif with loose marks"
     },
     {
       "slug": "sutra",
@@ -1143,7 +1223,9 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Camel"
+      ],
       "description": "A camel ground with the faintest linear detail. Flatweave, close to plain.",
       "intent": "",
       "leadTime": null,
@@ -1151,7 +1233,8 @@
       "order": 9,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Near-plain, faint linear detail"
     },
     {
       "slug": "rekha",
@@ -1175,7 +1258,10 @@
       ],
       "availableConstructions": [],
       "availableMaterials": [],
-      "palette": [],
+      "palette": [
+        "Natural fibre",
+        "Brown"
+      ],
       "description": "A natural fibre ground carrying a brown diamond pattern. Flatweave.",
       "intent": "",
       "leadTime": null,
@@ -1183,7 +1269,8 @@
       "order": 10,
       "published": true,
       "detail": true,
-      "cta": null
+      "cta": null,
+      "pattern": "Diamond pattern"
     },
     {
       "slug": "vyom",

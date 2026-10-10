@@ -49,3 +49,15 @@
 .nf{min-height:70vh;display:grid;align-content:center;gap:22px;padding:140px var(--pad) 80px}
 .nf .links{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:8px}
 .nf .links a{font-size:13px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--sand);padding-bottom:4px}
+
+/* Header fit on narrow phones (measured overflow of 7–50px at 320–390px with
+   the real fonts). Tighter gaps keep logo, Menu and the CTA on one line; below
+   340px the header CTA steps aside — the menu and the sticky bar both carry
+   "Start a project". Desktop and tablet are untouched. */
+@media (max-width:440px){
+  nav{gap:12px}
+  nav .burger{letter-spacing:.12em;gap:6px}
+}
+@media (max-width:340px){
+  nav > .cta{display:none}
+}

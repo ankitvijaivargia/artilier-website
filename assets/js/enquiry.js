@@ -40,21 +40,6 @@
       form.appendChild(trap);
     }
 
-    /* pre-fill from the CTA that brought the visitor here */
-    const design = (qs.get('design') || '').replace(/[^a-z0-9-]/gi, '').slice(0, 40);
-    const type = (qs.get('type') || '').replace(/[^a-z0-9-]/gi, '').slice(0, 40);
-    if (design) {
-      hidden('design_reference', design);
-      const sel = form.querySelector('[name=enquiry]');
-      if (sel) [...sel.options].forEach(o => { if (/collection, re-sized/i.test(o.text)) sel.value = o.value || o.text; });
-      const ta = form.querySelector('[name=brief]');
-      if (ta && !ta.value) ta.value = `About ${titleCase(design)} from the collection — `;
-    }
-    if (type) {
-      const sec = form.querySelector('[name=sector]');
-      if (sec) [...sec.options].forEach(o => { if ((o.value || '').toLowerCase() === type.toLowerCase()) sec.value = o.value; });
-    }
-
     form.addEventListener('submit', async e => {
       e.preventDefault();
       if (sending || Date.now() - sentAt < 4000) return;   // in flight, or a double-click just after success
@@ -99,8 +84,29 @@
       } finally {
         sending = false;
         if (btn) { btn.disabled = false; btn.innerHTML = label; }
-        status.focus && status.setAttribute('tabindex', '-1');
       }
     });
+
+    /* Pre-fill from the CTA that brought the visitor here. Runs after the
+       submit handler is attached and can never stop the form from working. */
+    try {
+      const design = (qs.get('design') || '').replace(/[^a-z0-9-]/gi, '').slice(0, 40);
+      const type = (qs.get('type') || '').replace(/[^a-z0-9-]/gi, '').slice(0, 40).toLowerCase();
+      if (design) {
+        hidden('design_reference', design);
+        const sel = form.querySelector('select[name=enquiry]');
+        if (sel) [...sel.options].forEach(o => { if (/collection, re-sized/i.test(o.text)) sel.value = o.value || o.text; });
+        const coll = form.querySelector('input[name=sector][value=collection]');
+        if (coll) coll.checked = true;
+        const ta = form.querySelector('[name=brief]');
+        if (ta && !ta.value) ta.value = `About ${titleCase(design)} from the collection — `;
+      }
+      if (type) {
+        const radio = [...form.querySelectorAll('input[type=radio][name=sector]')].find(r => r.value.toLowerCase() === type);
+        if (radio) radio.checked = true;
+        const sel = form.querySelector('select[name=sector]');
+        if (sel) [...sel.options].forEach(o => { if ((o.value || o.text).toLowerCase() === type) sel.value = o.value || o.text; });
+      }
+    } catch (err) { /* pre-fill is a convenience only */ }
   });
 })();

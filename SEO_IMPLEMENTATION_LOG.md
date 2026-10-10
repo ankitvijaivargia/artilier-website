@@ -2,7 +2,7 @@
 
 Branch: `seo/global-visibility-implementation` (from `main` @ `12f0d5c`, 7 Sept 2026)
 Baseline: *ARTILIER — Global SEO & International Visibility Audit*, 10 Oct 2026
-Status: **implemented in code and tested locally. Not deployed.** Nothing here is live until the pull request is merged into `main`.
+Status: **implemented, reviewed and re-tested on the branch; a Cloudflare preview is deployed. Not merged, not in production.** See `PR_REVIEW_REPORT.md` for the review round of 10 Oct (PM).
 
 Evidence labels: **Verified** (checked in code or a test run), **Local lab** (measured on a local server, not production), **Pending** (needs the owner, an account, or Google).
 
@@ -84,16 +84,7 @@ Not changed, deliberately: Google Fonts loading (moving to `media=print` swaps o
 
 ## 5. Business information needed from the owner
 
-1. **Working terms** for Trade / Bespoke / Hospitality: minimum order (if any), typical lead-time ranges per construction, sample and strike-off cost and timing, Incoterms or delivery basis, currencies quoted.
-2. **WhatsApp**: a verified ARTILIER business number. None is published; the click tracking is ready for when one is added.
-3. **Language**: can the studio reply in French? If yes, `/fr/` can say so and an `/fr/contact/` page becomes worthwhile.
-4. **Market facts** to strengthen the market pages: whether samples ship to the UAE/KSA (and on what terms), any local partners, and confirmation that the UAE/KSA working-week notes suit how you work.
-5. **Hospitality specification**: which fire, wear or cleaning standards you can document today. The page asks clients to state requirements; it promises nothing.
-6. **Per-design data** (for `content/designs.json`): yarn/material, palette, sizes already made, any reference size. Each field filled adds unique, true content to that design page automatically.
-7. **Projects**: photographs + designer permission for any completed work → `content/projects.json`, and `/projects/` becomes indexable.
-8. **Profiles**: a LinkedIn company page URL (to add to `sameAs`).
-9. **Analytics IDs**: Cloudflare Web Analytics token (optional), GA4 measurement ID if wanted (see §6 on consent).
-10. **Backlinks**: confirm no link-building service was ever paid for artilier.co (§7).
+Moved to **`OWNER_INPUT_REQUIRED.md`** (working terms, WhatsApp, French replies, hospitality standards, market facts, per-design data report, access).
 
 ## 6. External setup (owner steps)
 
@@ -171,26 +162,11 @@ Tick after deploy: Inspected in GSC · Indexed · Shows in `site:`
 
 ## 9. Safe deployment checklist
 
-1. Review the pull request diff and preview the new pages.
-2. Supply or confirm items in §5 that you want live on day one (the pages are honest without them).
-3. Merge into `main` (this triggers the Cloudflare deploy).
-4. Within 15 minutes: open `/`, `/contact/`, `/hospitality/`, `/fr/`, a design page and a nonsense URL; send one real enquiry and confirm it arrives at studio@artilier.co.
-5. Confirm `/about`, `/contact`, `/projects` resolve to the new pages and old anchors still work.
-6. Run the §6 Search Console and Bing steps; submit the sitemap.
-7. Rollback if needed: revert the merge commit on `main` — the previous site redeploys.
+Moved to **`SEO_LAUNCH_CHECKLIST.md`** (pre-merge, deploy, post-deploy verification, measurement setup, rollback).
 
 ## 10. 30-day roadmap
 
-| Days | Action | Owner |
-| --- | --- | --- |
-| 1–3 | Merge, verify deploy, live test enquiry; GSC + Bing verification, sitemap, priority URL inspections | Ankit |
-| 1–3 | Enable Cloudflare Web Analytics | Ankit |
-| 3–7 | PageSpeed + Rich Results on live pages; fix anything measured | Claude |
-| 4–10 | Supply working terms, per-design data, LinkedIn URL → regenerate pages | Ankit → Claude |
-| 7–14 | BIID Industry Partner application; SpecifiedBy listing; COVER magazine pitch | Ankit |
-| 14 | First GSC check: indexed count vs 40, countries, queries | Claude |
-| 20–30 | Downtown Design Dubai (4–8 Nov) visit with samples; first project photography → `/projects/` | Ankit |
-| 30 | Review: indexation, impressions by country, enquiries with attribution; decide next market page depth and first journal guide | Both |
+Moved to **`SEO_30_DAY_ROADMAP.md`**.
 
 ## 11. Code changes vs outcomes that need the outside world
 
@@ -202,3 +178,35 @@ Tick after deploy: Inspected in GSC · Indexed · Shows in `site:`
 | Faster first paint (local lab) | Core Web Vitals from real users |
 | Market and French pages | Rankings, impressions, enquiries from those markets |
 | Organization entity | Brand recognition for "artilier"; external listings and links |
+
+
+## 12. Review round 2 (10 Oct 2026, afternoon) — current status
+
+Details and evidence: `PR_REVIEW_REPORT.md`. Fixes are in the follow-up commit on `seo/global-visibility-implementation`.
+
+**Verified and resolved**
+- Contact form crash on `?type=` links (hospitality, market, bespoke, category CTAs) — submit handler now attached before pre-fill; radio pre-fill works; forms POST to Formspree even without JavaScript (never GET)
+- Mobile header overflow (pre-existing) — fits from 320 px to 1440 px with real fonts
+- Design schema `CreativeWork.artMedium` → `VisualArtwork` with `artform`/`artMedium`
+- Market-page copy overlap 18–27% → 2–10% (market-specific FAQs)
+- Design pages: "Pattern" and "Colours shown" from each design's own description; keywords in schema
+- Analytics carries no personal data; one lead event per submission; no duplicate contact-click events
+- Build reproducible; `check.py` OK; 22 URLs × 4 widths with 0 JS errors and 0 horizontal scroll
+
+**Implemented, awaiting live verification** (preview or production)
+- Formspree delivery to studio@artilier.co (one real test enquiry)
+- Cloudflare `_redirects`, `not_found_handling: "404-page"`, `_headers` for `/assets/og/`, `.assetsignore` exclusions
+- Hero-film deferral and poster preload on real devices; PageSpeed values
+- Social preview images rendering in WhatsApp/LinkedIn
+
+**Blocked by external account access**
+- Google Search Console, Bing Webmaster Tools, Cloudflare Web Analytics activation, optional GA4, Formspree settings, PageSpeed on production (quota/availability)
+
+**Blocked by missing business information** (`OWNER_INPUT_REQUIRED.md`)
+- Working terms (minimums, lead times, sampling, shipping), WhatsApp number, French-language replies, hospitality test documentation, per-design materials and sizes, Talab/Ghata descriptions, projects, LinkedIn URL
+
+**Not yet implemented**
+- Editorial guides for specifiers (planned for week 3)
+- French enquiry form (depends on French replies)
+- Self-hosted fonts (only if PageSpeed shows font loading as an LCP or CLS cost)
+- Arabic content (only if Arabic queries appear in Search Console)
