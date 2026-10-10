@@ -7,13 +7,13 @@ Facts and access only you can supply. Nothing below has been guessed or borrowed
 Currently the site says: *"Costing and lead times follow once construction, materials, dimensions and sampling are understood."*
 
 - [x] **Minimum order** — none; single pieces welcome (owner, 10 Oct 2026) — published
-- [x] **Typical lead time** — usually 6–12 weeks, up to 6 months in some cases (owner, 10 Oct 2026) — published. measured from strike-off approval (owner) — published. Still open: any split by construction
-- [x] **Strike-off timing** — 2–3 weeks after design/sketch approval (owner, 10 Oct 2026) — published. Strike-off cost is credited against the order (owner) — published. Still open: strike-off size
+- [x] **Typical lead time** — usually 6–12 weeks, up to 6 months in some cases (owner, 10 Oct 2026) — published. measured from strike-off approval (owner) — published. Differs by construction (owner); per-construction ranges not given, so the site keeps 'hand-knotting takes longest'
+- [x] **Strike-off timing** — 2–3 weeks after design/sketch approval (owner, 10 Oct 2026) — published. Strike-off cost is credited against the order (owner) — published. Strike-off size depends on the design (owner) — published
 - [ ] **Approval stages** — confirm the six stages on `/process/` are how projects actually run
-- [ ] **Packaging** — rolled, wrapped, crated? Any moisture/fumigation treatment for export?
-- [ ] **Shipping terms** — usual Incoterms (EXW, FOB, CIF, DAP, DDP?), air vs sea, who handles import duties
-- [ ] **Currencies quoted** (USD, EUR, GBP, AED, INR)
-- [ ] **Payment terms** if you want them public (e.g. deposit on order)
+- [x] **Packaging** — mostly rolled (owner, 10 Oct 2026) — published. Still open: any fumigation/moisture treatment
+- [x] **Shipping terms** — usually ex-works; FOB or DDP quoted separately on request (owner) — published
+- [x] **Currencies quoted** — USD or EUR (owner) — published
+- [x] **Payment terms** — 50% advance, 50% before shipping (owner) — published
 
 ## B. Contact and language
 

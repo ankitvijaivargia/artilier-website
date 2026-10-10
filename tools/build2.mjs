@@ -89,11 +89,13 @@ const bespoke = page({
   <div class="mats">
     <div>Yarn samples <span>Approved in hand</span></div>
     <div>Colour trials <span>Against your scheme</span></div>
-    <div>Woven strike-off <span>2–3 weeks · credited against the order</span></div>
+    <div>Woven strike-off <span>Sized to the design · 2–3 weeks · credited against the order</span></div>
     <div>Initial cost range <span>Once there is enough information</span></div>
     <div>Lead time <span>Usually 6–12 weeks from strike-off approval</span></div>
     <div>Minimum order <span>None — single pieces welcome</span></div>
     <div>Progress photography <span>At agreed points</span></div>
+    <div>Pricing <span>USD or EUR · usually ex-works</span></div>
+    <div>Payment <span>50% advance · 50% before shipping</span></div>
   </div>
   <p class="proc-note" style="color:rgba(247,243,235,.62)">Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases; we confirm the timeline for each project, and costing becomes more precise as the artwork, construction, materials and sampling are resolved. Hand-made production varies with construction, yarn availability and loom capacity — hand-knotting takes longest, hand-tufting is shorter — and we tell you about changes as they arise, not after the fact.</p>
 </section>
@@ -145,7 +147,7 @@ const trade = page({
 </section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">Costing</span><h2 class="d2">What we can say,<br>and <span class="it">when.</span></h2></div>
-  <p class="bd">There is no minimum order — we make single pieces as readily as multi-rug schedules. A woven strike-off takes 2–3 weeks once the design or sketch is approved, and its cost is credited against the order. Lead times usually run 6–12 weeks from strike-off approval, extending to six months in some cases. Costing follows once construction, materials, dimensions and sampling requirements are understood, and becomes more precise as the artwork is resolved. Hand-made production can vary with construction, yarn availability and loom capacity, and we communicate changes as they arise. See <a href="${up}process/">the process</a> for where each of those decisions is taken.</p></div>
+  <p class="bd">There is no minimum order — we make single pieces as readily as multi-rug schedules. A woven strike-off takes 2–3 weeks once the design or sketch is approved, and its cost is credited against the order. Lead times usually run 6–12 weeks from strike-off approval, extending to six months in some cases. Costing follows once construction, materials, dimensions and sampling requirements are understood, and becomes more precise as the artwork is resolved. Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment is 50% in advance and 50% before shipping, and rugs are usually shipped rolled. Hand-made production can vary with construction, yarn availability and loom capacity, and we communicate changes as they arise. See <a href="${up}process/">the process</a> for where each of those decisions is taken.</p></div>
 </section>
 <section class="sec dark">
   <div class="sec-hd"><div><span class="lb">Who we work with</span><h2 class="d2">Practices, not<br><span class="it">shoppers.</span></h2></div>
