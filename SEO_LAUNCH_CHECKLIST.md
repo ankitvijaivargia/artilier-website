@@ -1,10 +1,10 @@
-# Launch checklist — PR #11 (current release candidate)
+# Launch checklist — PR #11 (released 10 Oct 2026)
 
-PR #11 · `seo/growth-engine-p1` → `main` · *SEO growth engine P1: readable pages, French localisation, briefing guide, plans*
+PR #11 · `seo/growth-engine-p1` → `main` · merged by the owner on 10 Oct 2026, 22:50 IST (merge commit `b5814bd`, head `ae27880`). Follow-up: PR #12 removes the last homepage size claim (see §2 C).
 
 Rule: a box is ticked only with evidence (a screenshot, an email received, a dashboard showing data). Nothing on an external account (Cloudflare, Google, Bing, Formspree) has been changed by Claude.
 
-Earlier releases: PR #5 (contact page, analytics code, market and French pages) and PRs #6–#9 (positioning, Bing tag, working and commercial terms) are merged and live. Their history is in `SEO_IMPLEMENTATION_LOG.md` and `PR_REVIEW_REPORT.md`.
+Earlier releases: PR #5 (contact page, analytics code, market and French pages) and PRs #6–#9 (positioning, Bing tag, working and commercial terms). Their history is in `SEO_IMPLEMENTATION_LOG.md` and `PR_REVIEW_REPORT.md`.
 
 ## 1. How this site deploys
 
@@ -13,36 +13,36 @@ Earlier releases: PR #5 (contact page, analytics code, market and French pages) 
 - Every push to a PR branch builds a **preview** and posts its links on the PR (comment by *cloudflare-workers-and-pages[bot]*). The **Branch Preview URL** always shows the latest commit on the branch: `https://seo-growth-engine-p1-artilier-website.ankit-vijaivargia.workers.dev`
 - There is no build step on Cloudflare: the HTML in the repo is what is served. Pages are generated locally from `tools/build*.mjs` and committed (see `README.md`).
 
-## 2. Status of this release candidate
+## 2. Release status
 
-| Item | Status | Evidence |
-|---|---|---|
-| PR #11 | Open, not merged | GitHub |
-| Build | Generators re-run on the branch reproduce the committed HTML | Local, release review |
-| `tools/check.py` | OK — **43 pages checked, 41 indexable, 41 in sitemap**; 0 broken links; titles/descriptions unique and within length; one H1; valid JSON-LD; alt text; no manufacturing locations named | Local, release review (counts re-derived from the branch) |
-| Contrast — defects fixed by this PR | Invisible or near-invisible text removed: 24 lead-ins on `/trade/uae/`, `/trade/saudi-arabia/`, `/trade/uk/`, `/fr/`; 19 grid items on `/trade/`; names on `/about/`; facts on `/craft/`. Every component styled by this PR passes WCAG AA | Local headless Chromium |
-| WCAG AA contrast (1.4.3 / 1.4.11) | **Not compliant site-wide — pre-existing.** Audit of 20 pages at 1440 and 390 px with 4.5:1 for normal text, 3:1 for large text (≥24 px, or ≥18.66 px bold) and 3:1 for UI boundaries and focus indicators: 430 text instances below threshold (538 on `main`), all from four shared styles that predate this PR — muted text `--tx-3` (3.3–3.7:1), footer bottom line (3.3:1), the "Start a project" band on rust (3.5–4.2:1); plus form-field underlines (1.7:1) and the focus ring on the rust band. None blocks this release; fixing them changes palette values and needs a separate, owner-approved PR | Local headless Chromium |
-| Responsive | 11 URLs × 360/390/768/1440 px: 0 JS errors, 0 horizontal overflow, header fits, one H1; mobile menu opens and closes (Escape) | Local headless Chromium |
-| Enquiry form logic | 31/31 checks passed with the Formspree endpoint **intercepted (mocked)**: validation, one POST on double-click, success only after 200, error on 500 and on network failure, honeypot, attribution, design and CTA-page capture, keyboard submit, no personal data in analytics events | Local, mocked — **not a delivery test** |
-| Cloudflare preview build | See PR checks for the latest commit | GitHub |
-| **Live enquiry delivery** | **Outstanding** — no real enquiry has been sent | Owner step §4 |
-| **Search Console** | **Outstanding** — not verified | Owner step §5 |
-| **Cloudflare Web Analytics** | **Outstanding** — not enabled in code; dashboard status unknown | Owner step §5 |
-| Production | Unchanged until merge | — |
+### A. Completed and verified
+- [x] PR #11 merged into `main` by the owner (merge commit `b5814bd`; tree identical to reviewed head `ae27880`). `main` has no branch protection; no review was required
+- [x] Cloudflare production build for `b5814bd` — *Workers Builds: artilier-website* **success** (build `8044164b`, 17:21 UTC)
+- [x] Pre-merge checks at `ae27880`: build reproducible; `check.py` 43 pages / 41 indexable / 41 in sitemap; 1,343 internal links, 0 broken; 11 URLs × 360/390/768/1440 px with 0 JS errors and 0 overflow (local headless Chromium)
+- [x] Live content read back from artilier.co after deploy (web fetch): sitemap lists **41** URLs including `/guides/briefing-a-bespoke-rug/`; `robots.txt` allows all and references the sitemap; `pages.css?v=3` serves the new rules; canonical and `og:url` correct on `/`, `/contact/`, `/about/`, `/trade/`, `/hospitality/`, `/craft/`, `/collection/`, `/fr/`, the guide; `/fr/` shows French navigation, footer and terms with `og:locale fr_FR`; `/404.html` shows the branded page with `noindex,follow`; `/about` (no slash) resolves to the About page; header "Start a project" links directly to `/contact/`; no town names, certifications, clients or projects found on the pages checked
 
-## 3. Before merging (pre-merge)
+### B. Completed but not independently verified
+- [ ] **HTTP status codes and console errors on production.** The workspace cannot reach artilier.co directly and no browser was available, so pages were read by a fetch tool that does not report status codes, redirect hops or console output. A nonexistent URL returned a client error (consistent with 404, code not visible)
+- [ ] **Stylesheet reference on live pages.** `pages.css?v=3` itself is served; that every live page references `v=3` was verified in the repository, not in production HTML
+- [ ] **Enquiry form on production.** Logic tested 31/31 against a mocked endpoint; no real submission was made
 
-Open the **Branch Preview URL** above on a laptop and on a phone, and check:
+### C. Pending owner action
+- [ ] Merge **PR #12** — the homepage "Values" strip still says "Any *dimension*" (split by markup, missed by every earlier text scan). PR #12 replaces it and adds a `check.py` guard so it cannot return
+- [ ] **Live enquiry test** — §4 below (only you can confirm the email arrives at studio@artilier.co)
+- [ ] **Status-code check** in a browser — Chrome DevTools → Network: an unknown URL returns 404; `/about` returns one 301 to `/about/`
+- [ ] **Search Console** and **Cloudflare Web Analytics** — §5 below; neither is configured
+- [ ] Guide items still open in `OWNER_INPUT_REQUIRED.md` (revision practice, file formats, maximum widths)
 
-- [ ] `/trade/uae/`, `/trade/saudi-arabia/`, `/trade/uk/` — the bold opening words in the dark bands ("Villas and private residences —", "Rug schedule —") are readable
-- [ ] `/trade/` — the "From specification to site" list is readable
-- [ ] `/fr/` — menu, buttons and footer are in French; "Délais et conditions" shows the terms; tap Menu → it reads "Fermer"
-- [ ] `/guides/briefing-a-bespoke-rug/` — **read it in full**; every statement must be true of how the studio works. Mark anything to change. (It no longer says every rug is checked against its strike-off before dispatch, or that revisions continue until right — confirm those in `OWNER_INPUT_REQUIRED.md` §A and §H if you want them stated)
-- [ ] `/collection/reth/` → "Enquire about Reth" → the contact form opens with "A collection design" selected
-- [ ] An unknown address such as `/xyz/` shows the branded "This page is not here" page
-- [ ] Do **not** submit the form on the preview unless the preview host is in Formspree's allowed domains — a blocked submission shows the error message, which is expected
-- [ ] Optional: answer anything in `OWNER_INPUT_REQUIRED.md` you want live on day one (§B French replies, §I hospitality scope)
-- [ ] Tell Claude "approved to merge" (Claude will not merge without it)
+### D. Future improvements (separate PRs)
+- WCAG AA contrast — pre-existing failures: muted grey text `--tx-3` (3.3–3.7:1), footer bottom line (3.3:1), the rust "Start a project" band on `/collection/` (3.5–4.2:1), form-field underlines (1.7:1), focus outline on the rust band. The site is **not** AA-compliant overall
+- The 21 design pages are templated and thin (14–24% unique phrasing) — need a short design note per piece
+- `og:locale` missing on `/collaborations/` and `/collection/` (still absent in production)
+- Legacy `/collection/design.html` (noindex, unlinked) links to `index.html`, which redirects
+
+
+## 3. Before merging (done for PR #11)
+
+Kept for the next release: open the Branch Preview URL, check the changed pages on a laptop and a phone, read new copy in full, then tell Claude "approved to merge".
 
 ## 4. Merge and post-deployment checks
 
