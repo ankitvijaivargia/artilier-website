@@ -140,6 +140,7 @@ const contact = shell({
       </div>
       <div class="contact-opts">
         <a href="mailto:studio@artilier.co"><b>Email</b>studio@artilier.co</a>
+        <a href="https://wa.me/919828080095" target="_blank" rel="noopener"><b>WhatsApp</b>+91 98280 80095</a>
         <a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener"><b>Instagram</b>@artilier.co</a>
         <span><b>Studio</b>New Delhi, India</span>
         <span><b>Clients</b>Trade only — designers · architects · studios</span>
@@ -302,7 +303,7 @@ ${sec('Typical briefs', 'Large rooms,', 'exact sizes.', list([
   '<b>Rugs from your own artwork</b> — a painting, pattern or CAD file developed into a finished rug. See <a href="'+UP2+'bespoke/">bespoke development</a>'
 ]), { dark:true })}
 ${sec('Working together', 'An hour and a half', 'apart.', `<div class="prose">
-    <p>New Delhi (IST, UTC+5:30) is one hour thirty minutes ahead of the UAE (GST, UTC+4), and the UAE working week largely runs Monday to Friday — so most of a Dubai or Abu Dhabi working day overlaps with ours. Briefs, drawings and approvals move by email; samples and strike-offs are approved in the hand before production.</p>
+    <p>New Delhi (IST, UTC+5:30) is one hour thirty minutes ahead of the UAE (GST, UTC+4), and the UAE working week largely runs Monday to Friday — so most of a Dubai or Abu Dhabi working day overlaps with ours. Briefs, drawings and approvals move by email, and for a quick question you can also <a href="https://wa.me/919828080095" target="_blank" rel="noopener">WhatsApp the studio</a>; samples and strike-offs are approved in the hand before production.</p>
   </div>`)}
 ${sec('What to send', 'A useful', 'UAE brief.', list([
   '<b>Rug schedule</b> — room, quantity and size, in metres or centimetres',
@@ -338,7 +339,7 @@ ${sec('Planning', 'Long programmes,', 'early schedules.', `<div class="prose">
     <p>On Saudi specifications “carpet” is common, particularly in hospitality. Our work is hand-made rugs in three constructions — hand-knotted, hand-tufted and flatweave — made to each room’s size.</p>
   </div>`, { dark:true })}
 ${sec('Working together', 'Two and a half', 'hours apart.', `<div class="prose">
-    <p>Saudi Arabia (AST, UTC+3) is two hours thirty minutes behind New Delhi (IST, UTC+5:30), and the Saudi working week runs Sunday to Thursday. Briefs, drawings and approvals move by email; samples and strike-offs are approved in the hand before production.</p>
+    <p>Saudi Arabia (AST, UTC+3) is two hours thirty minutes behind New Delhi (IST, UTC+5:30), and the Saudi working week runs Sunday to Thursday. Briefs, drawings and approvals move by email, and for a quick question you can also <a href="https://wa.me/919828080095" target="_blank" rel="noopener">WhatsApp the studio</a>; samples and strike-offs are approved in the hand before production.</p>
   </div>`)}
 ${sec('What to send', 'A useful', 'Saudi brief.', list([
   '<b>Rug schedule</b> — by building or phase: room, quantity and size in metres or centimetres',

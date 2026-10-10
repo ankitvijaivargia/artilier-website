@@ -17,7 +17,7 @@ Currently the site says: *"Costing and lead times follow once construction, mate
 
 ## B. Contact and language
 
-- [ ] **WhatsApp business number for ARTILIER** (not the Art Avenue retail number unless you want them shared). Click tracking is ready; no number is published today
+- [x] **WhatsApp** — +91 98280 80095 (owner, 10 Oct 2026) — quiet text link on Contact, UAE and Saudi pages only; no floating button
 - [ ] **French**: can the studio reply in French? If yes, `/fr/` will say so and a French enquiry form becomes worthwhile. If no, the page keeps pointing to email
 - [ ] **Arabic**: any capability? (Not needed now; recorded for later)
 - [ ] **Usual reply time** you are comfortable promising (currently "usually within a few working days" in the form confirmation — confirm or change)
