@@ -210,3 +210,17 @@ Details and evidence: `PR_REVIEW_REPORT.md`. Fixes are in the follow-up commit o
 - French enquiry form (depends on French replies)
 - Self-hosted fonts (only if PageSpeed shows font loading as an LCP or CLS cost)
 - Arabic content (only if Arabic queries appear in Search Console)
+
+## 13. Growth-engine round (10 Oct 2026, evening) — branch `seo/growth-engine-p1`
+
+Planning documents: `SEO_GROWTH_BASELINE.md`, `SEO_COMPETITOR_AND_KEYWORD_RESEARCH.md`, `SEO_SITE_ARCHITECTURE.md`, `SEO_EDITORIAL_ROADMAP.md`, `INTERNATIONAL_SEO_STRATEGY.md`, `SEO_AUTHORITY_BUILDING_PLAN.md`, `SEO_MEASUREMENT_FRAMEWORK.md`, `SEO_90_DAY_EXECUTION_PLAN.md`; `OWNER_INPUT_REQUIRED.md` §H–K added. All excluded from the deploy via `.assetsignore`.
+
+| Change | Files | Test |
+|---|---|---|
+| Dark-section list lead-ins were ink on dark (unreadable on live market and hospitality pages) → paper; `pages.css?v=2` | `assets/css/pages.css`, generators, hand-maintained pages | Computed colour `rgb(247,243,235)` in Chromium |
+| `/fr/`: French nav, menu (Menu/Fermer), header CTA, footer; confirmed working terms in French; heading and wording fixes | `tools/build.mjs`, `tools/build3.mjs` | Screenshot 390/1440 px |
+| `/trade/uae/`, `/trade/uk/`: lead-time and minimum FAQ; UK title "Bespoke Rugs to the Trade — London & UK Designers" | `tools/build3.mjs` | `check.py` |
+| New `/guides/briefing-a-bespoke-rug/` (Article schema; sitemap; footer, bespoke and market links) | `tools/build3.mjs`, `tools/build.mjs`, `tools/build2.mjs` | `check.py`; screenshots |
+| Related designs rotate through siblings (inlinks 2–13 → 3–5 per design) | `tools/build.mjs` | Link count script |
+
+`check.py`: 43 pages, 41 indexable, 41 in sitemap, OK. Chromium at 360/390/768/1440 px on 8 URLs: 0 JS errors, 0 horizontal overflow. English pages other than the above changed only by the footer guide link and CSS version.
