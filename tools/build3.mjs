@@ -99,7 +99,7 @@ const enquiryForm = (id = 'contactForm') => `
       <select id="c-ct" name="enquiry">
         <option>Bespoke rug from my own artwork</option><option>A design from the collection, re-sized</option>
         <option>A design from the collection, re-coloured</option><option>Several rugs for one project</option>
-        <option>Embroidery — panels, framed art, upholstery or soft furnishings</option>
+        <option>Embroidery — wall panels or framed art</option><option>Embroidered headboards</option><option>Embroidered fabric by the metre</option><option>Embroidery — upholstery panels or soft furnishings</option>
         <option>Samples</option><option>Trade terms</option><option>Not sure yet</option>
       </select>
     </div>
@@ -121,7 +121,7 @@ const enquiryForm = (id = 'contactForm') => `
   <div class="f"><label>Artwork, drawings or floor plans</label><span class="f-hint">Email them to <a href="mailto:studio@artilier.co">studio@artilier.co</a> with your name in the subject and we will match them to this enquiry.</span></div>
   <button type="submit" class="cta" style="justify-content:center">Send the enquiry <span>→</span></button>
   <p class="f-status" id="${id}Status" role="status" aria-live="polite"></p>
-  <p class="f-note">Trade only, no minimum order. We read every enquiry ourselves and reply individually. Lead times usually run 6–12 weeks from strike-off approval; costing follows once construction, materials, dimensions and sampling are understood. Your details are used only to reply to this enquiry.</p>
+  <p class="f-note">Trade only, no fixed minimum order. We read every enquiry ourselves and reply individually. Rug lead times usually run 6–12 weeks from strike-off approval; embroidered wall panels and headboards typically take 3–4 months, embroidered fabric 6–8 weeks. Costing follows once construction, materials, dimensions and sampling are understood. Your details are used only to reply to this enquiry.</p>
 </form>`;
 
 const contact = shell({
@@ -131,7 +131,7 @@ const contact = shell({
   lb:'Contact · Start a project', h1:'Start a<br>', h1it:'project.',
   lead:`<p class="bd">Send artwork, a drawing, a reference or an early idea with the sizes. We review it and come back with questions, possibilities and the best way to make it.</p>
     <div class="wp-meta"><span><b>Trade only</b></span><span>Reviewed individually</span><span>New Delhi</span></div>`,
-  scripts:`\n<script defer src="../assets/js/enquiry.js?v=2"></script>`,
+  scripts:`\n<script defer src="../assets/js/enquiry.js?v=3"></script>`,
   body:`
 <section class="sec">
   <div class="about">
@@ -156,11 +156,11 @@ const contact = shell({
 ${sec('Before you write', 'Questions we are', 'often asked.', qa([
   ['Do you sell to private clients?', 'Not directly. Artilier works trade only — with interior designers, architects, design practices and galleries, and with collectors through the galleries that represent them.'],
   ['Can a collection design be changed?', 'Yes. Every design is a starting point: it can be re-scaled, re-proportioned and re-coloured to your scheme, and made to the size the room needs within what the design and construction allow.'],
-  ['Can we see samples first?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom. The strike-off takes 2–3 weeks once the design or sketch is approved, and its cost is credited against the order.'],
-  ['Is there a minimum order?', 'No. We make single pieces as readily as multi-rug schedules.'],
+  ['Can we see samples first?', 'Yes. For rugs, yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom. Where a strike-off is part of the project, it typically takes 2–3 weeks once the design or sketch is approved, and its cost is credited against the order.'],
+  ['Is there a minimum order?', 'Trade only. No fixed minimum order quantity — each project is assessed on its design, technical requirements and production specifications.'],
   ['How are prices quoted?', 'Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment terms are set out in the quote, and rugs are usually shipped rolled.'],
   ['Who contracts and invoices?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio — one supplier and one point of coordination.'],
-  ['How long does it take?', 'Usually 6–12 weeks from strike-off approval, and up to six months in some cases; we confirm the timeline for each project. Hand-knotting takes longest; hand-tufting is shorter.']
+  ['How long does it take?', '<b>Rugs:</b> usually 6–12 weeks from strike-off approval, and up to six months in some cases; hand-knotting takes longest, hand-tufting is shorter. <b>Embroidered wall panels and upholstered headboards:</b> production typically takes 3–4 months, depending on the design, specifications and project requirements; more complex projects may require up to 6 months. <b>Embroidered fabric:</b> typically 6–8 weeks; complex work up to 6 months. We confirm delivery dates only after reviewing the specification.']
 ]))}`
 });
 
@@ -205,21 +205,30 @@ ${ctaBlock('../', 'contact/', 'Start a project', [['trade/','Working with us'],[
 const projectsData = JSON.parse(rd('content/projects.json')).projects
   .filter(p => p.published === true && p.permission === true && p.slug && p.name).sort(by);
 const hasProjects = projectsData.length > 0;
+/* /projects/ index visibility (Stage 5 §9, Stage 6 F1): the index stays
+   noindex and out of the sitemap until INDEX_PROJECTS_MIN approved projects
+   exist. Individual project pages are indexable from publication. Manual
+   override in content/projects.json: "projectsIndexVisibility": "auto" | "index" | "noindex". */
+const INDEX_PROJECTS_MIN = 2;
+const projectsOverride = String(JSON.parse(rd('content/projects.json')).projectsIndexVisibility || 'auto').toLowerCase();
+const indexProjects = projectsOverride === 'index' ? hasProjects
+  : projectsOverride === 'noindex' ? false
+  : projectsData.length >= INDEX_PROJECTS_MIN;
 const pCaption = p => [p.discipline, p.location, p.year].filter(Boolean).join(' · ');
 const projects = shell({
   path:'projects/', up:'../', pageType:'CollectionPage',
   title:'Projects — Rugs & Embroidery in Interiors | Artilier',
-  desc:'Installed Artilier rugs and embroidery in residential and hospitality interiors, shown with the designers who specified them. Trade only, New Delhi.',
+  desc:'Completed Artilier rugs and embroidery in residential and hospitality interiors — the brief, what we developed and how it was made. Trade only.',
   lb:'Projects', h1:'The work, in its<br>', h1it:'rooms.',
-  robots: hasProjects ? undefined : 'noindex,follow',
-  lead:`<p class="bd">Installed work, shown with the designers who specified it — the room, the brief, what we developed for it and how it was made.</p>`,
+  robots: indexProjects ? undefined : 'noindex,follow',
+  lead:`<p class="bd">Completed work — the brief, what we developed for it and how it was made. Some projects are shown without naming the client or the property.</p>`,
   body: hasProjects ? `
 <section class="sec"><div class="cg">${projectsData.map((p, i) => `<figure class="cgi">${p.hero ? `<a href="${esc(p.slug)}/" aria-hidden="true" tabindex="-1">${slotImg(p.hero, p.name, '../', i < 3)}</a>` : ''}<figcaption><b><a href="${esc(p.slug)}/">${esc(p.name)}</a></b><span>${esc(pCaption(p))}</span></figcaption>${p.designer ? `<p class="bd-s">With ${esc(p.designer)}</p>` : ''}</figure>`).join('')}</div></section>
 ${ctaBlock('../', 'contact/', 'Start a project', [['embroidery/','Embroidery'],['hospitality/','Hospitality'],['bespoke/','Bespoke development']])}` : `
 <section class="sec">
   <div class="empty-note">
     <span class="lb">Being documented</span>
-    <p>Artilier is a new studio. Installed projects are published here only once they are photographed and the designers involved have agreed to what is shown — nothing on this page will be staged or invented.</p>
+    <p>Artilier is a new studio. Completed projects are published here only once they are photographed and the people involved have agreed to what is shown — nothing on this page will be staged or invented.</p>
     <p>Until then, the clearest view of our work is <a href="../collection/">the rug collection</a>, <a href="../embroidery/">our embroidery</a> and how we <a href="../bespoke/">develop pieces from a designer’s artwork</a>. If you would like to discuss work relevant to your project, <a href="../contact/">write to us</a>.</p>
   </div>
 </section>
@@ -239,7 +248,8 @@ const projectPage = p => {
   const media = [].concat(p.video ? [p.video] : [], p.images || []);
   const designs = [].concat(p.products || []).map(sl => indexable.find(d => d.slug === sl)).filter(Boolean);
   const title = `${p.name} — ${p.discipline || 'Project'}${p.location ? ', ' + p.location : ''} | Artilier`;
-  const desc = (p.summary || `${p.discipline || 'Work'} by Artilier for ${p.name}${p.location ? ' in ' + p.location : ''}${p.designer ? ', with ' + p.designer : ''}.`).slice(0, 158);
+  const descRaw = p.summary || `${p.discipline || 'Work'} by Artilier for ${p.name}${p.location ? ' in ' + p.location : ''}${p.designer ? ', with ' + p.designer : ''}.`;
+  const desc = descRaw.length <= 158 ? descRaw : descRaw.slice(0, 157).replace(/[\s,;:—–-]+\S*$/, '') + '…';   // cut at a word boundary
   const schema = graph([
     { '@type':'WebPage','@id':`${url}#webpage`,'url':url,'name':title,'description':desc,'isPartOf':{'@id':`${HOST}/#website`},
       'breadcrumb':{'@id':`${url}#breadcrumb`},'about':{'@id':`${HOST}/#organization`},'inLanguage':'en' },
@@ -271,17 +281,61 @@ ${ctaBlock(UP, 'contact/', 'Start a project', [['projects/','All projects'],['be
 </main>` + footer(UP);
 };
 
-/* ── /hospitality/ ─────────────────────────────────────────────────── */
+/* ── /privacy/ — privacy notice (Stage 10D). Every statement maps to an actual
+   process or setting checked on 11 Oct 2026; see ARTILIER_stage10D report.
+   PRIVACY_PUBLISHED must be the real publication date: if this is merged after
+   11 October 2026, change the line below to the merge date before merging. ── */
+const PRIVACY_PUBLISHED = '11 October 2026';
+const privacy = shell({
+  path:'privacy/', up:'../', robots:'noindex,follow',
+  title:'Privacy Notice | Artilier',
+  desc:'How Artilier handles enquiry details, business contact details, analytics and cookies on artilier.co.',
+  lb:'Privacy', h1:'Privacy', h1it:'notice.',
+  lead:`<p class="bd">This notice explains what information Artilier collects through artilier.co and in the course of its trade enquiries, why, how long it is kept and the choices you have. Artilier is a studio of Art Avenue Pvt. Ltd., New Delhi, India, which is responsible for this information. Write to <a href="mailto:studio@artilier.co">studio@artilier.co</a> about anything in this notice.</p>
+    <p class="bd" style="margin-top:12px">Last updated: ${PRIVACY_PUBLISHED}.</p>`,
+  body:`
+${sec('Enquiries', 'What you', 'send us.', `<div class="prose">
+    <p>When you use an enquiry form we receive what you enter — your name, studio or company, email address, where you are based, the type of project, construction, a description of the project, quantities, dimensions, target date and project location. With it we receive the page you sent it from, the page you first arrived on, the website that referred you, any campaign tags in the link you followed and, where relevant, the design or product page that led you to the form.</p>
+    <p>The form is delivered to our studio inbox by Formspree, a form-handling service; we have switched off Formspree’s storage of submissions in its dashboard, so the email in our inbox is our record. If you email us directly or send drawings or artwork, they are held in our studio email, which runs on Google Workspace.</p>
+    <p>We use these details to reply to you, to discuss, quote for and carry out the work you ask about, and to keep a record of our business correspondence. We do not sell them and do not use them for advertising.</p>
+  </div>`)}
+${sec('Business contacts', 'Studios we', 'write to.', `<div class="prose">
+    <p>We introduce our work to interior design and architecture studios. For that we keep business contact details that studios publish themselves — studio name, website, the names and roles of people listed on it, published business email addresses and the projects they show — together with a record of what we sent and any reply. We write only about trade work relevant to the studio. Every email says how to ask us not to write again; if you ask, we stop and keep only what we need to make sure we do not contact you again.</p>
+  </div>`, { dark:true })}
+${sec('Analytics and cookies', 'How the site', 'is measured.', `<div class="prose">
+    <p><b>Hosting.</b> The site is served through Cloudflare, which processes technical information such as IP addresses to deliver pages and protect the site. <b>Cloudflare Web Analytics</b> counts page views without cookies and without identifying you. Fonts are served from artilier.co itself.</p>
+    <p><b>Google Analytics 4</b> helps us see which pages are useful and which lead to enquiries. When it runs it sets two first-party cookies, <code>_ga</code> and <code>_ga_8TXE25YJ86</code>, which hold a random identifier and, according to Google, last up to two years. Google states that Google Analytics 4 does not log or store IP addresses. We do not use it for advertising: Google signals, advertising storage and ad personalisation are switched off, and the events we send never include your name, email, phone number or message. In our Google Analytics settings, event-level data is kept for 2 months and user-level data for 14 months.</p>
+    <p><b>Your choice.</b> If you visit from the United Kingdom, the European Economic Area or Switzerland — or if we cannot tell where you are — Google Analytics does not load and no analytics cookie is set unless you choose <b>Allow analytics</b>. To decide this, the site asks Cloudflare which country your connection comes from; that answer is not stored. Elsewhere, Google Analytics loads by default. Wherever you are, you can allow or withdraw analytics at any time in <a href="#cookie-settings" data-consent-open>Cookie settings</a>; withdrawing stops Google Analytics on this site and removes its cookies from your browser.</p>
+    <p><b>In your browser.</b> Your cookie choice is remembered in your browser's local storage (<code>artilier_consent</code>) until you change it or clear your browser data. For the length of a visit the site may keep the page you arrived on, the referring site and any campaign tags in session storage (<code>artilier_touch</code>), so that an enquiry you send tells us how you found us; in the UK, EEA and Switzerland this happens only after you allow analytics. Session storage is cleared when you close the tab.</p>
+  </div>`)}
+${sec('Retention', 'How long we', 'keep it.', `<div class="prose">
+    <p>We keep enquiries, related correspondence and business-contact records for 24 months after our last meaningful interaction with you, and then delete them — unless we need to keep them longer because of a contract with you, a legal or accounting obligation, or a dispute, in which case we keep them only for as long as that requires. Where you have asked us not to contact you again, we keep the minimum needed to respect that request.</p>
+  </div>`, { dark:true })}
+${sec('Where it is processed', 'Your rights', 'and choices.', `<div class="prose">
+    <p>We are based in India. Our service providers — Google, Formspree and Cloudflare — may process information in other countries, including the United States.</p>
+    <p>Depending on where you are, you may have the right to ask for a copy of the information we hold about you, to have it corrected or deleted, to object to or restrict its use, and to withdraw consent at any time without affecting what happened before. Write to <a href="mailto:studio@artilier.co">studio@artilier.co</a>; we aim to reply within one month. If you are in the UK or the European Economic Area, you can also complain to your data protection authority — in the UK, the Information Commissioner's Office.</p>
+    <p>We will update this notice when our practices change and show the date of the latest version at the top.</p>
+  </div>`)}
+${ctaBlock('../', 'contact/', 'Contact the studio', [['about/','About the studio'],['trade/','Trade']])}`
+});
+
+/* ── /hospitality/ — Stage 5 Brief D + Stage 6 C-10 ────────────────── */
+/* Rug copy unchanged except the specification section (approved compliance
+   sentence). Embroidery lead times are product-labelled; no installation,
+   headboard freight or certification statement is made. */
 const hospitality = shell({
   path:'hospitality/', up:'../',
-  title:'Custom Hotel Rugs & Contract Rugs for Hospitality | Artilier',
-  desc:'Custom rugs for hotels and boutique hospitality: developed from the designer’s scheme, sampled for approval, made to each room’s size. Trade only, New Delhi.',
-  lb:'Hospitality & contract', h1:'Rugs for<br>', h1it:'hospitality.',
-  lead:`<p class="bd">For hospitality designers, architects and procurement teams: custom rugs for hotels and boutique hospitality projects — developed from your scheme in our New Delhi studio, approved in sample, and made to the dimensions of each room.</p>
-    <div class="wp-meta"><span><b>Made to the schedule</b></span><span>Sampled for approval</span><span>One point of coordination</span></div>`,
+  title:'Hotel Rugs, Headboards & Embroidery | Artilier',
+  desc:'Custom hotel rugs, embroidered headboards, wall panels and furnishing fabric for hospitality projects, developed from the designer’s scheme. Trade only.',
+  lb:'Hospitality & contract', h1:'Rugs and embroidery<br>for ', h1it:'hospitality.',
+  lead:`<p class="bd">For hospitality designers, architects and procurement teams: custom rugs for hotels and boutique hospitality projects, made to the dimensions of each room — and embroidered headboards, wall panels and furnishing fabric developed for the same scheme in our New Delhi studio.</p>
+    <div class="wp-meta"><span><b>Made to the schedule</b></span><span>Rugs and embroidery</span><span>One point of contact</span></div>`,
   nodes:[ service('hospitality/', 'Custom rugs for hospitality projects', 'Custom rug development and manufacture for hotels and hospitality interiors',
     'Development, sampling, production, quality control and export coordination of custom hand-knotted, hand-tufted and flatweave rugs for hotels and hospitality interiors, made to each room’s dimensions and the designer’s scheme.',
-    'Hospitality interior designers, architects and procurement teams') ],
+    'Hospitality interior designers, architects and procurement teams'),
+    { ...service('hospitality/', 'Embroidery for hospitality projects', 'Custom embroidered headboards, wall panels and furnishing fabric for hotels',
+    'Embroidered headboards (complete, or panels for the client’s upholsterer), embroidered wall panels supplied for installation by the project’s appointed contractor, and embroidered furnishing fabric by the metre, developed to the hotel’s scheme.',
+    'Hospitality interior designers, architects and procurement teams'), '@id':`${HOST}/hospitality/#service-embroidery` } ],
   body:`
 ${sec('What we make for hospitality', 'Custom rugs,', 'not stock.', `<div class="mats">
     <div>Hand-knotted <span>Finest definition</span></div>
@@ -291,28 +345,42 @@ ${sec('What we make for hospitality', 'Custom rugs,', 'not stock.', `<div class=
     <div>Custom colourways <span>Matched to the scheme</span></div>
     <div>Multi-rug schedules <span>One project, many rooms</span></div>
     <div>No minimum <span>Single pieces welcome</span></div>
-    <div>Lead time <span>Usually 6–12 weeks from strike-off approval</span></div>
-  </div>`, { dark:true, intro:'Every rug is made to order in the construction, material, colourway and dimensions the project needs. Collection designs can be adapted to a scheme, or a rug developed from the designer’s own artwork.' })}
-${sec('How a hospitality project runs', 'From schedule', 'to site.', `<div class="proc">
+    <div>Rug lead time <span>Usually 6–12 weeks from strike-off approval</span></div>
+  </div>`, { dark:true, intro:'Hotel rugs are made to order in the construction, material, colourway and dimensions the project needs. Collection designs can be adapted to a scheme, or a rug developed from the designer’s own artwork. See <a href="../bespoke/">bespoke development</a>.' })}
+${sec('Embroidery for the same rooms', 'Headboards, walls', 'and fabric.', `<div class="cols2">
+    <div class="prose">
+      <h3><a href="../embroidery/headboards/">Embroidered headboards</a></h3>
+      <p>Complete upholstered headboards, or embroidered panels for your upholsterer. Repeat production for hotel room schedules; no fixed minimum. Production typically takes 3–4 months; more complex projects may require up to 6 months.</p>
+      <h3><a href="../embroidery/">Embroidered wall panels</a></h3>
+      <p>Bespoke panels for suites, corridors and public areas, from a single piece to a full wall, supplied for installation by your appointed contractor. No fixed minimum. Production typically takes 3–4 months; more complex projects may require up to 6 months.</p>
+      <h3><a href="../embroidery/fabrics/">Embroidered fabric</a></h3>
+      <p>Furnishing fabric by the metre for upholstery and curtains. Typical lead time 6–8 weeks; complex work up to 6 months.</p>
+    </div>
+    <div class="gal"><figure class="full">${slotImg('e2', 'Embroidery — zardozi panel on the frame', '../')}<figcaption data-mf="e2"></figcaption></figure></div>
+  </div>`, { intro:'Developed in the same studio as the rugs, so colour and motif can carry across a room. Delivery dates are confirmed for each product only after the specification has been reviewed.' })}
+${sec('How a hospitality project runs', 'From schedule', 'to dispatch.', `<div class="proc">
     <div class="pstep"><span class="pn">01</span><span class="pt">Understand</span><span class="pd">The rug schedule — rooms, quantities, sizes — with drawings, scheme and application. We come back with our thoughts, questions and what still needs resolving.</span></div>
     <div class="pstep"><span class="pn">02</span><span class="pt">Develop</span><span class="pd">Construction, yarn, pile and colour worked through for each rug type. Where there is enough information, an initial cost range follows.</span></div>
     <div class="pstep"><span class="pn">03</span><span class="pt">Sample</span><span class="pd">Yarn samples, colour trials and woven strike-offs, approved in the hand before production. A strike-off takes 2–3 weeks once the design is approved, and its cost is credited against the order — plan it against any mock-up room date.</span></div>
     <div class="pstep"><span class="pn">04</span><span class="pt">Make</span><span class="pd">Weaving, tufting or flatweaving to each size, in the workshop suited to the construction, with progress photography at agreed points.</span></div>
     <div class="pstep"><span class="pn">05</span><span class="pt">Check</span><span class="pd">Quality control against the specification and approved sample — dimensions, pile, colour, binding, backing and finishing — reviewed in Delhi.</span></div>
     <div class="pstep"><span class="pn">06</span><span class="pt">Deliver</span><span class="pd">Rugs are usually shipped rolled and wrapped, with export documentation and freight coordinated through our logistics partners. Prices are usually quoted ex-works in USD or EUR; FOB or DDP on request.</span></div>
-  </div>`)}
-${sec('Specification', 'Tell us what the', 'specification requires.', `<div class="prose">
-    <p>Hotel specifications often carry requirements beyond design — fire performance, wear, cleaning or documentation. Include them in the brief. We confirm what can be met, and what can be documented, before costing rather than after, and we say plainly where a material or construction is unsuited to the traffic a room will take.</p>
+  </div>
+  <p class="proc-note">For embroidery, strike-offs, where required, typically take 2–3 weeks. Delivery dates are confirmed only after the specification has been reviewed. Installation on site is by the project’s appointed contractor.</p>`)}
+${sec('Specification and documentation', 'Agreed before', 'the order.', `<div class="prose">
+    <p>Project-specific documentation and testing requirements can be discussed during specification. Any required standards and supporting evidence must be assessed and agreed before the order is accepted. We do not hold product certifications, and the ability to arrange testing for a project is not a guarantee of a result. Please include any fire, wear or cleaning requirements in the brief.</p>
+    <p>We say plainly where a material or construction is unsuited to the traffic a room will take.</p>
   </div>`, { dark:true })}
 ${sec('What to send', 'A useful', 'first brief.', list([
   '<b>Rug schedule</b> — room or area, quantity and size for each rug type',
+  '<b>Embroidery</b> — headboards, wall panels or fabric for the same rooms, with quantities by room type',
   '<b>Design intent</b> — artwork, scheme, references, or the collection designs you are considering',
   '<b>Construction preference</b> — or leave it to our recommendation',
   '<b>Specification requirements</b> — any performance, cleaning or documentation standards',
   '<b>Programme</b> — mock-up room date, target delivery date and project location'
 ]))}
-${sec('Contracting', 'One supplier,', 'one point of coordination.', `<div class="prose"><p>Artilier is the trade studio of Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Orders are contracted, invoiced and exported through that entity, with established export documentation. Costing and lead times are given per project once construction, materials, sizes and sampling are understood.</p></div>`)}
-${ctaBlock('../', 'contact/?type=hospitality', 'Send a hospitality brief', [['bespoke/','Bespoke development'],['materials/','Materials'],['process/','The process'],['trade/','Trade']])}`
+${sec('Contracting', 'One supplier,', 'one point of contact.', `<div class="prose"><p>Artilier is the trade studio of Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Orders are contracted, invoiced and exported through that entity, with established export documentation, and you have one point of contact from brief to dispatch. Costing and lead times are given per project once construction, materials, sizes and sampling are understood.</p></div>`)}
+${ctaBlock('../', 'contact/?type=hospitality', 'Send a hospitality brief', [['embroidery/headboards/','Embroidered headboards'],['embroidery/','Embroidered wall panels'],['embroidery/fabrics/','Embroidered fabric'],['bespoke/','Bespoke rugs'],['materials/','Materials'],['process/','The process'],['trade/','Trade']])}`
 });
 
 /* ── market pages ──────────────────────────────────────────────────── */
@@ -645,9 +713,13 @@ const embGal = (ids, up) => `
 <section class="sec gal-sec"><div class="gal">${ids.map(id => `<figure class="q">${slotImg(id, 'Embroidery', up)}<figcaption data-mf="${id}"></figcaption></figure>`).join('')}</div></section>`;
 const embMarkets = self => [['embroidery/uae/','UAE & Gulf'],['embroidery/saudi-arabia/','Saudi Arabia'],['embroidery/uk/','United Kingdom'],['embroidery/us/','United States'],['fr/broderie/','France (en français)']].filter(([h]) => !h.includes(self));
 const embCommon = {
-  min: ['Is there a minimum order?', 'No. A single panel or cushion is made as readily as a full scheme.'],
-  time: ['How long does it take?', 'The strike-off usually takes 2–3 weeks once the design is approved, and its cost is credited against the order. Production time depends on technique, density and area, and is confirmed for each piece in the quote.'],
+  min: ['Is there a minimum order?', 'No fixed minimum order quantity. Each project is assessed according to its design, technical requirements and production specifications.'],
+  time: ['How long does it take?', 'For embroidered wall panels and upholstered headboards, production typically takes 3–4 months, depending on the design, specifications and project requirements; more complex projects may require up to 6 months. Fabric by the metre has its own lead time — see <a href="../../embroidery/fabrics/">embroidered fabric</a>. Where a strike-off is part of the project, it typically takes 2–3 weeks once the design is approved, and its cost is credited against the order. We confirm a delivery date only after reviewing the specification.'],
+  install: ['Do you install the panels?', 'No. We make and supply embroidered wall panels; installation is carried out by your appointed installer or contractor.'],
   who: ['Who do you work with?', 'Interior designers, architects and design practices, and galleries — including collectors through the galleries that represent them. We do not sell retail.'],
+  /* OWNER DECISION M8 (Stage 8/9): 'FOB or DDP on request' is existing owner-confirmed wording
+     (10 Oct). Whether it should stay for Gulf embroidery (freight policy, Hormuz/Red Sea risk)
+     is open — do not replace it with invented terms. */
   contract: ['Who contracts and invoices?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio; orders are contracted, invoiced and exported through that entity, usually quoted ex-works in USD or EUR, with FOB or DDP on request.']
 };
 const embMarket = m => shell({
@@ -664,10 +736,10 @@ ${ctaBlock(UP2, 'contact/?type=embroidery', m.cta, [[m.rugs, m.rugsLabel], ['emb
 const embUae = embMarket({
   slug:'uae', crumb:'UAE & Gulf',
   title:'Bespoke Embroidery & Wall Panels for Dubai and the UAE | Artilier',
-  desc:'Hand-embroidered wallcoverings, wall panels and headboards for Dubai, Abu Dhabi and the Gulf — zardozi, zari, aari, raffia. Sampled before production.',
+  desc:'Hand-embroidered wallcoverings, wall panels and headboards for Dubai, Abu Dhabi and the Gulf — zardozi, zari, aari, raffia. Trade only.',
   lb:'Embroidery · UAE & Gulf', h1:'Hand embroidery for<br>', h1it:'Dubai and the Gulf.',
-  lead:'For interior designers, architects and galleries in Dubai, Abu Dhabi and across the Gulf: embroidered wall panels, framed pieces, headboards and upholstery panels, developed from your scheme or artwork in our New Delhi studio and approved in a strike-off before production.',
-  meta:['UAE & Gulf projects','Zardozi · zari · aari · raffia','Strike-off first'],
+  lead:'For interior designers, architects and galleries in Dubai, Abu Dhabi and across the Gulf: embroidered wall panels, framed pieces, headboards and upholstery panels, developed from your scheme or artwork in our New Delhi studio, with a strike-off approved in the hand where the project requires one.',
+  meta:['UAE & Gulf projects','Zardozi · zari · aari · raffia','No fixed minimum'],
   serviceName:'Bespoke hand embroidery for UAE and Gulf interiors',
   area:[country('United Arab Emirates','AE'), country('Qatar','QA'), country('Kuwait','KW'), country('Bahrain','BH'), country('Oman','OM')],
   serviceDesc:'Hand-embroidered wall panels, framed art, headboards, upholstery panels, cushions and drapery in zardozi, zari, aari, raffia and hand embroidery, for residential, hospitality and gallery projects in the UAE and the wider Gulf.',
@@ -685,7 +757,7 @@ ${sec('Techniques', 'Metal thread,', 'at the scale of the room.', `<div class="p
   </div>`, { dark:true })}
 ${embGal(['e2','e7','e5','e8'], UP2)}
 ${sec('Working together', 'An hour and a half', 'apart.', `<div class="prose">
-    <p>New Delhi (IST, UTC+5:30) is one hour thirty minutes ahead of the UAE (GST, UTC+4), so most of a Dubai or Abu Dhabi working day overlaps with ours. Briefs from Qatar, Kuwait, Bahrain and Oman run the same way: drawings and approvals by email, the strike-off approved in the hand before production.</p>
+    <p>New Delhi (IST, UTC+5:30) is one hour thirty minutes ahead of the UAE (GST, UTC+4), so most of a Dubai or Abu Dhabi working day overlaps with ours. Briefs from Qatar, Kuwait, Bahrain and Oman run the same way: drawings and approvals by email, and any strike-off approved in the hand before production.</p>
   </div>`)}
 ${sec('What to send', 'A useful', 'first brief.', list([
   '<b>The piece</b> — wall panel, framed work, headboard, upholstery panel, cushion or drapery, with sizes in centimetres',
@@ -694,7 +766,7 @@ ${sec('What to send', 'A useful', 'first brief.', list([
   '<b>Mounting</b> — framed, stretched, upholstered or hung, and who fits it on site',
   '<b>Programme</b> — emirate or country, and the date the piece is needed'
 ]), { dark:true })}
-${sec('Questions', 'From Gulf', 'practices.', qa([embCommon.min, embCommon.time, embCommon.who,
+${sec('Questions', 'From Gulf', 'practices.', qa([embCommon.min, embCommon.time, embCommon.install, embCommon.who,
   ['Can embroidery be matched to rugs in the same room?', `Yes. Rugs and embroidery are developed in the same studio, so colour and motif can carry across both. See <a href="${UP2}trade/uae/">rugs for UAE projects</a>.`],
   embCommon.contract]))}`
 });
@@ -702,10 +774,10 @@ ${sec('Questions', 'From Gulf', 'practices.', qa([embCommon.min, embCommon.time,
 const embKsa = embMarket({
   slug:'saudi-arabia', crumb:'Saudi Arabia',
   title:'Hand Embroidery & Wall Panels for Saudi Projects | Artilier',
-  desc:'Hand-embroidered wallcoverings, wall panels and headboards for Riyadh, Jeddah and AlUla — zardozi, zari, aari, raffia. Sampled before production.',
+  desc:'Hand-embroidered wallcoverings, wall panels and headboards for Riyadh, Jeddah and AlUla — zardozi, zari, aari, raffia. Trade only.',
   lb:'Embroidery · Saudi Arabia', h1:'Hand embroidery for<br>', h1it:'Saudi projects.',
-  lead:'For interior designers, architects and galleries working in Riyadh, Jeddah, AlUla and across the Kingdom: embroidered wall panels, framed pieces, headboards and upholstery panels, made to commission from your scheme or artwork and approved in a strike-off first.',
-  meta:['Saudi projects','Residential · hospitality · cultural','Strike-off first'],
+  lead:'For interior designers, architects and galleries working in Riyadh, Jeddah, AlUla and across the Kingdom: embroidered wall panels, framed pieces, headboards and upholstery panels, made to commission from your scheme or artwork, with a strike-off approved in the hand where the project requires one.',
+  meta:['Saudi projects','Residential · hospitality · cultural','No fixed minimum'],
   serviceName:'Bespoke hand embroidery for Saudi Arabia interiors', area:[country('Saudi Arabia','SA')],
   serviceDesc:'Hand-embroidered wall panels, framed art, headboards, upholstery panels, cushions and drapery in zardozi, zari, aari, raffia and hand embroidery, for residential, hospitality and cultural projects in Saudi Arabia.',
   rugs:'trade/saudi-arabia/', rugsLabel:'Rugs for Saudi projects', cta:'Start a Saudi embroidery project',
@@ -721,9 +793,9 @@ ${sec('Long programmes', 'Schedule the strike-off', 'early.', `<div class="prose
     <p>Larger Saudi projects often run on long programmes with many embroidered pieces per building. Send the full schedule as early as you can: strike-offs can then be planned against your mock-up and approval dates rather than squeezed in at the end.</p>
   </div>`, { dark:true })}
 ${sec('Working together', 'Two and a half', 'hours apart.', `<div class="prose">
-    <p>Saudi Arabia (AST, UTC+3) is two hours thirty minutes behind New Delhi (IST, UTC+5:30), and the Saudi working week runs Sunday to Thursday. Briefs, drawings and approvals move by email; the strike-off is approved in the hand before production.</p>
+    <p>Saudi Arabia (AST, UTC+3) is two hours thirty minutes behind New Delhi (IST, UTC+5:30), and the Saudi working week runs Sunday to Thursday. Briefs, drawings and approvals move by email; any strike-off is approved in the hand before production.</p>
   </div>`)}
-${sec('Questions', 'From Saudi', 'practices.', qa([embCommon.min, embCommon.time, embCommon.who,
+${sec('Questions', 'From Saudi', 'practices.', qa([embCommon.min, embCommon.time, embCommon.install, embCommon.who,
   ['Can embroidery be matched to rugs on the same project?', `Yes. Both are developed in our studio, so a scheme can carry across rugs and embroidered panels. See <a href="${UP2}trade/saudi-arabia/">rugs for Saudi projects</a>.`],
   embCommon.contract]))}`
 });
@@ -731,10 +803,10 @@ ${sec('Questions', 'From Saudi', 'practices.', qa([embCommon.min, embCommon.time
 const embUk = embMarket({
   slug:'uk', crumb:'United Kingdom',
   title:'Bespoke Hand Embroidery for London Interior Designers | Artilier',
-  desc:'Hand-embroidered wallcoverings, wall panels, headboards and upholstery panels for London and UK interiors — zardozi, zari, aari, raffia. Sampled first.',
+  desc:'Hand-embroidered wallcoverings, wall panels, headboards and upholstery panels for London and UK interiors — zardozi, zari, aari, raffia. Trade only.',
   lb:'Embroidery · United Kingdom', h1:'Hand embroidery for<br>', h1it:'London interiors.',
-  lead:'For interior designers, architects and galleries in London and across the UK: embroidered wall panels, headboards, upholstery panels, cushions and framed works, developed from your drawing in our New Delhi studio and approved in a strike-off before production.',
-  meta:['London & UK','Made to commission','Strike-off first'],
+  lead:'For interior designers, architects and galleries in London and across the UK: embroidered wall panels, headboards, upholstery panels, cushions and framed works, developed from your drawing in our New Delhi studio, with a strike-off approved in the hand where the project requires one.',
+  meta:['London & UK','Made to commission','No fixed minimum'],
   serviceName:'Bespoke hand embroidery for UK interior designers', area:[country('United Kingdom','GB')],
   serviceDesc:'Hand-embroidered wall panels, framed art, headboards, upholstery panels, cushions and drapery in zardozi, zari, aari, raffia and hand embroidery, for residential, hospitality and gallery projects in London and the UK.',
   rugs:'trade/uk/', rugsLabel:'Rugs for UK projects', cta:'Start a UK embroidery project',
@@ -747,12 +819,12 @@ ${sec('Where it is used', 'Made for the drawing,', 'not the catalogue.', list([
 ]))}
 ${embGal(['e7','e8','e2','e3'], UP2)}
 ${sec('From your artwork', 'Your drawing,', 'in thread.', `<div class="prose">
-    <p>Send the drawing, painting or reference with the finished size. We resolve technique, stitch density, thread and ground fabric with you — zardozi, zari, aari, raffia or hand embroidery, alone or combined — and prove it in a strike-off you approve in the hand. More on <a href="${UP2}embroidery/">how embroidery is commissioned</a>.</p>
+    <p>Send the drawing, painting or reference with the finished size. We resolve technique, stitch density, thread and ground fabric with you — zardozi, zari, aari, raffia or hand embroidery, alone or combined — and, where the project calls for one, prove it in a strike-off you approve in the hand. More on <a href="${UP2}embroidery/">how embroidery is commissioned</a>.</p>
   </div>`, { dark:true })}
 ${sec('Working together', 'Four and a half', 'hours ahead.', `<div class="prose">
     <p>New Delhi is four hours thirty minutes ahead of London in summer (BST) and five hours thirty minutes in winter (GMT), so a London morning overlaps our afternoon. Briefs and approvals move by email; strike-offs are approved in the hand.</p>
   </div>`)}
-${sec('Questions', 'From UK', 'practices.', qa([embCommon.min, embCommon.time, embCommon.who,
+${sec('Questions', 'From UK', 'practices.', qa([embCommon.min, embCommon.time, embCommon.install, embCommon.who,
   ['Can you embroider on a fabric we have specified?', 'Tell us the fabric in the brief. We confirm in sampling whether it will take the technique and density the design needs, and propose an alternative if it will not.'],
   embCommon.contract]))}`
 });
@@ -760,10 +832,10 @@ ${sec('Questions', 'From UK', 'practices.', qa([embCommon.min, embCommon.time, e
 const embUs = embMarket({
   slug:'us', crumb:'United States',
   title:'Hand Embroidery for New York Interior Designers | Artilier',
-  desc:'Hand-embroidered wallcoverings, wall panels, headboards and upholstery for New York and US interiors — zardozi, zari, aari, raffia. Sampled first.',
+  desc:'Hand-embroidered wallcoverings, wall panels, headboards and upholstery for New York and US interiors — zardozi, zari, aari, raffia. Trade only.',
   lb:'Embroidery · United States', h1:'Hand embroidery for<br>', h1it:'New York and the US.',
-  lead:'For interior designers, architects and galleries in New York and across the United States: embroidered wall panels, headboards, upholstery panels and framed works, developed from your drawing in our New Delhi studio and approved in a strike-off before production.',
-  meta:['New York & US','Made to commission','Strike-off first'],
+  lead:'For interior designers, architects and galleries in New York and across the United States: embroidered wall panels, headboards, upholstery panels and framed works, developed from your drawing in our New Delhi studio, with a strike-off approved in the hand where the project requires one.',
+  meta:['New York & US','Made to commission','No fixed minimum'],
   serviceName:'Bespoke hand embroidery for US interior designers', area:[country('United States','US')],
   serviceDesc:'Hand-embroidered wall panels, framed art, headboards, upholstery panels, cushions and drapery in zardozi, zari, aari, raffia and hand embroidery, for residential, hospitality and gallery projects in New York and the United States.',
   rugs:'trade/us/', rugsLabel:'Rugs for US projects', cta:'Start a US embroidery project',
@@ -779,9 +851,9 @@ ${sec('Techniques', 'Matt or metal,', 'flat or raised.', `<div class="prose">
     <p>Zardozi and zari for couched metal thread and raised relief; aari for chain-stitch line and dense fields; raffia and appliqué for heavy, graphic texture; hand embroidery in silk, cotton or wool for shading and fine detail. See <a href="${UP2}embroidery/">embroidery</a> for the full range.</p>
   </div>`, { dark:true })}
 ${sec('Working together', 'A brief at the end of your day,', 'read at the start of ours.', `<div class="prose">
-    <p>New Delhi is nine hours thirty minutes ahead of New York during daylight saving time (ten hours thirty in winter). Work moves by email, and sizes can be sent in inches or centimetres, whichever your drawings use. Strike-offs are approved in the hand before production.</p>
+    <p>New Delhi is nine hours thirty minutes ahead of New York during daylight saving time (ten hours thirty in winter). Work moves by email, and sizes can be sent in inches or centimetres, whichever your drawings use. Where there is a strike-off, it is approved in the hand before production.</p>
   </div>`)}
-${sec('Questions', 'From US', 'practices.', qa([embCommon.min, embCommon.time, embCommon.who,
+${sec('Questions', 'From US', 'practices.', qa([embCommon.min, embCommon.time, embCommon.install, embCommon.who,
   ['Can embroidery be matched to rugs in the same room?', `Yes. Both are developed in our studio, so colour and motif can carry across. See <a href="${UP2}trade/us/">rugs for US projects</a>.`],
   embCommon.contract]))}`
 });
@@ -824,7 +896,7 @@ ${sec('Travailler ensemble', 'Votre dessin,', 'en fil.', `<div class="prose">
 });
 
 /* ── write ─────────────────────────────────────────────────────────── */
-const built = { 'contact/index.html':contact, 'about/index.html':about, 'projects/index.html':projects, 'hospitality/index.html':hospitality,
+const built = { 'privacy/index.html':privacy, 'contact/index.html':contact, 'about/index.html':about, 'projects/index.html':projects, 'hospitality/index.html':hospitality,
   'trade/uae/index.html':uae, 'trade/saudi-arabia/index.html':ksa, 'trade/uk/index.html':uk, 'trade/us/index.html':us, 'fr/index.html':fr, 'embroidery/uae/index.html':embUae, 'embroidery/saudi-arabia/index.html':embKsa, 'embroidery/uk/index.html':embUk, 'embroidery/us/index.html':embUs, 'fr/broderie/index.html':embFr, [G + 'index.html']:guide, '404.html':notFound };
 for (const p of projectsData) built[`projects/${p.slug}/index.html`] = projectPage(p);
 for (const [f, html] of Object.entries(built)) write(f, html);
@@ -844,7 +916,7 @@ const syncShell = (file, up, { ctaLabel } = {}) => {
   s = s.replace(/manifest\.json\?v=[0-9a-f]+/g, `manifest.json?v=${MV}`);
   s = s.replace(/slots\.js\?v=4/g, 'slots.js?v=5').replace(/pages\.css\?v=[345]/g, 'pages.css?v=6');
   if (!s.includes('pages.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*collection-tweaks\.css\?v=2">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/pages.css?v=3">`);
-  if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=2"></script>\n</head>`);
+  if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=5"></script>\n</head>`);
   /* one Organization entity everywhere: replace the inline copy with the shared one */
   s = s.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/, (m, json) => {
     const data = JSON.parse(json);
@@ -877,13 +949,16 @@ syncShell('collaborations/index.html', '../', { ctaLabel:'Start a collaboration 
 console.log('synced shell: collaborations, collection hub');
 
 /* ── sitemap: canonical, indexable, 200-status URLs only ───────────── */
-const today = new Date().toISOString().slice(0, 10);
+/* No <lastmod>: every page is rewritten on each build (shared footer), so a
+   build date would claim changes that did not happen. <priority> is ignored
+   by Google and was dropped too. */
+
 const urls = [
   ['', '1.0'], ['collection/', '0.9'], ...CATS.map(c => [`collection/${c.slug}/`, '0.8']),
   ['bespoke/', '0.9'], ['hospitality/', '0.9'], ['trade/', '0.8'], ['collaborations/', '0.8'], ['contact/', '0.8'], ['about/', '0.7'],
   ['trade/uae/', '0.8'], ['trade/saudi-arabia/', '0.8'], ['trade/uk/', '0.7'], ['trade/us/', '0.7'], ['fr/', '0.8'],
-  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], [G, '0.7'],
-  ...(hasProjects ? [['projects/', '0.8'], ...projectsData.map(p => [`projects/${p.slug}/`, '0.7'])] : []),
+  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], [G, '0.7'],
+  ...(indexProjects ? [['projects/', '0.8']] : []), ...projectsData.map(p => [`projects/${p.slug}/`, '0.7']),
   ...indexable.slice().sort(by).map(d => [`collection/${d.slug}/`, '0.6'])
 ];
 for (const [u] of urls) {           // every listed URL must exist and be indexable
@@ -893,7 +968,7 @@ for (const [u] of urls) {           // every listed URL must exist and be indexa
 }
 wr('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(([u, p]) => `  <url><loc>${HOST}/${u}</loc><lastmod>${today}</lastmod><priority>${p}</priority></url>`).join('\n')}
+${urls.map(([u, p]) => `  <url><loc>${HOST}/${u}</loc></url>`).join('\n')}
 </urlset>
 `);
 console.log(`sitemap: ${urls.length} URLs`);

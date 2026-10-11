@@ -1,0 +1,10 @@
+/* Brand fonts, self-hosted (Fontsource 5.3.0, SIL OFL 1.1 — licences in /assets/fonts/).
+   Served from artilier.co so no visitor request goes to Google Fonts. */
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:url(/assets/fonts/cormorant-garamond-latin-300-normal.woff2?v=1) format('woff2');}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/cormorant-garamond-latin-400-normal.woff2?v=1) format('woff2');}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/cormorant-garamond-latin-500-normal.woff2?v=1) format('woff2');}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300;font-display:swap;src:url(/assets/fonts/cormorant-garamond-latin-300-italic.woff2?v=1) format('woff2');}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(/assets/fonts/cormorant-garamond-latin-400-italic.woff2?v=1) format('woff2');}
+@font-face{font-family:'Jost';font-style:normal;font-weight:300;font-display:swap;src:url(/assets/fonts/jost-latin-300-normal.woff2?v=1) format('woff2');}
+@font-face{font-family:'Jost';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/jost-latin-400-normal.woff2?v=1) format('woff2');}
+@font-face{font-family:'Jost';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/jost-latin-500-normal.woff2?v=1) format('woff2');}

@@ -149,7 +149,7 @@ if(d&&/^[a-z0-9-]+$/.test(d))location.replace('../collection/'+d+'/');})();</scr
   s = all(s, '<a href="collection/index.html">The collection</a>','<a href="collection/">The collection</a>');
   s = all(s, '<a href="#bespoke">Bespoke rug development</a>','<a href="bespoke/">Bespoke rug development</a>');
   s = all(s, '<li><a href="collection/index.html">Collection</a></li>','<li><a href="collection/">Collection</a></li>');
-  s = all(all(s, 'slots.js?v=3','slots.js?v=4'), 'content.js?v=2','content.js?v=3');
+  s = all(all(s, 'slots.js?v=3','slots.js?v=4'), 'content.js?v=2','content.js?v=4');
   wr('index.html', s);
 }
 {

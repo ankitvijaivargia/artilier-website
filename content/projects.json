@@ -1,5 +1,7 @@
 {
-  "_readme": "Installed work. Empty by design — nothing is staged or invented. A record is published only when published:true AND permission:true (the designer has agreed, in writing, to what is shown). Each published record builds /projects/<slug>/, a card on /projects/ and on the homepage, and a sitemap entry. Media ids must exist in assets/media/manifest.json. Copy _template, fill it in, and add it to projects[].",
+  "projectsIndexVisibility": "auto",
+  "_projectsIndexVisibility": "auto = /projects/ index becomes indexable at 2+ published projects; index / noindex force it. Project pages themselves are indexable on publication.",
+  "_readme": "Completed work. Empty by design — nothing is staged or invented. A record is published only when published:true AND permission:true (the designer has agreed, in writing, to what is shown). Each published record builds /projects/<slug>/, a card on /projects/ and on the homepage, and a sitemap entry. Media ids must exist in assets/media/manifest.json. Copy _template, fill it in, and add it to projects[].",
   "_template": {
     "slug": "villa-jumeirah",
     "name": "Villa in Jumeirah",
