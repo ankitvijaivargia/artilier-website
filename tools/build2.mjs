@@ -137,7 +137,7 @@ const trade = page({
   <div class="sec-hd"><div><span class="lb">Contracting</span><h2 class="d2">One supplier,<br>one point of <span class="it">coordination.</span></h2></div>
   <p class="bd">Artilier is the trade studio of Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Orders are contracted, invoiced and exported through that entity — one supplier, one point of coordination, established export documentation.</p></div>
   <div class="facts">
-    <div><b>Clients</b><span>Trade only — designers · architects · design studios</span></div>
+    <div><b>Clients</b><span>Trade only — designers · architects · galleries</span></div>
     <div><b>Sectors</b><span>High-end residential · villas · boutique hospitality</span></div>
     <div><b>Studio</b><span>New Delhi, India</span></div>
     <div><b>Contracting</b><span>Invoiced &amp; exported by Art Avenue Pvt. Ltd., New Delhi</span></div>
