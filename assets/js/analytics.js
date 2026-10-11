@@ -22,7 +22,8 @@
  *    and nothing is written to sessionStorage until the visitor clicks
  *    "Allow analytics" in the banner (Consent Mode "basic" behaviour). "Decline" is
  *    stored and respected. "Cookie settings" in the footer reopens the choice.
- *  - Elsewhere GA4 loads with analytics_storage granted. Advertising storage,
+ *  - Elsewhere GA4 loads with analytics_storage granted, unless the visitor has
+ *    chosen "Decline" in Cookie settings (a stored "denied" is respected everywhere). Advertising storage,
  *    ad user data and ad personalisation are denied everywhere; Google signals off.
  *  - The only thing stored for the consent itself is localStorage
  *    `artilier_consent` = "granted" | "denied" (needed to remember the choice).
@@ -135,8 +136,9 @@
   const decide = loc => {
     const needsConsent = !loc || CONSENT_REGIONS.includes(loc);
     w.artilierRegion = { country: loc || 'unknown', consentRequired: needsConsent };
-    if (!needsConsent) { persistTouch(); startGA(); return; }
     const c = getChoice();
+    if (c === 'denied') return;                                   // a withdrawal is respected in every region
+    if (!needsConsent) { persistTouch(); startGA(); return; }
     if (c === 'granted') { persistTouch(); startGA(); }
     else if (c !== 'denied') { if (d.body) showBanner(); else d.addEventListener('DOMContentLoaded', showBanner); }
   };

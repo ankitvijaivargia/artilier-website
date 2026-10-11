@@ -70,15 +70,14 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <link rel="apple-touch-icon" href="${up}apple-touch-icon.png">
 <link rel="sitemap" href="${up}sitemap.xml" type="application/xml">
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="/assets/css/fonts.css?v=1" rel="stylesheet">
 <link rel="stylesheet" href="${up}assets/css/base.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/layout.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/responsive.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/collection-tweaks.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/pages.css?v=6">
 <script defer src="${up}assets/js/slots.js?v=5" data-manifest="${up}assets/media/manifest.json?v=${MV}"></script>
-<script defer src="${up}assets/js/analytics.js?v=4"></script>${scripts}${extraHead}
+<script defer src="${up}assets/js/analytics.js?v=5"></script>${scripts}${extraHead}
 </head>
 <body>
 <a class="skip" href="#main">${lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}</a>`;
