@@ -99,7 +99,7 @@ const enquiryForm = (id = 'contactForm') => `
       <select id="c-ct" name="enquiry">
         <option>Bespoke rug from my own artwork</option><option>A design from the collection, re-sized</option>
         <option>A design from the collection, re-coloured</option><option>Several rugs for one project</option>
-        <option>Embroidery — panels, framed art, upholstery or soft furnishings</option>
+        <option>Embroidery — wall panels or framed art</option><option>Embroidered headboards</option><option>Embroidered fabric by the metre</option><option>Embroidery — upholstery panels or soft furnishings</option>
         <option>Samples</option><option>Trade terms</option><option>Not sure yet</option>
       </select>
     </div>
@@ -271,17 +271,23 @@ ${ctaBlock(UP, 'contact/', 'Start a project', [['projects/','All projects'],['be
 </main>` + footer(UP);
 };
 
-/* ── /hospitality/ ─────────────────────────────────────────────────── */
+/* ── /hospitality/ — Stage 5 Brief D + Stage 6 C-10 ────────────────── */
+/* Rug copy unchanged except the specification section (approved compliance
+   sentence). Embroidery lead times are product-labelled; no installation,
+   headboard freight or certification statement is made. */
 const hospitality = shell({
   path:'hospitality/', up:'../',
-  title:'Custom Hotel Rugs & Contract Rugs for Hospitality | Artilier',
-  desc:'Custom rugs for hotels and boutique hospitality: developed from the designer’s scheme, sampled for approval, made to each room’s size. Trade only, New Delhi.',
-  lb:'Hospitality & contract', h1:'Rugs for<br>', h1it:'hospitality.',
-  lead:`<p class="bd">For hospitality designers, architects and procurement teams: custom rugs for hotels and boutique hospitality projects — developed from your scheme in our New Delhi studio, approved in sample, and made to the dimensions of each room.</p>
-    <div class="wp-meta"><span><b>Made to the schedule</b></span><span>Sampled for approval</span><span>One point of coordination</span></div>`,
+  title:'Hotel Rugs, Headboards & Embroidery | Artilier',
+  desc:'Custom hotel rugs, embroidered headboards, wall panels and furnishing fabric for hospitality projects, developed from the designer’s scheme. Trade only.',
+  lb:'Hospitality & contract', h1:'Rugs and embroidery<br>for ', h1it:'hospitality.',
+  lead:`<p class="bd">For hospitality designers, architects and procurement teams: custom rugs for hotels and boutique hospitality projects, made to the dimensions of each room — and embroidered headboards, wall panels and furnishing fabric developed for the same scheme in our New Delhi studio.</p>
+    <div class="wp-meta"><span><b>Made to the schedule</b></span><span>Rugs and embroidery</span><span>One point of contact</span></div>`,
   nodes:[ service('hospitality/', 'Custom rugs for hospitality projects', 'Custom rug development and manufacture for hotels and hospitality interiors',
     'Development, sampling, production, quality control and export coordination of custom hand-knotted, hand-tufted and flatweave rugs for hotels and hospitality interiors, made to each room’s dimensions and the designer’s scheme.',
-    'Hospitality interior designers, architects and procurement teams') ],
+    'Hospitality interior designers, architects and procurement teams'),
+    { ...service('hospitality/', 'Embroidery for hospitality projects', 'Custom embroidered headboards, wall panels and furnishing fabric for hotels',
+    'Embroidered headboards (complete, or panels for the client’s upholsterer), embroidered wall panels supplied for installation by the project’s appointed contractor, and embroidered furnishing fabric by the metre, developed to the hotel’s scheme.',
+    'Hospitality interior designers, architects and procurement teams'), '@id':`${HOST}/hospitality/#service-embroidery` } ],
   body:`
 ${sec('What we make for hospitality', 'Custom rugs,', 'not stock.', `<div class="mats">
     <div>Hand-knotted <span>Finest definition</span></div>
@@ -291,28 +297,42 @@ ${sec('What we make for hospitality', 'Custom rugs,', 'not stock.', `<div class=
     <div>Custom colourways <span>Matched to the scheme</span></div>
     <div>Multi-rug schedules <span>One project, many rooms</span></div>
     <div>No minimum <span>Single pieces welcome</span></div>
-    <div>Lead time <span>Usually 6–12 weeks from strike-off approval</span></div>
-  </div>`, { dark:true, intro:'Every rug is made to order in the construction, material, colourway and dimensions the project needs. Collection designs can be adapted to a scheme, or a rug developed from the designer’s own artwork.' })}
-${sec('How a hospitality project runs', 'From schedule', 'to site.', `<div class="proc">
+    <div>Rug lead time <span>Usually 6–12 weeks from strike-off approval</span></div>
+  </div>`, { dark:true, intro:'Every rug is made to order in the construction, material, colourway and dimensions the project needs. Collection designs can be adapted to a scheme, or a rug developed from the designer’s own artwork. See <a href="../bespoke/">bespoke development</a>.' })}
+${sec('Embroidery for the same rooms', 'Headboards, walls', 'and fabric.', `<div class="cols2">
+    <div class="prose">
+      <h3><a href="../embroidery/headboards/">Embroidered headboards</a></h3>
+      <p>Complete upholstered headboards, or embroidered panels for your upholsterer. Repeat production for hotel room schedules; no fixed minimum. Production typically takes 3–4 months; more complex projects may require up to 6 months.</p>
+      <h3><a href="../embroidery/">Embroidered wall panels</a></h3>
+      <p>Bespoke panels for suites, corridors and public areas, from a single piece to a full wall, supplied for installation by your appointed contractor. No fixed minimum. Production typically takes 3–4 months; more complex projects may require up to 6 months.</p>
+      <h3><a href="../embroidery/fabrics/">Embroidered fabric</a></h3>
+      <p>Furnishing fabric by the metre for upholstery and curtains. Typical lead time 6–8 weeks; complex work up to 6 months.</p>
+    </div>
+    <div class="gal"><figure class="full">${slotImg('e2', 'Embroidery — zardozi panel on the frame', '../')}<figcaption data-mf="e2"></figcaption></figure></div>
+  </div>`, { intro:'Developed in the same studio as the rugs, so colour and motif can carry across a room. Delivery dates are confirmed for each product only after the specification has been reviewed.' })}
+${sec('How a hospitality project runs', 'From schedule', 'to dispatch.', `<div class="proc">
     <div class="pstep"><span class="pn">01</span><span class="pt">Understand</span><span class="pd">The rug schedule — rooms, quantities, sizes — with drawings, scheme and application. We come back with our thoughts, questions and what still needs resolving.</span></div>
     <div class="pstep"><span class="pn">02</span><span class="pt">Develop</span><span class="pd">Construction, yarn, pile and colour worked through for each rug type. Where there is enough information, an initial cost range follows.</span></div>
     <div class="pstep"><span class="pn">03</span><span class="pt">Sample</span><span class="pd">Yarn samples, colour trials and woven strike-offs, approved in the hand before production. A strike-off takes 2–3 weeks once the design is approved, and its cost is credited against the order — plan it against any mock-up room date.</span></div>
     <div class="pstep"><span class="pn">04</span><span class="pt">Make</span><span class="pd">Weaving, tufting or flatweaving to each size, in the workshop suited to the construction, with progress photography at agreed points.</span></div>
     <div class="pstep"><span class="pn">05</span><span class="pt">Check</span><span class="pd">Quality control against the specification and approved sample — dimensions, pile, colour, binding, backing and finishing — reviewed in Delhi.</span></div>
     <div class="pstep"><span class="pn">06</span><span class="pt">Deliver</span><span class="pd">Rugs are usually shipped rolled and wrapped, with export documentation and freight coordinated through our logistics partners. Prices are usually quoted ex-works in USD or EUR; FOB or DDP on request.</span></div>
-  </div>`)}
-${sec('Specification', 'Tell us what the', 'specification requires.', `<div class="prose">
-    <p>Hotel specifications often carry requirements beyond design — fire performance, wear, cleaning or documentation. Include them in the brief. We confirm what can be met, and what can be documented, before costing rather than after, and we say plainly where a material or construction is unsuited to the traffic a room will take.</p>
+  </div>
+  <p class="proc-note">For embroidery, strike-offs, where required, typically take 2–3 weeks. Delivery dates are confirmed only after the specification has been reviewed. Installation on site is by the project’s appointed contractor.</p>`)}
+${sec('Specification and documentation', 'Agreed before', 'the order.', `<div class="prose">
+    <p>Project-specific documentation and testing requirements can be discussed during specification. Any required standards and supporting evidence must be assessed and agreed before the order is accepted. We do not hold product certifications, and the ability to arrange testing for a project is not a guarantee of a result. Please include any fire, wear or cleaning requirements in the brief.</p>
+    <p>We say plainly where a material or construction is unsuited to the traffic a room will take.</p>
   </div>`, { dark:true })}
 ${sec('What to send', 'A useful', 'first brief.', list([
   '<b>Rug schedule</b> — room or area, quantity and size for each rug type',
+  '<b>Embroidery</b> — headboards, wall panels or fabric for the same rooms, with quantities by room type',
   '<b>Design intent</b> — artwork, scheme, references, or the collection designs you are considering',
   '<b>Construction preference</b> — or leave it to our recommendation',
   '<b>Specification requirements</b> — any performance, cleaning or documentation standards',
   '<b>Programme</b> — mock-up room date, target delivery date and project location'
 ]))}
-${sec('Contracting', 'One supplier,', 'one point of coordination.', `<div class="prose"><p>Artilier is the trade studio of Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Orders are contracted, invoiced and exported through that entity, with established export documentation. Costing and lead times are given per project once construction, materials, sizes and sampling are understood.</p></div>`)}
-${ctaBlock('../', 'contact/?type=hospitality', 'Send a hospitality brief', [['bespoke/','Bespoke development'],['materials/','Materials'],['process/','The process'],['trade/','Trade']])}`
+${sec('Contracting', 'One supplier,', 'one point of contact.', `<div class="prose"><p>Artilier is the trade studio of Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Orders are contracted, invoiced and exported through that entity, with established export documentation, and you have one point of contact from brief to dispatch. Costing and lead times are given per project once construction, materials, sizes and sampling are understood.</p></div>`)}
+${ctaBlock('../', 'contact/?type=hospitality', 'Send a hospitality brief', [['embroidery/headboards/','Embroidered headboards'],['embroidery/','Embroidered wall panels'],['embroidery/fabrics/','Embroidered fabric'],['bespoke/','Bespoke rugs'],['materials/','Materials'],['process/','The process'],['trade/','Trade']])}`
 });
 
 /* ── market pages ──────────────────────────────────────────────────── */
@@ -882,7 +902,7 @@ const urls = [
   ['', '1.0'], ['collection/', '0.9'], ...CATS.map(c => [`collection/${c.slug}/`, '0.8']),
   ['bespoke/', '0.9'], ['hospitality/', '0.9'], ['trade/', '0.8'], ['collaborations/', '0.8'], ['contact/', '0.8'], ['about/', '0.7'],
   ['trade/uae/', '0.8'], ['trade/saudi-arabia/', '0.8'], ['trade/uk/', '0.7'], ['trade/us/', '0.7'], ['fr/', '0.8'],
-  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], [G, '0.7'],
+  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], [G, '0.7'],
   ...(hasProjects ? [['projects/', '0.8'], ...projectsData.map(p => [`projects/${p.slug}/`, '0.7'])] : []),
   ...indexable.slice().sort(by).map(d => [`collection/${d.slug}/`, '0.6'])
 ];

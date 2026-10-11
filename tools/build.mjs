@@ -158,6 +158,8 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
       <li><a href="${up}collection/">${T('All designs')}</a></li>
       <li><a href="${up}materials/">${T('Rug materials')}</a></li>
       <li><a href="${up}embroidery/">${T('Embroidery')}</a></li>
+      <li><a href="${up}embroidery/headboards/">${T('Embroidered headboards')}</a></li>
+      <li><a href="${up}embroidery/fabrics/">${T('Embroidered fabric')}</a></li>
     </ul></div>
     <div class="f-col"><h5>${T('Studio')}</h5><ul>
       <li><a href="${up}bespoke/">${T('Bespoke development')}</a></li>
