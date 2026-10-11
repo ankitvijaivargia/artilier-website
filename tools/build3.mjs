@@ -144,7 +144,7 @@ const contact = shell({
         <a href="mailto:studio@artilier.co"><b>Email</b>studio@artilier.co</a>
         <a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener"><b>Instagram</b>@artilier.co</a>
         <span><b>Studio</b>New Delhi, India</span>
-        <span><b>Clients</b>Trade only — designers · architects · studios</span>
+        <span><b>Clients</b>Trade only — designers · architects · galleries</span>
         <span><b>Contracting</b>Art Avenue Pvt. Ltd., New Delhi</span>
       </div>
     </div>
@@ -152,7 +152,7 @@ const contact = shell({
   </div>
 </section>
 ${sec('Before you write', 'Questions we are', 'often asked.', qa([
-  ['Do you sell to private clients?', 'No. Artilier works trade only — with interior designers, architects, design practices and the hospitality teams who specify with them.'],
+  ['Do you sell to private clients?', 'Not directly. Artilier works trade only — with interior designers, architects, design practices and galleries, and with collectors through the galleries that represent them.'],
   ['Can a collection design be changed?', 'Yes. Every design is a starting point: it can be re-scaled, re-proportioned and re-coloured to your scheme, and made to the size the room needs within what the design and construction allow.'],
   ['Can we see samples first?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom. The strike-off takes 2–3 weeks once the design or sketch is approved, and its cost is credited against the order.'],
   ['Is there a minimum order?', 'No. We make single pieces as readily as multi-rug schedules.'],
@@ -165,8 +165,8 @@ ${sec('Before you write', 'Questions we are', 'often asked.', qa([
 /* ── /about/ ───────────────────────────────────────────────────────── */
 const about = shell({
   path:'about/', up:'../', pageType:'AboutPage',
-  title:'About Artilier — Craft Studio for Interiors, New Delhi',
-  desc:'Design-led craft studio for interiors in New Delhi, working trade only — rugs first, led by an interior designer and over a decade of custom manufacturing.',
+  title:'About Artilier — Master Craft Studio, New Delhi',
+  desc:'A master craft studio in New Delhi for rugs and hand embroidery, working with designers, architects and galleries — led by an interior designer.',
   lb:'About the studio', h1:'A design studio<br>in ', h1it:'New Delhi.',
   lead:`<p class="bd">Artilier is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. We work trade only, with interior designers, architects and design practices internationally. We begin with rugs; embroidery and design objects follow.</p>
     <div class="wp-meta"><span><b>Founded on making</b></span><span>Led by design</span><span>Trade only</span></div>`,
@@ -462,7 +462,7 @@ ${sec('Working together', 'Briefed by email,', 'approved in hand.', `<div class=
     <p>New Delhi is nine hours thirty minutes ahead of New York during daylight saving time (ten hours thirty in winter), and Texas is an hour further behind. Work moves by email: a brief sent at the end of your day reaches us at the start of ours. Send sizes in feet and inches or metres, whichever your drawings use. Samples and strike-offs are approved in the hand before production.</p>
   </div>`)}
 ${sec('Questions', 'From US', 'practices.', qa([
-  ['Do you work with private clients?', 'No — Artilier works to the trade only, with interior designers, architects and design practices.'],
+  ['Do you work with private clients?', 'Not directly. Artilier works trade only — with interior designers, architects, design practices and galleries, and with collectors through the galleries that represent them.'],
   ['Can a Hamptons rug be timed to the season?', 'Tell us the date the rug must be on site. Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases, so the earlier the brief, the more options remain open.'],
   common.contract,
   common.pricing]))}
@@ -606,7 +606,7 @@ ${sec('Checklist', 'A brief', 'we can cost.', list([
 ]), { dark:true })}
 ${sec('Questions', 'Asked before', 'the first brief.', qa([
   ['Can we start from a rough sketch?', 'Yes. A rough idea and a floor plan are enough to begin; construction, yarn, colour separation and scale are developed with you, and we tell you what needs resolving before costing.'],
-  ['Do you work with private clients?', `No. Artilier works to the trade only — interior designers, architects, hospitality teams and design practices. See <a href="${UPG}trade/">trade</a>.`],
+  ['Do you work with private clients?', `Not directly. Artilier works trade only — with interior designers, architects, design practices and galleries, and with collectors through the galleries that represent them. See <a href="${UPG}trade/">trade</a>.`],
   ['Can one rug be adapted from the collection rather than developed from scratch?', 'Yes. Collection designs can be re-scaled, re-proportioned and re-coloured to your scheme, and made to the size the room needs within what the design and construction allow.'],
   ['What happens if the strike-off is not right?', 'The full rug is not set on the loom until the strike-off is approved. If it is not right, tell us what needs to change; what a revision involves is agreed with you before anything further is made.']]))}
 ${ctaBlock(UPG, 'contact/?type=bespoke', 'Send a brief', [['bespoke/','Bespoke development'],['process/','The process'],['hospitality/','Hospitality'],['trade/','Trade']])}`

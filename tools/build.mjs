@@ -142,8 +142,8 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
     <div>
       <h4>Artilier</h4>
       <p>${lang === 'fr'
-        ? 'Art. Made Material. Studio de création à New Delhi, réservé aux professionnels. Tapis noués main, tuftés main et tissés à plat, et broderie à la main pour panneaux muraux, tissus d’ameublement et linge de maison — réalisés sur mesure, aux dimensions de chaque projet.'
-        : 'Art. Made Material. A craft studio for interiors in New Delhi, working trade only. Rugs — hand-knotted, hand-tufted and flatweave — and hand embroidery for walls, upholstery and soft furnishings, made to order and sized to each project, from our collection or your own artwork. Design objects follow.'}</p>
+        ? 'Art. Made Material. Studio d’artisanat d’art à New Delhi. Tapis et broderie à la main, réalisés à la commande pour les designers, architectes et galeries — une pièce unique ou une collection entière, sur nos dessins ou les vôtres.'
+        : 'Art. Made Material. A master craft studio in New Delhi. Rugs and hand embroidery, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.'}</p>
     </div>
     <div class="f-col"><h5>${T('Collection')}</h5><ul>
       <li><a href="${up}collection/hand-knotted/">${T('Hand-knotted rugs')}</a></li>
@@ -219,7 +219,7 @@ const slotImg = (id, ph, up, eager = false) => {
 const ORG = {
   '@type':'Organization','@id':`${HOST}/#organization`,'name':'Artilier','url':`${HOST}/`,
   'email':'studio@artilier.co','sameAs':['https://www.instagram.com/artilier.co/'],
-  'description':"Design-led craft studio for interiors in New Delhi, working trade only. Rugs — hand-knotted, hand-tufted and flatweave — and hand embroidery for wall panels, framed art, upholstery and soft furnishings, made to order and sized to each project, from the studio collection or a designer's own artwork. Design objects follow.",
+  'description':"A master craft studio in New Delhi. Rugs and hand embroidery, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.",
   'founder':{'@type':'Person','name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development'},
   'employee':{'@type':'Person','name':'Payal Samal','jobTitle':'Design Head — Interior Designer'},
   'address':{'@type':'PostalAddress','addressLocality':'New Delhi','addressCountry':'IN'},
