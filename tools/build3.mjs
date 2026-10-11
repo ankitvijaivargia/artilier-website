@@ -296,7 +296,7 @@ const privacy = shell({
   body:`
 ${sec('Enquiries', 'What you', 'send us.', `<div class="prose">
     <p>When you use an enquiry form we receive what you enter — your name, studio or company, email address, where you are based, the type of project, construction, a description of the project, quantities, dimensions, target date and project location. With it we receive the page you sent it from, the page you first arrived on, the website that referred you, any campaign tags in the link you followed and, where relevant, the design or product page that led you to the form.</p>
-    <p>The form is delivered to our studio inbox by Formspree, a form-handling service, which can also keep a copy of submissions in its own dashboard. If you email us directly or send drawings or artwork, they are held in our studio email, which runs on Google Workspace.</p>
+    <p>The form is delivered to our studio inbox by Formspree, a form-handling service; we have switched off Formspree’s storage of submissions in its dashboard, so the email in our inbox is our record. If you email us directly or send drawings or artwork, they are held in our studio email, which runs on Google Workspace.</p>
     <p>We use these details to reply to you, to discuss, quote for and carry out the work you ask about, and to keep a record of our business correspondence. We do not sell them and do not use them for advertising.</p>
   </div>`)}
 ${sec('Business contacts', 'Studios we', 'write to.', `<div class="prose">
