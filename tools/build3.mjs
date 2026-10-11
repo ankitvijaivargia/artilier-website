@@ -643,7 +643,7 @@ const syncShell = (file, up, { ctaLabel } = {}) => {
   s = s.replace(/<footer>[\s\S]*?<\/footer>/, footBlock);
   s = s.replace(/<a class="mcta" id="mcta" href="[^"]*">([^<]*)/, (m, label) => `<a class="mcta" id="mcta" href="${up}contact/">${ctaLabel || label}`);
   s = s.split(`${up}index.html#brief`).join(`${up}contact/`).split(`${up}index.html#about`).join(`${up}about/`).split(`href="${up}index.html"`).join(`href="${up}"`);
-  s = s.replace(/slots\.js\?v=4/g, 'slots.js?v=5').replace(/pages\.css\?v=[34]/g, 'pages.css?v=5');
+  s = s.replace(/slots\.js\?v=4/g, 'slots.js?v=5').replace(/pages\.css\?v=[345]/g, 'pages.css?v=6');
   if (!s.includes('pages.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*collection-tweaks\.css\?v=2">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/pages.css?v=3">`);
   if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=2"></script>\n</head>`);
   /* one Organization entity everywhere: replace the inline copy with the shared one */
@@ -706,7 +706,7 @@ console.log(`sitemap: ${urls.length} URLs`);
   s = s.replace(/<footer>[\s\S]*?<\/footer>/, foot.slice(foot.indexOf('<footer>'), foot.indexOf('</footer>') + 9));
   const url = `${HOST}/`;
   const g = { '@context':'https://schema.org','@graph':[ORG, WEBSITE,
-    { '@type':'WebPage','@id':`${url}#webpage`,'url':url,'name':'Bespoke Rugs for Interior Designers | Artilier, New Delhi',
+    { '@type':'WebPage','@id':`${url}#webpage`,'url':url,'name':'Bespoke Rugs & Embroidery for Interior Designers | Artilier',
       'isPartOf':{'@id':`${HOST}/#website`},'about':{'@id':`${HOST}/#organization`},'inLanguage':'en',
       'primaryImageOfPage':{ '@type':'ImageObject','url':`${HOST}/assets/media/hero-main-poster.webp` } } ] };
   s = s.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify(g)}</script>`);

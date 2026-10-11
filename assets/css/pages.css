@@ -105,3 +105,11 @@
   .gal figure.w .ph{aspect-ratio:4/5}
   .gal figure.full .ph{aspect-ratio:4/5}
 }
+
+/* Homepage embroidery band. */
+.emb .gal{margin-top:clamp(8px,1.5vw,18px)}
+.emb-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,3vw,44px);margin-top:clamp(26px,3.5vw,44px);padding-top:clamp(18px,2vw,26px);border-top:1px solid var(--sand)}
+.emb-row .lb{display:block;margin-bottom:10px}
+.emb-row p{font-size:15px;line-height:1.7;color:var(--tx-2)}
+.emb-row .aa{display:inline-block;margin-top:6px}
+@media (max-width:760px){.emb-row{grid-template-columns:minmax(0,1fr)}}
