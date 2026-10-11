@@ -190,6 +190,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
     <span>${T('© 2026 Artilier — a studio of Art Avenue Pvt. Ltd.')}</span>
     <span>${T('New Delhi · Made by hand across India')}</span>
     <span>${T('Trade only · Made to order, sized to each project')}</span>
+    <span><a href="${up}privacy/">${T('Privacy notice')}</a> · <a href="#cookie-settings" data-consent-open>${T('Cookie settings')}</a></span>
   </div>
 </footer>
 

@@ -70,6 +70,7 @@ for f in pages:
     jsonld = ' '.join(x.string or '' for x in b.find_all('script', type='application/ld+json'))
     for m in SIZE_CLAIM.finditer(text + ' ' + metas + ' ' + t + ' ' + jsonld):
         errs.append(f'{f}: absolute size claim "{m.group(0)}"')
+    if re.search(r'\[(Owner to|date of publication)', b.get_text(' ')): errs.append(f'{f}: unresolved owner placeholder — fill before release')
     cb, cw = claims.check(u, s)
     errs.extend(f'{f}: {x}' for x in cb); warns.extend(f'{f}: {x}' for x in cw)
     base = posixpath.dirname('/' + f) + '/'

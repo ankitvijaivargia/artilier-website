@@ -281,6 +281,32 @@ ${ctaBlock(UP, 'contact/', 'Start a project', [['projects/','All projects'],['be
 </main>` + footer(UP);
 };
 
+/* ── /privacy/ — DRAFT for owner approval (Stage 10C). Facts only; retention and
+   legal-basis wording are owner decisions and are marked as such in the PR. ── */
+const privacy = shell({
+  path:'privacy/', up:'../', robots:'noindex,follow',
+  title:'Privacy Notice | Artilier',
+  desc:'How Artilier handles enquiry details, analytics and cookies on artilier.co.',
+  lb:'Privacy', h1:'Privacy', h1it:'notice.',
+  lead:`<p class="bd">This notice explains what information artilier.co collects, why, and the choices you have. Artilier is a trade studio of Art Avenue Pvt. Ltd., New Delhi, India, which is responsible for this information. Contact: <a href="mailto:studio@artilier.co">studio@artilier.co</a>.</p>`,
+  body:`
+${sec('Enquiries', 'What you', 'send us.', `<div class="prose">
+    <p>When you use an enquiry form we receive what you type — name, studio, email, location and project details — together with the page you sent it from, the page you first arrived on, the referring website and any campaign tags in the link. The form is delivered to our studio inbox by Formspree, a form service. We use these details only to reply to you and to handle the project you ask about.</p>
+    <p>We keep enquiries for as long as needed to respond and to keep business records. [Owner to confirm the retention period before publication.]</p>
+  </div>`)}
+${sec('Analytics', 'How the site', 'is measured.', `<div class="prose">
+    <p><b>Cloudflare Web Analytics</b> counts page views without cookies and without identifying you.</p>
+    <p><b>Google Analytics 4</b> helps us see which pages are useful and which lead to enquiries. It sets two first-party cookies, <code>_ga</code> and <code>_ga_8TXE25YJ86</code>, which hold a random identifier; Google states that it does not store IP addresses in Google Analytics 4. We do not use Google Analytics for advertising, and Google signals and ad personalisation are switched off. Analytics events never include your name, email, phone number or message.</p>
+    <p>If you visit from the United Kingdom, the European Economic Area or Switzerland, Google Analytics does not load and no analytics cookie is set unless you choose <b>Allow analytics</b>. Elsewhere it loads by default. You can change your choice at any time through <a href="#cookie-settings" data-consent-open>Cookie settings</a>.</p>
+    <p>For the length of a visit, the site may keep the page you arrived on and the referring site in your browser's session storage, so that an enquiry you send tells us how you found us. In the UK, EEA and Switzerland this happens only after you allow analytics. Your cookie choice itself is remembered in your browser's local storage.</p>
+  </div>`, { dark:true })}
+${sec('Your rights', 'Access, correction,', 'deletion.', `<div class="prose">
+    <p>You can ask to see, correct or delete the information we hold about you, or object to its use, by writing to <a href="mailto:studio@artilier.co">studio@artilier.co</a>. Our service providers, including Google and Formspree, may process information outside India, including in the United States. If you are in the UK or the EEA you can also complain to your data protection authority — in the UK, the Information Commissioner's Office.</p>
+    <p>Last updated: [date of publication].</p>
+  </div>`)}
+${ctaBlock('../', 'contact/', 'Contact the studio', [['about/','About the studio'],['trade/','Trade']])}`
+});
+
 /* ── /hospitality/ — Stage 5 Brief D + Stage 6 C-10 ────────────────── */
 /* Rug copy unchanged except the specification section (approved compliance
    sentence). Embroidery lead times are product-labelled; no installation,
@@ -858,7 +884,7 @@ ${sec('Travailler ensemble', 'Votre dessin,', 'en fil.', `<div class="prose">
 });
 
 /* ── write ─────────────────────────────────────────────────────────── */
-const built = { 'contact/index.html':contact, 'about/index.html':about, 'projects/index.html':projects, 'hospitality/index.html':hospitality,
+const built = { 'privacy/index.html':privacy, 'contact/index.html':contact, 'about/index.html':about, 'projects/index.html':projects, 'hospitality/index.html':hospitality,
   'trade/uae/index.html':uae, 'trade/saudi-arabia/index.html':ksa, 'trade/uk/index.html':uk, 'trade/us/index.html':us, 'fr/index.html':fr, 'embroidery/uae/index.html':embUae, 'embroidery/saudi-arabia/index.html':embKsa, 'embroidery/uk/index.html':embUk, 'embroidery/us/index.html':embUs, 'fr/broderie/index.html':embFr, [G + 'index.html']:guide, '404.html':notFound };
 for (const p of projectsData) built[`projects/${p.slug}/index.html`] = projectPage(p);
 for (const [f, html] of Object.entries(built)) write(f, html);
