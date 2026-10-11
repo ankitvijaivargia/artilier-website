@@ -282,7 +282,7 @@ const EMB_SLOTS = [
   ['e1','Embroidery — chain stitch','w'], ['e2','Embroidery — zardozi panel on the frame',''],
   ['e3','Embroidery — raffia on the frame',''], ['e4','Embroidery — cord stitching','w'],
   ['e5','Embroidery — metal thread','q'], ['e6','Embroidery — large panel','q'],
-  ['e7','Embroidery — zari detail','q'], ['e8','Embroidery — finished panel','q']
+  ['e7','Embroidery — finished zari and zardozi','q'], ['e8','Embroidery — finished panel','q']
 ];
 const gallery = (slots, lb, h2, h2it, intro) => `
 <section class="sec gal-sec">
