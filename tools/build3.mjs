@@ -911,7 +911,10 @@ syncShell('collaborations/index.html', '../', { ctaLabel:'Start a collaboration 
 console.log('synced shell: collaborations, collection hub');
 
 /* ── sitemap: canonical, indexable, 200-status URLs only ───────────── */
-const today = new Date().toISOString().slice(0, 10);
+/* No <lastmod>: every page is rewritten on each build (shared footer), so a
+   build date would claim changes that did not happen. <priority> is ignored
+   by Google and was dropped too. */
+
 const urls = [
   ['', '1.0'], ['collection/', '0.9'], ...CATS.map(c => [`collection/${c.slug}/`, '0.8']),
   ['bespoke/', '0.9'], ['hospitality/', '0.9'], ['trade/', '0.8'], ['collaborations/', '0.8'], ['contact/', '0.8'], ['about/', '0.7'],
@@ -927,7 +930,7 @@ for (const [u] of urls) {           // every listed URL must exist and be indexa
 }
 wr('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(([u, p]) => `  <url><loc>${HOST}/${u}</loc><lastmod>${today}</lastmod><priority>${p}</priority></url>`).join('\n')}
+${urls.map(([u, p]) => `  <url><loc>${HOST}/${u}</loc></url>`).join('\n')}
 </urlset>
 `);
 console.log(`sitemap: ${urls.length} URLs`);

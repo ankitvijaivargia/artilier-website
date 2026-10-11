@@ -36,6 +36,7 @@ def resolves(path):
 
 pages = sorted(f for f in glob.glob('**/*.html', recursive=True) if f not in SKIP)
 titles, descs, indexable = {}, {}, set()
+inbound = {}   # url -> set of pages linking to it (orphan check)
 for f in pages:
     s = open(f, encoding='utf-8').read()
     b = BeautifulSoup(s, 'html.parser')
@@ -79,6 +80,7 @@ for f in pages:
         if f == '404.html': target = h
         else: target = posixpath.normpath(posixpath.join(base, h.split('#')[0].split('?')[0] or '.'))
         if (h.split('#')[0].split('?')[0].endswith('/') or h in ('', './')) and not target.endswith('/'): target += '/'
+        if f != '404.html' and target != url_of(f): inbound.setdefault(target, set()).add(url_of(f))
         r = resolves(target)
         if r == 'redirect': warns.append(f'{f}: link through redirect {h}')
         elif not r: errs.append(f'{f}: broken link {h} -> {target}')
@@ -95,6 +97,8 @@ for u in smu:
 for u in indexable - smu:
     if u not in ('/404.html',): errs.append(f'indexable page not in sitemap: {u}')
 
+for u in sorted(smu):
+    if u != '/' and not inbound.get(u): errs.append(f'orphan: no internal link points to {u}')
 errs.extend('claims selftest: ' + x for x in claims.selftest())
 print(f'pages checked: {len(pages)}  indexable: {len(indexable)}  sitemap: {len(sm)}')
 for w in warns: print('WARN', w)
