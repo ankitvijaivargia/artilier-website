@@ -3,9 +3,12 @@ Fails (exit 1) on: broken internal links, links to index.html, missing or
 duplicate titles/descriptions, titles > 65 or descriptions > 160 characters,
 pages without exactly one H1, invalid JSON-LD, sitemap entries that are missing
 or noindexed, indexable pages missing from the sitemap, images without alt,
-and any named manufacturing location."""
+and any named manufacturing location. Also runs the claim rules R-01..R-10
+(tools/claims.py): BLOCK findings are errors, WARN findings are printed."""
 import glob, json, os, re, sys, posixpath
 from bs4 import BeautifulSoup
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import claims
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
@@ -66,6 +69,8 @@ for f in pages:
     jsonld = ' '.join(x.string or '' for x in b.find_all('script', type='application/ld+json'))
     for m in SIZE_CLAIM.finditer(text + ' ' + metas + ' ' + t + ' ' + jsonld):
         errs.append(f'{f}: absolute size claim "{m.group(0)}"')
+    cb, cw = claims.check(u, s)
+    errs.extend(f'{f}: {x}' for x in cb); warns.extend(f'{f}: {x}' for x in cw)
     base = posixpath.dirname('/' + f) + '/'
     for a in b.find_all('a', href=True):
         h = a['href']
@@ -90,6 +95,7 @@ for u in smu:
 for u in indexable - smu:
     if u not in ('/404.html',): errs.append(f'indexable page not in sitemap: {u}')
 
+errs.extend('claims selftest: ' + x for x in claims.selftest())
 print(f'pages checked: {len(pages)}  indexable: {len(indexable)}  sitemap: {len(sm)}')
 for w in warns: print('WARN', w)
 for e in errs: print('ERROR', e)

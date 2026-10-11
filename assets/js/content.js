@@ -12,7 +12,7 @@
  *                      attached to published work — never as a bare list.
  *   collections.json → one published collection = one section on a collection page
  *   designs.json     → every design, keyed to a collection + technique
- *   projects.json    → installed work (empty until there is real work to show)
+ *   projects.json    → completed work (empty until there is real work to show)
  *   bespoke.json     → the bespoke flow and any bespoke examples
  *
  * Media ids (hero / images / video) resolve through assets/media/manifest.json,
@@ -166,7 +166,7 @@
     if (pr) {
       if (prs.length) {
         pr.innerHTML = `<div class="sec-hd rv">
-    <div><span class="lb">${esc(data.projects.eyebrow || 'Projects')}</span><h2 class="d2">${esc(data.projects.title || 'Work,')}<br><span class="it">${esc(data.projects.titleItalic || 'installed.')}</span></h2></div>
+    <div><span class="lb">${esc(data.projects.eyebrow || 'Projects')}</span><h2 class="d2">${esc(data.projects.title || 'Work,')}<br><span class="it">${esc(data.projects.titleItalic || 'completed.')}</span></h2></div>
     <p class="bd">${esc(data.projects.intro || '')}</p>
   </div>
   <div class="cg rv">${prs.map((p, i) =>

@@ -120,3 +120,15 @@ The first guide (`/guides/briefing-a-bespoke-rug/`) uses only published facts �
 - [ ] **EquipHotel Paris (2–5 Nov 2026)** — visit or skip?
 - [ ] **French replies** (§B) — decides whether a French contact form and `/fr/hotellerie/` are built
 - [ ] **Approve outreach drafts** before anything is sent (nothing is sent without approval)
+
+## L. Stage 9 (11 Oct 2026) — decisions blocking release of PRs #21–#24
+
+- [ ] **GA4**: create a separate ARTILIER GA4 property + web stream and send the G- ID, or decide GA4 is not needed (Cloudflare Web Analytics is already active)
+- [ ] **Formspree**: send one test enquiry from /contact/ and confirm it arrives with the hidden attribution fields
+- [ ] **Copy approval**: /embroidery/, /embroidery/headboards/, /embroidery/fabrics/, /hospitality/ (PR #22); copy corrections C-01–C-06, C-08 (PR #23)
+- [ ] **A1–A4 headboards**: installation, fixing hardware, packing/freight, size limits — pages stay silent until answered
+- [ ] **B1**: is a strike-off required for every embroidery project? (wording is conditional until answered) · **B2** same for rugs · **H1** keep "up to six months" for rugs?
+- [ ] **C1**: grounds suitable for wall panels
+- [ ] **M8 / freight**: keep "FOB or DDP on request" on embroidery pages (incl. UAE) or change it? · Gulf freight policy · US landed-cost basis (10% Section 301 + MFN duty) · can large board panels (8 × 4 ft) and complete headboards be shipped, and how?
+- [ ] **French reviewer** for /fr/broderie/ (C-07 held; two claim-rule warnings remain there by design)
+- [ ] **Photographs** for headboards and fabric pages

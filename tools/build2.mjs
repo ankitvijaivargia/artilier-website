@@ -208,7 +208,7 @@ const PROC = [
   ['03','Sample','Yarn samples, colour trials and a woven strike-off — approved in the hand before the full rug is set on the loom.'],
   ['04','Make','Weaving, tufting or flatweaving to your dimensions, in the workshop suited to the construction. Progress photography at agreed points.'],
   ['05','Check','Quality control against the specification and approved sample — dimensions, pile, colour, binding, backing and finishing, reviewed in Delhi.'],
-  ['06','Deliver','Rolling, wrapping, export documentation and freight coordinated through our logistics partners — and we stay available through installation.']
+  ['06','Deliver','Rolling, wrapping, export documentation and freight coordinated through our logistics partners. Installation is carried out by your appointed contractor; we remain available to answer questions until the piece is in place.']
 ];
 const process = page({
   slug:'process', lb:'Process',
@@ -266,7 +266,7 @@ const craft = page({
 </section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">The second discipline</span><h2 class="d2">Embroidery,<br>worked by <span class="it">hand.</span></h2></div>
-  <p class="bd">The same model applied to thread: hand embroidery for wall panels, framed art, cushions, headboards, upholstery panels and drapery, from our designs or developed from your artwork, and sampled before production. <a href="${up}embroidery/">Embroidery at Artilier</a>.</p></div>
+  <p class="bd">The same model applied to thread: hand embroidery for wall panels, framed art, cushions, headboards, upholstery panels and drapery, from our designs or developed from your artwork, and sampled where the project requires it. <a href="${up}embroidery/">Embroidery at Artilier</a>.</p></div>
 </section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">Beyond</span><h2 class="d2">Built around making,<br>not one <span class="it">product.</span></h2></div>
@@ -568,7 +568,7 @@ ci = ci.replace(/<main id="collection-root"[\s\S]*?<\/main>/,
   `<main id="collection-root" data-category="rugs" data-prerendered="1">\n${sections}\n</main>`);
 ci = ci.replace(/<div class="filt-in" id="filt-in" role="group" aria-label="Filter the collection">[\s\S]*?<\/div>/,
   `<div class="filt-in" id="filt-in" role="group" aria-label="Filter the collection">${filtBtns}</div>`);
-ci = ci.replace('slots.js?v=3','slots.js?v=4').replace('content.js?v=2','content.js?v=3');
+ci = ci.replace('slots.js?v=3','slots.js?v=4').replace('content.js?v=2','content.js?v=4');
 writeFileSync('collection/index.html', ci);
 console.log('pre-rendered collection/index.html');
 
