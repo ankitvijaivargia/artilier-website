@@ -235,11 +235,11 @@ ${relatedBlock([['bespoke/','Start from your artwork'],['materials/','Material s
 /* ── /craft/ ───────────────────────────────────────────────────────── */
 const craft = page({
   slug:'craft', lb:'The craft',
-  title:'Handmade rugs from India — the craft behind the studio | Artilier',
-  desc:'Hand-knotting, hand-tufting and flatweaving as Artilier practises them: design, sampling and finishing in New Delhi, weaving through established workshops.',
+  title:'Handmade rugs and embroidery from India — the craft | Artilier',
+  desc:'Hand-knotting, hand-tufting, flatweaving and hand embroidery as Artilier practises them: developed and checked in New Delhi, made in workshops across India.',
   h1:'Made by hand,<br>and it ', h1it:'shows.',
-  lead:`<p class="bd">Artilier is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. Our first collection is rugs, and every one of them is made by hand.</p>
-    <div class="wp-meta"><span><b>New Delhi</b></span><span>Woven across India</span><span>Made to order</span></div>`,
+  lead:`<p class="bd">Artilier is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. We work in two disciplines — rugs and embroidery — and everything we make is made by hand.</p>
+    <div class="wp-meta"><span><b>New Delhi</b></span><span>Made across India</span><span>Made to order</span></div>`,
   body:`
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">Three constructions</span><h2 class="d2">Three constructions.<br>One <span class="it">specialism.</span></h2></div>
@@ -261,13 +261,93 @@ const craft = page({
   </div>
 </section>
 <section class="sec">
-  <div class="sec-hd"><div><span class="lb">Beyond rugs</span><h2 class="d2">Rugs are the<br><span class="it">first collection.</span></h2></div>
-  <p class="bd">Artilier is built around art, material and making rather than around a single product. Rugs are where the studio begins. The constant is the model: made to order by hand, developed from Delhi, sold trade only. <a href="${up}trade/">How we work with practices</a>.</p></div>
+  <div class="sec-hd"><div><span class="lb">The second discipline</span><h2 class="d2">Embroidery,<br>worked by <span class="it">hand.</span></h2></div>
+  <p class="bd">The same model applied to thread: hand embroidery for wall panels, framed art, cushions, headboards, upholstery panels and drapery, from our designs or developed from your artwork, and sampled before production. <a href="${up}embroidery/">Embroidery at Artilier</a>.</p></div>
 </section>
-${relatedBlock([['collection/','The collection'],['process/','The process'],['materials/','Materials'],['bespoke/','Bespoke development']])}`
+<section class="sec">
+  <div class="sec-hd"><div><span class="lb">Beyond</span><h2 class="d2">Built around making,<br>not one <span class="it">product.</span></h2></div>
+  <p class="bd">Artilier is built around art, material and making rather than around a single product. Rugs and embroidery are where the studio works today; design objects follow. The constant is the model: made to order by hand, developed from Delhi, sold trade only. <a href="${up}trade/">How we work with practices</a>.</p></div>
+</section>
+${relatedBlock([['collection/','The collection'],['embroidery/','Embroidery'],['process/','The process'],['materials/','Materials'],['bespoke/','Bespoke development']])}`
 });
 
-const pages = { bespoke, trade, materials, process, craft };
+/* ── /embroidery/ ──────────────────────────────────────────────────── */
+/* Owner-confirmed (11 Oct 2026): all hand-embroidery techniques; applied to
+   wall panels, framed art, cushions, headboards, upholstery panels and drapery;
+   developed from a designer's own artwork; sampling as for rugs (strike-off
+   2–3 weeks from approval, credited against the order); no minimum.
+   Lead time is NOT stated as a range — confirmed per piece in the quote.
+   Media slots e1–e8 render nothing until files are added to the manifest. */
+const EMB_SLOTS = [
+  ['e1','Embroidery — close detail of hand stitching','w'], ['e2','Embroidery — work on the frame',''],
+  ['e3','Embroidery — thread and ground fabric',''], ['e4','Embroidery — a finished panel','w'],
+  ['e5','Embroidery — stitch detail',''], ['e6','Embroidery — finished piece',''],
+  ['e7','Embroidery — in progress',''], ['e8','Embroidery — finished piece','']
+];
+const gallery = (slots, lb, h2, h2it, intro) => `
+<section class="sec gal-sec">
+  <div class="sec-hd"><div><span class="lb">${esc(lb)}</span><h2 class="d2">${h2}<span class="it">${h2it}</span></h2></div>${intro ? `
+  <p class="bd">${intro}</p>` : ''}</div>
+  <div class="gal">${slots.map(([id, ph, w]) => `<figure${w ? ' class="w"' : ''}>${slotImg(id, ph, up)}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div>
+</section>`;
+const embroidery = page({
+  slug:'embroidery', lb:'Embroidery',
+  title:'Hand Embroidery for Interiors — Panels & Upholstery | Artilier',
+  desc:'Hand embroidery for wall panels, framed art, headboards, upholstery, cushions and drapery — from our designs or your artwork, sampled first. Trade only.',
+  h1:'Drawn in<br>', h1it:'thread.',
+  lead:`<p class="bd">Hand embroidery for interiors: wall panels, framed art, headboards, upholstery panels, cushions and drapery. Worked from our designs or developed from your own artwork, sampled for approval, and made to the piece the room needs.</p>
+    <div class="wp-meta"><span><b>Made by hand</b></span><span>From your artwork</span><span>Sampled first</span></div>`,
+  service:{ name:'Bespoke hand embroidery for interiors', serviceType:'Custom hand embroidery design and manufacture',
+    description:'Development and hand embroidery of wall panels, framed art, headboards, upholstery panels, cushions and drapery for interior designers, from the studio’s designs or a designer’s own artwork, with a strike-off approved before production.' },
+  body:`
+<section class="sec">
+  <div class="sec-hd"><div><span class="lb">Techniques</span><h2 class="d2">Every stitch the<br>design <span class="it">asks for.</span></h2></div>
+  <p class="bd">We work across hand-embroidery techniques rather than in one house style. Which technique a piece wants is decided from the artwork, the ground fabric and where the piece will live — and proved in the strike-off.</p></div>
+  <div class="proc">
+    <div class="pstep"><span class="pn">01</span><span class="pt">Aari</span><span class="pd">A fine hooked needle drawing a continuous chain stitch across fabric stretched on a frame. Fast, fluid line work and dense fields of colour.</span></div>
+    <div class="pstep"><span class="pn">02</span><span class="pt">Zardozi and metal thread</span><span class="pd">Metallic threads, wires and purls laid and couched by hand. Raised, reflective surfaces for panels and framed pieces.</span></div>
+    <div class="pstep"><span class="pn">03</span><span class="pt">Crewel</span><span class="pd">Wool yarn on cotton or linen. Soft, textured line and fill, suited to upholstery, headboards and drapery.</span></div>
+    <div class="pstep"><span class="pn">04</span><span class="pt">Appliqué</span><span class="pd">Cut fabric laid onto a ground and stitched in place. Large, graphic forms at a scale thread alone would take far longer to fill.</span></div>
+    <div class="pstep"><span class="pn">05</span><span class="pt">Beadwork and sequins</span><span class="pd">Beads, sequins and stones worked by hand for light, depth and relief — used across a whole surface or as an accent.</span></div>
+    <div class="pstep"><span class="pn">06</span><span class="pt">Thread embroidery</span><span class="pd">Satin, stem, long-and-short and knot stitches in silk, cotton or wool, for painterly shading and fine detail. Techniques are combined where a design needs it.</span></div>
+  </div>
+</section>
+${gallery(EMB_SLOTS, 'From the studio', 'Stitch by ', 'stitch.', '')}
+<section class="sec dark">
+  <div class="sec-hd"><div><span class="lb">Where it is used</span><h2 class="d2">Made for the wall,<br>the bed and the <span class="it">window.</span></h2></div>
+  <p class="bd">Tell us what the piece is and where it goes. Size, ground fabric, how it will be mounted or upholstered and how much handling it will take all shape the technique and density we recommend.</p></div>
+  <div class="facts">
+    <div><b>Wall panels</b><span>Single panels or runs across a wall, sized to the elevation</span></div>
+    <div><b>Framed art</b><span>Embroidered pieces made to be framed or mounted</span></div>
+    <div><b>Headboards</b><span>Embroidered panels for upholstered headboards</span></div>
+    <div><b>Upholstery panels</b><span>Seat, back and side panels for upholstered furniture</span></div>
+    <div><b>Cushions</b><span>Embroidered fronts, made to size</span></div>
+    <div><b>Drapery</b><span>Embroidered curtains, leading edges and borders</span></div>
+  </div>
+</section>
+<section class="sec">
+  <div class="sec-hd"><div><span class="lb">From your artwork</span><h2 class="d2">Your drawing,<br>in <span class="it">thread.</span></h2></div>
+  <p class="bd">Embroidery is commissioned the way our rugs are. Send artwork, a painting, a CAD file or a reference with the sizes; we resolve technique, thread, colour and ground fabric with you, then prove it in a strike-off before production.</p></div>
+  <div class="proc">
+    <div class="pstep"><span class="pn">01</span><span class="pt">Brief</span><span class="pd">The artwork or reference, the piece and its size, the fabric if one is already specified, and the date it is needed on site.</span></div>
+    <div class="pstep"><span class="pn">02</span><span class="pt">Development</span><span class="pd">Technique, stitch density, thread and colour are worked out against the artwork in our New Delhi studio.</span></div>
+    <div class="pstep"><span class="pn">03</span><span class="pt">Strike-off</span><span class="pd">A worked sample for approval in the hand, usually 2–3 weeks after the design is approved. Its cost is credited against the order.</span></div>
+    <div class="pstep"><span class="pn">04</span><span class="pt">Production</span><span class="pd">Embroidered by hand in established workshops across India, then checked in Delhi against the approved strike-off before it leaves.</span></div>
+  </div>
+</section>
+${(() => { const r = [
+  ['Is there a minimum order?', 'No. A single cushion or panel is made as readily as a full scheme.'],
+  ['How long does it take?', 'The strike-off usually takes 2–3 weeks once the design is approved. Production time depends on technique, density and area, and is confirmed for each piece in the quote.'],
+  ['Can embroidery be paired with a rug?', 'Yes. Rugs and embroidery are developed in the same studio, so colour and motif can be carried across both for one room.'],
+  ['Who contracts and invoices?', 'Art Avenue Pvt. Ltd., New Delhi — the same company that contracts our rugs.']
+]; return `<section class="sec">
+  <div class="sec-hd"><div><span class="lb">Practicalities</span><h2 class="d2">Before you<br><span class="it">brief us.</span></h2></div></div>
+  <dl class="qa">${r.map(([q, a]) => `<div><dt>${q}</dt><dd>${a}</dd></div>`).join('')}</dl>
+</section>`; })()}
+${relatedBlock([['craft/','The craft'],['bespoke/','Bespoke development'],['collection/','The rug collection'],['projects/','Projects'],['trade/','Trade']])}`
+});
+
+const pages = { bespoke, trade, materials, process, craft, embroidery };
 for (const [slug, html] of Object.entries(pages)) write(`${slug}/index.html`, html);
 console.log(`built ${Object.keys(pages).length} commercial pages`);
 

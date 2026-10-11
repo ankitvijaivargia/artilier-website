@@ -1,4 +1,41 @@
 {
-  "_readme": "Portfolio / installed projects. Empty by design — nothing is invented. Add a record and the Projects section publishes itself on the homepage. Fields: slug, name, location, designer, category, terms[] (MATERIALS & TECHNIQUES slugs from taxonomy.json), materials[]/techniques[] (optional free text), products[] (design slugs), hero, images[], video, description, featured, order, published.",
+  "_readme": "Installed work. Empty by design — nothing is staged or invented. A record is published only when published:true AND permission:true (the designer has agreed, in writing, to what is shown). Each published record builds /projects/<slug>/, a card on /projects/ and on the homepage, and a sitemap entry. Media ids must exist in assets/media/manifest.json. Copy _template, fill it in, and add it to projects[].",
+  "_template": {
+    "slug": "villa-jumeirah",
+    "name": "Villa in Jumeirah",
+    "discipline": "Rugs",
+    "category": "Residential",
+    "location": "Dubai, UAE",
+    "year": "2026",
+    "designer": "Studio name",
+    "designerUrl": "https://…",
+    "summary": "One or two sentences: the room and what we made for it (max ~150 characters).",
+    "scope": "3 rugs and 2 embroidered headboard panels",
+    "techniques": [
+      "Hand-knotted",
+      "Aari embroidery"
+    ],
+    "materials": [
+      "Wool",
+      "Silk"
+    ],
+    "size": "4.2 × 3.0 m (main rug)",
+    "brief": "What the designer asked for. Paragraphs separated by a blank line.",
+    "developed": "What we developed: artwork, colour, construction, sampling.",
+    "hero": "p-villa-jumeirah-1",
+    "images": [
+      "p-villa-jumeirah-2",
+      "p-villa-jumeirah-3"
+    ],
+    "video": "p-villa-jumeirah-v1",
+    "products": [
+      "zameen"
+    ],
+    "photographer": "Photographer name",
+    "order": 1,
+    "featured": true,
+    "permission": false,
+    "published": false
+  },
   "projects": []
 }

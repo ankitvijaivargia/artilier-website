@@ -13,8 +13,9 @@
       "slug": "embroidery",
       "name": "Embroidery",
       "order": 2,
-      "published": false,
-      "intro": ""
+      "published": true,
+      "intro": "Hand embroidery for wall panels, framed art, headboards, upholstery panels, cushions and drapery, from our designs or the designer’s own artwork.",
+      "page": "embroidery/index.html"
     },
     {
       "slug": "straw-marquetry",
