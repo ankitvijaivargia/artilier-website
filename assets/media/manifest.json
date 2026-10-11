@@ -577,10 +577,11 @@
     "facts": "Hand embroidery · large panel on the frame"
   },
   "e7": {
-    "type": "image",
-    "src": "e7.webp?v=1",
-    "alt": "Close detail of a zari wheat-sheaf motif, couched metal thread in rose gold",
-    "facts": "Zari · detail"
+    "type": "video",
+    "src": "e7.mp4?v=1",
+    "poster": "/assets/media/e7-poster.webp?v=1",
+    "alt": "Slow pass across finished silver zari and zardozi work on a pale ground: wheat sheaves, scrolls and couched metal thread",
+    "facts": "Zari and zardozi · finished detail"
   },
   "e8": {
     "type": "video",
