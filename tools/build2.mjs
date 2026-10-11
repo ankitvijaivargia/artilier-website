@@ -279,16 +279,16 @@ ${relatedBlock([['collection/','The collection'],['embroidery/','Embroidery'],['
    Lead time is NOT stated as a range — confirmed per piece in the quote.
    Media slots e1–e8 render nothing until files are added to the manifest. */
 const EMB_SLOTS = [
-  ['e1','Embroidery — close detail of hand stitching','w'], ['e2','Embroidery — work on the frame',''],
-  ['e3','Embroidery — thread and ground fabric',''], ['e4','Embroidery — a finished panel','w'],
-  ['e5','Embroidery — stitch detail',''], ['e6','Embroidery — finished piece',''],
-  ['e7','Embroidery — in progress',''], ['e8','Embroidery — finished piece','']
+  ['e1','Embroidery — chain stitch','w'], ['e2','Embroidery — zardozi panel on the frame',''],
+  ['e3','Embroidery — raffia on the frame',''], ['e4','Embroidery — cord stitching','w'],
+  ['e5','Embroidery — metal thread','q'], ['e6','Embroidery — large panel','q'],
+  ['e7','Embroidery — zari detail','q'], ['e8','Embroidery — finished panel','q']
 ];
 const gallery = (slots, lb, h2, h2it, intro) => `
 <section class="sec gal-sec">
   <div class="sec-hd"><div><span class="lb">${esc(lb)}</span><h2 class="d2">${h2}<span class="it">${h2it}</span></h2></div>${intro ? `
   <p class="bd">${intro}</p>` : ''}</div>
-  <div class="gal">${slots.map(([id, ph, w]) => `<figure${w ? ' class="w"' : ''}>${slotImg(id, ph, up)}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div>
+  <div class="gal">${slots.map(([id, ph, w]) => `<figure${w ? ` class="${w}"` : ''}>${slotImg(id, ph, up)}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div>
 </section>`;
 const embroidery = page({
   slug:'embroidery', lb:'Embroidery',
@@ -301,18 +301,22 @@ const embroidery = page({
     description:'Development and hand embroidery of wall panels, framed art, headboards, upholstery panels, cushions and drapery for interior designers, from the studio’s designs or a designer’s own artwork, with a strike-off approved before production.' },
   body:`
 <section class="sec">
-  <div class="sec-hd"><div><span class="lb">Techniques</span><h2 class="d2">Every stitch the<br>design <span class="it">asks for.</span></h2></div>
-  <p class="bd">We work across hand-embroidery techniques rather than in one house style. Which technique a piece wants is decided from the artwork, the ground fabric and where the piece will live — and proved in the strike-off.</p></div>
+  <div class="sec-hd"><div><span class="lb">Techniques</span><h2 class="d2">The stitch the<br>design <span class="it">asks for.</span></h2></div>
+  <p class="bd">These are the techniques our embroiderers work in most, often combined in one piece. Which a design wants is decided from the artwork, the ground fabric and where the piece will live — and proved in the strike-off. Other techniques on request.</p></div>
   <div class="proc">
-    <div class="pstep"><span class="pn">01</span><span class="pt">Aari</span><span class="pd">A fine hooked needle drawing a continuous chain stitch across fabric stretched on a frame. Fast, fluid line work and dense fields of colour.</span></div>
-    <div class="pstep"><span class="pn">02</span><span class="pt">Zardozi and metal thread</span><span class="pd">Metallic threads, wires and purls laid and couched by hand. Raised, reflective surfaces for panels and framed pieces.</span></div>
-    <div class="pstep"><span class="pn">03</span><span class="pt">Crewel</span><span class="pd">Wool yarn on cotton or linen. Soft, textured line and fill, suited to upholstery, headboards and drapery.</span></div>
-    <div class="pstep"><span class="pn">04</span><span class="pt">Appliqué</span><span class="pd">Cut fabric laid onto a ground and stitched in place. Large, graphic forms at a scale thread alone would take far longer to fill.</span></div>
-    <div class="pstep"><span class="pn">05</span><span class="pt">Beadwork and sequins</span><span class="pd">Beads, sequins and stones worked by hand for light, depth and relief — used across a whole surface or as an accent.</span></div>
-    <div class="pstep"><span class="pn">06</span><span class="pt">Thread embroidery</span><span class="pd">Satin, stem, long-and-short and knot stitches in silk, cotton or wool, for painterly shading and fine detail. Techniques are combined where a design needs it.</span></div>
+    <div class="pstep"><span class="pn">01</span><span class="pt">Zardozi</span><span class="pd">Metal threads, wires and coiled purls laid and couched by hand. Raised, reflective relief for panels and framed pieces.</span></div>
+    <div class="pstep"><span class="pn">02</span><span class="pt">Zari</span><span class="pd">Fine metallic thread worked flat for line, outline and fill — on its own, or with silk and zardozi for contrast between flat and raised.</span></div>
+    <div class="pstep"><span class="pn">03</span><span class="pt">Aari</span><span class="pd">Chain stitch drawn with a hooked needle on the frame, and on hand-guided chain-stitch machines for larger fields and looped, chenille-like texture.</span></div>
+    <div class="pstep"><span class="pn">04</span><span class="pt">Raffia</span><span class="pd">Raffia and natural cord coiled, couched and stitched onto the ground. Heavy, graphic texture for wall panels and headboards.</span></div>
+    <div class="pstep"><span class="pn">05</span><span class="pt">Hand embroidery</span><span class="pd">Satin, long-and-short, couching and knot stitches in silk, cotton or wool, for shading, fine detail and large worked grounds.</span></div>
+    <div class="pstep"><span class="pn">06</span><span class="pt">Appliqué and loop work</span><span class="pd">Cut fabric laid onto the ground and stitched down, combined with raised loops and couched line — sculptural, tonal surfaces for wall panels.</span></div>
   </div>
 </section>
-${gallery(EMB_SLOTS, 'From the studio', 'Stitch by ', 'stitch.', '')}
+${gallery(EMB_SLOTS, 'On the frame', 'Stitch by ', 'stitch.', 'Work in progress from our embroidery tables.')}
+<section class="sec">
+  <div class="sec-hd"><div><span class="lb">Experience</span><h2 class="d2">Made for studios<br>we do not <span class="it">name.</span></h2></div>
+  <p class="bd">Our embroiderers have produced panels and soft furnishings for international interior design studios. That work was made under confidentiality, so it is not named or published as projects here — what this page shows is the making.</p></div>
+</section>
 <section class="sec dark">
   <div class="sec-hd"><div><span class="lb">Where it is used</span><h2 class="d2">Made for the wall,<br>the bed and the <span class="it">window.</span></h2></div>
   <p class="bd">Tell us what the piece is and where it goes. Size, ground fabric, how it will be mounted or upholstered and how much handling it will take all shape the technique and density we recommend.</p></div>

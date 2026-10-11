@@ -90,6 +90,7 @@
 .gal figure{grid-column:span 4;margin:0;min-width:0}
 .gal figure.w{grid-column:span 8}
 .gal figure.full{grid-column:1/-1}
+.gal figure.q{grid-column:span 3}
 .gal .ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bone)}
 .gal figure.w .ph{aspect-ratio:16/10}
 .gal figure.full .ph{aspect-ratio:16/9}
@@ -100,6 +101,7 @@
 .gal:has(figure.full media-slot[data-empty]){display:none}
 @media (max-width:760px){
   .gal figure,.gal figure.w{grid-column:1/-1}
+  .gal figure.q{grid-column:span 6}
   .gal figure.w .ph{aspect-ratio:4/5}
   .gal figure.full .ph{aspect-ratio:4/5}
 }

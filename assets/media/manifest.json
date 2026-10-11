@@ -534,5 +534,59 @@
     "src": "fo2.webp?v=2",
     "type": "image",
     "alt": "Payal Samal, Design Head at Artilier"
+  },
+  "e1": {
+    "type": "video",
+    "src": "e1.mp4?v=1",
+    "poster": "/assets/media/e1-poster.webp?v=1",
+    "alt": "Chenille loops worked with a hand-guided chain-stitch machine on a cream ground",
+    "facts": "Aari · hand-guided chain stitch"
+  },
+  "e2": {
+    "type": "image",
+    "src": "e2.webp?v=1",
+    "alt": "Four embroiderers working a large zardozi and zari panel on the frame, rose-gold metal thread on an ivory ground",
+    "facts": "Zardozi and zari · panel in progress"
+  },
+  "e3": {
+    "type": "video",
+    "src": "e3.mp4?v=1",
+    "poster": "/assets/media/e3-poster.webp?v=1",
+    "alt": "Raffia cord coiled and stitched onto a ground stretched in a wooden frame",
+    "facts": "Raffia · coiled and couched on the frame"
+  },
+  "e4": {
+    "type": "video",
+    "src": "e4.mp4?v=1",
+    "poster": "/assets/media/e4-poster.webp?v=1",
+    "alt": "White cord stitched onto a woven ground with a hand-guided machine",
+    "facts": "Cord and raffia · hand-guided stitching"
+  },
+  "e5": {
+    "type": "video",
+    "src": "e5.mp4?v=1",
+    "poster": "/assets/media/e5-poster.webp?v=1",
+    "alt": "Metal thread and natural fibre worked by hand around a geometric motif",
+    "facts": "Zardozi · metal thread by hand"
+  },
+  "e6": {
+    "type": "video",
+    "src": "e6.mp4?v=1",
+    "poster": "/assets/media/e6-poster.webp?v=1",
+    "alt": "Two embroiderers stitching green leaves onto a large ivory panel on the frame",
+    "facts": "Hand embroidery · large panel on the frame"
+  },
+  "e7": {
+    "type": "image",
+    "src": "e7.webp?v=1",
+    "alt": "Close detail of a zari wheat-sheaf motif, couched metal thread in rose gold",
+    "facts": "Zari · detail"
+  },
+  "e8": {
+    "type": "video",
+    "src": "e8.mp4?v=1",
+    "poster": "/assets/media/e8-poster.webp?v=1",
+    "alt": "A finished embroidered panel in ivory and taupe: appliquéd shapes, raised loop work and couched line on a linen ground",
+    "facts": "Finished panel · appliqué, loop work and couching"
   }
 }
