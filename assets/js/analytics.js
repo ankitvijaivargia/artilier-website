@@ -6,7 +6,7 @@
  *     needed). Verified 11 Oct 2026: it is ACTIVE for artilier.co through the
  *     Cloudflare dashboard's automatic injection. Leave CF_BEACON_TOKEN empty —
  *     adding the token here as well would load a second beacon and double-count.
- *  2. Events: `form_start`, `generate_lead`, `enquiry_error` (from enquiry.js),
+ *  2. Events (GA4 property 558437246 when on artilier.co): `form_start`, `generate_lead`, `enquiry_error` (from enquiry.js),
  *     `contact_click`, `whatsapp_click` and `cta_click` (an internal button or
  *     link that leads to the enquiry form) are pushed to `window.dataLayer`
  *     and, only if a GA4 measurement ID is set below, sent to GA4. Event
@@ -22,7 +22,20 @@
  */
 (() => {
   const CF_BEACON_TOKEN = '';   // keep empty: Cloudflare auto-injection is already active (see above)
-  const GA4_ID = '';            // owner to supply after creating an ARTILIER GA4 web stream — see SEO_MEASUREMENT_FRAMEWORK.md §2
+  /* ARTILIER's own GA4 web stream (account "ARTILIER" 411559802 → property 558437246 →
+     stream 16107045376, created 11 Oct 2026). Never Art Avenue's property. A measurement
+     ID is public by design (it is visible in every page that loads gtag) — not a secret. */
+  const GA4_ID = 'G-8TXE25YJ86';
+  /* Only production hosts report to GA4, so local builds and previews never send data.
+     Add ?ga_debug=1 to a production URL to see hits in GA4 DebugView. */
+  const GA4_HOSTS = ['artilier.co', 'www.artilier.co'];
+  /* Consent Mode v2. There is no consent banner, so visitors in the UK, EEA and
+     Switzerland get analytics_storage DENIED (GA4 receives cookieless pings only, no
+     cookies). Elsewhere analytics cookies are allowed. Advertising storage, user data and
+     personalisation are denied everywhere — ARTILIER runs no ads through this tag.
+     Owner/legal decision: confirm this split, or add a consent banner and switch the
+     UK/EEA default to granted-on-consent. */
+  const CONSENT_REGIONS = ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'];
 
   const w = window, d = document;
   w.dataLayer = w.dataLayer || [];
@@ -49,13 +62,18 @@
     s.setAttribute('data-cf-beacon', JSON.stringify({ token: CF_BEACON_TOKEN }));
     d.head.appendChild(s);
   }
-  if (GA4_ID) {
+  const gaOn = !!GA4_ID && GA4_HOSTS.includes(location.hostname);
+  if (gaOn) {
     w.gtag = function () { w.dataLayer.push(arguments); };
-    /* Consent Mode v2 defaults: no analytics or ad cookies until a consent
-       mechanism grants them. GA4 then sends cookieless pings only. */
-    w.gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    const NO_ADS = { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' };
+    w.gtag('consent', 'default', { ...NO_ADS, analytics_storage: 'denied', region: CONSENT_REGIONS });
+    w.gtag('consent', 'default', { ...NO_ADS, analytics_storage: 'granted' });
+    w.gtag('set', 'ads_data_redaction', true);
     w.gtag('js', new Date());
-    w.gtag('config', GA4_ID, { anonymize_ip: true });
+    /* One config call per page = one page_view. GA4 does not store IP addresses. */
+    const cfg = { allow_google_signals: false, allow_ad_personalization_signals: false };
+    if (/[?&]ga_debug=1\b/.test(location.search)) cfg.debug_mode = true;
+    w.gtag('config', GA4_ID, cfg);
     const s = d.createElement('script');
     s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA4_ID);
     d.head.appendChild(s);
@@ -76,7 +94,7 @@
       clean[k] = s.slice(0, 100);
     }
     w.dataLayer.push({ event: name, ...clean });
-    if (typeof w.gtag === 'function' && GA4_ID) w.gtag('event', name, clean);
+    if (gaOn && typeof w.gtag === 'function') w.gtag('event', name, clean);
     return true;
   };
 
@@ -86,6 +104,7 @@
     if (!a) return;
     const h = a.getAttribute('href') || '';
     if (h.startsWith('mailto:')) w.artilierTrack('contact_click', { link_type: 'email' });
+    else if (h.startsWith('tel:')) w.artilierTrack('contact_click', { link_type: 'phone' });
     else if (/^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(h)) w.artilierTrack('whatsapp_click', { link_type: 'whatsapp' });
     else if (/(^|\/)contact\/?(\?|#|$)|#enquire$/.test(h)) {
       /* internal enquiry CTA: record which page and which button, never form content */
