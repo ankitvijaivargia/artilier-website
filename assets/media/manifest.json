@@ -581,5 +581,12 @@
     "src": "e7.webp?v=1",
     "alt": "Close detail of a zari wheat-sheaf motif, couched metal thread in rose gold",
     "facts": "Zari · detail"
+  },
+  "e8": {
+    "type": "video",
+    "src": "e8.mp4?v=1",
+    "poster": "/assets/media/e8-poster.webp?v=1",
+    "alt": "A finished embroidered panel in ivory and taupe: appliquéd shapes, raised loop work and couched line on a linen ground",
+    "facts": "Finished panel · appliqué, loop work and couching"
   }
 }

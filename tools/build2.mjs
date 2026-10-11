@@ -281,14 +281,14 @@ ${relatedBlock([['collection/','The collection'],['embroidery/','Embroidery'],['
 const EMB_SLOTS = [
   ['e1','Embroidery — chain stitch','w'], ['e2','Embroidery — zardozi panel on the frame',''],
   ['e3','Embroidery — raffia on the frame',''], ['e4','Embroidery — cord stitching','w'],
-  ['e5','Embroidery — metal thread',''], ['e6','Embroidery — large panel',''],
-  ['e7','Embroidery — zari detail','']
+  ['e5','Embroidery — metal thread','q'], ['e6','Embroidery — large panel','q'],
+  ['e7','Embroidery — zari detail','q'], ['e8','Embroidery — finished panel','q']
 ];
 const gallery = (slots, lb, h2, h2it, intro) => `
 <section class="sec gal-sec">
   <div class="sec-hd"><div><span class="lb">${esc(lb)}</span><h2 class="d2">${h2}<span class="it">${h2it}</span></h2></div>${intro ? `
   <p class="bd">${intro}</p>` : ''}</div>
-  <div class="gal">${slots.map(([id, ph, w]) => `<figure${w ? ' class="w"' : ''}>${slotImg(id, ph, up)}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div>
+  <div class="gal">${slots.map(([id, ph, w]) => `<figure${w ? ` class="${w}"` : ''}>${slotImg(id, ph, up)}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div>
 </section>`;
 const embroidery = page({
   slug:'embroidery', lb:'Embroidery',
@@ -309,6 +309,7 @@ const embroidery = page({
     <div class="pstep"><span class="pn">03</span><span class="pt">Aari</span><span class="pd">Chain stitch drawn with a hooked needle on the frame, and on hand-guided chain-stitch machines for larger fields and looped, chenille-like texture.</span></div>
     <div class="pstep"><span class="pn">04</span><span class="pt">Raffia</span><span class="pd">Raffia and natural cord coiled, couched and stitched onto the ground. Heavy, graphic texture for wall panels and headboards.</span></div>
     <div class="pstep"><span class="pn">05</span><span class="pt">Hand embroidery</span><span class="pd">Satin, long-and-short, couching and knot stitches in silk, cotton or wool, for shading, fine detail and large worked grounds.</span></div>
+    <div class="pstep"><span class="pn">06</span><span class="pt">Appliqué and loop work</span><span class="pd">Cut fabric laid onto the ground and stitched down, combined with raised loops and couched line — sculptural, tonal surfaces for wall panels.</span></div>
   </div>
 </section>
 ${gallery(EMB_SLOTS, 'On the frame', 'Stitch by ', 'stitch.', 'Work in progress from our embroidery tables.')}
