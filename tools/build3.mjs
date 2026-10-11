@@ -16,7 +16,7 @@
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { HOST, esc, head, nav, footer, crumb, graph, breadcrumb, write, home, ORG, WEBSITE, ROOT, indexable, CATS, by, slotImg } from './build.mjs';
+import { MV, HOST, esc, head, nav, footer, crumb, graph, breadcrumb, write, home, ORG, WEBSITE, ROOT, indexable, CATS, by, slotImg } from './build.mjs';
 
 const FORM_ENDPOINT = 'https://formspree.io/f/myklqvgp';   // the endpoint the live homepage form already uses
 const rd = f => readFileSync(join(ROOT, f), 'utf8');
@@ -841,6 +841,7 @@ const syncShell = (file, up, { ctaLabel } = {}) => {
   s = s.replace(/<footer>[\s\S]*?<\/footer>/, footBlock);
   s = s.replace(/<a class="mcta" id="mcta" href="[^"]*">([^<]*)/, (m, label) => `<a class="mcta" id="mcta" href="${up}contact/">${ctaLabel || label}`);
   s = s.split(`${up}index.html#brief`).join(`${up}contact/`).split(`${up}index.html#about`).join(`${up}about/`).split(`href="${up}index.html"`).join(`href="${up}"`);
+  s = s.replace(/manifest\.json\?v=[0-9a-f]+/g, `manifest.json?v=${MV}`);
   s = s.replace(/slots\.js\?v=4/g, 'slots.js?v=5').replace(/pages\.css\?v=[345]/g, 'pages.css?v=6');
   if (!s.includes('pages.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*collection-tweaks\.css\?v=2">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/pages.css?v=3">`);
   if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=2"></script>\n</head>`);
@@ -897,6 +898,10 @@ ${urls.map(([u, p]) => `  <url><loc>${HOST}/${u}</loc><lastmod>${today}</lastmod
 `);
 console.log(`sitemap: ${urls.length} URLs`);
 
+/* ── media manifest cache key on hand-maintained pages ───────────── */
+for (const f of ['index.html', 'collection/design.html']) {
+  wr(f, rd(f).replace(/manifest\.json\?v=[0-9a-f]+/g, `manifest.json?v=${MV}`));
+}
 /* ── homepage: shared footer + one Organization graph (nav stays anchor-based) ── */
 {
   let s = rd('index.html');

@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 /**
  * Artilier — Phase 2 static generator.
  * Reads /content/*.json and emits crawlable HTML. No invented facts: every
@@ -11,7 +12,12 @@ import { join, dirname } from 'node:path';
 const ROOT = join(dirname(new URL(import.meta.url).pathname), '..');
 const HOST = 'https://artilier.co';
 const j = f => JSON.parse(readFileSync(join(ROOT, 'content', f), 'utf8'));
-const manifest = JSON.parse(readFileSync(join(ROOT, 'assets/media/manifest.json'), 'utf8'));
+const manifestRaw = readFileSync(join(ROOT, 'assets/media/manifest.json'), 'utf8');
+const manifest = JSON.parse(manifestRaw);
+/* Cache key for the media manifest. /assets/media/* is cached for a year
+   (immutable), so the query string must change whenever the manifest does —
+   otherwise browsers keep the old list and new media never appear. */
+const MV = createHash('sha256').update(manifestRaw).digest('hex').slice(0, 10);
 
 const designs = j('designs.json').designs.filter(d => d.published !== false);
 const collections = j('collections.json').collections.filter(c => c.published !== false);
@@ -71,7 +77,7 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <link rel="stylesheet" href="${up}assets/css/responsive.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/collection-tweaks.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/pages.css?v=6">
-<script defer src="${up}assets/js/slots.js?v=5" data-manifest="${up}assets/media/manifest.json?v=5"></script>
+<script defer src="${up}assets/js/slots.js?v=5" data-manifest="${up}assets/media/manifest.json?v=${MV}"></script>
 <script defer src="${up}assets/js/analytics.js?v=2"></script>${scripts}${extraHead}
 </head>
 <body>
@@ -468,4 +474,4 @@ for (const c of CATS) built.push(write(`collection/${c.slug}/index.html`, catego
 console.log(`built ${built.length} pages`);
 console.log(`  designs:    ${indexable.length}`);
 console.log(`  categories: ${CATS.length}`);
-export { indexable, CATS, HOST, esc, head, nav, footer, crumb, slotImg, graph, breadcrumb, write, collections, designs, manifest, site, n2, by, home, ORG, WEBSITE, ROOT, CONSTRUCTION, titleCaseC };
+export { MV, indexable, CATS, HOST, esc, head, nav, footer, crumb, slotImg, graph, breadcrumb, write, collections, designs, manifest, site, n2, by, home, ORG, WEBSITE, ROOT, CONSTRUCTION, titleCaseC };
