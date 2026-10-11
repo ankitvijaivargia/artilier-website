@@ -127,3 +127,16 @@ Nothing in this table is a performance claim; it only records whether each sourc
 | cta_click | Internal link to /contact/ or #enquire | cta_label (≤40-char slug), cta_zone (nav/body/footer) |
 
 All events are pushed through `artilierTrack`. It drops repeats within 4 seconds and discards any value that looks like an email address or phone number.
+
+### GA4 milestones (11 Oct 2026)
+
+| Milestone | Status | Evidence |
+|---|---|---|
+| Property created | **Yes** | Created in the GA UI as ankit@artavenue.com; owner accepted the GA Terms (India) |
+| Measurement ID obtained | **Yes**: G-8TXE25YJ86 | Web stream details page |
+| Code implemented | **Yes**, in PR #21 (propagated to #22–#24) | Headless test: 1 config, correct consent defaults, 7 events, no personal data, nothing sent from localhost |
+| Code deployed | **No**: waits for owner approval to merge | Live site still serves analytics.js v2 (GA off) |
+| Events received | **Yes, from a test only.** The PR #21 GA logic was injected into the live /embroidery/ page in the owner's browser. | Network: 2 hits to `/g/collect` with tid=G-8TXE25YJ86 (page_view, cta_click), gcs=G101. GA4 Realtime (property 558437246): 1 active user; page_view 1, cta_click 1 (label `stage10_ga_test`), session_start 1, first_visit 1. |
+| Key event (`generate_lead`) verified | **No** | It can only be starred after the event first arrives, which needs a deploy and a test enquiry |
+
+The test hit is internal traffic. Expect one `cta_click` labelled `stage10_ga_test` in the property's first day of data.
