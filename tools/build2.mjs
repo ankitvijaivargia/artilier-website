@@ -329,7 +329,7 @@ const embroidery = page({
   title:'Embroidered Wall Panels & Wallcoverings | Artilier',
   desc:'Bespoke hand-embroidered wall panels for residential and hospitality interiors, developed from your drawing or ours and supplied to your installer.',
   h1:'Embroidered wall panels,<br>made for the ', h1it:'room.',
-  lead:`<p class="bd">Artilier develops, makes and supplies bespoke embroidered wall panels for residential and hospitality interiors — a single framed piece, a run of panels set into joinery, or panels planned across a room from wall to wall. Each design starts from a drawing, ours or yours. ${TXT.supply}</p>
+  lead:`<p class="bd">Artilier develops, makes and supplies bespoke embroidered wall panels for interior designers and architects working on residential and hospitality interiors — a single framed piece, a run of panels set into joinery, or panels planned across a room from wall to wall. Each design starts from a drawing, ours or yours. ${TXT.supply}</p>
     <div class="wp-meta"><span><b>Worked on the frame</b></span><span>From your drawing or ours</span><span>No fixed minimum</span></div>`,
   service:{ name:'Bespoke embroidered wall panels', serviceType:'Custom embroidered wall panels and wallcoverings — design development, manufacture and supply',
     description:'Development, hand embroidery and supply of bespoke wall panels and wallcoverings for residential and hospitality interiors, from the studio’s designs or a designer’s own drawing. Panels are supplied fabric-only or board-mounted, as a single piece or in sections; installation is by the client’s appointed installer or contractor.' },
@@ -352,7 +352,7 @@ const embroidery = page({
 </section>
 ${gallery(EMB_SLOTS, 'On the frame', 'Stitch by ', 'stitch.', 'Work in progress from our embroidery tables.')}
 <section class="sec">
-  <div class="sec-hd"><div><span class="lb">Wall to wall</span><h2 class="d2">Hand-embroidered<br><span class="it">wallcoverings.</span></h2></div>
+  <div class="sec-hd"><div><span class="lb">Wall to wall</span><h2 class="d2">Wallcoverings and<br>whole-wall <span class="it">schemes.</span></h2></div>
   <p class="bd">Embroidery can cover a whole wall, not only a panel on it. Send the elevations with doors, windows and switches marked. We plan the panel layout and the position of the joins with you so the design reads across the wall; depending on the construction, panels are supplied as single pieces or in sections planned for discreet joins. Installation is carried out by your appointed installer or contractor.</p></div>
   <div class="facts">
     <div><b>Made to the elevation</b><span>Panel layout planned on your wall drawings</span></div>
@@ -413,6 +413,7 @@ ${gallery(EMB_SLOTS, 'On the frame', 'Stitch by ', 'stitch.', 'Work in progress 
 ${qaBlock([
   ['Do you install the panels?', 'No. We make and supply the panels; installation is carried out by your appointed installer or contractor.'],
   ['Can you embroider a whole wall?', 'Yes. Embroidered wallcoverings are supplied as panels laid out to your elevations, ready for your installer to fit edge to edge. Mark doors, windows and switches on the drawings; the layout and joins are agreed with you before production.'],
+  ['How visible are the joins?', 'Joins are planned to sit discreetly within the design. How visible they are depends on the construction, the ground and the embroidery, so we discuss it with you before production rather than promise it.'],
   ['How large can a panel be?', 'For panels mounted on MDF or timber board, the standard maximum we currently confirm is 8 ft × 4 ft (approximately 244 × 122 cm) per panel; larger boards need a feasibility check with our supplier. Fabric-only panels are not bound by that board size, and final dimensions are agreed once the design, construction and shipping requirements have been reviewed.'],
   ['How long does it take?', `${TXT.leadPanel} Where a strike-off is part of the project, it typically takes 2–3 weeks once the design is approved.`],
   ['Is there a minimum order?', TXT.moq],
@@ -429,7 +430,7 @@ const headboards = page({
   title:'Embroidered Headboards for Hotels & Residences | Artilier',
   desc:'Embroidered headboards made to your design: complete upholstered headboards, or embroidered panels for your upholsterer. Repeat production for hotels.',
   h1:'Embroidered<br>', h1it:'headboards.',
-  lead:`<p class="bd">Headboards developed from your drawing or from our embroidery, for hotel rooms and private residences. We work with interior designers and hospitality design teams from first drawing to the finished piece.</p>
+  lead:`<p class="bd">Bespoke headboards developed from your drawing or from our embroidery, for hotel rooms and private residences. We work with interior designers and hospitality design teams from first drawing to the finished piece.</p>
     <div class="wp-meta"><span><b>Two routes</b></span><span>Hotel room schedules</span><span>No fixed minimum</span></div>`,
   service:{ name:'Bespoke embroidered headboards', serviceType:'Custom embroidered headboards and headboard panels — design development and manufacture',
     audience:'Interior designers, hospitality design teams, architects and design practices',
@@ -440,13 +441,13 @@ const headboards = page({
   <p class="bd">Choose the route that fits how the project is already specified.</p></div>
   <div class="cols2">
     <div class="prose"><h3>Complete headboards</h3><p>We make the upholstered headboard with the embroidery built in.</p></div>
-    <div class="prose"><h3>Embroidered panels for your upholsterer</h3><p>We supply the embroidered panel; your upholsterer builds the finished headboard. Useful when the frame, foam or fixing detail is already specified by your joinery or upholstery partner.</p></div>
+    <div class="prose"><h3>Embroidered headboard panels for your upholsterer</h3><p>We supply the embroidered panel; your upholsterer builds the finished headboard. Useful when the frame, foam or fixing detail is already specified by your joinery or upholstery partner.</p></div>
   </div>
 </section>
 <section class="sec dark">
   <div class="sec-hd"><div><span class="lb">Hotel room schedules</span><h2 class="d2">One room,<br>or every <span class="it">room.</span></h2></div>
   <p class="bd">${TXT.moq} This applies to complete headboards and to embroidered panels.</p></div>
-  <div class="prose"><p>We can also produce repeat headboards for hotel room schedules. Quantities, room types and the production sequence are agreed against the schedule at quotation; where a strike-off is part of the project, it is approved before production begins.</p></div>
+  <div class="prose"><p>Hotel headboards are usually specified against a room schedule, and we can produce repeat headboards for it. Quantities, room types and the production sequence are agreed against the schedule at quotation; where a strike-off is part of the project, it is approved before production begins.</p></div>
 </section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">Sizing and timing</span><h2 class="d2">Made to the<br><span class="it">drawing.</span></h2></div>
@@ -474,7 +475,7 @@ const headboards = page({
     <li><b>Specification requirements</b> — any documentation or testing the project needs</li>
   </ul></div>
 </section>
-${relatedBlock([['embroidery/','Embroidered wall panels'],['embroidery/fabrics/','Embroidered fabric by the metre'],['hospitality/','Hospitality']], { u:U2, href:'contact/?type=embroidery', label:'Send a headboard brief' })}`
+${relatedBlock([['embroidery/','Embroidered wall panels'],['embroidery/fabrics/','Embroidered fabric by the metre'],['hospitality/','Hospitality']], { u:U2, href:'contact/?type=headboard', label:'Send a headboard brief' })}`
 });
 
 /* ── /embroidery/fabrics/ — Brief C ────────────────────────────────── */
@@ -488,6 +489,10 @@ const fabrics = page({
   service:{ name:'Custom embroidered furnishing fabric', serviceType:'Custom embroidered upholstery and curtain fabric — design development and manufacture',
     description:'Embroidered furnishing fabric by the metre for upholstery, curtains and soft furnishings, developed to a project’s design, scale, colour and placement. Furnishing fabric only.' },
   body:`
+<section class="sec">
+  <div class="sec-hd"><div><span class="lb">Upholstery and curtains</span><h2 class="d2">For the chair,<br>the bed and the <span class="it">window.</span></h2></div>
+  <p class="bd">Embroidered upholstery fabric for seating, cushions and upholstered headboards, and embroidered curtain fabric for curtains and leading edges. Custom embroidered fabric is developed for interior designers on a specific project, from your design or ours.</p></div>
+</section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">Grounds</span><h2 class="d2">The ground<br>you <span class="it">specify.</span></h2></div>
   <p class="bd">We can consider the ground you specify, provided it supports the embroidery technique. Where it does not, we will say so at the brief and suggest alternatives.</p></div>
@@ -525,7 +530,7 @@ const fabrics = page({
     <li><b>Specification requirements</b> — any documentation or testing the project needs</li>
   </ul></div>
 </section>
-${relatedBlock([['embroidery/','Embroidered wall panels'],['embroidery/headboards/','Embroidered headboards'],['hospitality/','Hospitality']], { u:U2, href:'contact/?type=embroidery', label:'Send a fabric brief' })}`
+${relatedBlock([['embroidery/','Embroidered wall panels'],['embroidery/headboards/','Embroidered headboards'],['hospitality/','Hospitality']], { u:U2, href:'contact/?type=fabric', label:'Send a fabric brief' })}`
 });
 
 const pages = { bespoke, trade, materials, process, craft, embroidery, 'embroidery/headboards':headboards, 'embroidery/fabrics':fabrics };

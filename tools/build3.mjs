@@ -131,7 +131,7 @@ const contact = shell({
   lb:'Contact · Start a project', h1:'Start a<br>', h1it:'project.',
   lead:`<p class="bd">Send artwork, a drawing, a reference or an early idea with the sizes. We review it and come back with questions, possibilities and the best way to make it.</p>
     <div class="wp-meta"><span><b>Trade only</b></span><span>Reviewed individually</span><span>New Delhi</span></div>`,
-  scripts:`\n<script defer src="../assets/js/enquiry.js?v=2"></script>`,
+  scripts:`\n<script defer src="../assets/js/enquiry.js?v=3"></script>`,
   body:`
 <section class="sec">
   <div class="about">
@@ -208,9 +208,9 @@ const hasProjects = projectsData.length > 0;
 /* /projects/ index visibility (Stage 5 §9, Stage 6 F1): the index stays
    noindex and out of the sitemap until INDEX_PROJECTS_MIN approved projects
    exist. Individual project pages are indexable from publication. Manual
-   override in content/projects.json: "indexIndexing": "auto" | "index" | "noindex". */
+   override in content/projects.json: "projectsIndexVisibility": "auto" | "index" | "noindex". */
 const INDEX_PROJECTS_MIN = 2;
-const projectsOverride = String(JSON.parse(rd('content/projects.json')).indexIndexing || 'auto').toLowerCase();
+const projectsOverride = String(JSON.parse(rd('content/projects.json')).projectsIndexVisibility || 'auto').toLowerCase();
 const indexProjects = projectsOverride === 'index' ? hasProjects
   : projectsOverride === 'noindex' ? false
   : projectsData.length >= INDEX_PROJECTS_MIN;
@@ -308,7 +308,7 @@ ${sec('What we make for hospitality', 'Custom rugs,', 'not stock.', `<div class=
     <div>Multi-rug schedules <span>One project, many rooms</span></div>
     <div>No minimum <span>Single pieces welcome</span></div>
     <div>Rug lead time <span>Usually 6–12 weeks from strike-off approval</span></div>
-  </div>`, { dark:true, intro:'Every rug is made to order in the construction, material, colourway and dimensions the project needs. Collection designs can be adapted to a scheme, or a rug developed from the designer’s own artwork. See <a href="../bespoke/">bespoke development</a>.' })}
+  </div>`, { dark:true, intro:'Hotel rugs are made to order in the construction, material, colourway and dimensions the project needs. Collection designs can be adapted to a scheme, or a rug developed from the designer’s own artwork. See <a href="../bespoke/">bespoke development</a>.' })}
 ${sec('Embroidery for the same rooms', 'Headboards, walls', 'and fabric.', `<div class="cols2">
     <div class="prose">
       <h3><a href="../embroidery/headboards/">Embroidered headboards</a></h3>
