@@ -844,7 +844,7 @@ const syncShell = (file, up, { ctaLabel } = {}) => {
   s = s.replace(/manifest\.json\?v=[0-9a-f]+/g, `manifest.json?v=${MV}`);
   s = s.replace(/slots\.js\?v=4/g, 'slots.js?v=5').replace(/pages\.css\?v=[345]/g, 'pages.css?v=6');
   if (!s.includes('pages.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*collection-tweaks\.css\?v=2">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/pages.css?v=3">`);
-  if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=3"></script>\n</head>`);
+  if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=4"></script>\n</head>`);
   /* one Organization entity everywhere: replace the inline copy with the shared one */
   s = s.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/, (m, json) => {
     const data = JSON.parse(json);

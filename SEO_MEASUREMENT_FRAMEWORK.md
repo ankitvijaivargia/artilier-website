@@ -13,7 +13,7 @@ Organic search is measured by the enquiries it produces, not by traffic. Nothing
 | Google Search Console (Domain property) | Impressions, clicks, queries, average position, pages, countries, devices, index coverage | **Verified** — `sc-domain:artilier.co` accessible (confirmed before 11 Oct) | Submit `sitemap.xml` again after each page release; add studio@artilier.co as a user |
 | Bing Webmaster Tools | Same for Bing (and partly Copilot/ChatGPT search surfaces) | Tag live (PR #7); import from GSC | Import from GSC |
 | Cloudflare Web Analytics | Page views, referrers, countries, landing pages — cookieless | **Active** via dashboard automatic injection (checked 11 Oct 2026 in the Cloudflare dashboard: site tag `05417b7a…`, data flowing). `CF_BEACON_TOKEN` in `analytics.js` deliberately left empty — adding it would double-count | None |
-| GA4 (optional) | Events: `form_start`, `generate_lead`, `enquiry_error`, `contact_click`, `whatsapp_click`, `cta_click` (new in PR1: label of the button and nav/body/footer zone) — no personal data | **Not collecting.** Only GA4 property found is "Art Avenue" (266121129, account 192533552) with **no web data stream**; no ARTILIER property exists. `GA4_ID` stays empty | Owner decision: create a separate **ARTILIER** GA4 property + web stream for artilier.co (do not reuse the Art Avenue retail property), then send the `G-` ID. Consent banner needed before granting storage for UK/EU visitors; until then Consent Mode stays denied |
+| GA4 | Page views; events `form_start`, `generate_lead`, `enquiry_error`, `contact_click`, `whatsapp_click`, `cta_click` — no personal data | **Property created 11 Oct 2026; code wired in PR #21; collection NOT yet verified (needs deploy).** Account "ARTILIER" (411559802) → property "ARTILIER" (558437246, India time, INR) → web stream "ARTILIER — artilier.co" (16107045376), Measurement ID `G-8TXE25YJ86`. Created by ankit@artavenue.com; separate from Art Avenue's account 179279522 / property 340656225, which was not changed | After deploy: check Realtime; mark `generate_lead` as key event once it first appears; link Search Console (§10) |
 | Formspree | Every enquiry, with sector, landing page, referrer, UTM; from PR #11 also `cta_page` (the page whose button led to the form) and `design_reference` | Form `myklqvgp` exists. **Dashboard not inspected 11 Oct** (browser session closed); delivery to studio@artilier.co not yet evidenced | Owner: send one test enquiry from /contact/ and confirm it arrives with the hidden fields; export submissions since launch |
 | Enquiry log (new) | Qualification of every enquiry | **To create** — a simple sheet | Fill within 48 h of each enquiry (template §4) |
 | Semrush / Ahrefs | Volumes, rank tracking, backlinks | Semrush out of API units; Ahrefs plan insufficient | Optional: top up Semrush units for a 25-keyword tracking project |
@@ -98,3 +98,32 @@ Rankings from a single search, traffic without a baseline, impressions as succes
 | 7 | Enquiry log sheet | Not created | Template §4 |
 
 Nothing in this table is a performance claim; it only records whether each source can produce data.
+
+## 10. GA4 configuration (11 Oct 2026)
+
+| Item | Setting |
+|---|---|
+| Google account | ankit@artavenue.com (Google Workspace). The account and property were created by this user, who is Administrator. |
+| Account / property / stream | ARTILIER 411559802 / ARTILIER 558437246 / "ARTILIER — artilier.co" 16107045376 |
+| Measurement ID | `G-8TXE25YJ86`, set as `GA4_ID` in `assets/js/analytics.js`. It is public by design and is not a secret. |
+| Hosts that report | artilier.co and www.artilier.co only. Local builds and previews send nothing. Add `?ga_debug=1` to a production URL for DebugView. |
+| Page views | One `config` call per page. Cloudflare Web Analytics continues independently (auto-injected; no beacon in code). |
+| Enhanced measurement | Page views, scrolls, outbound clicks, site search, video engagement and file downloads are ON. **Form interactions are OFF**, to avoid a second automatic `form_start` alongside the site's own. "Redact data → Email" is active. |
+| Consent Mode v2 | UK, EEA (EU27, IS, LI, NO) and CH: `analytics_storage` denied by default, so cookieless pings only, because there is no consent banner. Other regions: analytics granted. Ads storage, user data and personalisation are denied everywhere. Google signals and ad personalisation are off. **This needs owner or legal confirmation.** |
+| Data sharing (account) | "Google products and services" off. Modelling contributions, technical support and recommendations on (as Google presented them at creation). |
+| Key events | Google added `close_convert_lead`, `purchase` and `qualify_lead` by default; the site sends none of them. **`generate_lead` must be starred** (Admin → Events → star) once it first appears, which requires the deploy and one real or test enquiry. GA4 offers no way to add a key event by name before the event arrives. `whatsapp_click` and `contact_click` stay ordinary events, as secondary signals. `cta_click` is navigation only. |
+| Search Console | `sc-domain:artilier.co` is owned only by ankit.vijaivargia@gmail.com, and ankit@artavenue.com has no access. To link: either add ankit@artavenue.com as an Owner in Search Console (Settings → Users and permissions → Add user), or add ankit.vijaivargia@gmail.com as Editor on GA property 558437246. Then go to GA Admin → Product links → Search Console links → Link. Not done: it changes permissions. |
+
+### Events (dataLayer → GA4)
+
+| Event | Fires when | Parameters (never names, emails, phones or message text) |
+|---|---|---|
+| page_view | Each page load (gtag config) | GA4 defaults |
+| form_start | First edit of an enquiry form | form_id, enquiry_type, design_reference, cta_page |
+| generate_lead | **Only after Formspree accepts the post** | form_id, enquiry_type, design_reference, cta_page |
+| enquiry_error | Formspree refuses or the network fails | form_id, enquiry_type, error_type |
+| contact_click | mailto: or tel: link | link_type (email / phone) |
+| whatsapp_click | wa.me / api.whatsapp.com link | link_type |
+| cta_click | Internal link to /contact/ or #enquire | cta_label (≤40-char slug), cta_zone (nav/body/footer) |
+
+All events are pushed through `artilierTrack`. It drops repeats within 4 seconds and discards any value that looks like an email address or phone number.
