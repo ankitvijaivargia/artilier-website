@@ -3,10 +3,12 @@
  *
  * What it does
  *  1. Page views: Cloudflare Web Analytics (cookieless, no consent banner
- *     needed). Turn it on in the Cloudflare dashboard with automatic
- *     injection — no code change — or paste the beacon token below.
+ *     needed). Verified 11 Oct 2026: it is ACTIVE for artilier.co through the
+ *     Cloudflare dashboard's automatic injection. Leave CF_BEACON_TOKEN empty —
+ *     adding the token here as well would load a second beacon and double-count.
  *  2. Events: `form_start`, `generate_lead`, `enquiry_error` (from enquiry.js),
- *     `contact_click` and `whatsapp_click` are pushed to `window.dataLayer`
+ *     `contact_click`, `whatsapp_click` and `cta_click` (an internal button or
+ *     link that leads to the enquiry form) are pushed to `window.dataLayer`
  *     and, only if a GA4 measurement ID is set below, sent to GA4. Event
  *     parameters are page path, form id, enquiry type, design reference, the
  *     internal CTA page, link type and error type — never names, emails,
@@ -19,8 +21,8 @@
  * Owner configuration (empty = disabled, nothing loads):
  */
 (() => {
-  const CF_BEACON_TOKEN = '';   // Cloudflare Web Analytics site token (optional if auto-injected)
-  const GA4_ID = '';            // e.g. 'G-XXXXXXXXXX' — see SEO_IMPLEMENTATION_LOG.md before enabling
+  const CF_BEACON_TOKEN = '';   // keep empty: Cloudflare auto-injection is already active (see above)
+  const GA4_ID = '';            // owner to supply after creating an ARTILIER GA4 web stream — see SEO_MEASUREMENT_FRAMEWORK.md §2
 
   const w = window, d = document;
   w.dataLayer = w.dataLayer || [];
@@ -85,5 +87,11 @@
     const h = a.getAttribute('href') || '';
     if (h.startsWith('mailto:')) w.artilierTrack('contact_click', { link_type: 'email' });
     else if (/^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(h)) w.artilierTrack('whatsapp_click', { link_type: 'whatsapp' });
+    else if (/(^|\/)contact\/?(\?|#|$)|#enquire$/.test(h)) {
+      /* internal enquiry CTA: record which page and which button, never form content */
+      const label = (a.getAttribute('data-cta') || a.textContent || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '').slice(0, 40);
+      const zone = a.closest('nav') ? 'nav' : a.closest('footer') ? 'footer' : 'body';
+      w.artilierTrack('cta_click', { link_type: 'enquiry_cta', cta_label: label, cta_zone: zone }, 'cta|' + label + '|' + location.pathname);
+    }
   }, { capture: true });
 })();

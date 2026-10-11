@@ -78,7 +78,7 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <link rel="stylesheet" href="${up}assets/css/collection-tweaks.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/pages.css?v=6">
 <script defer src="${up}assets/js/slots.js?v=5" data-manifest="${up}assets/media/manifest.json?v=${MV}"></script>
-<script defer src="${up}assets/js/analytics.js?v=2"></script>${scripts}${extraHead}
+<script defer src="${up}assets/js/analytics.js?v=3"></script>${scripts}${extraHead}
 </head>
 <body>
 <a class="skip" href="#main">${lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}</a>`;

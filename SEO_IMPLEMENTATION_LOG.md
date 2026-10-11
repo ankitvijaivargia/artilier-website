@@ -232,7 +232,7 @@ Planning documents: `SEO_GROWTH_BASELINE.md`, `SEO_COMPETITOR_AND_KEYWORD_RESEAR
 - Contrast audit (<3:1) over 17 pages found three more instances of the same class — `/trade/` grid (paper on paper), `/about/` names and `/craft/` facts (ink on dark). Fixed in shared CSS with dark-section hover colour and focus ring; `pages.css?v=3`. Re-audit: 0 elements below 3:1 (a defect screen, not a WCAG AA test).
 - Guide: four statements tightened to match published wording (colour trials "against your scheme"; requirements confirmed "and documented, before costing"; "only some of them"; "the studio's own stages").
 - French page: skip link localised ("Aller au contenu").
-- Enquiry analytics: `form_start` and `enquiry_error` events; `design_reference` and `cta_page` on events and as a hidden form field; `enquiry.js?v=2`, `analytics.js?v=2`. Mocked tests 31/31.
+- Enquiry analytics: `form_start` and `enquiry_error` events; `design_reference` and `cta_page` on events and as a hidden form field; `enquiry.js?v=2`, `analytics.js?v=3`. Mocked tests 31/31.
 - Public repository: payment terms and the named prospect list removed from the docs (they remain in earlier Git history).
 - Docs: `SEO_LAUNCH_CHECKLIST.md` rewritten for PR #11; README host, deployment wording and brand tokens corrected; PR #5 documents marked historical.
 

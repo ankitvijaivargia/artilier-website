@@ -1,6 +1,6 @@
 # ARTILIER — SEO measurement framework
 
-Date: 10 Oct 2026
+Date: 10 Oct 2026 · set-up status re-checked 11 Oct 2026 (Stage 9, PR1)
 
 ## 1. Principle
 
@@ -10,11 +10,11 @@ Organic search is measured by the enquiries it produces, not by traffic. Nothing
 
 | Source | Measures | Status | Owner action |
 |---|---|---|---|
-| Google Search Console (Domain property) | Impressions, clicks, queries, average position, pages, countries, devices, index coverage | **Not confirmed** | Verify via DNS TXT in Cloudflare; submit `sitemap.xml`; add studio@artilier.co as a user |
-| Bing Webmaster Tools | Same for Bing (and partly Copilot/ChatGPT search surfaces) | Tag live (PR #7); import from GSC | Import once GSC is verified |
-| Cloudflare Web Analytics | Page views, referrers, countries, landing pages — cookieless | **Not active** in code (`CF_BEACON_TOKEN` empty) | Enable in Cloudflare dashboard (automatic set-up) |
-| GA4 (optional) | Events: `form_start`, `generate_lead`, `enquiry_error`, `contact_click`, `whatsapp_click` — with enquiry type, design reference and the internal CTA page (market, hospitality, design), no personal data | Code ready, `GA4_ID` empty | Only if event reports are needed; consent banner required before granting storage for UK/EU visitors |
-| Formspree | Every enquiry, with sector, landing page, referrer, UTM; from PR #11 also `cta_page` (the page whose button led to the form) and `design_reference` | Live (delivery not yet confirmed) | Confirm delivery; export monthly |
+| Google Search Console (Domain property) | Impressions, clicks, queries, average position, pages, countries, devices, index coverage | **Verified** — `sc-domain:artilier.co` accessible (confirmed before 11 Oct) | Submit `sitemap.xml` again after each page release; add studio@artilier.co as a user |
+| Bing Webmaster Tools | Same for Bing (and partly Copilot/ChatGPT search surfaces) | Tag live (PR #7); import from GSC | Import from GSC |
+| Cloudflare Web Analytics | Page views, referrers, countries, landing pages — cookieless | **Active** via dashboard automatic injection (checked 11 Oct 2026 in the Cloudflare dashboard: site tag `05417b7a…`, data flowing). `CF_BEACON_TOKEN` in `analytics.js` deliberately left empty — adding it would double-count | None |
+| GA4 (optional) | Events: `form_start`, `generate_lead`, `enquiry_error`, `contact_click`, `whatsapp_click`, `cta_click` (new in PR1: label of the button and nav/body/footer zone) — no personal data | **Not collecting.** Only GA4 property found is "Art Avenue" (266121129, account 192533552) with **no web data stream**; no ARTILIER property exists. `GA4_ID` stays empty | Owner decision: create a separate **ARTILIER** GA4 property + web stream for artilier.co (do not reuse the Art Avenue retail property), then send the `G-` ID. Consent banner needed before granting storage for UK/EU visitors; until then Consent Mode stays denied |
+| Formspree | Every enquiry, with sector, landing page, referrer, UTM; from PR #11 also `cta_page` (the page whose button led to the form) and `design_reference` | Form `myklqvgp` exists. **Dashboard not inspected 11 Oct** (browser session closed); delivery to studio@artilier.co not yet evidenced | Owner: send one test enquiry from /contact/ and confirm it arrives with the hidden fields; export submissions since launch |
 | Enquiry log (new) | Qualification of every enquiry | **To create** — a simple sheet | Fill within 48 h of each enquiry (template §4) |
 | Semrush / Ahrefs | Volumes, rank tracking, backlinks | Semrush out of API units; Ahrefs plan insufficient | Optional: top up Semrush units for a 25-keyword tracking project |
 
@@ -84,3 +84,17 @@ Add earned mentions here too (date, publication, URL, followed link Y/N).
 ## 8. What we will not report
 
 Rankings from a single search, traffic without a baseline, impressions as success, or "SEO leads" that were actually outreach replies. If a number cannot be traced to GSC, Cloudflare, Formspree or the enquiry log, it is not reported.
+
+## 9. Stage 9 measurement-first checklist (11 Oct 2026)
+
+| # | Item | Status | Evidence / next step |
+|---|---|---|---|
+| 1 | Cloudflare Web Analytics page views | Active | Dashboard, 11 Oct |
+| 2 | No duplicate beacon | Done | Token left empty in code (PR1) |
+| 3 | GA4 events | Code ready, not collecting | Needs ARTILIER property + stream (owner) |
+| 4 | `cta_click` event for enquiry buttons | Added (PR1) | Label + zone only; verified no personal data in parameters |
+| 5 | Formspree delivery | Unverified | Owner test enquiry |
+| 6 | Search Console | Verified property | Resubmit sitemap after PR2/PR3 merge |
+| 7 | Enquiry log sheet | Not created | Template §4 |
+
+Nothing in this table is a performance claim; it only records whether each source can produce data.
