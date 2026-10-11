@@ -27,6 +27,8 @@ const shell = ({ path, up, title, desc, lb, h1, h1it, lead, body, nodes = [], la
   const url = `${HOST}/${path}`;
   const crumbs = [{ name:'Artilier', href:home(up), abs:`${HOST}/` }];
   if (path.startsWith('trade/') && path !== 'trade/') crumbs.push({ name:'Trade', href:`${up}trade/`, abs:`${HOST}/trade/` });
+  if (path.startsWith('embroidery/') && path !== 'embroidery/') crumbs.push({ name:'Embroidery', href:`${up}embroidery/`, abs:`${HOST}/embroidery/` });
+  if (path.startsWith('fr/') && path !== 'fr/') crumbs.push({ name:'Français', href:`${up}fr/`, abs:`${HOST}/fr/` });
   crumbs.push({ name:crumbName || lb, href:url, abs:url });
   const schema = graph([
     { '@type':pageType,'@id':`${url}#webpage`,'url':url,'name':title,'description':desc,
@@ -321,9 +323,15 @@ const market = m => shell({
     <div class="wp-meta">${m.meta.map((x, i) => i ? `<span>${x}</span>` : `<span><b>${x}</b></span>`).join('')}</div>`,
   nodes:[ service(`trade/${m.slug}/`, m.serviceName, 'Custom rug development and manufacture for design practices',
     m.serviceDesc, 'Interior designers, architects, hospitality designers and design practices', m.area) ],
-  body: m.body
+  body: m.body.replace('\n<div class="backhome">', (EMB_LINK[m.slug] || '') + '\n<div class="backhome">')
 });
 const UP2 = '../../';
+const EMB_LINK = Object.fromEntries([['uae','UAE and Gulf'],['saudi-arabia','Saudi'],['uk','UK'],['us','US']].map(([sl, lab]) => [sl, `
+<section class="sec">
+  <div class="sec-hd"><div><span class="lb">Also from the studio</span><h2 class="d2">Hand embroidery,<br>for the same <span class="it">rooms.</span></h2></div>
+  <p class="bd">Wall panels, framed works, headboards, upholstery panels, cushions and drapery in zardozi, zari, aari, raffia and hand embroidery — developed alongside your rugs so colour and motif carry across. <a href="../../embroidery/${sl}/">Embroidery for ${lab} projects</a>.</p></div>
+</section>
+`]));
 const marketLinks = self => [['trade/uae/','UAE'],['trade/saudi-arabia/','Saudi Arabia'],['trade/uk/','United Kingdom'],['trade/us/','United States']].filter(([h]) => !h.includes(self));
 const common = {
   samples: ['Can we approve samples before production?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom; the strike-off takes 2–3 weeks once the design is approved, and its cost is credited against the order.'],
@@ -625,9 +633,198 @@ const notFound = head({ title:'Page not found | Artilier', desc:'This page does 
 </section>
 </main>` + footer('/');
 
+
+/* ── embroidery market pages ───────────────────────────────────────── */
+/* Owner-confirmed (11 Oct 2026): zardozi, zari, aari, raffia, hand embroidery,
+   appliqué; wall panels, framed art, headboards, upholstery panels, cushions,
+   drapery; from the designer's artwork; strike-off 2–3 weeks, credited; no
+   minimum; production time per piece in the quote; designers, architects and
+   galleries, and collectors through galleries. Time-zone sentences restate the
+   rug market pages. No client, project or delivery is claimed. */
+const embGal = (ids, up) => `
+<section class="sec gal-sec"><div class="gal">${ids.map(id => `<figure class="q">${slotImg(id, 'Embroidery', up)}<figcaption data-mf="${id}"></figcaption></figure>`).join('')}</div></section>`;
+const embMarkets = self => [['embroidery/uae/','UAE & Gulf'],['embroidery/saudi-arabia/','Saudi Arabia'],['embroidery/uk/','United Kingdom'],['embroidery/us/','United States'],['fr/broderie/','France (en français)']].filter(([h]) => !h.includes(self));
+const embCommon = {
+  min: ['Is there a minimum order?', 'No. A single panel or cushion is made as readily as a full scheme.'],
+  time: ['How long does it take?', 'The strike-off usually takes 2–3 weeks once the design is approved, and its cost is credited against the order. Production time depends on technique, density and area, and is confirmed for each piece in the quote.'],
+  who: ['Who do you work with?', 'Interior designers, architects and design practices, and galleries — including collectors through the galleries that represent them. We do not sell retail.'],
+  contract: ['Who contracts and invoices?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio; orders are contracted, invoiced and exported through that entity, usually quoted ex-works in USD or EUR, with FOB or DDP on request.']
+};
+const embMarket = m => shell({
+  path:`embroidery/${m.slug}/`, up:UP2, crumbName:m.crumb,
+  title:m.title, desc:m.desc, lb:m.lb, h1:m.h1, h1it:m.h1it,
+  lead:`<p class="bd">${m.lead}</p>
+    <div class="wp-meta">${m.meta.map((x, i) => i ? `<span>${x}</span>` : `<span><b>${x}</b></span>`).join('')}</div>`,
+  nodes:[ service(`embroidery/${m.slug}/`, m.serviceName, 'Custom hand embroidery for interiors', m.serviceDesc,
+    'Interior designers, architects, design practices and galleries', m.area) ],
+  body: m.body + `
+${ctaBlock(UP2, 'contact/?type=embroidery', m.cta, [[m.rugs, m.rugsLabel], ['embroidery/','Embroidery'], ...embMarkets(m.slug)])}`
+});
+
+const embUae = embMarket({
+  slug:'uae', crumb:'UAE & Gulf',
+  title:'Bespoke Embroidery & Wall Panels for Dubai and the UAE | Artilier',
+  desc:'Hand-embroidered wall panels, headboards and upholstery for Dubai, Abu Dhabi and the Gulf — zardozi, zari, aari and raffia, sampled before production.',
+  lb:'Embroidery · UAE & Gulf', h1:'Hand embroidery for<br>', h1it:'Dubai and the Gulf.',
+  lead:'For interior designers, architects and galleries in Dubai, Abu Dhabi and across the Gulf: embroidered wall panels, framed pieces, headboards and upholstery panels, developed from your scheme or artwork in our New Delhi studio and approved in a strike-off before production.',
+  meta:['UAE & Gulf projects','Zardozi · zari · aari · raffia','Strike-off first'],
+  serviceName:'Bespoke hand embroidery for UAE and Gulf interiors',
+  area:[country('United Arab Emirates','AE'), country('Qatar','QA'), country('Kuwait','KW'), country('Bahrain','BH'), country('Oman','OM')],
+  serviceDesc:'Hand-embroidered wall panels, framed art, headboards, upholstery panels, cushions and drapery in zardozi, zari, aari, raffia and hand embroidery, for residential, hospitality and gallery projects in the UAE and the wider Gulf.',
+  rugs:'trade/uae/', rugsLabel:'Rugs for UAE projects', cta:'Start a UAE embroidery project',
+  body:`
+${sec('Where it is used', 'From the majlis', 'to the suite.', list([
+  '<b>Majlis and reception rooms</b> — embroidered wall panels and framed pieces sized to the wall, singly or as a run',
+  '<b>Bedrooms and suites</b> — embroidered headboard panels, cushion fronts and drapery borders',
+  '<b>Furniture</b> — seat, back and side panels for upholstered pieces made by your joinery or upholstery workshop',
+  '<b>Hospitality</b> — lobbies, suites and restaurants, usually briefed as a set of panels across several rooms. See <a href="'+UP2+'hospitality/">hospitality</a>',
+  '<b>Galleries and collectors</b> — single works and series, through the galleries that represent them'
+]))}
+${sec('Techniques', 'Metal thread,', 'at the scale of the room.', `<div class="prose">
+    <p>Zardozi and zari — metal thread laid and couched by hand — read from across a large room and hold up close. Aari, raffia and hand embroidery give matt, textured surfaces where metal would be too much, and techniques are combined where a design needs it. The full range is on <a href="${UP2}embroidery/">embroidery</a>.</p>
+  </div>`, { dark:true })}
+${embGal(['e2','e7','e5','e8'], UP2)}
+${sec('Working together', 'An hour and a half', 'apart.', `<div class="prose">
+    <p>New Delhi (IST, UTC+5:30) is one hour thirty minutes ahead of the UAE (GST, UTC+4), so most of a Dubai or Abu Dhabi working day overlaps with ours. Briefs from Qatar, Kuwait, Bahrain and Oman run the same way: drawings and approvals by email, the strike-off approved in the hand before production.</p>
+  </div>`)}
+${sec('What to send', 'A useful', 'first brief.', list([
+  '<b>The piece</b> — wall panel, framed work, headboard, upholstery panel, cushion or drapery, with sizes in centimetres',
+  '<b>Design intent</b> — artwork, scheme or references, and any colours or metal tones to match',
+  '<b>Ground fabric</b> — if one is already specified; otherwise we propose one in sampling',
+  '<b>Mounting</b> — framed, stretched, upholstered or hung, and who fits it on site',
+  '<b>Programme</b> — emirate or country, and the date the piece is needed'
+]), { dark:true })}
+${sec('Questions', 'From Gulf', 'practices.', qa([embCommon.min, embCommon.time, embCommon.who,
+  ['Can embroidery be matched to rugs in the same room?', `Yes. Rugs and embroidery are developed in the same studio, so colour and motif can carry across both. See <a href="${UP2}trade/uae/">rugs for UAE projects</a>.`],
+  embCommon.contract]))}`
+});
+
+const embKsa = embMarket({
+  slug:'saudi-arabia', crumb:'Saudi Arabia',
+  title:'Hand Embroidery & Wall Panels for Saudi Projects | Artilier',
+  desc:'Hand-embroidered wall panels, headboards and upholstery for Riyadh, Jeddah and AlUla projects — zardozi, zari, aari and raffia, sampled before production.',
+  lb:'Embroidery · Saudi Arabia', h1:'Hand embroidery for<br>', h1it:'Saudi projects.',
+  lead:'For interior designers, architects and galleries working in Riyadh, Jeddah, AlUla and across the Kingdom: embroidered wall panels, framed pieces, headboards and upholstery panels, made to commission from your scheme or artwork and approved in a strike-off first.',
+  meta:['Saudi projects','Residential · hospitality · cultural','Strike-off first'],
+  serviceName:'Bespoke hand embroidery for Saudi Arabia interiors', area:[country('Saudi Arabia','SA')],
+  serviceDesc:'Hand-embroidered wall panels, framed art, headboards, upholstery panels, cushions and drapery in zardozi, zari, aari, raffia and hand embroidery, for residential, hospitality and cultural projects in Saudi Arabia.',
+  rugs:'trade/saudi-arabia/', rugsLabel:'Rugs for Saudi projects', cta:'Start a Saudi embroidery project',
+  body:`
+${sec('Where it is used', 'Panels, headboards,', 'whole schemes.', list([
+  '<b>Residences</b> — majlis wall panels, framed works, headboards and soft furnishings',
+  '<b>Hospitality</b> — hotels and resorts, including destination projects, usually briefed as a schedule of panel types across many rooms',
+  '<b>Cultural and gallery projects</b> — single works and series, through the galleries and curators who commission them',
+  '<b>Furniture</b> — embroidered panels supplied to your upholsterer or joinery workshop'
+]))}
+${embGal(['e2','e8','e3','e6'], UP2)}
+${sec('Long programmes', 'Schedule the strike-off', 'early.', `<div class="prose">
+    <p>Larger Saudi projects often run on long programmes with many embroidered pieces per building. Send the full schedule as early as you can: strike-offs can then be planned against your mock-up and approval dates rather than squeezed in at the end.</p>
+  </div>`, { dark:true })}
+${sec('Working together', 'Two and a half', 'hours apart.', `<div class="prose">
+    <p>Saudi Arabia (AST, UTC+3) is two hours thirty minutes behind New Delhi (IST, UTC+5:30), and the Saudi working week runs Sunday to Thursday. Briefs, drawings and approvals move by email; the strike-off is approved in the hand before production.</p>
+  </div>`)}
+${sec('Questions', 'From Saudi', 'practices.', qa([embCommon.min, embCommon.time, embCommon.who,
+  ['Can embroidery be matched to rugs on the same project?', `Yes. Both are developed in our studio, so a scheme can carry across rugs and embroidered panels. See <a href="${UP2}trade/saudi-arabia/">rugs for Saudi projects</a>.`],
+  embCommon.contract]))}`
+});
+
+const embUk = embMarket({
+  slug:'uk', crumb:'United Kingdom',
+  title:'Bespoke Hand Embroidery for London Interior Designers | Artilier',
+  desc:'Hand-embroidered wall panels, headboards, upholstery panels and framed works for London and UK interiors — zardozi, zari, aari, raffia. Sampled first.',
+  lb:'Embroidery · United Kingdom', h1:'Hand embroidery for<br>', h1it:'London interiors.',
+  lead:'For interior designers, architects and galleries in London and across the UK: embroidered wall panels, headboards, upholstery panels, cushions and framed works, developed from your drawing in our New Delhi studio and approved in a strike-off before production.',
+  meta:['London & UK','Made to commission','Strike-off first'],
+  serviceName:'Bespoke hand embroidery for UK interior designers', area:[country('United Kingdom','GB')],
+  serviceDesc:'Hand-embroidered wall panels, framed art, headboards, upholstery panels, cushions and drapery in zardozi, zari, aari, raffia and hand embroidery, for residential, hospitality and gallery projects in London and the UK.',
+  rugs:'trade/uk/', rugsLabel:'Rugs for UK projects', cta:'Start a UK embroidery project',
+  body:`
+${sec('Where it is used', 'Made for the drawing,', 'not the catalogue.', list([
+  '<b>Residential</b> — embroidered headboards, dining-room wall panels, cushion fronts and curtain borders, each made to the room',
+  '<b>Upholstery panels</b> — embroidered seat, back and side panels supplied to your upholsterer',
+  '<b>Framed and stretched works</b> — single pieces or series for a wall or a stair',
+  '<b>Galleries and collectors</b> — commissioned works through the galleries that represent them'
+]))}
+${embGal(['e7','e8','e2','e3'], UP2)}
+${sec('From your artwork', 'Your drawing,', 'in thread.', `<div class="prose">
+    <p>Send the drawing, painting or reference with the finished size. We resolve technique, stitch density, thread and ground fabric with you — zardozi, zari, aari, raffia or hand embroidery, alone or combined — and prove it in a strike-off you approve in the hand. More on <a href="${UP2}embroidery/">how embroidery is commissioned</a>.</p>
+  </div>`, { dark:true })}
+${sec('Working together', 'Four and a half', 'hours ahead.', `<div class="prose">
+    <p>New Delhi is four hours thirty minutes ahead of London in summer (BST) and five hours thirty minutes in winter (GMT), so a London morning overlaps our afternoon. Briefs and approvals move by email; strike-offs are approved in the hand.</p>
+  </div>`)}
+${sec('Questions', 'From UK', 'practices.', qa([embCommon.min, embCommon.time, embCommon.who,
+  ['Can you embroider on a fabric we have specified?', 'Tell us the fabric in the brief. We confirm in sampling whether it will take the technique and density the design needs, and propose an alternative if it will not.'],
+  embCommon.contract]))}`
+});
+
+const embUs = embMarket({
+  slug:'us', crumb:'United States',
+  title:'Hand Embroidery for New York Interior Designers | Artilier',
+  desc:'Hand-embroidered wall panels, headboards, upholstery and framed works for New York and US interiors — zardozi, zari, aari and raffia, sampled first.',
+  lb:'Embroidery · United States', h1:'Hand embroidery for<br>', h1it:'New York and the US.',
+  lead:'For interior designers, architects and galleries in New York and across the United States: embroidered wall panels, headboards, upholstery panels and framed works, developed from your drawing in our New Delhi studio and approved in a strike-off before production.',
+  meta:['New York & US','Made to commission','Strike-off first'],
+  serviceName:'Bespoke hand embroidery for US interior designers', area:[country('United States','US')],
+  serviceDesc:'Hand-embroidered wall panels, framed art, headboards, upholstery panels, cushions and drapery in zardozi, zari, aari, raffia and hand embroidery, for residential, hospitality and gallery projects in New York and the United States.',
+  rugs:'trade/us/', rugsLabel:'Rugs for US projects', cta:'Start a US embroidery project',
+  body:`
+${sec('Where it is used', 'Apartments, houses,', 'galleries.', list([
+  '<b>Apartments and townhouses</b> — embroidered wall panels, headboards and cushion fronts sized to the room',
+  '<b>Houses</b> — larger runs of panels for living rooms, bedrooms and stairs',
+  '<b>Upholstery panels</b> — embroidered panels supplied to your workroom',
+  '<b>Galleries and collectors</b> — single works and series, through the galleries that represent them'
+]))}
+${embGal(['e8','e2','e7','e6'], UP2)}
+${sec('Techniques', 'Matt or metal,', 'flat or raised.', `<div class="prose">
+    <p>Zardozi and zari for couched metal thread and raised relief; aari for chain-stitch line and dense fields; raffia and appliqué for heavy, graphic texture; hand embroidery in silk, cotton or wool for shading and fine detail. See <a href="${UP2}embroidery/">embroidery</a> for the full range.</p>
+  </div>`, { dark:true })}
+${sec('Working together', 'A brief at the end of your day,', 'read at the start of ours.', `<div class="prose">
+    <p>New Delhi is nine hours thirty minutes ahead of New York during daylight saving time (ten hours thirty in winter). Work moves by email, and sizes can be sent in inches or centimetres, whichever your drawings use. Strike-offs are approved in the hand before production.</p>
+  </div>`)}
+${sec('Questions', 'From US', 'practices.', qa([embCommon.min, embCommon.time, embCommon.who,
+  ['Can embroidery be matched to rugs in the same room?', `Yes. Both are developed in our studio, so colour and motif can carry across. See <a href="${UP2}trade/us/">rugs for US projects</a>.`],
+  embCommon.contract]))}`
+});
+
+const embFr = shell({
+  path:'fr/broderie/', up:UP2, lang:'fr', locale:'fr_FR', crumbName:'Broderie',
+  title:'Broderie main sur mesure pour architectes d’intérieur | Artilier',
+  desc:'Panneaux muraux brodés, têtes de lit, panneaux d’ameublement et œuvres encadrées — zardozi, zari, aari, raphia. Sur mesure, échantillon d’abord.',
+  lb:'Broderie · Paris & France', h1:'La broderie main,<br>', h1it:'sur mesure.',
+  lead:`<p class="bd">Pour les architectes d’intérieur, les architectes et les galeries à Paris et en France : panneaux muraux brodés, œuvres encadrées, têtes de lit, panneaux d’ameublement, coussins et rideaux, développés d’après votre dessin dans notre studio de New Delhi et validés sur échantillon avant production.</p>
+    <div class="wp-meta"><span><b>Paris & France</b></span><span>Sur commande</span><span>Échantillon d’abord</span></div>`,
+  nodes:[ service('fr/broderie/', 'Broderie main sur mesure pour architectes d’intérieur', 'Broderie main sur mesure pour l’intérieur',
+    'Panneaux muraux brodés, œuvres encadrées, têtes de lit, panneaux d’ameublement, coussins et rideaux en zardozi, zari, aari, raphia et broderie main, pour projets résidentiels, hôteliers et galeries en France.',
+    'Architectes d’intérieur, architectes, agences de design et galeries', [country('France','FR')]) ],
+  body:`
+${sec('Techniques', 'Le point que le dessin', 'demande.', list([
+  '<b>Zardozi</b> — fils, cannetilles et paillettes métalliques couchés à la main, en relief',
+  '<b>Zari</b> — fil métallique fin travaillé à plat, pour le trait et le remplissage',
+  '<b>Aari</b> — point de chaînette au crochet sur métier, et sur machines guidées à la main pour les grands aplats',
+  '<b>Raphia</b> — raphia et cordons enroulés, couchés et cousus pour des reliefs graphiques',
+  '<b>Broderie main</b> — passé plat, passé empiétant, couchure et points noués, en soie, coton ou laine',
+  '<b>Appliqué</b> — tissus découpés et cousus, associés à des boucles en relief'
+]))}
+${embGal(['e2','e7','e8','e3'], UP2)}
+${sec('Applications', 'Pour le mur, le lit', 'et la fenêtre.', list([
+  '<b>Panneaux muraux</b> — à l’unité ou en série, aux dimensions du mur',
+  '<b>Œuvres encadrées</b> — pièces uniques ou séries, y compris pour les galeries et leurs collectionneurs',
+  '<b>Têtes de lit et panneaux d’ameublement</b> — fournis à votre tapissier',
+  '<b>Coussins et rideaux</b> — devants de coussins, bordures et bords d’attaque brodés'
+]), { dark:true })}
+${sec('Travailler ensemble', 'Votre dessin,', 'en fil.', `<div class="prose">
+    <p>Envoyez le dessin, l’œuvre ou la référence avec les dimensions finies. Nous définissons avec vous la technique, la densité, le fil et le tissu de fond, puis nous les validons sur un échantillon brodé, réalisé en 2 à 3 semaines après validation du dessin et déduit de la commande. Pas de minimum de commande ; le délai de production est confirmé pièce par pièce dans le devis.</p>
+    <p>New Delhi a trois heures trente d’avance sur Paris en été et quatre heures trente en hiver : les échanges se font par e-mail, les échantillons sont validés en main. Écrivez-nous à <a href="mailto:studio@artilier.co">studio@artilier.co</a>.</p>
+  </div>`)}
+<div class="backhome">
+  <a href="${UP2}contact/?type=embroidery" class="cta" hreflang="en">Démarrer un projet <span>→</span></a>
+  <div class="backhome-l"><a href="${UP2}fr/">Tapis sur mesure</a><a href="${UP2}embroidery/" hreflang="en">Embroidery (en anglais)</a></div>
+</div>`
+});
+
 /* ── write ─────────────────────────────────────────────────────────── */
 const built = { 'contact/index.html':contact, 'about/index.html':about, 'projects/index.html':projects, 'hospitality/index.html':hospitality,
-  'trade/uae/index.html':uae, 'trade/saudi-arabia/index.html':ksa, 'trade/uk/index.html':uk, 'trade/us/index.html':us, 'fr/index.html':fr, [G + 'index.html']:guide, '404.html':notFound };
+  'trade/uae/index.html':uae, 'trade/saudi-arabia/index.html':ksa, 'trade/uk/index.html':uk, 'trade/us/index.html':us, 'fr/index.html':fr, 'embroidery/uae/index.html':embUae, 'embroidery/saudi-arabia/index.html':embKsa, 'embroidery/uk/index.html':embUk, 'embroidery/us/index.html':embUs, 'fr/broderie/index.html':embFr, [G + 'index.html']:guide, '404.html':notFound };
 for (const p of projectsData) built[`projects/${p.slug}/index.html`] = projectPage(p);
 for (const [f, html] of Object.entries(built)) write(f, html);
 console.log(`built ${Object.keys(built).length} phase-3 pages`);
@@ -683,7 +880,7 @@ const urls = [
   ['', '1.0'], ['collection/', '0.9'], ...CATS.map(c => [`collection/${c.slug}/`, '0.8']),
   ['bespoke/', '0.9'], ['hospitality/', '0.9'], ['trade/', '0.8'], ['collaborations/', '0.8'], ['contact/', '0.8'], ['about/', '0.7'],
   ['trade/uae/', '0.8'], ['trade/saudi-arabia/', '0.8'], ['trade/uk/', '0.7'], ['trade/us/', '0.7'], ['fr/', '0.8'],
-  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], [G, '0.7'],
+  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], [G, '0.7'],
   ...(hasProjects ? [['projects/', '0.8'], ...projectsData.map(p => [`projects/${p.slug}/`, '0.7'])] : []),
   ...indexable.slice().sort(by).map(d => [`collection/${d.slug}/`, '0.6'])
 ];

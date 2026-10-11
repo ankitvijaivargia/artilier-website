@@ -292,7 +292,7 @@ const gallery = (slots, lb, h2, h2it, intro) => `
 </section>`;
 const embroidery = page({
   slug:'embroidery', lb:'Embroidery',
-  title:'Hand Embroidery for Interiors — Panels & Upholstery | Artilier',
+  title:'Embroidered Wall Panels & Bespoke Hand Embroidery | Artilier',
   desc:'Hand embroidery for wall panels, framed art, headboards, upholstery, cushions and drapery — from our designs or your artwork, sampled first. Trade only.',
   h1:'Drawn in<br>', h1it:'thread.',
   lead:`<p class="bd">Hand embroidery for interiors: wall panels, framed art, headboards, upholstery panels, cushions and drapery. Worked from our designs or developed from your own artwork, sampled for approval, and made to the piece the room needs.</p>
@@ -337,6 +337,17 @@ ${gallery(EMB_SLOTS, 'On the frame', 'Stitch by ', 'stitch.', 'Work in progress 
     <div class="pstep"><span class="pn">02</span><span class="pt">Development</span><span class="pd">Technique, stitch density, thread and colour are worked out against the artwork in our New Delhi studio.</span></div>
     <div class="pstep"><span class="pn">03</span><span class="pt">Strike-off</span><span class="pd">A worked sample for approval in the hand, usually 2–3 weeks after the design is approved. Its cost is credited against the order.</span></div>
     <div class="pstep"><span class="pn">04</span><span class="pt">Production</span><span class="pd">Embroidered by hand in established workshops across India, then checked in Delhi against the approved strike-off before it leaves.</span></div>
+  </div>
+</section>
+<section class="sec">
+  <div class="sec-hd"><div><span class="lb">Where we work</span><h2 class="d2">Briefed from<br>five <span class="it">markets.</span></h2></div>
+  <p class="bd">Embroidery is commissioned the same way wherever the project is. These pages cover the practicalities for each market — time zones, typical briefs and what to send.</p></div>
+  <div class="facts">
+    <div><b>UAE &amp; Gulf</b><span><a href="${up}embroidery/uae/">Dubai, Abu Dhabi, Qatar, Kuwait, Bahrain, Oman</a></span></div>
+    <div><b>Saudi Arabia</b><span><a href="${up}embroidery/saudi-arabia/">Riyadh, Jeddah, AlUla</a></span></div>
+    <div><b>United Kingdom</b><span><a href="${up}embroidery/uk/">London and the UK</a></span></div>
+    <div><b>United States</b><span><a href="${up}embroidery/us/">New York and the US</a></span></div>
+    <div><b>France</b><span><a href="${up}fr/broderie/" hreflang="fr" lang="fr">Paris — broderie sur mesure</a></span></div>
   </div>
 </section>
 ${(() => { const r = [
