@@ -12,7 +12,7 @@
  *    the internal page the visitor came from (`cta_page`);
  *  - hidden attribution fields (page, landing page, referrer, utm_*) so each
  *    enquiry email shows where the visitor came from;
- *  - ?design=<slug> and ?type=<sector> pre-fill the form from CTAs.
+ *  - ?design=<slug> and ?type=<sector|headboard|fabric> pre-fill the form from CTAs.
  * Without an endpoint the form falls back to composing an email — and says so.
  */
 (() => {
@@ -123,10 +123,27 @@
         if (ta && !ta.value) ta.value = `About ${titleCase(design)} from the collection — `;
       }
       if (type) {
-        const radio = [...form.querySelectorAll('input[type=radio][name=sector]')].find(r => r.value.toLowerCase() === type);
+        /* Product CTAs: ?type=headboard and ?type=fabric map to the embroidery
+           sector; the "What do you need?" select follows the product so the
+           enquiry does not arrive labelled as a rug. cta_type keeps the exact
+           CTA for attribution (no personal data). */
+        const PRODUCT = { embroidery: /^Embroidery — wall panels/i, headboard: /^Embroidered headboards/i, fabric: /^Embroidered fabric/i };
+        const sectorType = PRODUCT[type] ? 'embroidery' : type;
+        if (type === 'hospitality') {
+          const need = form.querySelector('select[name=enquiry]');
+          if (need) [...need.options].forEach(o => { if (/^Several rugs/i.test(o.text)) need.value = o.value || o.text; });
+        }
+        if (PRODUCT[type]) {
+          hidden('cta_type', type);
+          const need = form.querySelector('select[name=enquiry]');
+          if (need) [...need.options].forEach(o => { if (PRODUCT[type].test(o.text)) need.value = o.value || o.text; });
+          const cons = form.querySelector('select[name=construction]');
+          if (cons) [...cons.options].forEach(o => { if (/^Hand embroidery$/i.test(o.text)) cons.value = o.value || o.text; });
+        }
+        const radio = [...form.querySelectorAll('input[type=radio][name=sector]')].find(r => r.value.toLowerCase() === sectorType);
         if (radio) radio.checked = true;
         const sel = form.querySelector('select[name=sector]');
-        if (sel) [...sel.options].forEach(o => { if ((o.value || o.text).toLowerCase() === type) sel.value = o.value || o.text; });
+        if (sel) [...sel.options].forEach(o => { if ((o.value || o.text).toLowerCase() === sectorType) sel.value = o.value || o.text; });
       }
     } catch (err) { /* pre-fill is a convenience only */ }
   });
