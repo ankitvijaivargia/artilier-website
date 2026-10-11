@@ -664,7 +664,7 @@ ${ctaBlock(UP2, 'contact/?type=embroidery', m.cta, [[m.rugs, m.rugsLabel], ['emb
 const embUae = embMarket({
   slug:'uae', crumb:'UAE & Gulf',
   title:'Bespoke Embroidery & Wall Panels for Dubai and the UAE | Artilier',
-  desc:'Hand-embroidered wall panels, headboards and upholstery for Dubai, Abu Dhabi and the Gulf — zardozi, zari, aari and raffia, sampled before production.',
+  desc:'Hand-embroidered wallcoverings, wall panels and headboards for Dubai, Abu Dhabi and the Gulf — zardozi, zari, aari, raffia. Sampled before production.',
   lb:'Embroidery · UAE & Gulf', h1:'Hand embroidery for<br>', h1it:'Dubai and the Gulf.',
   lead:'For interior designers, architects and galleries in Dubai, Abu Dhabi and across the Gulf: embroidered wall panels, framed pieces, headboards and upholstery panels, developed from your scheme or artwork in our New Delhi studio and approved in a strike-off before production.',
   meta:['UAE & Gulf projects','Zardozi · zari · aari · raffia','Strike-off first'],
@@ -674,7 +674,7 @@ const embUae = embMarket({
   rugs:'trade/uae/', rugsLabel:'Rugs for UAE projects', cta:'Start a UAE embroidery project',
   body:`
 ${sec('Where it is used', 'From the majlis', 'to the suite.', list([
-  '<b>Majlis and reception rooms</b> — embroidered wall panels and framed pieces sized to the wall, singly or as a run',
+  '<b>Majlis and reception rooms</b> — hand-embroidered wallcoverings made wall to wall, or wall panels and framed pieces sized to the wall',
   '<b>Bedrooms and suites</b> — embroidered headboard panels, cushion fronts and drapery borders',
   '<b>Furniture</b> — seat, back and side panels for upholstered pieces made by your joinery or upholstery workshop',
   '<b>Hospitality</b> — lobbies, suites and restaurants, usually briefed as a set of panels across several rooms. See <a href="'+UP2+'hospitality/">hospitality</a>',
@@ -702,7 +702,7 @@ ${sec('Questions', 'From Gulf', 'practices.', qa([embCommon.min, embCommon.time,
 const embKsa = embMarket({
   slug:'saudi-arabia', crumb:'Saudi Arabia',
   title:'Hand Embroidery & Wall Panels for Saudi Projects | Artilier',
-  desc:'Hand-embroidered wall panels, headboards and upholstery for Riyadh, Jeddah and AlUla projects — zardozi, zari, aari and raffia, sampled before production.',
+  desc:'Hand-embroidered wallcoverings, wall panels and headboards for Riyadh, Jeddah and AlUla — zardozi, zari, aari, raffia. Sampled before production.',
   lb:'Embroidery · Saudi Arabia', h1:'Hand embroidery for<br>', h1it:'Saudi projects.',
   lead:'For interior designers, architects and galleries working in Riyadh, Jeddah, AlUla and across the Kingdom: embroidered wall panels, framed pieces, headboards and upholstery panels, made to commission from your scheme or artwork and approved in a strike-off first.',
   meta:['Saudi projects','Residential · hospitality · cultural','Strike-off first'],
@@ -711,7 +711,7 @@ const embKsa = embMarket({
   rugs:'trade/saudi-arabia/', rugsLabel:'Rugs for Saudi projects', cta:'Start a Saudi embroidery project',
   body:`
 ${sec('Where it is used', 'Panels, headboards,', 'whole schemes.', list([
-  '<b>Residences</b> — majlis wall panels, framed works, headboards and soft furnishings',
+  '<b>Residences</b> — wall-to-wall embroidered wallcoverings, majlis wall panels, framed works, headboards and soft furnishings',
   '<b>Hospitality</b> — hotels and resorts, including destination projects, usually briefed as a schedule of panel types across many rooms',
   '<b>Cultural and gallery projects</b> — single works and series, through the galleries and curators who commission them',
   '<b>Furniture</b> — embroidered panels supplied to your upholsterer or joinery workshop'
@@ -731,7 +731,7 @@ ${sec('Questions', 'From Saudi', 'practices.', qa([embCommon.min, embCommon.time
 const embUk = embMarket({
   slug:'uk', crumb:'United Kingdom',
   title:'Bespoke Hand Embroidery for London Interior Designers | Artilier',
-  desc:'Hand-embroidered wall panels, headboards, upholstery panels and framed works for London and UK interiors — zardozi, zari, aari, raffia. Sampled first.',
+  desc:'Hand-embroidered wallcoverings, wall panels, headboards and upholstery panels for London and UK interiors — zardozi, zari, aari, raffia. Sampled first.',
   lb:'Embroidery · United Kingdom', h1:'Hand embroidery for<br>', h1it:'London interiors.',
   lead:'For interior designers, architects and galleries in London and across the UK: embroidered wall panels, headboards, upholstery panels, cushions and framed works, developed from your drawing in our New Delhi studio and approved in a strike-off before production.',
   meta:['London & UK','Made to commission','Strike-off first'],
@@ -740,7 +740,7 @@ const embUk = embMarket({
   rugs:'trade/uk/', rugsLabel:'Rugs for UK projects', cta:'Start a UK embroidery project',
   body:`
 ${sec('Where it is used', 'Made for the drawing,', 'not the catalogue.', list([
-  '<b>Residential</b> — embroidered headboards, dining-room wall panels, cushion fronts and curtain borders, each made to the room',
+  '<b>Residential</b> — hand-embroidered wallcoverings for dining rooms and halls, embroidered headboards, cushion fronts and curtain borders, each made to the room',
   '<b>Upholstery panels</b> — embroidered seat, back and side panels supplied to your upholsterer',
   '<b>Framed and stretched works</b> — single pieces or series for a wall or a stair',
   '<b>Galleries and collectors</b> — commissioned works through the galleries that represent them'
@@ -760,7 +760,7 @@ ${sec('Questions', 'From UK', 'practices.', qa([embCommon.min, embCommon.time, e
 const embUs = embMarket({
   slug:'us', crumb:'United States',
   title:'Hand Embroidery for New York Interior Designers | Artilier',
-  desc:'Hand-embroidered wall panels, headboards, upholstery and framed works for New York and US interiors — zardozi, zari, aari and raffia, sampled first.',
+  desc:'Hand-embroidered wallcoverings, wall panels, headboards and upholstery for New York and US interiors — zardozi, zari, aari, raffia. Sampled first.',
   lb:'Embroidery · United States', h1:'Hand embroidery for<br>', h1it:'New York and the US.',
   lead:'For interior designers, architects and galleries in New York and across the United States: embroidered wall panels, headboards, upholstery panels and framed works, developed from your drawing in our New Delhi studio and approved in a strike-off before production.',
   meta:['New York & US','Made to commission','Strike-off first'],
@@ -769,7 +769,7 @@ const embUs = embMarket({
   rugs:'trade/us/', rugsLabel:'Rugs for US projects', cta:'Start a US embroidery project',
   body:`
 ${sec('Where it is used', 'Apartments, houses,', 'galleries.', list([
-  '<b>Apartments and townhouses</b> — embroidered wall panels, headboards and cushion fronts sized to the room',
+  '<b>Apartments and townhouses</b> — hand-embroidered wallcoverings made wall to wall, wall panels, headboards and cushion fronts sized to the room',
   '<b>Houses</b> — larger runs of panels for living rooms, bedrooms and stairs',
   '<b>Upholstery panels</b> — embroidered panels supplied to your workroom',
   '<b>Galleries and collectors</b> — single works and series, through the galleries that represent them'
@@ -807,6 +807,7 @@ ${sec('Techniques', 'Le point que le dessin', 'demande.', list([
 ]))}
 ${embGal(['e2','e7','e8','e3'], UP2)}
 ${sec('Applications', 'Pour le mur, le lit', 'et la fenêtre.', list([
+  '<b>Revêtements muraux brodés</b> — d’un mur à l’autre, panneaux posés bord à bord selon vos élévations',
   '<b>Panneaux muraux</b> — à l’unité ou en série, aux dimensions du mur',
   '<b>Œuvres encadrées</b> — pièces uniques ou séries, y compris pour les galeries et leurs collectionneurs',
   '<b>Têtes de lit et panneaux d’ameublement</b> — fournis à votre tapissier',

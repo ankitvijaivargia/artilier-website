@@ -292,8 +292,8 @@ const gallery = (slots, lb, h2, h2it, intro) => `
 </section>`;
 const embroidery = page({
   slug:'embroidery', lb:'Embroidery',
-  title:'Embroidered Wall Panels & Bespoke Hand Embroidery | Artilier',
-  desc:'Hand embroidery for wall panels, framed art, headboards, upholstery, cushions and drapery — from our designs or your artwork, sampled first. Trade only.',
+  title:'Embroidered Wallcoverings & Wall Panels, Made to Order | Artilier',
+  desc:'Hand-embroidered wallcoverings, wall panels, headboards, upholstery and framed art — from our designs or your artwork, sampled first. Trade only.',
   h1:'Drawn in<br>', h1it:'thread.',
   lead:`<p class="bd">Hand embroidery for interiors: wall panels, framed art, headboards, upholstery panels, cushions and drapery. Worked from our designs or developed from your own artwork, sampled for approval, and made to the piece the room needs.</p>
     <div class="wp-meta"><span><b>Made by hand</b></span><span>From your artwork</span><span>Sampled first</span></div>`,
@@ -317,10 +317,21 @@ ${gallery(EMB_SLOTS, 'On the frame', 'Stitch by ', 'stitch.', 'Work in progress 
   <div class="sec-hd"><div><span class="lb">Experience</span><h2 class="d2">Made for studios<br>we do not <span class="it">name.</span></h2></div>
   <p class="bd">Our embroiderers have produced panels and soft furnishings for international interior design studios. That work was made under confidentiality, so it is not named or published as projects here — what this page shows is the making.</p></div>
 </section>
+<section class="sec">
+  <div class="sec-hd"><div><span class="lb">Wall to wall</span><h2 class="d2">Hand-embroidered<br><span class="it">wallcoverings.</span></h2></div>
+  <p class="bd">Embroidery can cover a whole wall, not only a panel on it. Send the elevations with doors, windows and switches marked; we lay out the panels and their joins with you, so the design runs across the wall as one surface, and prove the stitch, ground and colour in a strike-off before production.</p></div>
+  <div class="facts">
+    <div><b>Made to the elevation</b><span>Panels laid out to your wall drawings, edge to edge</span></div>
+    <div><b>Design across the joins</b><span>Pattern planned to run on from one panel to the next</span></div>
+    <div><b>Techniques</b><span>Zardozi, zari, aari, raffia, hand embroidery and appliqué</span></div>
+    <div><b>Ground</b><span>Specified by you, or proposed in sampling</span></div>
+  </div>
+</section>
 <section class="sec dark">
   <div class="sec-hd"><div><span class="lb">Where it is used</span><h2 class="d2">Made for the wall,<br>the bed and the <span class="it">window.</span></h2></div>
   <p class="bd">Tell us what the piece is and where it goes. Size, ground fabric, how it will be mounted or upholstered and how much handling it will take all shape the technique and density we recommend.</p></div>
   <div class="facts">
+    <div><b>Wallcoverings</b><span>Embroidered panels made wall to wall, to the elevation</span></div>
     <div><b>Wall panels</b><span>Single panels or runs across a wall, sized to the elevation</span></div>
     <div><b>Framed art</b><span>Embroidered pieces made to be framed or mounted</span></div>
     <div><b>Headboards</b><span>Embroidered panels for upholstered headboards</span></div>
@@ -352,6 +363,7 @@ ${gallery(EMB_SLOTS, 'On the frame', 'Stitch by ', 'stitch.', 'Work in progress 
 </section>
 ${(() => { const r = [
   ['Is there a minimum order?', 'No. A single cushion or panel is made as readily as a full scheme.'],
+  ['Can you embroider a whole wall?', 'Yes. Embroidered wallcoverings are made as panels laid out to your elevations and fitted edge to edge. Mark doors, windows and switches on the drawings; the layout and joins are agreed with you before the strike-off.'],
   ['How long does it take?', 'The strike-off usually takes 2–3 weeks once the design is approved. Production time depends on technique, density and area, and is confirmed for each piece in the quote.'],
   ['Can embroidery be paired with a rug?', 'Yes. Rugs and embroidery are developed in the same studio, so colour and motif can be carried across both for one room.'],
   ['Who contracts and invoices?', 'Art Avenue Pvt. Ltd., New Delhi — the same company that contracts our rugs.']
