@@ -247,3 +247,17 @@ Planning documents: `SEO_GROWTH_BASELINE.md`, `SEO_COMPETITOR_AND_KEYWORD_RESEAR
 - Owner confirmed: every finished rug is checked against its approved strike-off — restored in the guide ("before dispatch") and recorded in `OWNER_INPUT_REQUIRED.md` §A.
 - Removed every absolute size claim ("any size", "any dimension", "Toutes dimensions", "Any design, any dimension") from sources and regenerated output: titles (design and category pages now "Made to Size"), meta/Open Graph/Twitter descriptions, JSON-LD, page copy, spec rows, footer (EN/FR), `content/designs.json`, `content/categories.json`, `assets/js/content.js`, and the hand-maintained homepage, collection hub and collaborations pages. Wording now says rugs are made to order and sized to the project, within what the design and construction allow. Only "any size limit … is confirmed before sampling" remains (not a claim).
 - `check.py` 43/41/41 OK; regeneration produces no diff; 41 indexable pages = 41 sitemap URLs; canonicals unchanged; 44/44 responsive combinations clean; mocked enquiry tests 31/31.
+
+## 2026-10-11 — Embroidery SEO: international market pages
+
+Keyword tools unavailable this session (Ahrefs plan excludes Keywords Explorer; Semrush out of API units), so targeting is from live SERP review, not volumes. ASSUMPTION: volumes are low but intent is high; SERPs for "embroidered wall panels" are dominated by marketplace listings and wallcovering brands, with no bespoke trade embroidery studio ranking — an open position.
+
+- New pages: `/embroidery/uae/` (UAE + Qatar, Kuwait, Bahrain, Oman), `/embroidery/saudi-arabia/`, `/embroidery/uk/` (London), `/embroidery/us/` (New York), `/fr/broderie/` (Paris, in French).
+- Each: unique lead, typical briefs, time-zone facts restated from the rug market pages, Service schema with areaServed, embroidery media, Q&A, CTA to `contact/?type=embroidery`.
+- Target phrases: embroidered wall panels; bespoke / hand embroidery for interior designers + city; zardozi, zari, aari, raffia embroidery; embroidered headboards; broderie main sur mesure, panneaux muraux brodés.
+- `/embroidery/` title now leads with "Embroidered Wall Panels"; new "Where we work" block links all five market pages.
+- Each rug market page links to its embroidery counterpart (and back).
+- Organization `knowsAbout` extended with the embroidery techniques and applications.
+- Nothing claims a client, project or delivery in any market.
+
+Next: resubmit sitemap in Search Console; request indexing for the five URLs; once data exists, check impressions per page after 4–6 weeks.
