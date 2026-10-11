@@ -54,3 +54,48 @@ Status is **Not run** unless evidence is cited. Nothing here is deployed, and no
 4. Use URL Inspection to request indexing for /embroidery/, /embroidery/headboards/, /embroidery/fabrics/ and /hospitality/.
 5. Send one test enquiry and confirm it arrives in the Formspree dashboard and the inbox.
 6. Record the Pages report at 7 and 28 days.
+
+---
+
+# Stage 10 re-verification (11 Oct 2026, evening)
+
+The tests were re-run on the current branch heads. Nothing above is assumed to still hold.
+
+## State found before changes
+- main is still at de67881. No commits landed after Stage 9.
+- PRs #21–#24 are open drafts. Each local branch matched its remote.
+- All three builds and check.py passed on every branch.
+- **Defect:** PR #23 had committed `tools/__pycache__/claims.cpython-313.pyc`. It changed on every check run, leaving the working tree dirty. It is now untracked and ignored.
+
+## Live-site evidence (read from the owner's browser session)
+
+| Check | Result |
+|---|---|
+| Cloudflare beacon | Exactly 1 on the live homepage, auto-injected. No Google tag. analytics.js?v=2 (live version) |
+| Cloudflare, last 7 days (bots excluded) | 58 visits. India 44, US 9, Taiwan 4, Canada 1. Direct 53, google.com 3, Instagram 1, chatgpt.com 1. Paths: / 51, /embroidery/ 3. **Mostly owner and testing traffic; not a demand baseline** |
+| Search Console, 3 months (data 67.5 h old) | 2 clicks · 134 impressions · CTR 1.5% · average position 7.4. Queries are almost all brand spellings (artilier, artilie, artelier, artileir). One non-brand query: "can i create a custom rug from cad drawings?" (3 impressions, position 2.3) |
+| GA4 | ankit.vijaivargia@gmail.com sees only "Art Avenue" (192533552 / 266121129). studio@artilier.co has no Analytics account (lands on "Start measuring"). **Nothing created** |
+| Formspree delivery | **Verified.** One labelled test enquiry was sent from live /contact/?type=embroidery&utm_*=… using studio@artilier.co as sender. It arrived in the studio@artilier.co inbox at 19:47 IST with every field: page, landing_page, referrer, utm_source/medium/campaign. Dashboard not inspected (signed out) |
+| dataLayer on that submission | `form_start` ×1, `generate_lead` ×1. Parameters: page_path, form_id, enquiry_type. No name, email or brief text |
+| HTTP (live) | 200 on /, /embroidery/, /hospitality/, /contact/, /process/, /fr/broderie/, /trade/uae/, sitemap.xml, robots.txt. Slashless URLs and /index.html redirect to the canonical URL. /projects/ 200 + noindex,follow. Unknown URL 404 + noindex. /embroidery/headboards/ and /fabrics/ 404 (not deployed yet, as expected) |
+| www host | www.artilier.co **serves the page directly** (canonical → https://artilier.co/) instead of redirecting. Owner action: add a Cloudflare redirect rule from www to the apex (301). It cannot be done in `_redirects` (path-only) |
+
+## Defects found and fixed in Stage 10
+1. **Form pre-fill (found by the live test):** an embroidery enquiry arrived as "Bespoke rug from my own artwork". Now `?type=embroidery|headboard|fabric` sets the sector, the product option, "Hand embroidery" and `cta_type`, and `?type=hospitality` sets "Several rugs for one project". Verified in headless Chromium for 5 types, with Formspree requests blocked during the test (PR #22).
+2. Headboard and fabric CTAs now use `?type=headboard` and `?type=fabric` (PR #22).
+3. Keyword ownership: the missing phrases were added in natural sentences — bespoke/hotel headboards, embroidered headboard panels, embroidered upholstery/curtain fabric, custom embroidered fabric, hotel rugs (PR #22).
+4. New "How visible are the joins?" FAQ: joins are discreet, with no guarantee (PR #22).
+5. Python cache file untracked; projects override key renamed to `projectsIndexVisibility` (PR #23).
+
+## Re-run results on stage9/pr4-qa (contains PR #21 to #23)
+- Builds: 3/3 exit 0. check.py: OK — 51 pages, 49 sitemap URLs, 0 orphans, 0 claim blocks, 2 claim warnings (both /fr/broderie/, held for review). Claim self-test 20/20.
+- /projects/ rule:
+  - 1 project → noindex
+  - 2 projects → indexable
+  - 2 projects + "noindex" override → noindex
+  - 1 project + "index" override → indexable
+  - 0 projects + "index" override → still noindex
+- Headless Chromium at 390 px and 1366 px on 9 pages: no horizontal overflow, no JS errors.
+- The `cta_click` event on the headboard CTA carries only the label and zone.
+- Shared 5-word phrases: 3–11% between the four core pages; 25–31% between embroidery market pages (common FAQ block); 12–22% between rug market pages.
+- Images: no `<img>` without alt. The homepage still renders 36 media slots by JavaScript with no server-rendered `<img>` (D6, outstanding).
