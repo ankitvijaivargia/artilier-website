@@ -144,6 +144,7 @@ const contact = shell({
       </div>
       <div class="contact-opts">
         <a href="mailto:studio@artilier.co"><b>Email</b>studio@artilier.co</a>
+        <a href="https://wa.me/919828030095" target="_blank" rel="noopener"><b>WhatsApp</b>+91 98280 30095</a>
         <a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener"><b>Instagram</b>@artilier.co</a>
         <span><b>Studio</b>New Delhi, India</span>
         <span><b>Clients</b>Trade only — designers · architects · galleries</span>
@@ -284,8 +285,8 @@ ${ctaBlock(UP, 'contact/', 'Start a project', [['projects/','All projects'],['be
 /* ── /privacy/ — privacy notice (Stage 10D). Every statement maps to an actual
    process or setting checked on 11 Oct 2026; see ARTILIER_stage10D report.
    PRIVACY_PUBLISHED must be the real publication date: if this is merged after
-   11 October 2026, change the line below to the merge date before merging. ── */
-const PRIVACY_PUBLISHED = '11 October 2026';
+   12 October 2026, change the line below to the merge date before merging. ── */
+const PRIVACY_PUBLISHED = '12 October 2026';
 const privacy = shell({
   path:'privacy/', up:'../', robots:'noindex,follow',
   title:'Privacy Notice | Artilier',
@@ -296,7 +297,7 @@ const privacy = shell({
   body:`
 ${sec('Enquiries', 'What you', 'send us.', `<div class="prose">
     <p>When you use an enquiry form we receive what you enter — your name, studio or company, email address, where you are based, the type of project, construction, a description of the project, quantities, dimensions, target date and project location. With it we receive the page you sent it from, the page you first arrived on, the website that referred you, any campaign tags in the link you followed and, where relevant, the design or product page that led you to the form.</p>
-    <p>The form is delivered to our studio inbox by Formspree, a form-handling service; we have switched off Formspree’s storage of submissions in its dashboard, so the email in our inbox is our record. If you email us directly or send drawings or artwork, they are held in our studio email, which runs on Google Workspace.</p>
+    <p>The form is delivered to our studio inbox by Formspree, a form-handling service; we have switched off Formspree’s storage of submissions in its dashboard, so the email in our inbox is our record. If you email us directly or send drawings or artwork, they are held in our studio email, which runs on Google Workspace. If you message us on WhatsApp, the conversation is carried by WhatsApp (part of Meta) under its own terms, and we treat it like email: we use it only to reply to you and about the work you ask about.</p>
     <p>We use these details to reply to you, to discuss, quote for and carry out the work you ask about, and to keep a record of our business correspondence. We do not sell them and do not use them for advertising.</p>
   </div>`)}
 ${sec('Business contacts', 'Studios we', 'write to.', `<div class="prose">
@@ -312,7 +313,7 @@ ${sec('Retention', 'How long we', 'keep it.', `<div class="prose">
     <p>We keep enquiries, related correspondence and business-contact records for 24 months after our last meaningful interaction with you, and then delete them — unless we need to keep them longer because of a contract with you, a legal or accounting obligation, or a dispute, in which case we keep them only for as long as that requires. Where you have asked us not to contact you again, we keep the minimum needed to respect that request.</p>
   </div>`, { dark:true })}
 ${sec('Where it is processed', 'Your rights', 'and choices.', `<div class="prose">
-    <p>We are based in India. Our service providers — Google, Formspree and Cloudflare — may process information in other countries, including the United States.</p>
+    <p>We are based in India. Our service providers — Google, Formspree and Cloudflare, and WhatsApp if you message us there — may process information in other countries, including the United States.</p>
     <p>Depending on where you are, you may have the right to ask for a copy of the information we hold about you, to have it corrected or deleted, to object to or restrict its use, and to withdraw consent at any time without affecting what happened before. Write to <a href="mailto:studio@artilier.co">studio@artilier.co</a>; we aim to reply within one month. If you are in the UK or the European Economic Area, you can also complain to your data protection authority — in the UK, the Information Commissioner's Office.</p>
     <p>We will update this notice when our practices change and show the date of the latest version at the top.</p>
   </div>`)}
@@ -429,7 +430,7 @@ ${sec('Typical briefs', 'Large rooms,', 'exact sizes.', list([
   '<b>Rugs from your own artwork</b> — a painting, pattern or CAD file developed into a finished rug. See <a href="'+UP2+'bespoke/">bespoke development</a>'
 ]), { dark:true })}
 ${sec('Working together', 'An hour and a half', 'apart.', `<div class="prose">
-    <p>New Delhi (IST, UTC+5:30) is one hour thirty minutes ahead of the UAE (GST, UTC+4), and the UAE working week largely runs Monday to Friday — so most of a Dubai or Abu Dhabi working day overlaps with ours. Briefs, drawings and approvals move by email; samples and strike-offs are approved in the hand before production.</p>
+    <p>New Delhi (IST, UTC+5:30) is one hour thirty minutes ahead of the UAE (GST, UTC+4), and the UAE working week largely runs Monday to Friday — so most of a Dubai or Abu Dhabi working day overlaps with ours. Briefs, drawings and approvals move by email, and for a quick question you can also <a href="https://wa.me/919828030095" target="_blank" rel="noopener">WhatsApp the studio</a>; samples and strike-offs are approved in the hand before production.</p>
   </div>`)}
 ${sec('What to send', 'A useful', 'UAE brief.', list([
   '<b>Rug schedule</b> — room, quantity and size, in metres or centimetres',
@@ -466,7 +467,7 @@ ${sec('Planning', 'Long programmes,', 'early schedules.', `<div class="prose">
     <p>On Saudi specifications “carpet” is common, particularly in hospitality. Our work is hand-made rugs in three constructions — hand-knotted, hand-tufted and flatweave — made to each room’s size.</p>
   </div>`, { dark:true })}
 ${sec('Working together', 'Two and a half', 'hours apart.', `<div class="prose">
-    <p>Saudi Arabia (AST, UTC+3) is two hours thirty minutes behind New Delhi (IST, UTC+5:30), and the Saudi working week runs Sunday to Thursday. Briefs, drawings and approvals move by email; samples and strike-offs are approved in the hand before production.</p>
+    <p>Saudi Arabia (AST, UTC+3) is two hours thirty minutes behind New Delhi (IST, UTC+5:30), and the Saudi working week runs Sunday to Thursday. Briefs, drawings and approvals move by email, and for a quick question you can also <a href="https://wa.me/919828030095" target="_blank" rel="noopener">WhatsApp the studio</a>; samples and strike-offs are approved in the hand before production.</p>
   </div>`)}
 ${sec('What to send', 'A useful', 'Saudi brief.', list([
   '<b>Rug schedule</b> — by building or phase: room, quantity and size in metres or centimetres',
