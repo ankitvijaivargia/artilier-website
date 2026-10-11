@@ -79,6 +79,7 @@ const enquiryForm = (id = 'contactForm') => `
       <label><input type="radio" name="sector" value="hospitality"> Hospitality / contract</label>
       <label><input type="radio" name="sector" value="bespoke"> Bespoke rug from my artwork</label>
       <label><input type="radio" name="sector" value="collection"> A collection design</label>
+      <label><input type="radio" name="sector" value="embroidery"> Embroidery</label>
       <label><input type="radio" name="sector" value="collaboration"> Collaboration</label>
       <label><input type="radio" name="sector" value="other"> Something else</label>
     </div>
@@ -96,12 +97,13 @@ const enquiryForm = (id = 'contactForm') => `
       <select id="c-ct" name="enquiry">
         <option>Bespoke rug from my own artwork</option><option>A design from the collection, re-sized</option>
         <option>A design from the collection, re-coloured</option><option>Several rugs for one project</option>
+        <option>Embroidery — panels, framed art, upholstery or soft furnishings</option>
         <option>Samples</option><option>Trade terms</option><option>Not sure yet</option>
       </select>
     </div>
     <div class="f"><label for="c-cs">Construction</label>
       <select id="c-cs" name="construction">
-        <option>Open to your recommendation</option><option>Hand-knotted</option><option>Hand-tufted</option><option>Flatweave</option>
+        <option>Open to your recommendation</option><option>Hand-knotted</option><option>Hand-tufted</option><option>Flatweave</option><option>Hand embroidery</option>
       </select>
     </div>
   </div>
@@ -195,28 +197,77 @@ ${sec('Where the work sits', 'Studio in Delhi,', 'looms across India.', `<div cl
 ${ctaBlock('../', 'contact/', 'Start a project', [['trade/','Working with us'],['bespoke/','Bespoke development'],['collection/','The collection']])}`
 });
 
-/* ── /projects/ ────────────────────────────────────────────────────── */
-const projectsData = JSON.parse(rd('content/projects.json')).projects.filter(p => p.published !== false);
+/* ── /projects/ and /projects/<slug>/ ─────────────────────────────── */
+/* Publishes only records with published:true AND permission:true (the
+   designer has agreed to what is shown). Nothing is staged or invented. */
+const projectsData = JSON.parse(rd('content/projects.json')).projects
+  .filter(p => p.published === true && p.permission === true && p.slug && p.name).sort(by);
 const hasProjects = projectsData.length > 0;
+const pCaption = p => [p.discipline, p.location, p.year].filter(Boolean).join(' · ');
 const projects = shell({
   path:'projects/', up:'../', pageType:'CollectionPage',
-  title:'Projects — Rugs in Residential & Hospitality Interiors | Artilier',
-  desc:'Installed Artilier rugs in residential and hospitality interiors, documented with the designers who specified them. Trade only, New Delhi.',
-  lb:'Projects', h1:'Rugs in their<br>', h1it:'rooms.',
+  title:'Projects — Rugs & Embroidery in Interiors | Artilier',
+  desc:'Installed Artilier rugs and embroidery in residential and hospitality interiors, shown with the designers who specified them. Trade only, New Delhi.',
+  lb:'Projects', h1:'The work, in its<br>', h1it:'rooms.',
   robots: hasProjects ? undefined : 'noindex,follow',
-  lead:`<p class="bd">Installed work, shown with the designers who specified it — the room, the brief, the construction and what we developed for it.</p>`,
+  lead:`<p class="bd">Installed work, shown with the designers who specified it — the room, the brief, what we developed for it and how it was made.</p>`,
   body: hasProjects ? `
-<section class="sec"><div class="cg">${projectsData.sort(by).map((p, i) => `<figure class="cgi">${p.hero ? slotImg(p.hero, p.name, '../', i < 3) : ''}<figcaption><b>${esc(p.name)}</b><span>${esc([p.category, p.location].filter(Boolean).join(' · '))}</span></figcaption>${p.description ? `<p class="bd-s">${esc(p.description)}</p>` : ''}</figure>`).join('')}</div></section>
-${ctaBlock('../', 'contact/', 'Start a project', [['hospitality/','Hospitality'],['bespoke/','Bespoke development']])}` : `
+<section class="sec"><div class="cg">${projectsData.map((p, i) => `<figure class="cgi">${p.hero ? `<a href="${esc(p.slug)}/" aria-hidden="true" tabindex="-1">${slotImg(p.hero, p.name, '../', i < 3)}</a>` : ''}<figcaption><b><a href="${esc(p.slug)}/">${esc(p.name)}</a></b><span>${esc(pCaption(p))}</span></figcaption>${p.designer ? `<p class="bd-s">With ${esc(p.designer)}</p>` : ''}</figure>`).join('')}</div></section>
+${ctaBlock('../', 'contact/', 'Start a project', [['embroidery/','Embroidery'],['hospitality/','Hospitality'],['bespoke/','Bespoke development']])}` : `
 <section class="sec">
   <div class="empty-note">
     <span class="lb">Being documented</span>
     <p>Artilier is a new studio. Installed projects are published here only once they are photographed and the designers involved have agreed to what is shown — nothing on this page will be staged or invented.</p>
-    <p>Until then, the clearest view of our work is <a href="../collection/">the collection</a> and how we <a href="../bespoke/">develop rugs from a designer’s artwork</a>. If you would like to discuss work relevant to your project, <a href="../contact/">write to us</a>.</p>
+    <p>Until then, the clearest view of our work is <a href="../collection/">the rug collection</a>, <a href="../embroidery/">our embroidery</a> and how we <a href="../bespoke/">develop pieces from a designer’s artwork</a>. If you would like to discuss work relevant to your project, <a href="../contact/">write to us</a>.</p>
   </div>
 </section>
-${ctaBlock('../', 'contact/', 'Start a project', [['collection/','The collection'],['bespoke/','Bespoke development'],['hospitality/','Hospitality']])}`
+${ctaBlock('../', 'contact/', 'Start a project', [['collection/','The rug collection'],['embroidery/','Embroidery'],['bespoke/','Bespoke development']])}`
 });
+
+const projectPage = p => {
+  const UP = '../../';
+  const url = `${HOST}/projects/${p.slug}/`;
+  const facts = [
+    ['Designer', p.designerUrl ? `<a href="${esc(p.designerUrl)}" target="_blank" rel="noopener">${esc(p.designer)}</a>` : esc(p.designer || '')],
+    ['Location', esc(p.location || '')], ['Year', esc(p.year || '')], ['Type', esc(p.category || '')],
+    ['What we made', esc(p.scope || '')], ['Technique', esc([].concat(p.techniques || []).join(' · '))],
+    ['Materials', esc([].concat(p.materials || []).join(' · '))], ['Size', esc(p.size || '')],
+    ['Photography', esc(p.photographer || '')]
+  ].filter(([, v]) => v);
+  const media = [].concat(p.video ? [p.video] : [], p.images || []);
+  const designs = [].concat(p.products || []).map(sl => indexable.find(d => d.slug === sl)).filter(Boolean);
+  const title = `${p.name} — ${p.discipline || 'Project'}${p.location ? ', ' + p.location : ''} | Artilier`;
+  const desc = (p.summary || `${p.discipline || 'Work'} by Artilier for ${p.name}${p.location ? ' in ' + p.location : ''}${p.designer ? ', with ' + p.designer : ''}.`).slice(0, 158);
+  const schema = graph([
+    { '@type':'WebPage','@id':`${url}#webpage`,'url':url,'name':title,'description':desc,'isPartOf':{'@id':`${HOST}/#website`},
+      'breadcrumb':{'@id':`${url}#breadcrumb`},'about':{'@id':`${HOST}/#organization`},'inLanguage':'en' },
+    { ...breadcrumb([{ name:'Artilier', abs:`${HOST}/` }, { name:'Projects', abs:`${HOST}/projects/` }, { name:p.name, abs:url }]), '@id':`${url}#breadcrumb` }
+  ]);
+  const ogImage = (() => { try { const m = JSON.parse(rd('assets/media/manifest.json'))[p.hero]; return m && m.type !== 'video' && m.src ? `${HOST}/assets/media/${m.src.split('?')[0]}` : undefined; } catch { return undefined; } })();
+  return head({ title, desc, canonical:url, up:UP, schema, ogImage })
+    + nav(UP) + crumb([{ name:'Artilier', href:UP }, { name:'Projects', href:'../' }, { name:p.name, href:url }]) + `
+<main id="main">
+<header class="wp-hd">
+  <div>
+    <span class="lb">${esc(['Project', p.discipline].filter(Boolean).join(' · '))}</span>
+    <h1 class="d1">${esc(p.name)}</h1>
+  </div>
+  <div>
+    ${p.summary ? `<p class="bd">${esc(p.summary)}</p>` : ''}
+    <div class="wp-meta">${[p.designer && `<span><b>${esc(p.designer)}</b></span>`, p.location && `<span>${esc(p.location)}</span>`, p.year && `<span>${esc(p.year)}</span>`].filter(Boolean).join('')}</div>
+  </div>
+</header>
+<section class="sec tight">
+  ${p.hero ? `<div class="gal">${'<figure class="full">' + slotImg(p.hero, p.name, UP, true) + '</figure>'}</div>` : ''}
+  <div class="facts">${facts.map(([k, v]) => `<div><b>${k}</b><span>${v}</span></div>`).join('')}</div>
+</section>
+${(p.brief || p.developed) ? `<section class="sec"><div class="cols2">${[['The brief', p.brief], ['What we developed', p.developed]].filter(([, t]) => t).map(([lb, t]) => `<div><span class="lb">${lb}</span><div class="prose" style="margin-top:18px">${String(t).split(/\n\n+/).map(par => `<p>${esc(par)}</p>`).join('')}</div></div>`).join('')}</div></section>` : ''}
+${media.length ? `<section class="sec gal-sec"><div class="gal">${media.map((id, i) => `<figure${i % 3 === 0 ? ' class="w"' : ''}>${slotImg(id, p.name + ' — detail', UP)}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div></section>` : ''}
+${designs.length ? `<section class="sec"><div class="sec-hd"><div><span class="lb">In the collection</span><h2 class="d2">Designs in this<br><span class="it">project.</span></h2></div>
+  <p class="bd">${designs.map(d => `<a href="${UP}collection/${esc(d.slug)}/">${esc(d.name)}</a>`).join(' · ')}</p></div></section>` : ''}
+${ctaBlock(UP, 'contact/', 'Start a project', [['projects/','All projects'],['bespoke/','Bespoke development'],['embroidery/','Embroidery']])}
+</main>` + footer(UP);
+};
 
 /* ── /hospitality/ ─────────────────────────────────────────────────── */
 const hospitality = shell({
@@ -577,6 +628,7 @@ const notFound = head({ title:'Page not found | Artilier', desc:'This page does 
 /* ── write ─────────────────────────────────────────────────────────── */
 const built = { 'contact/index.html':contact, 'about/index.html':about, 'projects/index.html':projects, 'hospitality/index.html':hospitality,
   'trade/uae/index.html':uae, 'trade/saudi-arabia/index.html':ksa, 'trade/uk/index.html':uk, 'trade/us/index.html':us, 'fr/index.html':fr, [G + 'index.html']:guide, '404.html':notFound };
+for (const p of projectsData) built[`projects/${p.slug}/index.html`] = projectPage(p);
 for (const [f, html] of Object.entries(built)) write(f, html);
 console.log(`built ${Object.keys(built).length} phase-3 pages`);
 
@@ -591,7 +643,7 @@ const syncShell = (file, up, { ctaLabel } = {}) => {
   s = s.replace(/<footer>[\s\S]*?<\/footer>/, footBlock);
   s = s.replace(/<a class="mcta" id="mcta" href="[^"]*">([^<]*)/, (m, label) => `<a class="mcta" id="mcta" href="${up}contact/">${ctaLabel || label}`);
   s = s.split(`${up}index.html#brief`).join(`${up}contact/`).split(`${up}index.html#about`).join(`${up}about/`).split(`href="${up}index.html"`).join(`href="${up}"`);
-  s = s.replace(/slots\.js\?v=4/g, 'slots.js?v=5');
+  s = s.replace(/slots\.js\?v=4/g, 'slots.js?v=5').replace(/pages\.css\?v=3/g, 'pages.css?v=4');
   if (!s.includes('pages.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*collection-tweaks\.css\?v=2">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/pages.css?v=3">`);
   if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=2"></script>\n</head>`);
   /* one Organization entity everywhere: replace the inline copy with the shared one */
@@ -631,8 +683,8 @@ const urls = [
   ['', '1.0'], ['collection/', '0.9'], ...CATS.map(c => [`collection/${c.slug}/`, '0.8']),
   ['bespoke/', '0.9'], ['hospitality/', '0.9'], ['trade/', '0.8'], ['collaborations/', '0.8'], ['contact/', '0.8'], ['about/', '0.7'],
   ['trade/uae/', '0.8'], ['trade/saudi-arabia/', '0.8'], ['trade/uk/', '0.7'], ['trade/us/', '0.7'], ['fr/', '0.8'],
-  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], [G, '0.7'],
-  ...(hasProjects ? [['projects/', '0.7']] : []),
+  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], [G, '0.7'],
+  ...(hasProjects ? [['projects/', '0.8'], ...projectsData.map(p => [`projects/${p.slug}/`, '0.7'])] : []),
   ...indexable.slice().sort(by).map(d => [`collection/${d.slug}/`, '0.6'])
 ];
 for (const [u] of urls) {           // every listed URL must exist and be indexable

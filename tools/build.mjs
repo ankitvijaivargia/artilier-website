@@ -70,7 +70,7 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <link rel="stylesheet" href="${up}assets/css/layout.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/responsive.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/collection-tweaks.css?v=2">
-<link rel="stylesheet" href="${up}assets/css/pages.css?v=3">
+<link rel="stylesheet" href="${up}assets/css/pages.css?v=4">
 <script defer src="${up}assets/js/slots.js?v=5" data-manifest="${up}assets/media/manifest.json?v=5"></script>
 <script defer src="${up}assets/js/analytics.js?v=2"></script>${scripts}${extraHead}
 </head>
@@ -78,7 +78,7 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <a class="skip" href="#main">${lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}</a>`;
 
 const home = up => up || './';
-const NAV_FR = { 'Collection':'Collection','Bespoke':'Sur mesure','Collaborations':'Collaborations','Hospitality':'Hôtellerie','Process':'Processus','Trade':'Professionnels','About':'Le studio',
+const NAV_FR = { 'Collection':'Collection','Rugs':'Tapis','Embroidery':'Broderie','Projects':'Projets','The rug collection':'La collection de tapis','Bespoke':'Sur mesure','Collaborations':'Collaborations','Hospitality':'Hôtellerie','Process':'Processus','Trade':'Professionnels','About':'Le studio',
   'Home':'Accueil','The collection':'La collection','Bespoke development':'Développement sur mesure','Hospitality &amp; contract':'Hôtellerie &amp; contract','Materials':'Matières','The craft':'Le savoir-faire','About the studio':'Le studio','Contact':'Contact','Start a project':'Démarrer un projet' };
 const nav = (up, lang = 'en') => {
   const t = k => lang === 'fr' ? (NAV_FR[k] || k) : k;
@@ -87,11 +87,11 @@ const nav = (up, lang = 'en') => {
 <nav id="nav" class="s">
   <a href="${home(up)}" class="logo">Artilier<em>Art. Made Material.</em></a>
   <ul class="nl">
-    <li>${l('collection/','Collection')}</li>
+    <li>${l('collection/','Rugs')}</li>
+    <li>${l('embroidery/','Embroidery')}</li>
     <li>${l('bespoke/','Bespoke')}</li>
-    <li>${l('collaborations/','Collaborations')}</li>
     <li>${l('hospitality/','Hospitality')}</li>
-    <li>${l('process/','Process')}</li>
+    <li>${l('projects/','Projects')}</li>
     <li>${l('trade/','Trade')}</li>
     <li>${l('about/','About')}</li>
   </ul>
@@ -99,7 +99,7 @@ const nav = (up, lang = 'en') => {
   <a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
 </nav>
 <div class="mnav" id="mnav" hidden>
-  <a href="${home(up)}">${t('Home')}</a>${l('collection/','The collection')}${l('bespoke/','Bespoke development')}${l('collaborations/','Collaborations')}${l('hospitality/','Hospitality &amp; contract')}${l('materials/','Materials')}${l('process/','Process')}${l('craft/','The craft')}${l('trade/','Trade')}${l('about/','About the studio')}${l('contact/','Contact')}<a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a><a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
+  <a href="${home(up)}">${t('Home')}</a>${l('collection/','The rug collection')}${l('embroidery/','Embroidery')}${l('bespoke/','Bespoke development')}${l('collaborations/','Collaborations')}${l('hospitality/','Hospitality &amp; contract')}${l('materials/','Materials')}${l('process/','Process')}${l('craft/','The craft')}${l('projects/','Projects')}${l('trade/','Trade')}${l('about/','About the studio')}${l('contact/','Contact')}<a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a><a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
 </div>`;
 };
 
@@ -115,6 +115,8 @@ const FOOT_FR = {'Collection': 'Collection',
   'Flatweave rugs': 'Tapis tissés à plat',
   'All designs': 'Tous les modèles',
   'Rug materials': 'Matières',
+  'Embroidery': 'Broderie',
+  'Projects': 'Projets',
   'Studio': 'Studio',
   'Bespoke development': 'Développement sur mesure',
   'Collaborations': 'Collaborations',
@@ -132,7 +134,7 @@ const FOOT_FR = {'Collection': 'Collection',
   'Contact': 'Contact',
   'New Delhi, India': 'New Delhi, Inde',
   '© 2026 Artilier — a studio of Art Avenue Pvt. Ltd.': '© 2026 Artilier — un studio d’Art Avenue Pvt. Ltd.',
-  'New Delhi · Woven across India': 'New Delhi · Ateliers de tissage en Inde',
+  'New Delhi · Made by hand across India': 'New Delhi · Fait main en Inde',
   'Trade only · Made to order, sized to each project': 'Réservé aux professionnels · Sur mesure, aux dimensions de chaque projet'};
 const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (FOOT_FR[k] || k) : k; return `
 <footer>
@@ -140,8 +142,8 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
     <div>
       <h4>Artilier</h4>
       <p>${lang === 'fr'
-        ? 'Art. Made Material. Studio de création à New Delhi, réservé aux professionnels. Notre première collection : les tapis — noués main, tuftés main et tissés à plat, réalisés sur mesure, aux dimensions de chaque projet.'
-        : 'Art. Made Material. A craft studio for interiors in New Delhi, working trade only. We begin with rugs — hand-knotted, hand-tufted and flatweave, made to order and sized to each project, from our collection or your own artwork. Embroidery and design objects follow.'}</p>
+        ? 'Art. Made Material. Studio de création à New Delhi, réservé aux professionnels. Tapis noués main, tuftés main et tissés à plat, et broderie à la main pour panneaux muraux, tissus d’ameublement et linge de maison — réalisés sur mesure, aux dimensions de chaque projet.'
+        : 'Art. Made Material. A craft studio for interiors in New Delhi, working trade only. Rugs — hand-knotted, hand-tufted and flatweave — and hand embroidery for walls, upholstery and soft furnishings, made to order and sized to each project, from our collection or your own artwork. Design objects follow.'}</p>
     </div>
     <div class="f-col"><h5>${T('Collection')}</h5><ul>
       <li><a href="${up}collection/hand-knotted/">${T('Hand-knotted rugs')}</a></li>
@@ -149,6 +151,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
       <li><a href="${up}collection/flatweave/">${T('Flatweave rugs')}</a></li>
       <li><a href="${up}collection/">${T('All designs')}</a></li>
       <li><a href="${up}materials/">${T('Rug materials')}</a></li>
+      <li><a href="${up}embroidery/">${T('Embroidery')}</a></li>
     </ul></div>
     <div class="f-col"><h5>${T('Studio')}</h5><ul>
       <li><a href="${up}bespoke/">${T('Bespoke development')}</a></li>
@@ -156,6 +159,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
       <li><a href="${up}hospitality/">${T('Hospitality &amp; contract')}</a></li>
       <li><a href="${up}process/">${T('Process')}</a></li>
       <li><a href="${up}craft/">${T('The craft')}</a></li>
+      <li><a href="${up}projects/">${T('Projects')}</a></li>
       <li><a href="${up}about/">${T('About the studio')}</a></li>
       <li><a href="${up}guides/briefing-a-bespoke-rug/"${lang === 'fr' ? ' hreflang="en"' : ''}>${T('How to brief a rug')}</a></li>
     </ul></div>
@@ -176,7 +180,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
   </div>
   <div class="f-bot">
     <span>${T('© 2026 Artilier — a studio of Art Avenue Pvt. Ltd.')}</span>
-    <span>${T('New Delhi · Woven across India')}</span>
+    <span>${T('New Delhi · Made by hand across India')}</span>
     <span>${T('Trade only · Made to order, sized to each project')}</span>
   </div>
 </footer>
@@ -215,7 +219,7 @@ const slotImg = (id, ph, up, eager = false) => {
 const ORG = {
   '@type':'Organization','@id':`${HOST}/#organization`,'name':'Artilier','url':`${HOST}/`,
   'email':'studio@artilier.co','sameAs':['https://www.instagram.com/artilier.co/'],
-  'description':"Design-led craft studio for interiors in New Delhi, working trade only. Rugs first — hand-knotted, hand-tufted and flatweave, made to order and sized to each project, from the studio collection or a designer's own artwork — with embroidery and design objects to follow.",
+  'description':"Design-led craft studio for interiors in New Delhi, working trade only. Rugs — hand-knotted, hand-tufted and flatweave — and hand embroidery for wall panels, framed art, upholstery and soft furnishings, made to order and sized to each project, from the studio collection or a designer's own artwork. Design objects follow.",
   'founder':{'@type':'Person','name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development'},
   'employee':{'@type':'Person','name':'Payal Samal','jobTitle':'Design Head — Interior Designer'},
   'address':{'@type':'PostalAddress','addressLocality':'New Delhi','addressCountry':'IN'},
@@ -224,7 +228,7 @@ const ORG = {
   'slogan':'Art. Made Material.',
   'parentOrganization':{'@type':'Organization','name':'Art Avenue Pvt. Ltd.','address':{'@type':'PostalAddress','addressLocality':'New Delhi','addressCountry':'IN'}},
   'contactPoint':{'@type':'ContactPoint','contactType':'Trade enquiries','email':'studio@artilier.co','url':`${HOST}/contact/`,'areaServed':'Worldwide','availableLanguage':['English']},
-  'knowsAbout':['hand-knotted rugs','hand-tufted rugs','flatweave rugs','custom rug development','bespoke rugs for interior designers','rug design collaboration','custom rugs for hospitality projects']
+  'knowsAbout':['hand-knotted rugs','hand-tufted rugs','flatweave rugs','custom rug development','bespoke rugs for interior designers','rug design collaboration','custom rugs for hospitality projects','hand embroidery','bespoke embroidered wall panels','embroidered upholstery and soft furnishings']
 };
 const WEBSITE = { '@type':'WebSite','@id':`${HOST}/#website`,'url':`${HOST}/`,'name':'Artilier','publisher':{'@id':`${HOST}/#organization`},'inLanguage':'en' };
 const breadcrumb = items => ({ '@type':'BreadcrumbList','itemListElement':items.map((it,i)=>({ '@type':'ListItem','position':i+1,'name':it.name,'item':it.abs })) });

@@ -162,7 +162,7 @@
     }
 
     const pr = el('#projects');
-    const prs = live(data.projects.projects).sort(by);
+    const prs = live(data.projects.projects).filter(p => p.published === true && p.permission === true && p.slug).sort(by);
     if (pr) {
       if (prs.length) {
         pr.innerHTML = `<div class="sec-hd rv">
@@ -170,7 +170,7 @@
     <p class="bd">${esc(data.projects.intro || '')}</p>
   </div>
   <div class="cg rv">${prs.map((p, i) =>
-          `<figure class="cgi">${slot(p.hero, p.name)}<figcaption><b data-mt="${esc(p.hero)}">${esc(p.name)}</b><span data-mf="${esc(p.hero)}">${esc([p.location, p.designer].filter(Boolean).join(' · ') || termNames(data, p.terms).join(' · '))}</span><span class="cgn">${n2(i + 1)}</span></figcaption></figure>`).join('')}</div>`;
+          `<figure class="cgi">${slot(p.hero, p.name)}<figcaption><b data-mt="${esc(p.hero)}"><a href="projects/${esc(p.slug)}/">${esc(p.name)}</a></b><span data-mf="${esc(p.hero)}">${esc([p.location, p.designer].filter(Boolean).join(' · ') || termNames(data, p.terms).join(' · '))}</span><span class="cgn">${n2(i + 1)}</span></figcaption></figure>`).join('')}</div>`;
         pr.hidden = false;
       } else { pr.innerHTML = ''; pr.hidden = true; }
     }

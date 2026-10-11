@@ -81,3 +81,25 @@
 @media (max-width:340px){
   nav > .cta{display:none}
 }
+
+/* Media gallery (embroidery, project pages). A figure whose slot has no file
+   in the manifest is removed, and a gallery with no media at all disappears —
+   so nothing empty or placeholder is ever shown. Wide + narrow figures in one
+   row share a height (8/16:10 = 4/4:5). */
+.gal{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(10px,1.4vw,18px)}
+.gal figure{grid-column:span 4;margin:0;min-width:0}
+.gal figure.w{grid-column:span 8}
+.gal figure.full{grid-column:1/-1}
+.gal .ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bone)}
+.gal figure.w .ph{aspect-ratio:16/10}
+.gal figure.full .ph{aspect-ratio:16/9}
+.gal figcaption{font-size:12.5px;line-height:1.5;color:var(--tx-3);margin-top:8px;letter-spacing:.02em}
+.gal figcaption:empty{display:none}
+.gal figure:has(media-slot[data-empty]){display:none}
+.gal-sec:has(.gal):not(:has(media-slot:not([data-empty]))){display:none}
+.gal:has(figure.full media-slot[data-empty]){display:none}
+@media (max-width:760px){
+  .gal figure,.gal figure.w{grid-column:1/-1}
+  .gal figure.w .ph{aspect-ratio:4/5}
+  .gal figure.full .ph{aspect-ratio:4/5}
+}
