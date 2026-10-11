@@ -208,9 +208,9 @@ const hasProjects = projectsData.length > 0;
 /* /projects/ index visibility (Stage 5 §9, Stage 6 F1): the index stays
    noindex and out of the sitemap until INDEX_PROJECTS_MIN approved projects
    exist. Individual project pages are indexable from publication. Manual
-   override in content/projects.json: "indexIndexing": "auto" | "index" | "noindex". */
+   override in content/projects.json: "projectsIndexVisibility": "auto" | "index" | "noindex". */
 const INDEX_PROJECTS_MIN = 2;
-const projectsOverride = String(JSON.parse(rd('content/projects.json')).indexIndexing || 'auto').toLowerCase();
+const projectsOverride = String(JSON.parse(rd('content/projects.json')).projectsIndexVisibility || 'auto').toLowerCase();
 const indexProjects = projectsOverride === 'index' ? hasProjects
   : projectsOverride === 'noindex' ? false
   : projectsData.length >= INDEX_PROJECTS_MIN;

@@ -1,5 +1,7 @@
-.DS_Store
-Thumbs.db
-node_modules/
 *.log
+*.pyc
+.DS_Store
 .wrangler/
+Thumbs.db
+__pycache__/
+node_modules/
