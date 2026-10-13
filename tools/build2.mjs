@@ -108,6 +108,7 @@ const bespoke = page({
   <div class="brief-a">
     <a href="${up}contact/?type=bespoke" class="cta">Brief a bespoke rug <span>→</span></a>
     <a href="mailto:studio@artilier.co" class="cta ol">studio@artilier.co</a>
+    <a href="https://wa.me/919828030095" class="cta ol" target="_blank" rel="noopener">WhatsApp +91 98280 30095</a>
   </div>
 </section>
 ${relatedBlock([['process/','The full process'],['materials/','Material selection'],['hospitality/','Hospitality & contract'],['collection/','The collection'],['trade/','Working with us']])}`
