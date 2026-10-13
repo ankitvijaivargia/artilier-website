@@ -144,7 +144,7 @@ const contact = shell({
       </div>
       <div class="contact-opts">
         <a href="mailto:studio@artilier.co"><b>Email</b>studio@artilier.co</a>
-        <a href="https://wa.me/919828030095" target="_blank" rel="noopener"><b>WhatsApp</b>+91 98280 30095</a>
+        <a href="https://wa.me/919828030095" target="_blank" rel="noopener"><b>WhatsApp</b>Message the studio</a>
         <a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener"><b>Instagram</b>@artilier.co</a>
         <span><b>Studio</b>New Delhi, India</span>
         <span><b>Clients</b>Trade only — designers · architects · galleries</span>

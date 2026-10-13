@@ -180,7 +180,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
     </ul></div>
     <div class="f-col"><h5>${T('Contact')}</h5><ul>
       <li><a href="mailto:studio@artilier.co">studio@artilier.co</a></li>
-      <li><a href="https://wa.me/919828030095" target="_blank" rel="noopener">WhatsApp +91 98280 30095</a></li>
+      <li><a href="https://wa.me/919828030095" target="_blank" rel="noopener">WhatsApp</a></li>
       <li><a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="${up}contact/">${lang === 'fr' ? 'Démarrer un projet' : 'Start a project'}</a></li>
       <li><a href="${up}about/">${T('New Delhi, India')}</a></li>
@@ -227,7 +227,7 @@ const slotImg = (id, ph, up, eager = false) => {
 
 const ORG = {
   '@type':'Organization','@id':`${HOST}/#organization`,'name':'Artilier','url':`${HOST}/`,
-  'email':'studio@artilier.co','telephone':'+91-98280-30095','sameAs':['https://www.instagram.com/artilier.co/'],
+  'email':'studio@artilier.co','sameAs':['https://www.instagram.com/artilier.co/'],
   'description':"A master craft studio in New Delhi. Rugs and hand embroidery, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.",
   'founder':{'@type':'Person','name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development'},
   'employee':{'@type':'Person','name':'Payal Samal','jobTitle':'Design Head — Interior Designer'},
@@ -236,7 +236,7 @@ const ORG = {
   'logo':{'@type':'ImageObject','url':`${HOST}/apple-touch-icon.png`},
   'slogan':'Art. Made Material.',
   'parentOrganization':{'@type':'Organization','name':'Art Avenue Pvt. Ltd.','address':{'@type':'PostalAddress','addressLocality':'New Delhi','addressCountry':'IN'}},
-  'contactPoint':{'@type':'ContactPoint','contactType':'Trade enquiries','email':'studio@artilier.co','telephone':'+91-98280-30095','url':`${HOST}/contact/`,'areaServed':'Worldwide','availableLanguage':['English']},
+  'contactPoint':{'@type':'ContactPoint','contactType':'Trade enquiries','email':'studio@artilier.co','url':`${HOST}/contact/`,'areaServed':'Worldwide','availableLanguage':['English']},
   'knowsAbout':['hand-knotted rugs','hand-tufted rugs','flatweave rugs','custom rug development','bespoke rugs for interior designers','rug design collaboration','custom rugs for hospitality projects','hand embroidery','bespoke embroidered wall panels','embroidered upholstery and soft furnishings','hand-embroidered wallcoverings','embroidered wallcoverings','zardozi embroidery','zari embroidery','aari embroidery','raffia embroidery','embroidered headboards','bespoke embroidery for interior designers']
 };
 const WEBSITE = { '@type':'WebSite','@id':`${HOST}/#website`,'url':`${HOST}/`,'name':'Artilier','publisher':{'@id':`${HOST}/#organization`},'inLanguage':'en' };
