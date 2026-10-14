@@ -1,8 +1,8 @@
 name: SEO monitor (live site)
 
 # Read-only checks of the public site. Free: GitHub-hosted runners on a public
-# repository, the stdlib-only tools/seo_monitor.py, and the keyless PageSpeed
-# Insights API (low daily quota; one mobile run per key URL per week).
+# repository, the stdlib-only tools/seo_monitor.py, and Lighthouse (open source)
+# run on the runner's own Chrome (lab data, mobile emulation).
 # Nothing here deploys, writes to the site or touches any account.
 
 on:
@@ -32,27 +32,31 @@ jobs:
         run: |
           mkdir -p out
           python3 tools/seo_monitor.py --json out/crawl.json --dump out/html | tee out/crawl.txt
-      - name: PageSpeed Insights (mobile, keyless)
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Lighthouse (lab, mobile emulation, runner's Chrome)
         continue-on-error: true
         run: |
-          for path in "" "contact/" "bespoke/" "collection/reth/" "embroidery/"; do
+          npm i -g lighthouse@12 >/dev/null 2>&1
+          for path in "" "contact/" "bespoke/" "collection/reth/" "embroidery/" "trade/uae/"; do
             name=$(echo "home${path}" | tr '/' '_')
-            curl -sS --max-time 120 \
-              "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https%3A%2F%2Fartilier.co%2F${path}&strategy=mobile&category=performance&category=seo&category=accessibility" \
-              -o "out/psi_${name}.json" || true
-            python3 - "out/psi_${name}.json" "/${path}" <<'PY' | tee -a out/psi.txt
+            lighthouse "https://artilier.co/${path}" --quiet --chrome-flags="--headless=new --no-sandbox" \
+              --only-categories=performance,seo,accessibility,best-practices --output=json --output-path="out/lh_${name}.json" >/dev/null 2>&1 || true
+            python3 - "out/lh_${name}.json" "/${path}" <<'PY' | tee -a out/psi.txt
           import json, sys
           try:
-              d = json.load(open(sys.argv[1]))
-              lh = d["lighthouseResult"]; a = lh["audits"]; c = lh["categories"]
-              fe = d.get("loadingExperience", {}).get("overall_category", "no field data")
-              print(f"{sys.argv[2]:22} perf {round(c['performance']['score']*100)} seo {round(c['seo']['score']*100)} "
-                    f"a11y {round(c['accessibility']['score']*100)} LCP {a['largest-contentful-paint']['displayValue']} "
-                    f"CLS {a['cumulative-layout-shift']['displayValue']} TBT {a['total-blocking-time']['displayValue']} CrUX {fe}")
+              d = json.load(open(sys.argv[1])); a = d["audits"]; c = d["categories"]
+              s = lambda k: round((c[k]["score"] or 0) * 100)
+              lcp_el = (a.get("largest-contentful-paint-element", {}).get("details", {}) or {}).get("items", [{}])
+              print(f"{sys.argv[2]:20} perf {s('performance'):3} seo {s('seo'):3} a11y {s('accessibility'):3} bp {s('best-practices'):3} | "
+                    f"LCP {a['largest-contentful-paint']['displayValue']:>7} CLS {a['cumulative-layout-shift']['displayValue']:>6} "
+                    f"TBT {a['total-blocking-time']['displayValue']:>7} weight {round(a['total-byte-weight']['numericValue']/1024)} KB")
+              fails = [k for k, v in a.items() if v.get("score") is not None and v["score"] < 0.9 and v.get("scoreDisplayMode") in ("binary", "metricSavings", "numeric")]
+              print("   below 0.9: " + ", ".join(sorted(fails))[:600])
           except Exception as e:
-              print(f"{sys.argv[2]:22} PSI unavailable: {str(d.get('error', {}).get('message', e))[:120] if 'd' in dir() else e}")
+              print(f"{sys.argv[2]:20} Lighthouse unavailable: {e}")
           PY
-            sleep 5
           done
       - name: Live vs repository (is main what is deployed?)
         continue-on-error: true
@@ -65,7 +69,11 @@ jobs:
               path = "index.html" if name == "home" else name.replace("__", "/") + "/index.html"
               if not os.path.exists(path): diff.append(f"{path}: live page has no file in repo"); continue
               n += 1
+              import re
               a = open(f, "rb").read(); b = open(path, "rb").read()
+              # Cloudflare Web Analytics injects its beacon at the edge; ignore it
+              a = re.sub(rb'<!-- Cloudflare Pages Analytics -->', b'', a)
+              a = re.sub(rb'<script[^>]*static\.cloudflareinsights\.com/beacon[^>]*></script>', b'', a)
               if a == b: same += 1
               else: diff.append(f"{path}: differs from live ({len(b)} B repo vs {len(a)} B live)")
           print(f"live pages identical to {os.environ.get('GITHUB_SHA','')[:7]}: {same}/{n}")
@@ -74,14 +82,15 @@ jobs:
       - name: Summary
         run: |
           { echo '## SEO monitor'; echo '```'; tail -n 1 out/crawl.txt; grep -E '^ERROR' out/crawl.txt | head -50; echo '```';
-            echo '## PageSpeed (lab, mobile)'; echo '```'; cat out/psi.txt 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+            echo '## Lighthouse (lab, mobile)'; echo '```'; cat out/psi.txt 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
       - name: Post report to the "SEO monitor" issue
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           echo "### Run $(date -u +%Y-%m-%dT%H:%MZ) — \`${GITHUB_REF_NAME}\` @ \`${GITHUB_SHA::7}\`" > out/report.md
-          { echo; echo '**Crawl**'; echo '```'; tail -n 1 out/crawl.txt; grep -E '^(ERROR|WARN)' out/crawl.txt | head -150; echo '```';
-            echo '**PageSpeed Insights (lab, mobile)**'; echo '```'; cat out/psi.txt 2>/dev/null; echo '```';
+          { echo; echo '**Crawl**'; echo '```'; tail -n 1 out/crawl.txt; grep -E '^ERROR' out/crawl.txt | head -60; grep -E '^WARN' out/crawl.txt | grep -v 'without width/height' | head -80;
+            echo "WARN  (summary) $(grep -c 'without width/height' out/crawl.txt) <img> tags without width/height on $(grep 'without width/height' out/crawl.txt | awk '{print $2}' | sort -u | wc -l) pages"; echo '```';
+            echo '**Lighthouse (lab, mobile emulation)**'; echo '```'; cat out/psi.txt 2>/dev/null; echo '```';
             echo '**Deployed vs repository**'; echo '```'; cat out/drift.txt 2>/dev/null; echo '```';
             echo '<details><summary>Per-page data (JSON)</summary>'; echo; echo '```json';
             python3 -c "import json;d=json.load(open('out/crawl.json'));print(json.dumps({u.replace('https://artilier.co',''):{k:v for k,v in p.items() if k in ('title','desc','canonical','noindex','lang','hreflang','h1','imgs','bytes')} for u,p in d['pages'].items()},ensure_ascii=False,separators=(',',':')))" | head -c 50000;
