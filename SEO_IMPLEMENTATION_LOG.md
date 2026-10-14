@@ -279,3 +279,5 @@ Hub document: `SEO_OPERATING_SYSTEM.md` (inventory A–F, keyword-to-page map, i
 | `SEO_OPERATING_SYSTEM.md`; `OWNER_INPUT_REQUIRED.md` §M | docs (not deployed) | Single hub and short decision list | — |
 
 Not changed (needs a decision or more evidence): homepage films on mobile (T-03), responsive image variants (T-06), filenames (T-07), any page copy.
+
+**Pre-merge measurement (14 Oct, 14:13 UTC, same runner, production vs branch preview, one Lighthouse run each):** CLS `/contact/` 0.224 → 0.001, `/embroidery/` 0.156 → 0, `/trade/uae/` 0.198 → 0; homepage LCP 5.9 s → 1.6 s, `/collection/reth/` 5.3 → 3.3 s; fast text pages ±0.6 s (noise). The preview loads neither GA4 nor the Cloudflare beacon, so re-measure on production after merge. Details: PR #29.
