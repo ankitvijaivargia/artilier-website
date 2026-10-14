@@ -42,9 +42,9 @@ def fetch(url, method="GET"):
     try:
         r = OPENER.open(req, timeout=30)
         body = r.read() if method == "GET" else b""
-        return r.status, dict(r.headers), body
+        return r.status, {k.lower(): v for k, v in r.headers.items()}, body
     except urllib.error.HTTPError as e:
-        return e.code, dict(e.headers or {}), (e.read() if method == "GET" else b"")
+        return e.code, {k.lower(): v for k, v in (e.headers or {}).items()}, (e.read() if method == "GET" else b"")
     except Exception as e:  # network error
         return 0, {}, str(e).encode()
 
@@ -107,11 +107,15 @@ class Page(HTMLParser):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="https://artilier.co")
+    ap.add_argument("--canonical-host", default="https://artilier.co",
+                    help="host canonicals and sitemap URLs must use (differs from --base when checking a preview)")
     ap.add_argument("--json")
     ap.add_argument("--delay", type=float, default=0.25)
     ap.add_argument("--dump", help="directory to save each page's raw HTML (for offline review)")
     args = ap.parse_args()
     base = args.base.rstrip("/")
+    chost = args.canonical_host.rstrip("/")
+    to_base = (lambda u: base + u[len(chost):] if u.startswith(chost) else u)
     host = urllib.parse.urlparse(base).netloc
     issues = []
 
@@ -126,7 +130,7 @@ def main():
             s, h, _ = fetch(url, "HEAD")
             if s in (0, 405):
                 s, h, _ = fetch(url)
-            status_cache[url] = (s, h.get("Location") or h.get("location"))
+            status_cache[url] = (s, h.get("location"))
             time.sleep(args.delay)
         return status_cache[url]
 
@@ -150,7 +154,7 @@ def main():
         try:
             root = ET.fromstring(body)
             ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-            sitemap = [l.text.strip() for l in root.findall(".//s:loc", ns)]
+            sitemap = [to_base(l.text.strip()) for l in root.findall(".//s:loc", ns)]
         except ET.ParseError as e:
             add("ERROR", "/sitemap.xml", f"invalid XML: {e}")
     sitemap_set = set(sitemap)
@@ -164,11 +168,11 @@ def main():
         seen.add(url)
         s, h, body = fetch(url)
         time.sleep(args.delay)
-        status_cache[url] = (s, h.get("Location") or h.get("location"))
+        status_cache[url] = (s, h.get("location"))
         if s != 200:
             add("ERROR", url, f"status {s}" + (f" → {status_cache[url][1]}" if 300 <= s < 400 else ""))
             continue
-        if "text/html" not in (h.get("Content-Type") or h.get("content-type") or ""):
+        if "text/html" not in h.get("content-type", ""):
             continue
         p = Page()
         p.feed(body.decode("utf-8", "ignore"))
@@ -178,7 +182,7 @@ def main():
             os.makedirs(args.dump, exist_ok=True)
             open(fn, "wb").write(body)
         robots = (p.meta.get("robots") or "").lower()
-        xrobots = (h.get("X-Robots-Tag") or h.get("x-robots-tag") or "").lower()
+        xrobots = h.get("x-robots-tag", "").lower()
         noindex = "noindex" in robots or "noindex" in xrobots
         info = {"title": p.title.strip(), "desc": p.meta.get("description", ""),
                 "canonical": p.canon, "noindex": noindex, "lang": p.lang,
@@ -201,7 +205,7 @@ def main():
         if not p.canon:
             add("ERROR" if not noindex else "WARN", url, "no canonical")
         else:
-            c = urllib.parse.urljoin(url, p.canon)
+            c = to_base(urllib.parse.urljoin(url, p.canon))
             if not c.startswith(base):
                 add("ERROR", url, f"canonical off-host or not https: {c}")
             elif not noindex and c != url:
@@ -216,7 +220,7 @@ def main():
             except Exception as e:
                 add("ERROR", url, f"JSON-LD does not parse: {e}")
         for lang, href in p.hreflang.items():
-            t = urllib.parse.urljoin(url, href)
+            t = to_base(urllib.parse.urljoin(url, href))
             ts, _ = status(t)
             if ts != 200:
                 add("ERROR", url, f"hreflang {lang} → {t} returns {ts}")
@@ -228,7 +232,7 @@ def main():
                 add("WARN", url, f"<img> without width/height (CLS risk): {src}")
             if src not in img_sizes and urllib.parse.urlparse(src).netloc == host:
                 _, ih, _ = fetch(src, "HEAD")
-                img_sizes[src] = int(ih.get("Content-Length") or ih.get("content-length") or 0)
+                img_sizes[src] = int(ih.get("content-length") or 0)
                 if img_sizes[src] > IMG_WARN_BYTES:
                     add("WARN", url, f"image {img_sizes[src]//1024} KB: {src}")
         for href in p.links:
@@ -263,7 +267,7 @@ def main():
         if u != base + "/" and not inlinks.get(u):
             add("WARN", u, "orphan: in sitemap but no internal link found")
     for u, i in idx.items():
-        if u not in sitemap_set and i["canonical"] and urllib.parse.urljoin(u, i["canonical"]) == u:
+        if u not in sitemap_set and i["canonical"] and to_base(urllib.parse.urljoin(u, i["canonical"])) == u:
             add("WARN", u, "indexable, self-canonical page missing from sitemap")
     # hreflang reciprocity
     for u, i in pages.items():

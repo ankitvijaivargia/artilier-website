@@ -10,6 +10,11 @@ on:
   schedule:
     - cron: "30 2 * * 1"        # Mondays 08:00 IST
   workflow_dispatch:
+    inputs:
+      base:
+        description: "Site to check (e.g. a Cloudflare preview URL). Default: https://artilier.co"
+        required: false
+        default: "https://artilier.co"
   push:
     branches: ["seo/**"]          # lets an SEO branch verify the live site before review
     paths: ["tools/seo_monitor.py", ".github/workflows/seo-monitor.yml"]
@@ -17,6 +22,9 @@ on:
 permissions:
   contents: read
   issues: write          # posts each run's report as a comment on the "SEO monitor" issue
+
+env:
+  BASE: ${{ inputs.base || 'https://artilier.co' }}
 
 jobs:
   crawl:
@@ -32,7 +40,7 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p out
-          python3 tools/seo_monitor.py --json out/crawl.json --dump out/html | tee out/crawl.txt
+          python3 tools/seo_monitor.py --base "$BASE" --json out/crawl.json --dump out/html | tee out/crawl.txt
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
@@ -42,7 +50,7 @@ jobs:
           npm i -g lighthouse@12 >/dev/null 2>&1
           for path in "" "contact/" "bespoke/" "collection/reth/" "embroidery/" "trade/uae/"; do
             name=$(echo "home${path}" | tr '/' '_')
-            lighthouse "https://artilier.co/${path}" --quiet --chrome-flags="--headless=new --no-sandbox" \
+            lighthouse "${BASE}/${path}" --quiet --chrome-flags="--headless=new --no-sandbox" \
               --only-categories=performance,seo,accessibility,best-practices --output=json --output-path="out/lh_${name}.json" >/dev/null 2>&1 || true
             python3 - "out/lh_${name}.json" "/${path}" <<'PY' | tee -a out/psi.txt
           import json, sys
@@ -105,7 +113,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          echo "### Run $(date -u +%Y-%m-%dT%H:%MZ) — \`${GITHUB_REF_NAME}\` @ \`${GITHUB_SHA::7}\`" > out/report.md
+          echo "### Run $(date -u +%Y-%m-%dT%H:%MZ) — \`${GITHUB_REF_NAME}\` @ \`${GITHUB_SHA::7}\` — ${BASE}" > out/report.md
           { echo; echo '**Crawl**'; echo '```'; tail -n 1 out/crawl.txt; grep -E '^ERROR' out/crawl.txt | head -60; grep -E '^WARN' out/crawl.txt | grep -v 'without width/height' | head -80;
             echo "WARN  (summary) $(grep -c 'without width/height' out/crawl.txt) <img> tags without width/height on $(grep 'without width/height' out/crawl.txt | awk '{print $2}' | sort -u | wc -l) pages"; echo '```';
             echo '**Lighthouse (lab, mobile emulation)**'; echo '```'; cat out/psi.txt 2>/dev/null; echo '```';
