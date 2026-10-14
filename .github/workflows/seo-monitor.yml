@@ -15,6 +15,7 @@ on:
 
 permissions:
   contents: read
+  issues: write          # posts each run's report as a comment on the "SEO monitor" issue
 
 jobs:
   crawl:
@@ -53,10 +54,45 @@ jobs:
           PY
             sleep 5
           done
+      - name: Live vs repository (is main what is deployed?)
+        continue-on-error: true
+        run: |
+          python3 - <<'PY' | tee out/drift.txt
+          import os, hashlib, glob
+          n = same = 0; diff = []
+          for f in sorted(glob.glob("out/html/*.html")):
+              name = os.path.basename(f)[:-5]
+              path = "index.html" if name == "home" else name.replace("__", "/") + "/index.html"
+              if not os.path.exists(path): diff.append(f"{path}: live page has no file in repo"); continue
+              n += 1
+              a = open(f, "rb").read(); b = open(path, "rb").read()
+              if a == b: same += 1
+              else: diff.append(f"{path}: differs from live ({len(b)} B repo vs {len(a)} B live)")
+          print(f"live pages identical to {os.environ.get('GITHUB_SHA','')[:7]}: {same}/{n}")
+          print("\n".join(diff[:40]))
+          PY
       - name: Summary
         run: |
           { echo '## SEO monitor'; echo '```'; tail -n 1 out/crawl.txt; grep -E '^ERROR' out/crawl.txt | head -50; echo '```';
             echo '## PageSpeed (lab, mobile)'; echo '```'; cat out/psi.txt 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - name: Post report to the "SEO monitor" issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "### Run $(date -u +%Y-%m-%dT%H:%MZ) — \`${GITHUB_REF_NAME}\` @ \`${GITHUB_SHA::7}\`" > out/report.md
+          { echo; echo '**Crawl**'; echo '```'; tail -n 1 out/crawl.txt; grep -E '^(ERROR|WARN)' out/crawl.txt | head -150; echo '```';
+            echo '**PageSpeed Insights (lab, mobile)**'; echo '```'; cat out/psi.txt 2>/dev/null; echo '```';
+            echo '**Deployed vs repository**'; echo '```'; cat out/drift.txt 2>/dev/null; echo '```';
+            echo '<details><summary>Per-page data (JSON)</summary>'; echo; echo '```json';
+            python3 -c "import json;d=json.load(open('out/crawl.json'));print(json.dumps({u.replace('https://artilier.co',''):{k:v for k,v in p.items() if k in ('title','desc','canonical','noindex','lang','hreflang','h1','imgs','bytes')} for u,p in d['pages'].items()},ensure_ascii=False,separators=(',',':')))" | head -c 50000;
+            echo '```'; echo '</details>'; } >> out/report.md
+          num=$(gh issue list --label seo-monitor --state open --json number -q '.[0].number')
+          if [ -z "$num" ]; then
+            gh label create seo-monitor --color A98B4E --description "Automated SEO monitor reports" 2>/dev/null || true
+            num=$(gh issue create --title "SEO monitor — weekly live-site reports" --label seo-monitor \
+              --body "Automated, read-only reports from .github/workflows/seo-monitor.yml. One comment per run. If this issue is closed, the next run opens a new one." | grep -oE '[0-9]+$')
+          fi
+          gh issue comment "$num" --body-file out/report.md
       - uses: actions/upload-artifact@v4
         with:
           name: seo-monitor-${{ github.run_id }}
