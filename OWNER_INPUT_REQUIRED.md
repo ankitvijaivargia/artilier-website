@@ -137,7 +137,7 @@ The first guide (`/guides/briefing-a-bespoke-rug/`) uses only published facts �
 
 1. **Approve the audit PR** (`seo/audit-2026-10`): font preloads, image sitemap, weekly live-site monitor. No copy, design or positioning changes.
 2. **Homepage films on phones** — the homepage transfers about 8.7 MB and reaches its main text in ≈6 s on a simulated mobile connection. Allow phones to load only the first hero film, with the others as still frames until tapped or scrolled into view? (Desktop unchanged.)
-3. **Search Console access for monthly reviews** — either open this project in the Claude desktop app with Chrome linked once a month, or send the monthly Performance export (last 28 days: queries, pages, countries). Without one of these, organic performance cannot be reported.
+3. **Search Console data for monthly reviews** — send the monthly Performance export (last 28 days: queries, pages, countries), or add studio@artilier.co as a user so exports can come from the studio account. Without it, organic performance cannot be reported.
 4. **GA4 housekeeping (5 minutes)** — Admin → Events: star `generate_lead` if it is listed; Admin → Product links → Search Console: link `sc-domain:artilier.co`.
 5. **Photographs** — 3–5 for `/bespoke/` (drawing → strike-off → finished rug is ideal) and any for `/embroidery/headboards/` and `/embroidery/fabrics/`. These pages have no images today; this is the largest single content gap.
 6. **Design data (§E)** — still the main reason design pages read alike.
