@@ -1,0 +1,67 @@
+name: SEO monitor (live site)
+
+# Read-only checks of the public site. Free: GitHub-hosted runners on a public
+# repository, the stdlib-only tools/seo_monitor.py, and the keyless PageSpeed
+# Insights API (low daily quota; one mobile run per key URL per week).
+# Nothing here deploys, writes to the site or touches any account.
+
+on:
+  schedule:
+    - cron: "30 2 * * 1"        # Mondays 08:00 IST
+  workflow_dispatch:
+  push:
+    branches: ["seo/**"]          # lets an SEO branch verify the live site before review
+    paths: ["tools/seo_monitor.py", ".github/workflows/seo-monitor.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Crawl artilier.co
+        id: crawl
+        continue-on-error: true
+        run: |
+          mkdir -p out
+          python3 tools/seo_monitor.py --json out/crawl.json --dump out/html | tee out/crawl.txt
+      - name: PageSpeed Insights (mobile, keyless)
+        continue-on-error: true
+        run: |
+          for path in "" "contact/" "bespoke/" "collection/reth/" "embroidery/"; do
+            name=$(echo "home${path}" | tr '/' '_')
+            curl -sS --max-time 120 \
+              "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https%3A%2F%2Fartilier.co%2F${path}&strategy=mobile&category=performance&category=seo&category=accessibility" \
+              -o "out/psi_${name}.json" || true
+            python3 - "out/psi_${name}.json" "/${path}" <<'PY' | tee -a out/psi.txt
+          import json, sys
+          try:
+              d = json.load(open(sys.argv[1]))
+              lh = d["lighthouseResult"]; a = lh["audits"]; c = lh["categories"]
+              fe = d.get("loadingExperience", {}).get("overall_category", "no field data")
+              print(f"{sys.argv[2]:22} perf {round(c['performance']['score']*100)} seo {round(c['seo']['score']*100)} "
+                    f"a11y {round(c['accessibility']['score']*100)} LCP {a['largest-contentful-paint']['displayValue']} "
+                    f"CLS {a['cumulative-layout-shift']['displayValue']} TBT {a['total-blocking-time']['displayValue']} CrUX {fe}")
+          except Exception as e:
+              print(f"{sys.argv[2]:22} PSI unavailable: {str(d.get('error', {}).get('message', e))[:120] if 'd' in dir() else e}")
+          PY
+            sleep 5
+          done
+      - name: Summary
+        run: |
+          { echo '## SEO monitor'; echo '```'; tail -n 1 out/crawl.txt; grep -E '^ERROR' out/crawl.txt | head -50; echo '```';
+            echo '## PageSpeed (lab, mobile)'; echo '```'; cat out/psi.txt 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: seo-monitor-${{ github.run_id }}
+          path: out/
+          retention-days: 90
+      - name: Fail on crawl errors
+        if: steps.crawl.outcome == 'failure'
+        run: exit 1
