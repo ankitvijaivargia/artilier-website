@@ -3,7 +3,8 @@ name: SEO monitor (live site)
 # Read-only checks of the public site. Free: GitHub-hosted runners on a public
 # repository, the stdlib-only tools/seo_monitor.py, and Lighthouse (open source)
 # run on the runner's own Chrome (lab data, mobile emulation).
-# Nothing here deploys, writes to the site or touches any account.
+# Nothing here deploys or changes the site; the only write is a report comment
+# on this repository's "SEO monitor" issue.
 
 on:
   schedule:
@@ -54,6 +55,22 @@ jobs:
                     f"TBT {a['total-blocking-time']['displayValue']:>7} weight {round(a['total-byte-weight']['numericValue']/1024)} KB")
               fails = [k for k, v in a.items() if v.get("score") is not None and v["score"] < 0.9 and v.get("scoreDisplayMode") in ("binary", "metricSavings", "numeric")]
               print("   below 0.9: " + ", ".join(sorted(fails))[:600])
+              def items(k): return ((a.get(k) or {}).get("details") or {}).get("items") or []
+              for it in items("largest-contentful-paint-element")[:1]:
+                  for sub in (it.get("items") or [it])[:1]:
+                      n = sub.get("node") or {}
+                      print("   LCP element: " + (n.get("snippet") or "")[:160])
+              for it in items("layout-shifts")[:3]:
+                  n = it.get("node") or {}
+                  print(f"   shift {round(it.get('score', 0), 3)}: " + (n.get("snippet") or str(it.get("node")))[:160])
+              for it in items("render-blocking-resources")[:4]:
+                  print(f"   render-blocking: {it.get('url')} ({it.get('wastedMs')} ms)")
+              for it in items("uses-rel-preconnect")[:3]:
+                  print(f"   preconnect: {it.get('url')}")
+              lcpb = items("lcp-phases-insight") or items("largest-contentful-paint-element")[1:2]
+              for it in lcpb[:1]:
+                  for sub in (it.get("items") or [])[:4]:
+                      print(f"   LCP phase {sub.get('phase') or sub.get('label')}: {round(sub.get('timing') or sub.get('duration') or 0)} ms")
           except Exception as e:
               print(f"{sys.argv[2]:20} Lighthouse unavailable: {e}")
           PY
@@ -74,6 +91,7 @@ jobs:
               # Cloudflare Web Analytics injects its beacon at the edge; ignore it
               a = re.sub(rb'<!-- Cloudflare Pages Analytics -->', b'', a)
               a = re.sub(rb'<script[^>]*static\.cloudflareinsights\.com/beacon[^>]*></script>', b'', a)
+              a = re.sub(rb'\s+', b' ', a).strip(); b = re.sub(rb'\s+', b' ', b).strip()
               if a == b: same += 1
               else: diff.append(f"{path}: differs from live ({len(b)} B repo vs {len(a)} B live)")
           print(f"live pages identical to {os.environ.get('GITHUB_SHA','')[:7]}: {same}/{n}")
