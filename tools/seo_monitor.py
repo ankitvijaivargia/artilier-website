@@ -60,6 +60,7 @@ class Page(HTMLParser):
         self.links, self.imgs, self.jsonld = [], [], []
         self.lang = None
         self._script = None
+        self._slot = 0
 
     def handle_starttag(self, tag, a):
         a = dict(a)
@@ -79,12 +80,17 @@ class Page(HTMLParser):
                 self.hreflang[a["hreflang"]] = a.get("href")
         elif tag == "a" and a.get("href"):
             self.links.append(a["href"])
+        elif tag in ("media-slot", "image-slot"):
+            self._slot += 1
         elif tag == "img":
+            a["_in_slot"] = self._slot > 0   # slot containers reserve space via CSS aspect-ratio
             self.imgs.append(a)
         elif tag == "script" and a.get("type") == "application/ld+json":
             self._script = []
 
     def handle_endtag(self, tag):
+        if tag in ("media-slot", "image-slot"):
+            self._slot = max(0, self._slot - 1)
         if tag == "title":
             self.in_title = False
         elif tag == "script" and self._script is not None:
@@ -218,7 +224,7 @@ def main():
             src = urllib.parse.urljoin(url, im.get("src") or "")
             if "alt" not in im:
                 add("ERROR", url, f"<img> without alt: {src}")
-            if not (im.get("width") and im.get("height")):
+            if not im.get("_in_slot") and not (im.get("width") and im.get("height")):
                 add("WARN", url, f"<img> without width/height (CLS risk): {src}")
             if src not in img_sizes and urllib.parse.urlparse(src).netloc == host:
                 _, ih, _ = fetch(src, "HEAD")

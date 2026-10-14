@@ -91,6 +91,11 @@ node tools/build3.mjs        # contact, about, projects, hospitality, market pag
 python3 tools/check.py       # links, metadata, schema, sitemap, discretion checks — must print OK
 ```
 
+After a release, the **SEO monitor** workflow (`.github/workflows/seo-monitor.yml`,
+weekly and on demand) crawls the live site with `tools/seo_monitor.py`, runs
+Lighthouse on key pages and confirms the live HTML matches `main`; its report is
+posted to the "SEO monitor" issue. See `SEO_OPERATING_SYSTEM.md`.
+
 `index.html` and `collaborations/index.html` are hand-maintained; `build3.mjs`
 keeps their navigation, footer and Organization schema in sync. `tools/` is
 excluded from deployment by `.assetsignore`.

@@ -132,3 +132,13 @@ The first guide (`/guides/briefing-a-bespoke-rug/`) uses only published facts �
 - [ ] **M8 / freight**: keep "FOB or DDP on request" on embroidery pages (incl. UAE) or change it? · Gulf freight policy · US landed-cost basis (10% Section 301 + MFN duty) · can large board panels (8 × 4 ft) and complete headboards be shipped, and how?
 - [ ] **French reviewer** for /fr/broderie/ (C-07 held; two claim-rule warnings remain there by design)
 - [ ] **Photographs** for headboards and fabric pages
+
+## M. SEO audit (14 Oct 2026) — the only decisions this round needs
+
+1. **Approve the audit PR** (`seo/audit-2026-10`): font preloads, image sitemap, weekly live-site monitor. No copy, design or positioning changes.
+2. **Homepage films on phones** — the homepage transfers about 8.7 MB and reaches its main text in ≈6 s on a simulated mobile connection. Allow phones to load only the first hero film, with the others as still frames until tapped or scrolled into view? (Desktop unchanged.)
+3. **Search Console access for monthly reviews** — either open this project in the Claude desktop app with Chrome linked once a month, or send the monthly Performance export (last 28 days: queries, pages, countries). Without one of these, organic performance cannot be reported.
+4. **GA4 housekeeping (5 minutes)** — Admin → Events: star `generate_lead` if it is listed; Admin → Product links → Search Console: link `sc-domain:artilier.co`.
+5. **Photographs** — 3–5 for `/bespoke/` (drawing → strike-off → finished rug is ideal) and any for `/embroidery/headboards/` and `/embroidery/fabrics/`. These pages have no images today; this is the largest single content gap.
+6. **Design data (§E)** — still the main reason design pages read alike.
+7. **Downtown Design Dubai, 4–8 Nov** — attend or not (it decides the first authority/PR push).

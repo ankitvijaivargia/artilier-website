@@ -92,6 +92,9 @@ for d, fs in descs.items():
     if len(fs) > 1: errs.append(f'duplicate description on {fs}')
 
 sm = re.findall(r'<loc>([^<]+)</loc>', open('sitemap.xml').read())
+for il in re.findall(r'<image:loc>([^<]+)</image:loc>', open('sitemap.xml').read()):
+    fp = il.replace('https://artilier.co/', '').split('?')[0]
+    if not os.path.exists(fp): errs.append(f'sitemap image has no file: {il}')
 smu = {x.replace(HOST, '') for x in sm}
 for u in smu:
     if u not in indexable: errs.append(f'sitemap lists non-indexable or missing {u}')
