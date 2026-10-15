@@ -261,3 +261,23 @@ Keyword tools unavailable this session (Ahrefs plan excludes Keywords Explorer; 
 - Nothing claims a client, project or delivery in any market.
 
 Next: resubmit sitemap in Search Console; request indexing for the five URLs; once data exists, check impressions per page after 4–6 weeks.
+
+## 14. SEO audit and operating system (14 Oct 2026) — branch `seo/audit-2026-10`
+
+Hub document: `SEO_OPERATING_SYSTEM.md` (inventory A–F, keyword-to-page map, issue tracker, routines).
+
+**Verification of what is live (Measured, 14 Oct, GitHub Actions runner):** 51 pages crawled from the sitemap and links; 49 indexable = 49 in the sitemap; 0 broken or redirecting internal links; canonicals all self-referencing and 200; robots.txt and 404 correct; JSON-LD parses everywhere. Live HTML is identical to `main` @ `72d14d1` on 51/51 pages once Cloudflare's injected beacon is ignored.
+
+**Lighthouse lab, mobile emulation, two runs (14 Oct):** `/` perf 60–65, LCP ≈ 6 s, 8.7 MB; `/bespoke/` 74–98 (LCP 1.8–5.4 s); `/contact/` 86 (CLS 0.22); `/collection/reth/` 78–84 (CLS 0.24); `/embroidery/` 93 (CLS 0.14–0.15); `/trade/uae/` 77–78 (LCP 3.1–5.0 s, CLS 0.20). SEO score 100 on all six. LCP element is body text on five of six pages, with long render delay → late web fonts.
+
+| Change | Files | Why | Test |
+|---|---|---|---|
+| Preload Jost 300 and Cormorant Garamond 400 (same URLs as `fonts.css`, `crossorigin`) | `tools/build.mjs` (shared head), `index.html`, `collection/index.html`, `collaborations/index.html`, `collection/design.html`; all generated pages rebuilt | T-01/T-02: text LCP and font-swap layout shift | Rebuild reproducible; `check.py` OK. Effect to be measured by the monitor after merge |
+| Image sitemap extension: every still photograph a page shows, from its media-slot ids via the manifest (films excluded) — 187 images | `tools/build3.mjs`, `sitemap.xml` | Homepage and embroidery photographs are rendered client-side; this makes them discoverable to image search | XML parses; `check.py` now fails if an image URL has no file |
+| `tools/seo_monitor.py` — stdlib-only live crawler | new | Repeatable external checks | Ran against production on the runner |
+| `.github/workflows/seo-monitor.yml` — weekly crawl + Lighthouse + deployed-vs-repo; report posted to the "SEO monitor" issue | new | Free monitoring without paid tools; the cloud sandbox cannot reach artilier.co directly | 4 runs on 14 Oct, issue #28 |
+| `SEO_OPERATING_SYSTEM.md`; `OWNER_INPUT_REQUIRED.md` §M | docs (not deployed) | Single hub and short decision list | — |
+
+Not changed (needs a decision or more evidence): homepage films on mobile (T-03), responsive image variants (T-06), filenames (T-07), any page copy.
+
+**Pre-merge measurement (14 Oct, 14:13 UTC, same runner, production vs branch preview, one Lighthouse run each):** CLS `/contact/` 0.224 → 0.001, `/embroidery/` 0.156 → 0, `/trade/uae/` 0.198 → 0; homepage LCP 5.9 s → 1.6 s, `/collection/reth/` 5.3 → 3.3 s; fast text pages ±0.6 s (noise). The preview loads neither GA4 nor the Cloudflare beacon, so re-measure on production after merge. Details: PR #29.

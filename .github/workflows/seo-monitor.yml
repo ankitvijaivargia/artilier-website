@@ -1,0 +1,138 @@
+name: SEO monitor (live site)
+
+# Read-only checks of the public site. Free: GitHub-hosted runners on a public
+# repository, the stdlib-only tools/seo_monitor.py, and Lighthouse (open source)
+# run on the runner's own Chrome (lab data, mobile emulation).
+# Nothing here deploys or changes the site; the only write is a report comment
+# on this repository's "SEO monitor" issue.
+
+on:
+  schedule:
+    - cron: "30 2 * * 1"        # Mondays 08:00 IST
+  workflow_dispatch:
+    inputs:
+      base:
+        description: "Site to check (e.g. a Cloudflare preview URL). Default: https://artilier.co"
+        required: false
+        default: "https://artilier.co"
+  push:
+    branches: ["seo/**"]          # lets an SEO branch verify the live site before review
+    paths: ["tools/seo_monitor.py", ".github/workflows/seo-monitor.yml"]
+
+permissions:
+  contents: read
+  issues: write          # posts each run's report as a comment on the "SEO monitor" issue
+
+env:
+  BASE: ${{ inputs.base || 'https://artilier.co' }}
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Crawl artilier.co
+        id: crawl
+        continue-on-error: true
+        run: |
+          mkdir -p out
+          python3 tools/seo_monitor.py --base "$BASE" --json out/crawl.json --dump out/html | tee out/crawl.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Lighthouse (lab, mobile emulation, runner's Chrome)
+        continue-on-error: true
+        run: |
+          npm i -g lighthouse@12 >/dev/null 2>&1
+          for path in "" "contact/" "bespoke/" "collection/reth/" "embroidery/" "trade/uae/"; do
+            name=$(echo "home${path}" | tr '/' '_')
+            lighthouse "${BASE}/${path}" --quiet --chrome-flags="--headless=new --no-sandbox" \
+              --only-categories=performance,seo,accessibility,best-practices --output=json --output-path="out/lh_${name}.json" >/dev/null 2>&1 || true
+            python3 - "out/lh_${name}.json" "/${path}" <<'PY' | tee -a out/psi.txt
+          import json, sys
+          try:
+              d = json.load(open(sys.argv[1])); a = d["audits"]; c = d["categories"]
+              s = lambda k: round((c[k]["score"] or 0) * 100)
+              lcp_el = (a.get("largest-contentful-paint-element", {}).get("details", {}) or {}).get("items", [{}])
+              print(f"{sys.argv[2]:20} perf {s('performance'):3} seo {s('seo'):3} a11y {s('accessibility'):3} bp {s('best-practices'):3} | "
+                    f"LCP {a['largest-contentful-paint']['displayValue']:>7} CLS {a['cumulative-layout-shift']['displayValue']:>6} "
+                    f"TBT {a['total-blocking-time']['displayValue']:>7} weight {round(a['total-byte-weight']['numericValue']/1024)} KB")
+              fails = [k for k, v in a.items() if v.get("score") is not None and v["score"] < 0.9 and v.get("scoreDisplayMode") in ("binary", "metricSavings", "numeric")]
+              print("   below 0.9: " + ", ".join(sorted(fails))[:600])
+              def items(k): return ((a.get(k) or {}).get("details") or {}).get("items") or []
+              for it in items("largest-contentful-paint-element")[:1]:
+                  for sub in (it.get("items") or [it])[:1]:
+                      n = sub.get("node") or {}
+                      print("   LCP element: " + (n.get("snippet") or "")[:160])
+              for it in items("layout-shifts")[:3]:
+                  n = it.get("node") or {}
+                  print(f"   shift {round(it.get('score', 0), 3)}: " + (n.get("snippet") or str(it.get("node")))[:160])
+              for it in items("render-blocking-resources")[:4]:
+                  print(f"   render-blocking: {it.get('url')} ({it.get('wastedMs')} ms)")
+              for it in items("uses-rel-preconnect")[:3]:
+                  print(f"   preconnect: {it.get('url')}")
+              lcpb = items("lcp-phases-insight") or items("largest-contentful-paint-element")[1:2]
+              for it in lcpb[:1]:
+                  for sub in (it.get("items") or [])[:4]:
+                      print(f"   LCP phase {sub.get('phase') or sub.get('label')}: {round(sub.get('timing') or sub.get('duration') or 0)} ms")
+          except Exception as e:
+              print(f"{sys.argv[2]:20} Lighthouse unavailable: {e}")
+          PY
+          done
+      - name: Live vs repository (is main what is deployed?)
+        continue-on-error: true
+        run: |
+          python3 - <<'PY' | tee out/drift.txt
+          import os, hashlib, glob
+          n = same = 0; diff = []
+          for f in sorted(glob.glob("out/html/*.html")):
+              name = os.path.basename(f)[:-5]
+              path = "index.html" if name == "home" else name.replace("__", "/") + "/index.html"
+              if not os.path.exists(path): diff.append(f"{path}: live page has no file in repo"); continue
+              n += 1
+              import re
+              a = open(f, "rb").read(); b = open(path, "rb").read()
+              # Cloudflare Web Analytics injects its beacon at the edge; ignore it
+              a = re.sub(rb'<!-- Cloudflare Pages Analytics -->', b'', a)
+              a = re.sub(rb'<script[^>]*static\.cloudflareinsights\.com/beacon[^>]*></script>', b'', a)
+              a = re.sub(rb'\s+', b' ', a).strip(); b = re.sub(rb'\s+', b' ', b).strip()
+              if a == b: same += 1
+              else: diff.append(f"{path}: differs from live ({len(b)} B repo vs {len(a)} B live)")
+          print(f"live pages identical to {os.environ.get('GITHUB_SHA','')[:7]}: {same}/{n}")
+          print("\n".join(diff[:40]))
+          PY
+      - name: Summary
+        run: |
+          { echo '## SEO monitor'; echo '```'; tail -n 1 out/crawl.txt; grep -E '^ERROR' out/crawl.txt | head -50; echo '```';
+            echo '## Lighthouse (lab, mobile)'; echo '```'; cat out/psi.txt 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - name: Post report to the "SEO monitor" issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "### Run $(date -u +%Y-%m-%dT%H:%MZ) — \`${GITHUB_REF_NAME}\` @ \`${GITHUB_SHA::7}\` — ${BASE}" > out/report.md
+          { echo; echo '**Crawl**'; echo '```'; tail -n 1 out/crawl.txt; grep -E '^ERROR' out/crawl.txt | head -60; grep -E '^WARN' out/crawl.txt | grep -v 'without width/height' | head -80;
+            echo "WARN  (summary) $(grep -c 'without width/height' out/crawl.txt) <img> tags without width/height on $(grep 'without width/height' out/crawl.txt | awk '{print $2}' | sort -u | wc -l) pages"; echo '```';
+            echo '**Lighthouse (lab, mobile emulation)**'; echo '```'; cat out/psi.txt 2>/dev/null; echo '```';
+            echo '**Deployed vs repository**'; echo '```'; cat out/drift.txt 2>/dev/null; echo '```';
+            echo '<details><summary>Per-page data (JSON)</summary>'; echo; echo '```json';
+            python3 -c "import json;d=json.load(open('out/crawl.json'));print(json.dumps({u.replace('https://artilier.co',''):{k:v for k,v in p.items() if k in ('title','desc','canonical','noindex','lang','hreflang','h1','imgs','bytes')} for u,p in d['pages'].items()},ensure_ascii=False,separators=(',',':')))" | head -c 50000;
+            echo '```'; echo '</details>'; } >> out/report.md
+          num=$(gh issue list --label seo-monitor --state open --json number -q '.[0].number')
+          if [ -z "$num" ]; then
+            gh label create seo-monitor --color A98B4E --description "Automated SEO monitor reports" 2>/dev/null || true
+            num=$(gh issue create --title "SEO monitor — weekly live-site reports" --label seo-monitor \
+              --body "Automated, read-only reports from .github/workflows/seo-monitor.yml. One comment per run. If this issue is closed, the next run opens a new one." | grep -oE '[0-9]+$')
+          fi
+          gh issue comment "$num" --body-file out/report.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: seo-monitor-${{ github.run_id }}
+          path: out/
+          retention-days: 90
+      - name: Fail on crawl errors
+        if: steps.crawl.outcome == 'failure'
+        run: exit 1
