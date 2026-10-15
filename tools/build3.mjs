@@ -286,7 +286,7 @@ ${ctaBlock(UP, 'contact/', 'Start a project', [['projects/','All projects'],['be
    process or setting checked on 11 Oct 2026; see ARTILIER_stage10D report.
    PRIVACY_PUBLISHED must be the real publication date: if this is merged after
    12 October 2026, change the line below to the merge date before merging. ── */
-const PRIVACY_PUBLISHED = '12 October 2026';
+const PRIVACY_PUBLISHED = '15 October 2026';
 const privacy = shell({
   path:'privacy/', up:'../', robots:'noindex,follow',
   title:'Privacy Notice | Artilier',
