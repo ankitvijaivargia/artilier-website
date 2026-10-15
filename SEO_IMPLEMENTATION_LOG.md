@@ -281,3 +281,23 @@ Hub document: `SEO_OPERATING_SYSTEM.md` (inventory A–F, keyword-to-page map, i
 Not changed (needs a decision or more evidence): homepage films on mobile (T-03), responsive image variants (T-06), filenames (T-07), any page copy.
 
 **Pre-merge measurement (14 Oct, 14:13 UTC, same runner, production vs branch preview, one Lighthouse run each):** CLS `/contact/` 0.224 → 0.001, `/embroidery/` 0.156 → 0, `/trade/uae/` 0.198 → 0; homepage LCP 5.9 s → 1.6 s, `/collection/reth/` 5.3 → 3.3 s; fast text pages ±0.6 s (noise). The preview loads neither GA4 nor the Cloudflare beacon, so re-measure on production after merge. Details: PR #29.
+
+## 15. Metric-matched fallback fonts (15 Oct 2026) — branch `seo/fallback-fonts`
+
+**Why.** After #29 (font preloads), production on 15 Oct still showed CLS 0.152 on `/collection/reth/`. Diagnosis: the page header's small-capitals tag row ("Hand-tufted · Made to size · Custom colourways") wrapped onto two lines in the browser's stand-in font and onto one in Jost, moving the specification section 32 px when Jost arrived. The same mechanism (text set in a stand-in font of different proportions, then re-laid in the brand font) caused the earlier shifts on Contact, Embroidery and UAE.
+
+| Change | Files | Why |
+|---|---|---|
+| 22 fallback `@font-face` rules: local Times New Roman / Liberation Serif / Tinos (and Noto Serif on Android) for each Cormorant Garamond weight and italic; local Arial / Liberation Sans / Arimo (and Roboto) for each Jost weight, plus a separate set calibrated on capitals for uppercase labels. Each has `size-adjust`, ascent/descent/line-gap overrides and a `unicode-range` equal to the brand file's own coverage | `assets/css/fonts.css` (generated block) | Text keeps its line lengths and heights when the brand font swaps in |
+| `--d` / `--s` stacks name the fallbacks; new `--s-caps` used by the 48 uppercase Jost rules | `assets/css/base.css`, `layout.css`, `pages.css`, `responsive.css` | Capitals in Arial/Roboto run ~6% wider than Jost's, so labels need their own correction |
+| Stylesheet versions bumped (`fonts` v2, `base` v4, `layout` v3, `pages` v7, `responsive` v3) | generators + 4 hand-maintained pages; all pages rebuilt | CSS is cached for an hour |
+| `tools/font_fallbacks.py` (generator), `tools/font_fallback_calibrate.mjs` + `tools/font_fallback_calibration.txt` (Chromium calibration on all English pages' real text) | new, not deployed | Reproducible values; re-run if fonts, CSS or copy change materially |
+| README: fonts are self-hosted (the old line said Google Fonts) | `README.md` | Correction |
+
+**Tests (local Chromium, 15 Oct).**
+- Calibration: all 22 faces within 0.02% of brand width over the real text of 47 English pages.
+- No visual change once fonts load: all 52 pages × phone and desktop width — every element's position, size, computed font and the platform fonts used are identical to `main`. (A first version failed this: "≡" and "→", which the brand files do not contain, picked up the fallback; fixed with `unicode-range`.)
+- Font-swap movement (fonts blocked vs loaded, JS off): phone — pages that move 44 → 10, worst 0.050 → 0.021; desktop — worst 0.094 (`/fr/`) → 0.019.
+- Lighthouse, mobile, devtools throttling (slow 4G, 4× CPU), 3 runs, local server: CLS `/collection/reth/` 0.151/0.172/0.151 → 0/0/0; `/contact/` 0.199 ×3 → 0 ×3; `/trade/uae/` 0 ×3 → 0.033/0/0.032; `/collection/nazm/` 0 ×3 → 0/0/0.018; `/embroidery/`, `/bespoke/` 0 → 0. Remaining small shifts are single short lines sitting on a wrap point (e.g. "Dubai and Abu Dhabi."), which no fallback can match exactly.
+- Cost: `fonts.css` 0.3 KB → 1.5 KB compressed (render-blocking). Text LCP +0.2–0.4 s on some pages on the local server, which serves CSS uncompressed (14 KB); to be confirmed on the Cloudflare preview.
+

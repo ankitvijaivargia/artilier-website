@@ -1,0 +1,23 @@
+# brand width / fallback width corrections, from tools/font_fallback_calibrate.mjs --update
+Cormorant Garamond Fallback Noto|300|italic 0.9775
+Cormorant Garamond Fallback Noto|300|normal 0.9944
+Cormorant Garamond Fallback Noto|400|italic 0.9798
+Cormorant Garamond Fallback Noto|400|normal 1.0185
+Cormorant Garamond Fallback Noto|500|normal 1.0250
+Cormorant Garamond Fallback|300|italic 0.9881
+Cormorant Garamond Fallback|300|normal 0.9959
+Cormorant Garamond Fallback|400|italic 0.9810
+Cormorant Garamond Fallback|400|normal 0.9993
+Cormorant Garamond Fallback|500|normal 1.0005
+Jost Caps Fallback Roboto|300|normal 1.0172
+Jost Caps Fallback Roboto|400|normal 1.0201
+Jost Caps Fallback Roboto|500|normal 1.0118
+Jost Caps Fallback|300|normal 0.9399
+Jost Caps Fallback|400|normal 0.9485
+Jost Caps Fallback|500|normal 0.9361
+Jost Fallback Roboto|300|normal 0.9973
+Jost Fallback Roboto|400|normal 0.9961
+Jost Fallback Roboto|500|normal 0.9866
+Jost Fallback|300|normal 0.9968
+Jost Fallback|400|normal 0.9946
+Jost Fallback|500|normal 0.9898

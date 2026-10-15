@@ -70,14 +70,14 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <link rel="apple-touch-icon" href="${up}apple-touch-icon.png">
 <link rel="sitemap" href="${up}sitemap.xml" type="application/xml">
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
-<link href="/assets/css/fonts.css?v=1" rel="stylesheet">
+<link href="/assets/css/fonts.css?v=2" rel="stylesheet">
 <link rel="preload" href="/assets/fonts/jost-latin-300-normal.woff2?v=1" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/cormorant-garamond-latin-400-normal.woff2?v=1" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${up}assets/css/base.css?v=2">
-<link rel="stylesheet" href="${up}assets/css/layout.css?v=2">
-<link rel="stylesheet" href="${up}assets/css/responsive.css?v=2">
+<link rel="stylesheet" href="${up}assets/css/base.css?v=4">
+<link rel="stylesheet" href="${up}assets/css/layout.css?v=3">
+<link rel="stylesheet" href="${up}assets/css/responsive.css?v=3">
 <link rel="stylesheet" href="${up}assets/css/collection-tweaks.css?v=2">
-<link rel="stylesheet" href="${up}assets/css/pages.css?v=6">
+<link rel="stylesheet" href="${up}assets/css/pages.css?v=7">
 <script defer src="${up}assets/js/slots.js?v=5" data-manifest="${up}assets/media/manifest.json?v=${MV}"></script>
 <script defer src="${up}assets/js/analytics.js?v=5"></script>${scripts}${extraHead}
 </head>
