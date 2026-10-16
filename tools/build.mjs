@@ -73,12 +73,12 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <link href="/assets/css/fonts.css?v=2" rel="stylesheet">
 <link rel="preload" href="/assets/fonts/jost-latin-300-normal.woff2?v=1" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/cormorant-garamond-latin-400-normal.woff2?v=1" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${up}assets/css/base.css?v=4">
+<link rel="stylesheet" href="${up}assets/css/base.css?v=5">
 <link rel="stylesheet" href="${up}assets/css/layout.css?v=3">
 <link rel="stylesheet" href="${up}assets/css/responsive.css?v=3">
 <link rel="stylesheet" href="${up}assets/css/collection-tweaks.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/pages.css?v=7">
-<script defer src="${up}assets/js/slots.js?v=5" data-manifest="${up}assets/media/manifest.json?v=${MV}"></script>
+<script defer src="${up}assets/js/slots.js?v=6" data-manifest="${up}assets/media/manifest.json?v=${MV}"></script>
 <script defer src="${up}assets/js/analytics.js?v=5"></script>${scripts}${extraHead}
 </head>
 <body>
@@ -216,13 +216,38 @@ if(mc){addEventListener('scroll',()=>mc.classList.toggle('on',scrollY>innerHeigh
 /* A real <img> inside the slot so the markup is crawlable. slots.js adopts
    an existing [data-pre] image instead of appending a second one, so the
    authored crop and lazy-loading behaviour are unchanged. */
-const slotImg = (id, ph, up, eager = false) => {
+/* sizes hints match the layouts in layout.css / responsive.css: a design
+   page's hero fills the left grid column (~57%) above 860 px and the full
+   width below; grid tiles are 3-up, 2-up under 520 px, 1-up under 380 px. */
+const SIZES = {
+  hero: '(max-width:860px) 100vw, 57vw',
+  grid: '(max-width:380px) 100vw, (max-width:520px) 50vw, 33vw',
+  gal: '(max-width:760px) 100vw, 33vw',
+  full: '100vw',
+  wide: '(max-width:760px) 100vw, 67vw',
+  quarter: '(max-width:760px) 50vw, 25vw',
+};
+const srcsetAttr = (m, up) => {
+  if (!m.variants || !m.variants.length) return '';
+  const stem = m.src.split('?')[0].replace(/\.webp$/, '');
+  const list = m.variants.map(w => `${up}assets/media/r/${stem}-${w}.webp ${w}w`);
+  list.push(`${up}assets/media/${m.src} ${m.w}w`);
+  return ` srcset="${esc(list.join(', '))}"`;
+};
+const slotImg = (id, ph, up, eager = false, sizes = 'grid') => {
   const m = manifest[id] || {};
   const src = m.src ? `${up}assets/media/${m.src}` : '';
   if (!src || m.type === 'video') {
     return `<div class="ph"><media-slot id="${esc(id)}" shape="rect" placeholder="${esc(ph)}"></media-slot></div>`;
   }
-  return `<div class="ph"><media-slot id="${esc(id)}" shape="rect" placeholder="${esc(ph)}"><img data-pre src="${esc(src)}" alt="${esc(m.alt||'')}"${m.alt?' role="img"':' aria-hidden="true"'} loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}></media-slot></div>`;
+  const dims = m.w && m.h ? ` width="${m.w}" height="${m.h}"` : '';
+  const rs = srcsetAttr(m, up);
+  /* An authored zoom (view.s > 1) enlarges the image beyond its frame, so the
+     candidate must be chosen for the enlarged width: scale every length. */
+  const zoom = m.view && m.view.s > 1.1 ? m.view.s : 1;
+  const sizesVal = (SIZES[sizes] || sizes).replace(/(\d+)vw/g, (_, n) => zoom === 1 ? `${n}vw` : `calc(${n}vw * ${zoom.toFixed(2)})`);
+  const sz = rs ? ` sizes="${esc(sizesVal)}"` : '';
+  return `<div class="ph"><media-slot id="${esc(id)}" shape="rect" placeholder="${esc(ph)}"><img data-pre src="${esc(src)}"${rs}${sz}${dims} alt="${esc(m.alt||'')}"${m.alt?' role="img"':' aria-hidden="true"'} loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}></media-slot></div>`;
 };
 
 /* ── schema ─────────────────────────────────────────────────────────── */
@@ -361,7 +386,7 @@ function designPage(d) {
 </header>
 <section class="sec dtl">
   <div class="dtl-in">
-    <div class="dtl-media">${slotImg(d.hero, `${d.name} — ${d.construction} rug`, up, true)}</div>
+    <div class="dtl-media">${slotImg(d.hero, `${d.name} — ${d.construction} rug`, up, true, 'hero')}</div>
     <div>
       <h2 class="lb" style="display:block;margin-bottom:6px">Specification</h2>
       <div class="facts">

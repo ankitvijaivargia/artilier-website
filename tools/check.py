@@ -5,7 +5,7 @@ pages without exactly one H1, invalid JSON-LD, sitemap entries that are missing
 or noindexed, indexable pages missing from the sitemap, images without alt,
 and any named manufacturing location. Also runs the claim rules R-01..R-10
 (tools/claims.py): BLOCK findings are errors, WARN findings are printed."""
-import glob, json, os, re, sys, posixpath
+import sys, glob, json, os, re, posixpath
 from bs4 import BeautifulSoup
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import claims
@@ -95,6 +95,16 @@ sm = re.findall(r'<loc>([^<]+)</loc>', open('sitemap.xml').read())
 for il in re.findall(r'<image:loc>([^<]+)</image:loc>', open('sitemap.xml').read()):
     fp = il.replace('https://artilier.co/', '').split('?')[0]
     if not os.path.exists(fp): errs.append(f'sitemap image has no file: {il}')
+# every srcset candidate must resolve to a file (variants come from tools/images.py)
+for f in pages:
+    d = os.path.dirname(f)
+    for ss in re.findall(r'srcset="([^"]+)"', open(f, encoding='utf-8').read()):
+        for cand in ss.split(','):
+            fp = os.path.normpath(os.path.join(d, cand.strip().split(' ')[0].split('?')[0]))
+            if not os.path.exists(fp): errs.append(f'{f}: srcset candidate has no file: {fp}')
+import subprocess
+r = subprocess.run([sys.executable, 'tools/images.py', '--check'], capture_output=True, text=True)
+if r.returncode: errs.append('images.py --check: ' + r.stdout.strip().replace('\n', '; '))
 smu = {x.replace(HOST, '') for x in sm}
 for u in smu:
     if u not in indexable: errs.append(f'sitemap lists non-indexable or missing {u}')

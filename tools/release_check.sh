@@ -10,6 +10,7 @@ stated=$(grep -oP "const PRIVACY_PUBLISHED = '\K[^']+" tools/build3.mjs || true)
 if [ -n "$stated" ] && [ "$stated" != "$today" ]; then
   echo "BLOCK: privacy notice says '$stated' but today is '$today'. Update PRIVACY_PUBLISHED in tools/build3.mjs, rebuild, commit." >&2; exit 1
 fi
+python3 tools/images.py --check
 node tools/build.mjs >/dev/null && node tools/build2.mjs >/dev/null && node tools/build3.mjs >/dev/null
 python3 tools/check.py | tail -3
 rm -rf tools/__pycache__

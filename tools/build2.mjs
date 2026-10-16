@@ -267,7 +267,7 @@ const craft = page({
 </section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">The second discipline</span><h2 class="d2">Embroidery,<br>worked by <span class="it">hand.</span></h2></div>
-  <p class="bd">The same model applied to thread: hand embroidery for wall panels, framed art, cushions, headboards, upholstery panels and drapery, from our designs or developed from your artwork, and sampled where the project requires it. <a href="${up}embroidery/">Embroidery at Artilier</a>.</p></div>
+  <p class="bd">The same model applied to thread: hand embroidery for wall panels, framed art, cushions, <a href="${up}embroidery/headboards/">headboards</a>, upholstery panels and drapery, from our designs or developed from your artwork, and sampled where the project requires it. <a href="${up}embroidery/">Embroidery at Artilier</a>.</p></div>
 </section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">Beyond</span><h2 class="d2">Built around making,<br>not one <span class="it">product.</span></h2></div>
@@ -302,7 +302,7 @@ const gallery = (slots, lb, h2, h2it, intro) => `
 <section class="sec gal-sec">
   <div class="sec-hd"><div><span class="lb">${esc(lb)}</span><h2 class="d2">${h2}<span class="it">${h2it}</span></h2></div>${intro ? `
   <p class="bd">${intro}</p>` : ''}</div>
-  <div class="gal">${slots.map(([id, ph, w]) => `<figure${w ? ` class="${w}"` : ''}>${slotImg(id, ph, up)}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div>
+  <div class="gal">${slots.map(([id, ph, w]) => `<figure${w ? ` class="${w}"` : ''}>${slotImg(id, ph, up, false, w === 'full' ? 'full' : w === 'w' ? 'wide' : w === 'q' ? 'quarter' : 'gal')}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div>
 </section>`;
 const qaBlock = (rows, lb = 'Practicalities', h2 = 'Before you<br>', h2it = 'brief us.') => `<section class="sec">
   <div class="sec-hd"><div><span class="lb">${esc(lb)}</span><h2 class="d2">${h2}<span class="it">${h2it}</span></h2></div></div>

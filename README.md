@@ -87,6 +87,7 @@ generator (or the content), never the generated HTML, then run:
 
 ```bash
 python3 tools/og.py          # social preview images for design pages (needs Pillow)
+python3 tools/images.py      # responsive variants in assets/media/r/ + manifest w/h (needs Pillow); run after adding photographs
 node tools/build.mjs         # design and category pages
 node tools/build2.mjs        # bespoke, trade, materials, process, craft; collection hub
 node tools/build3.mjs        # contact, about, projects, hospitality, market pages, /fr/, guides, 404,
