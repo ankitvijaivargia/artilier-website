@@ -271,11 +271,11 @@ const projectPage = p => {
   </div>
 </header>
 <section class="sec tight">
-  ${p.hero ? `<div class="gal">${'<figure class="full">' + slotImg(p.hero, p.name, UP, true) + '</figure>'}</div>` : ''}
+  ${p.hero ? `<div class="gal">${'<figure class="full">' + slotImg(p.hero, p.name, UP, true, 'full') + '</figure>'}</div>` : ''}
   <div class="facts">${facts.map(([k, v]) => `<div><b>${k}</b><span>${v}</span></div>`).join('')}</div>
 </section>
 ${(p.brief || p.developed) ? `<section class="sec"><div class="cols2">${[['The brief', p.brief], ['What we developed', p.developed]].filter(([, t]) => t).map(([lb, t]) => `<div><span class="lb">${lb}</span><div class="prose" style="margin-top:18px">${String(t).split(/\n\n+/).map(par => `<p>${esc(par)}</p>`).join('')}</div></div>`).join('')}</div></section>` : ''}
-${media.length ? `<section class="sec gal-sec"><div class="gal">${media.map((id, i) => `<figure${i % 3 === 0 ? ' class="w"' : ''}>${slotImg(id, p.name + ' — detail', UP)}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div></section>` : ''}
+${media.length ? `<section class="sec gal-sec"><div class="gal">${media.map((id, i) => `<figure${i % 3 === 0 ? ' class="w"' : ''}>${slotImg(id, p.name + ' — detail', UP, false, i % 3 === 0 ? 'wide' : 'gal')}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div></section>` : ''}
 ${designs.length ? `<section class="sec"><div class="sec-hd"><div><span class="lb">In the collection</span><h2 class="d2">Designs in this<br><span class="it">project.</span></h2></div>
   <p class="bd">${designs.map(d => `<a href="${UP}collection/${esc(d.slug)}/">${esc(d.name)}</a>`).join(' · ')}</p></div></section>` : ''}
 ${ctaBlock(UP, 'contact/', 'Start a project', [['projects/','All projects'],['bespoke/','Bespoke development'],['embroidery/','Embroidery']])}
@@ -329,7 +329,7 @@ const hospitality = shell({
   title:'Hotel Rugs, Headboards & Embroidery | Artilier',
   desc:'Custom hotel rugs, embroidered headboards, wall panels and furnishing fabric for hospitality projects, developed from the designer’s scheme. Trade only.',
   lb:'Hospitality & contract', h1:'Rugs and embroidery<br>for ', h1it:'hospitality.',
-  lead:`<p class="bd">For hospitality designers, architects and procurement teams: custom rugs for hotels and boutique hospitality projects, made to the dimensions of each room — and embroidered headboards, wall panels and furnishing fabric developed for the same scheme in our New Delhi studio.</p>
+  lead:`<p class="bd">For hospitality designers, architects and procurement teams: custom rugs for hotels and boutique hospitality projects, made to the dimensions of each room — and <a href="../embroidery/headboards/">embroidered headboards</a>, wall panels and furnishing fabric developed for the same scheme in our New Delhi studio.</p>
     <div class="wp-meta"><span><b>Made to the schedule</b></span><span>Rugs and embroidery</span><span>One point of contact</span></div>`,
   nodes:[ service('hospitality/', 'Custom rugs for hospitality projects', 'Custom rug development and manufacture for hotels and hospitality interiors',
     'Development, sampling, production, quality control and export coordination of custom hand-knotted, hand-tufted and flatweave rugs for hotels and hospitality interiors, made to each room’s dimensions and the designer’s scheme.',
@@ -357,7 +357,7 @@ ${sec('Embroidery for the same rooms', 'Headboards, walls', 'and fabric.', `<div
       <h3><a href="../embroidery/fabrics/">Embroidered fabric</a></h3>
       <p>Furnishing fabric by the metre for upholstery and curtains. Typical lead time 6–8 weeks; complex work up to 6 months.</p>
     </div>
-    <div class="gal"><figure class="full">${slotImg('e2', 'Embroidery — zardozi panel on the frame', '../')}<figcaption data-mf="e2"></figcaption></figure></div>
+    <div class="gal"><figure class="full">${slotImg('e2', 'Embroidery — zardozi panel on the frame', '../', false, 'full')}<figcaption data-mf="e2"></figcaption></figure></div>
   </div>`, { intro:'Developed in the same studio as the rugs, so colour and motif can carry across a room. Delivery dates are confirmed for each product only after the specification has been reviewed.' })}
 ${sec('How a hospitality project runs', 'From schedule', 'to dispatch.', `<div class="proc">
     <div class="pstep"><span class="pn">01</span><span class="pt">Understand</span><span class="pd">The rug schedule — rooms, quantities, sizes — with drawings, scheme and application. We come back with our thoughts, questions and what still needs resolving.</span></div>
@@ -711,7 +711,7 @@ const notFound = head({ title:'Page not found | Artilier', desc:'This page does 
    galleries, and collectors through galleries. Time-zone sentences restate the
    rug market pages. No client, project or delivery is claimed. */
 const embGal = (ids, up) => `
-<section class="sec gal-sec"><div class="gal">${ids.map(id => `<figure class="q">${slotImg(id, 'Embroidery', up)}<figcaption data-mf="${id}"></figcaption></figure>`).join('')}</div></section>`;
+<section class="sec gal-sec"><div class="gal">${ids.map(id => `<figure class="q">${slotImg(id, 'Embroidery', up, false, 'quarter')}<figcaption data-mf="${id}"></figcaption></figure>`).join('')}</div></section>`;
 const embMarkets = self => [['embroidery/uae/','UAE & Gulf'],['embroidery/saudi-arabia/','Saudi Arabia'],['embroidery/uk/','United Kingdom'],['embroidery/us/','United States'],['fr/broderie/','France (en français)']].filter(([h]) => !h.includes(self));
 const embCommon = {
   min: ['Is there a minimum order?', 'No fixed minimum order quantity. Each project is assessed according to its design, technical requirements and production specifications.'],
@@ -748,7 +748,7 @@ const embUae = embMarket({
   body:`
 ${sec('Where it is used', 'From the majlis', 'to the suite.', list([
   '<b>Majlis and reception rooms</b> — hand-embroidered wallcoverings made wall to wall, or wall panels and framed pieces sized to the wall',
-  '<b>Bedrooms and suites</b> — embroidered headboard panels, cushion fronts and drapery borders',
+  '<b>Bedrooms and suites</b> — <a href="'+UP2+'embroidery/headboards/">embroidered headboard panels</a>, cushion fronts and drapery borders',
   '<b>Furniture</b> — seat, back and side panels for upholstered pieces made by your joinery or upholstery workshop',
   '<b>Hospitality</b> — lobbies, suites and restaurants, usually briefed as a set of panels across several rooms. See <a href="'+UP2+'hospitality/">hospitality</a>',
   '<b>Galleries and collectors</b> — single works and series, through the galleries that represent them'
@@ -784,7 +784,7 @@ const embKsa = embMarket({
   rugs:'trade/saudi-arabia/', rugsLabel:'Rugs for Saudi projects', cta:'Start a Saudi embroidery project',
   body:`
 ${sec('Where it is used', 'Panels, headboards,', 'whole schemes.', list([
-  '<b>Residences</b> — wall-to-wall embroidered wallcoverings, majlis wall panels, framed works, headboards and soft furnishings',
+  '<b>Residences</b> — wall-to-wall embroidered wallcoverings, majlis wall panels, framed works, <a href="'+UP2+'embroidery/headboards/">headboards</a> and soft furnishings',
   '<b>Hospitality</b> — hotels and resorts, including destination projects, usually briefed as a schedule of panel types across many rooms',
   '<b>Cultural and gallery projects</b> — single works and series, through the galleries and curators who commission them',
   '<b>Furniture</b> — embroidered panels supplied to your upholsterer or joinery workshop'
@@ -813,7 +813,7 @@ const embUk = embMarket({
   rugs:'trade/uk/', rugsLabel:'Rugs for UK projects', cta:'Start a UK embroidery project',
   body:`
 ${sec('Where it is used', 'Made for the drawing,', 'not the catalogue.', list([
-  '<b>Residential</b> — hand-embroidered wallcoverings for dining rooms and halls, embroidered headboards, cushion fronts and curtain borders, each made to the room',
+  '<b>Residential</b> — hand-embroidered wallcoverings for dining rooms and halls, <a href="'+UP2+'embroidery/headboards/">embroidered headboards</a>, cushion fronts and curtain borders, each made to the room',
   '<b>Upholstery panels</b> — embroidered seat, back and side panels supplied to your upholsterer',
   '<b>Framed and stretched works</b> — single pieces or series for a wall or a stair',
   '<b>Galleries and collectors</b> — commissioned works through the galleries that represent them'
@@ -842,7 +842,7 @@ const embUs = embMarket({
   rugs:'trade/us/', rugsLabel:'Rugs for US projects', cta:'Start a US embroidery project',
   body:`
 ${sec('Where it is used', 'Apartments, houses,', 'galleries.', list([
-  '<b>Apartments and townhouses</b> — hand-embroidered wallcoverings made wall to wall, wall panels, headboards and cushion fronts sized to the room',
+  '<b>Apartments and townhouses</b> — hand-embroidered wallcoverings made wall to wall, wall panels, <a href="'+UP2+'embroidery/headboards/">headboards</a> and cushion fronts sized to the room',
   '<b>Houses</b> — larger runs of panels for living rooms, bedrooms and stairs',
   '<b>Upholstery panels</b> — embroidered panels supplied to your workroom',
   '<b>Galleries and collectors</b> — single works and series, through the galleries that represent them'
@@ -915,7 +915,7 @@ const syncShell = (file, up, { ctaLabel } = {}) => {
   s = s.replace(/<a class="mcta" id="mcta" href="[^"]*">([^<]*)/, (m, label) => `<a class="mcta" id="mcta" href="${up}contact/">${ctaLabel || label}`);
   s = s.split(`${up}index.html#brief`).join(`${up}contact/`).split(`${up}index.html#about`).join(`${up}about/`).split(`href="${up}index.html"`).join(`href="${up}"`);
   s = s.replace(/manifest\.json\?v=[0-9a-f]+/g, `manifest.json?v=${MV}`);
-  s = s.replace(/slots\.js\?v=4/g, 'slots.js?v=5').replace(/pages\.css\?v=[345]/g, 'pages.css?v=7');
+  s = s.replace(/slots\.js\?v=[45]/g, 'slots.js?v=6').replace(/pages\.css\?v=[345]/g, 'pages.css?v=7');
   if (!s.includes('pages.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*collection-tweaks\.css\?v=2">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/pages.css?v=3">`);
   if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=5"></script>\n</head>`);
   /* one Organization entity everywhere: replace the inline copy with the shared one */

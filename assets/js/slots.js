@@ -68,6 +68,18 @@
       const img = pre || document.createElement('img');
       if (!pre) {
         img.src = src;
+        /* Responsive variants written by tools/images.py: assets/media/r/<stem>-<w>.webp.
+           sizes defaults to the slot's own width share of the viewport, which
+           data-sizes on the slot can override (e.g. data-sizes="50vw"). */
+        if (entry.variants && entry.variants.length && entry.w) {
+          const base = src.slice(0, src.lastIndexOf('/') + 1), stem = src.slice(src.lastIndexOf('/') + 1).split('?')[0].replace(/\.webp$/, '');
+          img.srcset = entry.variants.map(w => `${base}r/${stem}-${w}.webp ${w}w`).concat(`${src} ${entry.w}w`).join(', ');
+          /* Width the image will be drawn at: cover the frame, times the authored zoom. */
+          const fw = this.clientWidth, fh = this.clientHeight, zoom = (entry.view && entry.view.s) || 1;
+          const drawn = fw && fh ? Math.max(fw / entry.w, fh / entry.h) * zoom * entry.w : fw;
+          img.sizes = this.dataset.sizes || (drawn ? Math.ceil(drawn / innerWidth * 100) + 'vw' : '100vw');
+          img.width = entry.w; img.height = entry.h;
+        }
         img.alt = entry.alt || this.getAttribute('alt') || '';
         img.loading = this.hasAttribute('data-eager') ? 'eager' : 'lazy';
         if (img.loading === 'eager') img.fetchPriority = 'high';

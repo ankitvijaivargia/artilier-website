@@ -301,3 +301,18 @@ Not changed (needs a decision or more evidence): homepage films on mobile (T-03)
 - Lighthouse, mobile, devtools throttling (slow 4G, 4× CPU), 3 runs, local server: CLS `/collection/reth/` 0.151/0.172/0.151 → 0/0/0; `/contact/` 0.199 ×3 → 0 ×3; `/trade/uae/` 0 ×3 → 0.033/0/0.032; `/collection/nazm/` 0 ×3 → 0/0/0.018; `/embroidery/`, `/bespoke/` 0 → 0. Remaining small shifts are single short lines sitting on a wrap point (e.g. "Dubai and Abu Dhabi."), which no fallback can match exactly.
 - Cost: `fonts.css` 0.3 KB → 1.5 KB compressed (render-blocking). Text LCP +0.2–0.4 s on some pages on the local server, which serves CSS uncompressed (14 KB); to be confirmed on the Cloudflare preview.
 
+## 16. Responsive image variants and headboard internal links (16 Oct 2026) — branch `seo/week2-images-links`
+
+Week-2 items from the 14 Oct audit roadmap that need no owner decision (T-06 and the `/embroidery/headboards/` link count). No page copy changes beyond six words-into-links listed below.
+
+| Change | Files | Why |
+|---|---|---|
+| `tools/images.py`: writes 480/800/1200 px WebP copies of every still photograph to `assets/media/r/` (109 files, 14 MB) and records `w`, `h`, `variants` in the manifest; `--check` mode fails if a variant is missing or stale | new; `assets/media/manifest.json`; `assets/media/r/*` | T-06: phones downloaded 1,300–2,000 px originals (25 of 64 over 300 KB) |
+| Pre-rendered `<img>` now carries `srcset`, layout-aware `sizes` (hero 57vw / grid 33vw / gallery variants, scaled by any authored zoom `view.s`) and `width`/`height` | `tools/build.mjs` (`slotImg`), `build2.mjs`, `build3.mjs`; all generated pages | Browser picks the 480 or 800 px copy on phones; explicit dimensions remove the "media element lacking an explicit size" note |
+| `slots.js` v6: JavaScript-rendered slots (homepage, hospitality) get the same `srcset`, with `sizes` computed from the frame and zoom; `data-sizes` can override | `assets/js/slots.js`; `slots.js?v=6` on all pages | Homepage photographs were all originals |
+| `check.py`: every `srcset` candidate must exist; runs `images.py --check`. `release_check.sh` runs it too | `tools/check.py`, `tools/release_check.sh` | Regression guard |
+| In-content links to `/embroidery/headboards/` from `/embroidery/uae/`, `/embroidery/saudi-arabia/`, `/embroidery/uk/`, `/embroidery/us/` (the existing "headboards" word in each "Where it is used" list), `/hospitality/` intro and `/craft/` embroidery paragraph | `tools/build3.mjs`, `tools/build2.mjs` | Only 6 in-content links on 3 pages before; now 12 on 8 pages. US demand for "embroidered headboards" is the one commercial embroidery term with volume (100–1k) |
+| README: image step documented | `README.md` | — |
+
+**Tests (local, 16 Oct).** `check.py` OK; `images.py --check` OK; builds reproducible. Lighthouse mobile (local server, 2 runs each, `main` → branch): `/collection/hand-tufted/` 3,725 KB → 1,002 KB, LCP 6.5–10.0 s → 3.2–3.5 s; `/collection/` 2,640 KB → 1,096 KB, LCP 6.3–6.9 s → 4.6–5.6 s; `/collection/reth/` 397 → 302 KB; homepage 4.7–4.9 MB → 1.4–3.3 MB (films dominate and vary). CLS 0 everywhere. Candidate check in Chromium at 412 px × 1.75: grid tiles take the 480 copy, heroes the 800 copy, the 4.5×-zoomed homepage `fo1` correctly keeps the original. Layout and fonts identical to `main` on 52 pages × 2 widths (positions unchanged; only image resolution differs).
+

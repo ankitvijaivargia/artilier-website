@@ -142,3 +142,17 @@ The first guide (`/guides/briefing-a-bespoke-rug/`) uses only published facts �
 5. **Photographs** — 3–5 for `/bespoke/` (drawing → strike-off → finished rug is ideal) and any for `/embroidery/headboards/` and `/embroidery/fabrics/`. These pages have no images today; this is the largest single content gap.
 6. **Design data (§E)** — still the main reason design pages read alike.
 7. **Downtown Design Dubai, 4–8 Nov** — attend or not (it decides the first authority/PR push).
+
+## N. Week 2 (16 Oct 2026) — one approval
+
+1. **Copy approval for six internal links** (PR `seo/week2-images-links`). No words were added or changed; an existing word or phrase became a link to `/embroidery/headboards/`:
+   - `/embroidery/uae/` — "embroidered headboard panels" (Bedrooms and suites)
+   - `/embroidery/saudi-arabia/` — "headboards" (Residences)
+   - `/embroidery/uk/` — "embroidered headboards" (Residential)
+   - `/embroidery/us/` — "headboards" (Apartments and townhouses)
+   - `/hospitality/` — "embroidered headboards" (intro paragraph)
+   - `/craft/` — "headboards" (embroidery paragraph)
+   Approving the PR approves these.
+
+Items 2–7 of §M remain open (films on phones, photographs, design data, Downtown Design). §M-1 and §M-4 are done; §M-3 is now covered by reading Search Console in your browser during a session.
+
