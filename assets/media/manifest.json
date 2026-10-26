@@ -643,5 +643,17 @@
     "src": "hero-leather.webp?v=1",
     "alt": "Grey and ivory hair-on cowhide cut in chevron and laid piece by piece",
     "facts": "Hair-on cowhide · chevron"
+  },
+  "e9": {
+    "type": "image",
+    "src": "e9.webp?v=1",
+    "alt": "Framed embroidered wall panel in natural fibre: dense loop work in tonal browns, waves of couched cord across the ground, and a long fringe falling below the frame",
+    "facts": "Finished panel · loop work, couched cord and fringe"
+  },
+  "e10": {
+    "type": "image",
+    "src": "e10.webp?v=1",
+    "alt": "Embroidered wall panel on a printed green ground: raised loop-pile shapes, wrapped cord, hanging thread bundles and padded discs with radial stitching",
+    "facts": "Finished panel · loop pile, wrapped cord and padded discs on a printed ground"
   }
 }
