@@ -637,5 +637,11 @@
     "src": "l8.webp?v=1",
     "alt": "Detail of silver and rose-gold metallic leather cut leaf by leaf along a stitched stem",
     "facts": "Metallic leather, cut leaf by leaf · trim, detail"
+  },
+  "hero-leather": {
+    "type": "image",
+    "src": "hero-leather.webp?v=1",
+    "alt": "Grey and ivory hair-on cowhide cut in chevron and laid piece by piece",
+    "facts": "Hair-on cowhide · chevron"
   }
 }
