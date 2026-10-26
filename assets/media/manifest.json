@@ -589,5 +589,53 @@
     "poster": "/assets/media/e8-poster.webp?v=1",
     "alt": "A finished embroidered panel in ivory and taupe: appliquéd shapes, raised loop work and couched line on a linen ground",
     "facts": "Finished panel · appliqué, loop work and couching"
+  },
+  "l1": {
+    "type": "image",
+    "src": "l1.webp?v=1",
+    "alt": "Grey and ivory hair-on cowhide cut in chevron and laid piece by piece on the work table",
+    "facts": "Hair-on cowhide · chevron panel on the bench"
+  },
+  "l2": {
+    "type": "image",
+    "src": "l2.webp?v=1",
+    "alt": "Detail of hair-on cowhide cut in hexagons in tones of grey and taupe, outlined in ivory leather",
+    "facts": "Hexagon-cut hide · stitched, detail"
+  },
+  "l3": {
+    "type": "image",
+    "src": "l3.webp?v=1",
+    "alt": "Detail of black and ivory hair-on cowhide cut in a geometric pattern and top-stitched",
+    "facts": "Black and ivory hide · geometric, detail"
+  },
+  "l4": {
+    "type": "image",
+    "src": "l4.webp?v=1",
+    "alt": "Detail of dark hide rounds, quartered and outlined in ivory leather, with grey hide diamonds",
+    "facts": "Hide rounds outlined in leather · detail"
+  },
+  "l5": {
+    "type": "image",
+    "src": "l5.webp?v=1",
+    "alt": "Detail of two ivory leather strips cut by CNC into an interlocking lattice over a sand-coloured ground",
+    "facts": "CNC-cut leather lattice · trim, detail"
+  },
+  "l6": {
+    "type": "image",
+    "src": "l6.webp?v=1",
+    "alt": "Detail of three leather strips with layered, stitched rings in navy, blue, ivory and tan, each set with a metal stud",
+    "facts": "Layered leather with metal studs · trim, detail"
+  },
+  "l7": {
+    "type": "image",
+    "src": "l7.webp?v=1",
+    "alt": "Detail of two leather strips with layered almond shapes in navy, red and ivory, and in tan and ivory",
+    "facts": "Layered and stitched leather · trim, detail"
+  },
+  "l8": {
+    "type": "image",
+    "src": "l8.webp?v=1",
+    "alt": "Detail of silver and rose-gold metallic leather cut leaf by leaf along a stitched stem",
+    "facts": "Metallic leather, cut leaf by leaf · trim, detail"
   }
 }

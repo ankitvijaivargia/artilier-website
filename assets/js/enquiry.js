@@ -140,6 +140,13 @@
           const cons = form.querySelector('select[name=construction]');
           if (cons) [...cons.options].forEach(o => { if (/^Hand embroidery$/i.test(o.text)) cons.value = o.value || o.text; });
         }
+        if (type === 'leather') {
+          hidden('cta_type', type);
+          const need = form.querySelector('select[name=enquiry]');
+          if (need) [...need.options].forEach(o => { if (/^Leather — /i.test(o.text)) need.value = o.value || o.text; });
+          const cons = form.querySelector('select[name=construction]');
+          if (cons) [...cons.options].forEach(o => { if (/^Leather or hide$/i.test(o.text)) cons.value = o.value || o.text; });
+        }
         const radio = [...form.querySelectorAll('input[type=radio][name=sector]')].find(r => r.value.toLowerCase() === sectorType);
         if (radio) radio.checked = true;
         const sel = form.querySelector('select[name=sector]');
