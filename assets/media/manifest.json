@@ -938,5 +938,240 @@
     "poster": "/assets/media/e8-poster.webp?v=1",
     "alt": "A finished embroidered panel in ivory and taupe: appliquéd shapes, raised loop work and couched line on a linen ground",
     "facts": "Finished panel · appliqué, loop work and couching"
+  },
+  "l1": {
+    "type": "image",
+    "src": "l1.webp?v=1",
+    "alt": "Grey and ivory hair-on cowhide cut in chevron and laid piece by piece on the work table",
+    "facts": "Hair-on cowhide · chevron panel on the bench",
+    "w": 1120,
+    "h": 700,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "l2": {
+    "type": "image",
+    "src": "l2.webp?v=1",
+    "alt": "Detail of hair-on cowhide cut in hexagons in tones of grey and taupe, outlined in ivory leather",
+    "facts": "Hexagon-cut hide · stitched, detail",
+    "w": 420,
+    "h": 525,
+    "variants": []
+  },
+  "l3": {
+    "type": "image",
+    "src": "l3.webp?v=1",
+    "alt": "Detail of black and ivory hair-on cowhide cut in a geometric pattern and top-stitched",
+    "facts": "Black and ivory hide · geometric, detail",
+    "w": 520,
+    "h": 650,
+    "variants": [
+      480
+    ]
+  },
+  "l4": {
+    "type": "image",
+    "src": "l4.webp?v=1",
+    "alt": "Detail of dark hide rounds, quartered and outlined in ivory leather, with grey hide diamonds",
+    "facts": "Hide rounds outlined in leather · detail",
+    "w": 600,
+    "h": 375,
+    "variants": [
+      480
+    ]
+  },
+  "l5": {
+    "type": "image",
+    "src": "l5.webp?v=1",
+    "alt": "Detail of two ivory leather strips cut by CNC into an interlocking lattice over a sand-coloured ground",
+    "facts": "CNC-cut leather lattice · trim, detail",
+    "w": 420,
+    "h": 525,
+    "variants": []
+  },
+  "l6": {
+    "type": "image",
+    "src": "l6.webp?v=1",
+    "alt": "Detail of three leather strips with layered, stitched rings in navy, blue, ivory and tan, each set with a metal stud",
+    "facts": "Layered leather with metal studs · trim, detail",
+    "w": 520,
+    "h": 650,
+    "variants": [
+      480
+    ]
+  },
+  "l7": {
+    "type": "image",
+    "src": "l7.webp?v=1",
+    "alt": "Detail of two leather strips with layered almond shapes in navy, red and ivory, and in tan and ivory",
+    "facts": "Layered and stitched leather · trim, detail",
+    "w": 420,
+    "h": 525,
+    "variants": []
+  },
+  "l8": {
+    "type": "image",
+    "src": "l8.webp?v=1",
+    "alt": "Detail of silver and rose-gold metallic leather cut leaf by leaf along a stitched stem",
+    "facts": "Metallic leather, cut leaf by leaf · trim, detail",
+    "w": 340,
+    "h": 425,
+    "variants": []
+  },
+  "hero-leather": {
+    "type": "image",
+    "src": "hero-leather.webp?v=1",
+    "alt": "Grey and ivory hair-on cowhide cut in chevron and laid piece by piece",
+    "facts": "Hair-on cowhide · chevron",
+    "w": 770,
+    "h": 770,
+    "variants": [
+      480
+    ]
+  },
+  "e9": {
+    "type": "image",
+    "src": "e9.webp?v=1",
+    "alt": "Framed embroidered wall panel in natural fibre: dense loop work in tonal browns, waves of couched cord across the ground, and a long fringe falling below the frame",
+    "facts": "Finished panel · loop work, couched cord and fringe",
+    "w": 1300,
+    "h": 1894,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "e10": {
+    "type": "image",
+    "src": "e10.webp?v=1",
+    "alt": "Embroidered wall panel on a printed green ground: raised loop-pile shapes, wrapped cord, hanging thread bundles and padded discs with radial stitching",
+    "facts": "Finished panel · loop pile, wrapped cord and padded discs on a printed ground",
+    "w": 1589,
+    "h": 1083,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "l9": {
+    "type": "image",
+    "src": "l9.webp?v=1",
+    "alt": "Detail of navy leather drawer fronts set with hand-placed antique-finish nails in interlacing arches, with a stitched border",
+    "facts": "Leather and hand-set nails · detail",
+    "w": 1120,
+    "h": 630,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "st1": {
+    "type": "image",
+    "src": "st1.webp?v=1",
+    "alt": "Malachite cut and set into a white marble ground",
+    "facts": "Malachite and marble · inlay",
+    "w": 600,
+    "h": 500,
+    "variants": [
+      480
+    ]
+  },
+  "st2": {
+    "type": "image",
+    "src": "st2.webp?v=1",
+    "alt": "Hardstone flowers and vines inlaid into a white marble wall panel, detail",
+    "facts": "Hardstone inlay on marble · wall panel, detail",
+    "w": 600,
+    "h": 540,
+    "variants": [
+      480
+    ]
+  },
+  "st3": {
+    "type": "image",
+    "src": "st3.webp?v=1",
+    "alt": "Mother-of-pearl laid piece by piece beside rose quartz petals on marble",
+    "facts": "Mother-of-pearl and rose quartz · detail",
+    "w": 400,
+    "h": 400,
+    "variants": []
+  },
+  "st4": {
+    "type": "image",
+    "src": "st4.webp?v=1",
+    "alt": "Selenite laid in radiating courses around a malachite centre on a door panel",
+    "facts": "Selenite and malachite · door panel, detail",
+    "w": 320,
+    "h": 320,
+    "variants": []
+  },
+  "st5": {
+    "type": "image",
+    "src": "st5.webp?v=1",
+    "alt": "Selenite set in raised relief on a wall installation, detail",
+    "facts": "Selenite in relief · wall installation, detail",
+    "w": 440,
+    "h": 430,
+    "variants": []
+  },
+  "st6": {
+    "type": "image",
+    "src": "st6.webp?v=1",
+    "alt": "Spotted onyx inlay set into a crystal quartz ground, detail",
+    "facts": "Onyx on crystal quartz · panel, detail",
+    "w": 500,
+    "h": 340,
+    "variants": [
+      480
+    ]
+  },
+  "st7": {
+    "type": "image",
+    "src": "st7.webp?v=1",
+    "alt": "Crystal ground with gilt scrollwork and turquoise inlay, detail",
+    "facts": "Crystal, gilt and turquoise · detail",
+    "w": 380,
+    "h": 260,
+    "variants": []
+  },
+  "st8": {
+    "type": "image",
+    "src": "st8.webp?v=1",
+    "alt": "Malachite quatrefoils set into a dark ground on a table top",
+    "facts": "Malachite quatrefoil · table top",
+    "w": 480,
+    "h": 320,
+    "variants": []
+  },
+  "st9": {
+    "type": "image",
+    "src": "st9.webp?v=1",
+    "alt": "Selenite laid in concentric courses on an oval dining table top",
+    "facts": "Selenite · oval table top",
+    "w": 290,
+    "h": 205,
+    "variants": []
+  },
+  "st10": {
+    "type": "image",
+    "src": "st10.webp?v=1",
+    "alt": "Lapis lazuli feathers with a mother-of-pearl line on marble, detail",
+    "facts": "Lapis lazuli and mother-of-pearl · detail",
+    "w": 260,
+    "h": 200,
+    "variants": []
+  },
+  "st11": {
+    "type": "image",
+    "src": "st11.webp?v=1",
+    "alt": "Green stone leaves edged in abalone shell on a rose quartz ground, detail",
+    "facts": "Rose quartz and abalone shell · detail",
+    "w": 200,
+    "h": 200,
+    "variants": []
   }
 }

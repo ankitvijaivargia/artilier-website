@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url><loc>https://artilier.co/</loc>
+    <image:image><image:loc>https://artilier.co/assets/media/hero-leather.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/wd1.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ck2.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/e9.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/l2.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st2.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/fo1.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/fo2.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/cn1.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/cn2.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/cn3.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/w8.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/e2.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/l1.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/l3.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/l5.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/l9.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st1.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st4.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st8.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st3.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/bs1.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/bs3.webp?v=2</image:loc></image:image>
+  </url>
+  <url><loc>https://artilier.co/collection/</loc>
     <image:image><image:loc>https://artilier.co/assets/media/cn1.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/cn2.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/cn3.webp?v=2</image:loc></image:image>
@@ -11,15 +33,17 @@
     <image:image><image:loc>https://artilier.co/assets/media/w13.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/w8.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/w19.webp?v=2</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/e2.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/bs1.webp?v=2</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/bs3.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/m2.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/m3.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/h3.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/h5.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ck1.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ct1.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/cf1.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/co1.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/cb1.webp?v=2</image:loc></image:image>
   </url>
-  <url><loc>https://artilier.co/collection/</loc>
+  <url><loc>https://artilier.co/collection/designs/</loc>
     <image:image><image:loc>https://artilier.co/assets/media/ck1.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/ck2.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/ck3.webp?v=2</image:loc></image:image>
@@ -128,6 +152,32 @@
   <url><loc>https://artilier.co/craft/</loc></url>
   <url><loc>https://artilier.co/embroidery/</loc>
     <image:image><image:loc>https://artilier.co/assets/media/e2.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/e9.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/e10.webp?v=1</image:loc></image:image>
+  </url>
+  <url><loc>https://artilier.co/leather/</loc>
+    <image:image><image:loc>https://artilier.co/assets/media/l1.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/l2.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/l3.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/l4.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/l9.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/l5.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/l6.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/l7.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/l8.webp?v=1</image:loc></image:image>
+  </url>
+  <url><loc>https://artilier.co/stone/</loc>
+    <image:image><image:loc>https://artilier.co/assets/media/st1.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st2.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st5.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st3.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st4.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st6.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st7.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st8.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st9.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st10.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st11.webp?v=1</image:loc></image:image>
   </url>
   <url><loc>https://artilier.co/embroidery/headboards/</loc></url>
   <url><loc>https://artilier.co/embroidery/fabrics/</loc></url>
