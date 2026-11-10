@@ -661,5 +661,71 @@
     "src": "l9.webp?v=1",
     "alt": "Detail of navy leather drawer fronts set with hand-placed antique-finish nails in interlacing arches, with a stitched border",
     "facts": "Leather and hand-set nails · detail"
+  },
+  "st1": {
+    "type": "image",
+    "src": "st1.webp?v=1",
+    "alt": "Malachite cut and set into a white marble ground",
+    "facts": "Malachite and marble · inlay"
+  },
+  "st2": {
+    "type": "image",
+    "src": "st2.webp?v=1",
+    "alt": "Hardstone flowers and vines inlaid into a white marble wall panel, detail",
+    "facts": "Hardstone inlay on marble · wall panel, detail"
+  },
+  "st3": {
+    "type": "image",
+    "src": "st3.webp?v=1",
+    "alt": "Mother-of-pearl laid piece by piece beside rose quartz petals on marble",
+    "facts": "Mother-of-pearl and rose quartz · detail"
+  },
+  "st4": {
+    "type": "image",
+    "src": "st4.webp?v=1",
+    "alt": "Selenite laid in radiating courses around a malachite centre on a door panel",
+    "facts": "Selenite and malachite · door panel, detail"
+  },
+  "st5": {
+    "type": "image",
+    "src": "st5.webp?v=1",
+    "alt": "Selenite set in raised relief on a wall installation, detail",
+    "facts": "Selenite in relief · wall installation, detail"
+  },
+  "st6": {
+    "type": "image",
+    "src": "st6.webp?v=1",
+    "alt": "Spotted onyx inlay set into a crystal quartz ground, detail",
+    "facts": "Onyx on crystal quartz · panel, detail"
+  },
+  "st7": {
+    "type": "image",
+    "src": "st7.webp?v=1",
+    "alt": "Crystal ground with gilt scrollwork and turquoise inlay, detail",
+    "facts": "Crystal, gilt and turquoise · detail"
+  },
+  "st8": {
+    "type": "image",
+    "src": "st8.webp?v=1",
+    "alt": "Malachite quatrefoils set into a dark ground on a table top",
+    "facts": "Malachite quatrefoil · table top"
+  },
+  "st9": {
+    "type": "image",
+    "src": "st9.webp?v=1",
+    "alt": "Selenite laid in concentric courses on an oval dining table top",
+    "facts": "Selenite · oval table top"
+  },
+  "st10": {
+    "type": "image",
+    "src": "st10.webp?v=1",
+    "alt": "Lapis lazuli feathers with a mother-of-pearl line on marble, detail",
+    "facts": "Lapis lazuli and mother-of-pearl · detail"
+  },
+  "st11": {
+    "type": "image",
+    "src": "st11.webp?v=1",
+    "alt": "Green stone leaves edged in abalone shell on a rose quartz ground, detail",
+    "facts": "Rose quartz and abalone shell · detail"
   }
 }

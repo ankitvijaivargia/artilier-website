@@ -40,6 +40,8 @@ nav.s{background:rgba(247,243,235,.94);backdrop-filter:blur(14px);padding:13px v
 .nl{display:flex;align-items:center;gap:34px;list-style:none}
 .nl a,.cta{white-space:nowrap}
 @media(max-width:1080px){.nl{gap:24px}}
+@media(max-width:1240px){.nl{gap:22px}}
+@media(max-width:1160px){.nl{gap:16px}}
 .nl a{font-size:12.5px;letter-spacing:.1em;color:var(--tx-2);padding:4px 0;border-bottom:1px solid transparent;transition:.3s}
 .nl a:hover{color:var(--ink);border-bottom-color:var(--rust)}
 .cta{display:inline-flex;align-items:center;gap:12px;background:var(--rust);color:var(--paper);padding:13px 22px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-family:var(--s-caps);transition:background .35s var(--e),transform .35s var(--e)}
