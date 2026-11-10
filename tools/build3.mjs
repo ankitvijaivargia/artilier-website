@@ -487,8 +487,8 @@ ${ctaBlock(UP2, 'contact/?type=hospitality', 'Start a Saudi project', [...market
 
 const uk = market({
   slug:'uk', crumb:'United Kingdom',
-  title:'Bespoke Rugs to the Trade — London & UK Designers | Artilier',
-  desc:'Bespoke hand-knotted, hand-tufted and flatweave rugs for UK interior designers — developed from your artwork, sampled, made to size. Trade only.',
+  title:'Bespoke Rugs & Carpets, Made to Measure — UK Trade | Artilier',
+  desc:'Bespoke and made-to-measure rugs and carpets for UK interior designers: hand-knotted, hand-tufted and flatweave, developed from your artwork. Trade only.',
   lb:'Trade · United Kingdom', h1:'Bespoke rugs<br>for ', h1it:'London practices.',
   lead:'For interior designers and architects in London and across the UK: bespoke rugs developed from your artwork or scheme in our New Delhi studio, proved in a strike-off, and made to the size each room needs — to the trade only.',
   meta:['To the trade','Made to size','Strike-off approved'],
@@ -497,6 +497,7 @@ const uk = market({
   body:`
 ${sec('Bespoke, to the trade', 'Your drawing,', 'developed properly.', `<div class="prose">
     <p>We work only with practices — no showroom retail, no consumer pricing. Send a painting, drawing, CAD file or colour scheme; we develop construction, yarn, colour separation and scale with you, then prove it in a woven strike-off before the rug is set on the loom. Collection designs can equally be re-coloured and re-scaled to your scheme.</p>
+    <p>On UK specifications “bespoke carpet”, “made-to-measure rug” and “tailor-made carpet” often describe the same thing: a hand-made piece made to a room’s size and layout. Our work is hand-made rugs in three constructions — <a href="${UP2}collection/hand-knotted/">hand-knotted</a>, <a href="${UP2}collection/hand-tufted/">hand-tufted</a> and <a href="${UP2}collection/flatweave/">flatweave</a> — made to measure from your drawing or floor plan.</p>
   </div>`)}
 ${sec('Typical briefs', 'Townhouses to', 'boutique hotels.', list([
   '<b>Residential</b> — townhouses, country houses and apartments, with rugs sized to the room and the furniture plan',

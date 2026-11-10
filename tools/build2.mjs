@@ -55,7 +55,7 @@ const relatedBlock = (links, { u = up, href = 'contact/', label = 'Start a proje
 const bespoke = page({
   slug:'bespoke', lb:'Bespoke rug development',
   title:'Bespoke Rugs from Your Artwork | Artilier Trade Studio',
-  desc:'Custom rugs developed from your artwork, CAD file or palette: construction, yarn, colour and scale resolved in sampling before production. Trade only.',
+  desc:'Custom and made-to-measure rugs developed from your artwork, CAD file or palette: construction, yarn, colour and scale resolved in sampling. Trade only.',
   h1:'Your artwork.<br>Our ', h1it:'development.',
   lead:`<p class="bd">Send artwork, a painting, a CAD file, a colour scheme, a reference image or a floor plan, and we develop it into a finished rug — construction, yarn, colour, scale and finish worked out with you, then proved in a sample before production.</p>
     <div class="wp-meta"><span><b>Made to order</b></span><span>Made to size</span><span>Custom colourways</span></div>`,

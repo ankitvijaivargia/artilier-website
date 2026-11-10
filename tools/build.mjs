@@ -411,8 +411,9 @@ const CAT_COPY = {
     yarn: 'Pile yarns are selected per design from New Zealand wool, hand-spun wool, wool-silk blends, bamboo silk and developed blends; pile heights and carving are drawn into the specification.'
   },
   'flatweave': {
-    desc: n => `${n} flatweave rug designs for graphic work, layering and low-profile rooms, woven to order, sized and coloured to the project. Trade only, New Delhi.`,
-    when: 'Specify flatweave for graphic and geometric work, for layering, and for rooms where a pile would sit too high. It is lower and lighter underfoot than a pile rug, and reversible in some constructions.',
+    title: 'Custom Flat Weave Rugs — Flatweave, Made to Size | Artilier',
+    desc: n => `Custom flat weave rugs: ${n} flatweave designs for graphic work, layering and low-profile rooms, woven to order and sized and coloured to the project. Trade only.`,
+    when: 'Flatweave — often written flat weave — is woven on the loom with no pile. Specify it for graphic and geometric work, for layering, and for rooms where a pile would sit too high. It is lower and lighter underfoot than a pile rug, and reversible in some constructions.',
     yarn: 'Flatweaves are specified in cotton, jute, allo / hemp and developed blends, chosen for the surface the room needs.'
   }
 };
@@ -439,7 +440,7 @@ function categoryPage(cat) {
     { ...breadcrumb(crumbs), '@id':`${url}#breadcrumb` }
   ]);
   return head({
-    title:`${titleCaseC(coll.name)} Rugs — Custom Designs, Made to Size | Artilier`,
+    title:CAT_COPY[cat.slug].title || `${titleCaseC(coll.name)} Rugs — Custom Designs, Made to Size | Artilier`,
     desc:CAT_COPY[cat.slug].desc(ds.length),
     canonical:url, up, schema
   }) + nav(up) + crumb(crumbs.map(c=>({name:c.name,href:c.href}))) + `
