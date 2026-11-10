@@ -20,6 +20,9 @@
     <image:image><image:loc>https://artilier.co/assets/media/h5.webp?v=2</image:loc></image:image>
   </url>
   <url><loc>https://artilier.co/collection/</loc>
+    <image:image><image:loc>https://artilier.co/assets/media/cn1.webp?v=2</image:loc></image:image>
+  </url>
+  <url><loc>https://artilier.co/collection/designs/</loc>
     <image:image><image:loc>https://artilier.co/assets/media/ck1.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/ck2.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/ck3.webp?v=2</image:loc></image:image>
