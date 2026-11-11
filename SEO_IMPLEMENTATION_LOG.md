@@ -341,3 +341,18 @@ Week-2 items from the 14 Oct audit roadmap that need no owner decision (T-06 and
 | JS cache versions: `content.js` v5, `enquiry.js` v6 | generators, hand-maintained pages | — |
 
 **Not added:** Pinterest (no ARTILIER account could be confirmed; owner to check). Instagram already reads "ARTILIER · Bespoke Craft" with artilier.co in the bio.
+
+## 19. Saudi and UAE trade pages (11 Nov 2026) — branch `seo/gulf-trade-pages` (stacked on §18)
+
+**Why (Measured, Search Console 4 Sep–9 Nov):** /trade/saudi-arabia/ — "custom rugs riyadh" 30 impressions at 18.1, "tailor made carpets" 8 at 21.6. /trade/uae/ — 69 UAE impressions at 40.3 for "bespoke rugs" (30.2), "made to measure rugs", "bespoke carpets", "tailor made carpets". Neither page had a majlis, production or shipping section.
+
+| Change | Pages | Source of every claim |
+|---|---|---|
+| Titles: "Custom Rugs & Carpets in Riyadh and Saudi Arabia"; "Bespoke Rugs & Tailor-Made Carpets, Dubai & UAE"; descriptions name majlis and tailor-made carpets | both | Search Console queries |
+| Gulf terminology paragraph: tailor-made carpet, bespoke carpet, made-to-measure rug, bespoke rug; wall-to-wall only "confirmed at brief" | both | Existing UK/UAE wording; broadloom not claimed (owner §I open) |
+| "Majlis rugs" section: drawn from the floor plan and seating layout, construction from traffic, what to send, three designs linked | both | Existing published statements (made to the room, size limits confirmed before sampling, unsuitable materials named) |
+| "Working with your studio": collection, own artwork, co-authored design; contracting through Art Avenue Pvt. Ltd. | both | /collaborations/, /trade/ |
+| "Production and shipping": strike-off 2–3 weeks; 6–12 weeks, up to 6 months; checked against the strike-off; rolled and wrapped; USD/EUR ex-works, FOB/DDP on request; duties depend on the importer of record | both | /hospitality/, /process/, OWNER_INPUT_REQUIRED §A |
+| Saudi FAQ: majlis in Riyadh | Saudi | as above |
+
+No shipping costs, customs arrangements or delivery dates are stated.

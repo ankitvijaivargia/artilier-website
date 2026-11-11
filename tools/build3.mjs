@@ -412,10 +412,35 @@ const common = {
   time: ['What are the lead times, and is there a minimum?', 'Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases. There is no minimum order — a single rug is welcome. Costing follows once construction, materials, dimensions and sampling are understood.']
 };
 
+/* Gulf sections shared by the UAE and Saudi pages (published facts only: no costs, duties or delivery promises). */
+const majlisSec = (dark) => sec('Majlis rugs', 'Made to the room,', 'not to a size.', `<div class="cols2">
+    <div class="prose">
+      <p>A majlis is planned around its seating, so a rug that fits it is drawn from the floor plan rather than chosen from standard sizes. We work from your plan and furniture layout: the rug’s outline, borders and pattern scale are set to the room, then approved in sample before production.</p>
+      <p>Majlis rooms take heavy use when guests gather. We recommend the construction, yarn and pile from the traffic the room will take, and say plainly where a material is unsuited to it.</p>
+    </div>
+    <div class="prose">
+      <h3>What to send for a majlis</h3>
+      <p>The floor plan with the seating layout, the room’s dimensions, the scheme or artwork, and whether the room is for family or formal guests. Any size limit for the chosen construction is confirmed before sampling.</p>
+      <p>Designs to start from: <a href="${UP2}collection/vartul/">Vartul</a>, <a href="${UP2}collection/kalp/">Kalp</a> and <a href="${UP2}collection/reth/">Reth</a>, re-scaled and re-coloured to the scheme — or a rug developed from <a href="${UP2}bespoke/">your own artwork</a>.</p>
+    </div>
+  </div>`, { dark });
+const gulfTermsPara = '<p>On Gulf specifications “tailor-made carpet”, “bespoke carpet”, “made-to-measure rug” and “bespoke rug” often describe the same thing: a hand-made piece made to a room’s size and layout. Our work is hand-made rugs in three constructions — <a href="'+UP2+'collection/hand-knotted/">hand-knotted</a>, <a href="'+UP2+'collection/hand-tufted/">hand-tufted</a> and <a href="'+UP2+'collection/flatweave/">flatweave</a> — and we recommend the construction from the artwork, the detail it carries and the traffic the room will take. If a specification calls for wall-to-wall carpet, say so in the brief and we will confirm whether it suits our constructions.</p>';
+const shipSec = (dark) => sec('Production and shipping', 'From New Delhi', 'to site.', `<div class="proc">
+    <div class="pstep"><span class="pn">01</span><span class="pt">Strike-off</span><span class="pd">2–3 weeks once the design is approved; its cost is credited against the order.</span></div>
+    <div class="pstep"><span class="pn">02</span><span class="pt">Production</span><span class="pd">Usually 6–12 weeks from strike-off approval, up to six months in some cases. A delivery date is confirmed once the specification has been reviewed.</span></div>
+    <div class="pstep"><span class="pn">03</span><span class="pt">Quality check</span><span class="pd">Every finished rug is checked against its approved strike-off in New Delhi before dispatch.</span></div>
+    <div class="pstep"><span class="pn">04</span><span class="pt">Dispatch</span><span class="pd">Usually shipped rolled and wrapped, with export documentation and freight coordinated through our logistics partners.</span></div>
+  </div>
+  <p class="proc-note">Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Duties and import requirements depend on the project’s importer of record and are confirmed for each project. Installation on site is by the project’s appointed contractor.</p>`, { dark });
+const studioSec = (dark) => sec('Working with your studio', 'Your design,', 'our making.', `<div class="prose">
+    <p>We work trade only, with interior designers, architects and hospitality teams, from a single rug to a multi-room schedule. A rug can start from a design in <a href="${UP2}collection/designs/">the collection</a>, re-scaled and re-coloured to your scheme, from your own artwork, or as a <a href="${UP2}collaborations/">co-authored design</a> credited to your studio.</p>
+    <p>Orders are contracted, invoiced and exported through Art Avenue Pvt. Ltd., our manufacturing company in New Delhi, so you have one point of contact from brief to dispatch.</p>
+  </div>`, { dark });
+
 const uae = market({
   slug:'uae', crumb:'UAE',
-  title:'Bespoke Rugs & Carpets for UAE Interior Designers | ARTILIER',
-  desc:'Custom rugs for villas, residences and hospitality in Dubai and Abu Dhabi — developed from your scheme in New Delhi and made to size. Trade only.',
+  title:'Bespoke Rugs & Tailor-Made Carpets, Dubai & UAE | ARTILIER',
+  desc:'Bespoke rugs and tailor-made carpets for villas, majlis and hospitality in Dubai and Abu Dhabi, developed from your scheme and made to size. Trade only.',
   lb:'Trade · United Arab Emirates', h1:'Bespoke rugs for<br>', h1it:'Dubai and Abu Dhabi.',
   lead:'For interior designers, architects and hospitality teams in Dubai and Abu Dhabi: rugs developed from your scheme or artwork in our New Delhi studio, approved in sample, and made to the dimensions of each room.',
   meta:['UAE projects','Made to size','Sampled for approval'],
@@ -423,7 +448,7 @@ const uae = market({
   serviceDesc:'Custom hand-knotted, hand-tufted and flatweave rugs for residential and hospitality projects in Dubai, Abu Dhabi and the wider UAE, developed and sampled in New Delhi and made to each room’s dimensions.',
   body:`
 ${sec('Rugs or carpets', 'Brief us in the word', 'your drawings use.', `<div class="prose">
-    <p>On UAE specifications, “bespoke carpet” and “bespoke rug” are often used for the same thing: a hand-made piece made to a room’s size and layout. Our work is hand-made rugs in three constructions — <a href="${UP2}collection/hand-knotted/">hand-knotted</a>, <a href="${UP2}collection/hand-tufted/">hand-tufted</a> and <a href="${UP2}collection/flatweave/">flatweave</a> — and we recommend the construction from the artwork, the detail it carries and the traffic the room will take.</p>
+    ${gulfTermsPara}
   </div>`)}
 ${sec('Typical briefs', 'Large rooms,', 'exact sizes.', list([
   '<b>Villas and private residences</b> — living and reception rooms, majlis, bedrooms and dining rooms, each rug made to the room rather than to a standard size',
@@ -431,31 +456,34 @@ ${sec('Typical briefs', 'Large rooms,', 'exact sizes.', list([
   '<b>Boutique hospitality</b> — suites, lobbies and restaurants, often as a schedule of several rug types. See <a href="'+UP2+'hospitality/">hospitality</a>',
   '<b>Rugs from your own artwork</b> — a painting, pattern or CAD file developed into a finished rug. See <a href="'+UP2+'bespoke/">bespoke development</a>'
 ]), { dark:true })}
+${majlisSec(false)}
+${studioSec(true)}
+${shipSec(false)}
 ${sec('Working together', 'An hour and a half', 'apart.', `<div class="prose">
     <p>New Delhi (IST, UTC+5:30) is one hour thirty minutes ahead of the UAE (GST, UTC+4), and the UAE working week largely runs Monday to Friday — so most of a Dubai or Abu Dhabi working day overlaps with ours. Briefs, drawings and approvals move by email, and for a quick question you can also <a href="https://wa.me/919828030095" target="_blank" rel="noopener">WhatsApp the studio</a>; samples and strike-offs are approved in the hand before production.</p>
-  </div>`)}
+  </div>`, { dark:true })}
 ${sec('What to send', 'A useful', 'UAE brief.', list([
   '<b>Rug schedule</b> — room, quantity and size, in metres or centimetres',
   '<b>Design intent</b> — artwork, scheme or the collection designs you are considering',
   '<b>Application</b> — where each rug sits (majlis, bedroom, lobby…) so material and construction suit the traffic',
   '<b>Delivery</b> — emirate and city, the site contact or fit-out contractor, and the target handover date'
-]), { dark:true })}
+]))}
 ${sec('Questions', 'From UAE', 'practices.', qa([
   common.samples,
   common.time,
   common.pricing,
   ['Can you make a rug for a majlis or a very large room?', 'Every rug is made to order, so the size follows the room rather than a standard size. Send the floor plan: proportions are resolved with you before sampling, and any size limit for the chosen construction is confirmed at that stage.'],
-  ['Carpet or rug — does the wording matter?', 'No. Brief us in the term your drawings use; we confirm the construction, size and finish in the specification.']]))}
+  ['Carpet or rug — does the wording matter?', 'No. Brief us in the term your drawings use — tailor-made carpet, bespoke rug or made-to-measure rug; we confirm the construction, size and finish in the specification.']]), { dark:true })}
 ${ctaBlock(UP2, 'contact/?type=residential', 'Start a UAE project', [...marketLinks('uae'), ['hospitality/','Hospitality'], ['guides/briefing-a-bespoke-rug/','Briefing guide']])}`
 });
 
 const ksa = market({
   slug:'saudi-arabia', crumb:'Saudi Arabia',
-  title:'Custom Rugs & Carpets for Saudi Arabia Projects | ARTILIER',
-  desc:'Bespoke rugs for residences and hospitality in Riyadh, Jeddah and AlUla — developed from your scheme, sampled for approval, made to size. Trade only.',
+  title:'Custom Rugs & Carpets in Riyadh and Saudi Arabia | ARTILIER',
+  desc:'Custom rugs and tailor-made carpets for Riyadh, Jeddah and AlUla residences, majlis and hospitality, sampled for approval and made to size. Trade only.',
   lb:'Trade · Saudi Arabia', h1:'Custom rugs for<br>', h1it:'Riyadh, Jeddah and AlUla.',
-  lead:'For interior designers, architects and hospitality teams working in Saudi Arabia: rugs developed from your scheme or artwork in our New Delhi studio, approved in sample, and made to the dimensions of each room.',
-  meta:['Saudi projects','Residential & hospitality','Sampled for approval'],
+  lead:'For interior designers, architects and hospitality teams working in Riyadh and across Saudi Arabia: custom rugs and tailor-made carpets developed from your scheme or artwork in our New Delhi studio, approved in sample, and made to the dimensions of each room.',
+  meta:['Riyadh · Jeddah · AlUla','Residential & hospitality','Sampled for approval'],
   serviceName:'Custom rugs for Saudi Arabia design projects', area:[country('Saudi Arabia','SA')],
   serviceDesc:'Custom hand-knotted, hand-tufted and flatweave rugs for residential and hospitality projects in Riyadh, Jeddah, AlUla and across Saudi Arabia, developed and sampled in New Delhi and made to each room’s dimensions.',
   body:`
@@ -466,22 +494,26 @@ ${sec('Project types', 'Residences,', 'hospitality, destinations.', list([
 ]))}
 ${sec('Planning', 'Long programmes,', 'early schedules.', `<div class="prose">
     <p>Larger Saudi projects often run on long programmes with several rug types per building. Send the full rug schedule as early as you can: sampling can then be planned against the programme — including any mock-up room — and each rug type approved in the hand before production begins.</p>
-    <p>On Saudi specifications “carpet” is common, particularly in hospitality. Our work is hand-made rugs in three constructions — hand-knotted, hand-tufted and flatweave — made to each room’s size.</p>
+    ${gulfTermsPara}
   </div>`, { dark:true })}
+${majlisSec(false)}
+${studioSec(true)}
+${shipSec(false)}
 ${sec('Working together', 'Two and a half', 'hours apart.', `<div class="prose">
     <p>Saudi Arabia (AST, UTC+3) is two hours thirty minutes behind New Delhi (IST, UTC+5:30), and the Saudi working week runs Sunday to Thursday. Briefs, drawings and approvals move by email, and for a quick question you can also <a href="https://wa.me/919828030095" target="_blank" rel="noopener">WhatsApp the studio</a>; samples and strike-offs are approved in the hand before production.</p>
-  </div>`)}
+  </div>`, { dark:true })}
 ${sec('What to send', 'A useful', 'Saudi brief.', list([
   '<b>Rug schedule</b> — by building or phase: room, quantity and size in metres or centimetres',
   '<b>Design intent</b> — artwork, scheme or collection designs under consideration',
   '<b>Specification requirements</b> — any performance, cleaning or documentation standards the project sets',
   '<b>Programme</b> — mock-up date, delivery city and target handover'
-]), { dark:true })}
+]))}
 ${sec('Questions', 'From Saudi', 'practices.', qa([
   ['Can sampling be planned around a mock-up room?', 'Yes. Give us the mock-up date and the rug types it needs; yarn samples, colour trials and strike-offs are scheduled back from it and approved in the hand.'],
   ['Can one supplier cover several rug types?', 'Yes. Hand-knotted, hand-tufted and flatweave rugs can sit in one schedule, developed by ARTILIER and contracted, invoiced and exported through one entity, Art Avenue Pvt. Ltd.'],
+  ['Can you make a rug for a majlis in Riyadh?', 'Yes. Send the floor plan with the seating layout: the rug is drawn to the room, approved in sample, and made to size. Any size limit for the chosen construction is confirmed before sampling.'],
   common.time,
-  common.pricing]))}
+  common.pricing]), { dark:true })}
 ${ctaBlock(UP2, 'contact/?type=hospitality', 'Start a Saudi project', [...marketLinks('saudi-arabia'), ['hospitality/','Hospitality'], ['guides/briefing-a-bespoke-rug/','Briefing guide']])}`
 });
 
