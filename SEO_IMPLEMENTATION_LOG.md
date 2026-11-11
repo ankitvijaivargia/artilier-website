@@ -356,3 +356,17 @@ Week-2 items from the 14 Oct audit roadmap that need no owner decision (T-06 and
 | Saudi FAQ: majlis in Riyadh | Saudi | as above |
 
 No shipping costs, customs arrangements or delivery dates are stated.
+
+## 20. Stone page (11 Nov 2026) — branch `seo/stone-page` (stacked on §19)
+
+**Why:** /stone/ had no Search Console impressions (live after 26 Oct). Google autocomplete in the UK, US and UAE (11 Nov) shows demand for stone inlay table tops, semi-precious stone table tops and mother-of-pearl inlay furniture; Google Trends UK puts "mother of pearl inlay" highest of the stone and embroidery terms compared.
+
+| Change | Source of every claim |
+|---|---|
+| Work grid renamed to the searched terms: inlaid table tops, furniture surfaces, door and cabinet panels (stone, mother-of-pearl or abalone), wall panels, relief pieces, objects | Same items as before |
+| New "Mother-of-pearl inlay" section | Materials list and the page's own photographs (st3, st10, st11 captions) |
+| New "Architectural applications" section: walls, door leaves, joinery; installation by the client's contractor | Existing work grid and installation statement |
+| FAQ: mother-of-pearl; bespoke inlaid table tops | As above |
+| Meta description names mother-of-pearl, table tops, furniture surfaces, walls, doors, joinery | — |
+
+No new URL. No size, weight, price or project claims. Owner still to confirm: largest single piece, who cuts and sets the stone, finished pieces that may be named.
