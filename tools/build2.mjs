@@ -1,5 +1,5 @@
 /**
- * Artilier — Phase 2, part 2: commercial pages, pre-rendered collection, sitemap.
+ * ARTILIER — Phase 2, part 2: commercial pages, pre-rendered collection, sitemap.
  * Every factual statement below is taken from existing homepage copy or
  * repository data. Minimum order, strike-off timing and lead-time range are owner-confirmed (10 Oct 2026). Nothing about certifications, client
  * names, countries served or production locations is asserted.
@@ -13,7 +13,7 @@ const page = ({ slug, title, desc, h1, h1it, lb, lead, body, service, schemaExtr
   const url = `${HOST}/${slug}/`;
   const pu = '../'.repeat(slug.split('/').length);
   const crumbs = [
-    { name:'Artilier', href:home(pu), abs:`${HOST}/` },
+    { name:'ARTILIER', href:home(pu), abs:`${HOST}/` },
     ...parents.map(([n, sl]) => ({ name:n, href:`${pu}${sl}/`, abs:`${HOST}/${sl}/` })),
     { name:crumbName || lb, href:url, abs:url }
   ];
@@ -54,7 +54,7 @@ const relatedBlock = (links, { u = up, href = 'contact/', label = 'Start a proje
 /* ── /bespoke/ ─────────────────────────────────────────────────────── */
 const bespoke = page({
   slug:'bespoke', lb:'Bespoke rug development',
-  title:'Bespoke Rugs from Your Artwork | Artilier Trade Studio',
+  title:'Bespoke Rugs from Your Artwork | ARTILIER Trade Studio',
   desc:'Custom and made-to-measure rugs developed from your artwork, CAD file or palette: construction, yarn, colour and scale resolved in sampling. Trade only.',
   h1:'Your artwork.<br>Our ', h1it:'development.',
   lead:`<p class="bd">Send artwork, a painting, a CAD file, a colour scheme, a reference image or a floor plan, and we develop it into a finished rug — construction, yarn, colour, scale and finish worked out with you, then proved in a sample before production.</p>
@@ -117,10 +117,10 @@ ${relatedBlock([['process/','The full process'],['materials/','Material selectio
 /* ── /trade/ ───────────────────────────────────────────────────────── */
 const trade = page({
   slug:'trade', lb:'Trade',
-  title:'Trade Rugs for Interior Designers & Architects | Artilier',
+  title:'Trade Rugs for Interior Designers & Architects | ARTILIER',
   desc:'Custom rugs for designers and architects on high-end residential and villa projects. One studio from drawing to export, contracted by Art Avenue Pvt. Ltd.',
   h1:'A design-led studio,<br>working ', h1it:'trade only.',
-  lead:`<p class="bd">Artilier is built around the relationship between art, material and making. We begin with rugs: developed and made for interior designers, architects and design practices working on high-end residential, villa and boutique hospitality projects.</p>
+  lead:`<p class="bd">ARTILIER is built around the relationship between art, material and making. We begin with rugs: developed and made for interior designers, architects and design practices working on high-end residential, villa and boutique hospitality projects.</p>
     <div class="wp-meta"><span><b>Trade only</b></span><span>Designers · architects</span><span>Made to order</span></div>`,
   service:{ name:'Trade rug programme', serviceType:'Trade rug supply and development for design practices',
     description:'Rug development, specification, sampling, production, quality control and export coordination for interior designers, architects and design practices. Every rug is made to order in the construction, material, colourway and dimensions the project needs.' },
@@ -140,7 +140,7 @@ const trade = page({
 </section>
 <section class="sec dark">
   <div class="sec-hd"><div><span class="lb">Contracting</span><h2 class="d2">One supplier,<br>one point of <span class="it">coordination.</span></h2></div>
-  <p class="bd">Artilier is the trade studio of Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Orders are contracted, invoiced and exported through that entity — one supplier, one point of coordination, established export documentation.</p></div>
+  <p class="bd">ARTILIER is the trade studio of Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Orders are contracted, invoiced and exported through that entity — one supplier, one point of coordination, established export documentation.</p></div>
   <div class="facts">
     <div><b>Clients</b><span>Trade only — designers · architects · galleries</span></div>
     <div><b>Sectors</b><span>High-end residential · villas · boutique hospitality</span></div>
@@ -173,8 +173,8 @@ ${relatedBlock([['bespoke/','Bespoke development'],['hospitality/','Hospitality 
 /* ── /materials/ ───────────────────────────────────────────────────── */
 const materials = page({
   slug:'materials', lb:'Rug materials',
-  title:'Rug materials — wool, silk blends, cotton, jute & hemp | Artilier',
-  desc:'New Zealand wool, wool-silk, bamboo silk, cotton, jute and hemp: how Artilier selects yarn for each rug design and application, approved before weaving.',
+  title:'Rug materials — wool, silk blends, cotton, jute & hemp | ARTILIER',
+  desc:'New Zealand wool, wool-silk, bamboo silk, cotton, jute and hemp: how ARTILIER selects yarn for each rug design and application, approved before weaving.',
   h1:'Material selection is<br>part of the ', h1it:'design.',
   lead:`<p class="bd">Yarn decides how a rug reads long before the colour does — how light moves across the pile, how the surface wears, how sharply a detail holds. We select and blend for the design and the application, not from a standard menu.</p>
     <p class="bd" style="margin-top:16px">Yarn, spin and dye lot are approved in the hand against your scheme before a loom is set. Where a material is unsuitable for the traffic a room will take, we say so.</p>`,
@@ -213,7 +213,7 @@ const PROC = [
 ];
 const process = page({
   slug:'process', lb:'Process',
-  title:'How a custom rug is made — our six-stage process | Artilier',
+  title:'How a custom rug is made — our six-stage process | ARTILIER',
   desc:'How a custom rug is made in six stages, from artwork to floor: understand, develop, sample, make, check, deliver. For interior designers and architects.',
   h1:'From artwork<br>to ', h1it:'floor.',
   lead:`<p class="bd">Six stages, adapted to the rug. Some commissions move quickly; others need more development. We keep the process transparent, with approvals and progress updates at the stages that matter.</p>
@@ -240,10 +240,10 @@ ${relatedBlock([['bespoke/','Start from your artwork'],['materials/','Material s
 /* ── /craft/ ───────────────────────────────────────────────────────── */
 const craft = page({
   slug:'craft', lb:'The craft',
-  title:'Handmade rugs and embroidery from India — the craft | Artilier',
-  desc:'Hand-knotting, hand-tufting, flatweaving and hand embroidery as Artilier practises them: developed and checked in New Delhi, made in workshops across India.',
+  title:'Handmade rugs and embroidery from India — the craft | ARTILIER',
+  desc:'Hand-knotting, hand-tufting, flatweaving and hand embroidery as ARTILIER practises them: developed and checked in New Delhi, made in workshops across India.',
   h1:'Made by hand,<br>and it ', h1it:'shows.',
-  lead:`<p class="bd">Artilier is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. We work in two disciplines — rugs and embroidery — and everything we make is made by hand.</p>
+  lead:`<p class="bd">ARTILIER is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. We work in two disciplines — rugs and embroidery — and everything we make is made by hand.</p>
     <div class="wp-meta"><span><b>New Delhi</b></span><span>Made across India</span><span>Made to order</span></div>`,
   body:`
 <section class="sec">
@@ -267,11 +267,11 @@ const craft = page({
 </section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">The second discipline</span><h2 class="d2">Embroidery,<br>worked by <span class="it">hand.</span></h2></div>
-  <p class="bd">The same model applied to thread: hand embroidery for wall panels, framed art, cushions, <a href="${up}embroidery/headboards/">headboards</a>, upholstery panels and drapery, from our designs or developed from your artwork, and sampled where the project requires it. <a href="${up}embroidery/">Embroidery at Artilier</a>.</p></div>
+  <p class="bd">The same model applied to thread: hand embroidery for wall panels, framed art, cushions, <a href="${up}embroidery/headboards/">headboards</a>, upholstery panels and drapery, from our designs or developed from your artwork, and sampled where the project requires it. <a href="${up}embroidery/">Embroidery at ARTILIER</a>.</p></div>
 </section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">Beyond</span><h2 class="d2">Built around making,<br>not one <span class="it">product.</span></h2></div>
-  <p class="bd">Artilier is built around art, material and making rather than around a single product. Rugs and embroidery are where the studio works today; design objects follow. The constant is the model: made to order by hand, developed from Delhi, sold trade only. <a href="${up}trade/">How we work with practices</a>.</p></div>
+  <p class="bd">ARTILIER is built around art, material and making rather than around a single product. Rugs and embroidery are where the studio works today; design objects follow. The constant is the model: made to order by hand, developed from Delhi, sold trade only. <a href="${up}trade/">How we work with practices</a>.</p></div>
 </section>
 ${relatedBlock([['collection/designs/','The collection'],['embroidery/','Embroidery'],['leather/','Leather'],['stone/','Stone'],['process/','The process'],['materials/','Materials'],['bespoke/','Bespoke development']])}`
 });
@@ -279,7 +279,7 @@ ${relatedBlock([['collection/designs/','The collection'],['embroidery/','Embroid
 /* ── embroidery pages ──────────────────────────────────────────────── */
 /* Wording source: Stage 5 briefs A–C (v3) and Stage 6 corrections C-05/C-09,
    built from owner facts of 10–11 Oct 2026:
-   - wall panels are made and SUPPLIED, never installed by Artilier;
+   - wall panels are made and SUPPLIED, never installed by ARTILIER;
    - board-mounted (MDF/timber) panels: standard maximum 8 ft × 4 ft; fabric-only
      panels may be folded where the work allows; joins are project-dependent;
    - no fixed minimum for panels, headboards (both routes) or fabric;
@@ -328,10 +328,10 @@ const EMB_FAMILY = [['embroidery/','Embroidered wall panels'],['embroidery/headb
 /* ── /embroidery/ — Brief A + C-05 ─────────────────────────────────── */
 const embroidery = page({
   slug:'embroidery', lb:'Embroidery · Drawn in thread', crumbName:'Embroidery',
-  title:'Embroidered Wall Panels & Wallcoverings | Artilier',
+  title:'Embroidered Wall Panels & Wallcoverings | ARTILIER',
   desc:'Bespoke hand-embroidered wall panels for residential and hospitality interiors, developed from your drawing or ours and supplied to your installer.',
   h1:'Embroidered wall panels,<br>made for the ', h1it:'room.',
-  lead:`<p class="bd">Artilier develops, makes and supplies bespoke embroidered wall panels for interior designers and architects working on residential and hospitality interiors — a single framed piece, a run of panels set into joinery, or panels planned across a room from wall to wall. Each design starts from a drawing, ours or yours. ${TXT.supply}</p>
+  lead:`<p class="bd">ARTILIER develops, makes and supplies bespoke embroidered wall panels for interior designers and architects working on residential and hospitality interiors — a single framed piece, a run of panels set into joinery, or panels planned across a room from wall to wall. Each design starts from a drawing, ours or yours. ${TXT.supply}</p>
     <div class="wp-meta"><span><b>Worked on the frame</b></span><span>From your drawing or ours</span><span>No fixed minimum</span></div>`,
   service:{ name:'Bespoke embroidered wall panels', serviceType:'Custom embroidered wall panels and wallcoverings — design development, manufacture and supply',
     description:'Development, hand embroidery and supply of bespoke wall panels and wallcoverings for residential and hospitality interiors, from the studio’s designs or a designer’s own drawing. Panels are supplied fabric-only or board-mounted, as a single piece or in sections; installation is by the client’s appointed installer or contractor.' },
@@ -429,7 +429,7 @@ ${relatedBlock([['embroidery/headboards/','Embroidered headboards'],['embroidery
 const U2 = '../../';
 const headboards = page({
   slug:'embroidery/headboards', lb:'Embroidery · Headboards', crumbName:'Headboards', parents:[['Embroidery','embroidery']],
-  title:'Embroidered Headboards for Hotels & Residences | Artilier',
+  title:'Embroidered Headboards for Hotels & Residences | ARTILIER',
   desc:'Embroidered headboards made to your design: complete upholstered headboards, or embroidered panels for your upholsterer. Repeat production for hotels.',
   h1:'Embroidered<br>', h1it:'headboards.',
   lead:`<p class="bd">Bespoke headboards developed from your drawing or from our embroidery, for hotel rooms and private residences. We work with interior designers and hospitality design teams from first drawing to the finished piece.</p>
@@ -483,7 +483,7 @@ ${relatedBlock([['embroidery/','Embroidered wall panels'],['embroidery/fabrics/'
 /* ── /embroidery/fabrics/ — Brief C ────────────────────────────────── */
 const fabrics = page({
   slug:'embroidery/fabrics', lb:'Embroidery · Fabric', crumbName:'Fabric', parents:[['Embroidery','embroidery']],
-  title:'Embroidered Upholstery & Curtain Fabric | Artilier',
+  title:'Embroidered Upholstery & Curtain Fabric | ARTILIER',
   desc:'Embroidered furnishing fabric for upholstery and curtains, developed to your design. Widths usually up to 60 in. No fixed minimum. For the trade.',
   h1:'Embroidered furnishing<br>', h1it:'fabric.',
   lead:`<p class="bd">Embroidered fabric by the metre for upholstery, curtains and soft furnishings, developed for a specific project. Furnishing fabric only — we do not supply dress or apparel fabric.</p>
@@ -575,7 +575,7 @@ ci = ci.replace(/<main id="collection-root"[\s\S]*?<\/main>/,
   `<main id="collection-root" data-category="rugs" data-prerendered="1">\n${sections}\n</main>`);
 ci = ci.replace(/<div class="filt-in" id="filt-in" role="group" aria-label="Filter the collection">[\s\S]*?<\/div>/,
   `<div class="filt-in" id="filt-in" role="group" aria-label="Filter the collection">${filtBtns}</div>`);
-ci = ci.replace('slots.js?v=3','slots.js?v=4').replace('content.js?v=2','content.js?v=4');
+ci = ci.replace('slots.js?v=3','slots.js?v=4').replace('content.js?v=5','content.js?v=5');
 writeFileSync('collection/designs/index.html', ci);
 console.log('pre-rendered collection/designs/index.html');
 

@@ -325,3 +325,19 @@ Week-2 items from the 14 Oct audit roadmap that need no owner decision (T-06 and
 | robots.txt check parses user-agent groups (`urllib.robotparser`); ERROR only if Googlebot or Bingbot cannot fetch `/`; WARN if no `Sitemap:` line | `tools/seo_monitor.py` | Removes the false alarm and catches the real regression (missing Sitemap line) | Live text → no error, one warning; repository file → clean; `User-agent: * / Disallow: /` → errors for both bots |
 
 **Owner action (Cloudflare dashboard, not code).** Either keep the managed robots.txt and accept the missing Sitemap line (the sitemap stays submitted in Search Console and Bing, so discovery is unaffected), or turn the managed robots.txt off and serve the repository file. Lighthouse's `robots-txt` audit also fails on the managed file because `Content-Signal` is not a standard directive; that lowers the lab SEO score but does not affect Google crawling.
+
+## 18. Brand entity: ARTILIER naming, logo, verified profiles (11 Nov 2026) — branch `brand/organization-naming`
+
+**Why (Measured, 11 Nov):** Google rewrites "artilier" to "atelier" in UK and UAE checks; Search Console shows 1 external link. The site called the brand "Artilier" while outreach, LinkedIn and Instagram say "ARTILIER". Organization `sameAs` listed Instagram only; the logo was the 180 px app icon.
+
+| Change | Files | Evidence |
+|---|---|---|
+| Brand name "ARTILIER" in all titles, Open Graph site name, breadcrumbs, schema and copy (the header logo already displayed in capitals through CSS). `alternateName` keeps "Artilier" | generators, `content/*.json`, hand-maintained pages, `content.js` (document title), `enquiry.js` (email subject) | No URL, email or file name changes |
+| Organization `sameAs`: LinkedIn company page added | `tools/build.mjs` | Verified 11 Nov: linkedin.com/company/artilier, website artilier.co, 46 followers, Ankit admin |
+| Founder `sameAs`: Ankit's LinkedIn profile | `tools/build.mjs`, `tools/build3.mjs` (About page) | Profile appears in Google for "artilier" |
+| Logo: the site's own "A" mark at 512 × 512 px, with width and height | `assets/brand/artilier-logo-512.png` (rendered from `favicon.svg`) | Same mark as the favicon and app icon; nothing new drawn |
+| WebSite `name` ARTILIER, `alternateName` Artilier | `tools/build.mjs` | Helps Google's site-name display |
+| Leather and stone pages now share the build's nav, footer and Organization entity (`syncShell`) | `tools/build3.mjs` | Diff on both pages limited to the name and the schema |
+| JS cache versions: `content.js` v5, `enquiry.js` v6 | generators, hand-maintained pages | — |
+
+**Not added:** Pinterest (no ARTILIER account could be confirmed; owner to check). Instagram already reads "ARTILIER · Bespoke Craft" with artilier.co in the bio.

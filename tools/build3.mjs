@@ -1,5 +1,5 @@
 /**
- * Artilier — Phase 3: conversion, international and indexation pages.
+ * ARTILIER — Phase 3: conversion, international and indexation pages.
  * Run after build.mjs and build2.mjs:  node tools/build.mjs && node tools/build2.mjs && node tools/build3.mjs
  *
  * Builds /contact/, /about/, /projects/, /hospitality/, /trade/uae/,
@@ -25,7 +25,7 @@ const wr = (f, s) => writeFileSync(join(ROOT, f), s);
 /* ── page shell ────────────────────────────────────────────────────── */
 const shell = ({ path, up, title, desc, lb, h1, h1it, lead, body, nodes = [], lang = 'en', locale = 'en_GB', robots, scripts = '', crumbName, pageType = 'WebPage' }) => {
   const url = `${HOST}/${path}`;
-  const crumbs = [{ name:'Artilier', href:home(up), abs:`${HOST}/` }];
+  const crumbs = [{ name:'ARTILIER', href:home(up), abs:`${HOST}/` }];
   if (path.startsWith('trade/') && path !== 'trade/') crumbs.push({ name:'Trade', href:`${up}trade/`, abs:`${HOST}/trade/` });
   if (path.startsWith('embroidery/') && path !== 'embroidery/') crumbs.push({ name:'Embroidery', href:`${up}embroidery/`, abs:`${HOST}/embroidery/` });
   if (path.startsWith('fr/') && path !== 'fr/') crumbs.push({ name:'Français', href:`${up}fr/`, abs:`${HOST}/fr/` });
@@ -128,12 +128,12 @@ const enquiryForm = (id = 'contactForm') => `
 
 const contact = shell({
   path:'contact/', up:'../', pageType:'ContactPage',
-  title:'Contact Artilier — Start a Rug Project | Trade Enquiries',
+  title:'Contact ARTILIER — Start a Rug Project | Trade Enquiries',
   desc:'Brief a bespoke rug, a collection design or a hospitality project. Trade enquiries from interior designers and architects, answered individually from New Delhi.',
   lb:'Contact · Start a project', h1:'Start a<br>', h1it:'project.',
   lead:`<p class="bd">Send artwork, a drawing, a reference or an early idea with the sizes. We review it and come back with questions, possibilities and the best way to make it.</p>
     <div class="wp-meta"><span><b>Trade only</b></span><span>Reviewed individually</span><span>New Delhi</span></div>`,
-  scripts:`\n<script defer src="../assets/js/enquiry.js?v=5"></script>`,
+  scripts:`\n<script defer src="../assets/js/enquiry.js?v=6"></script>`,
   body:`
 <section class="sec">
   <div class="about">
@@ -157,12 +157,12 @@ const contact = shell({
   </div>
 </section>
 ${sec('Before you write', 'Questions we are', 'often asked.', qa([
-  ['Do you sell to private clients?', 'Not directly. Artilier works trade only — with interior designers, architects, design practices and galleries, and with collectors through the galleries that represent them.'],
+  ['Do you sell to private clients?', 'Not directly. ARTILIER works trade only — with interior designers, architects, design practices and galleries, and with collectors through the galleries that represent them.'],
   ['Can a collection design be changed?', 'Yes. Every design is a starting point: it can be re-scaled, re-proportioned and re-coloured to your scheme, and made to the size the room needs within what the design and construction allow.'],
   ['Can we see samples first?', 'Yes. For rugs, yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom. Where a strike-off is part of the project, it typically takes 2–3 weeks once the design or sketch is approved, and its cost is credited against the order.'],
   ['Is there a minimum order?', 'Trade only. No fixed minimum order quantity — each project is assessed on its design, technical requirements and production specifications.'],
   ['How are prices quoted?', 'Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment terms are set out in the quote, and rugs are usually shipped rolled.'],
-  ['Who contracts and invoices?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio — one supplier and one point of coordination.'],
+  ['Who contracts and invoices?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. ARTILIER is its trade studio — one supplier and one point of coordination.'],
   ['How long does it take?', '<b>Rugs:</b> usually 6–12 weeks from strike-off approval, and up to six months in some cases; hand-knotting takes longest, hand-tufting is shorter. <b>Embroidered wall panels and upholstered headboards:</b> production typically takes 3–4 months, depending on the design, specifications and project requirements; more complex projects may require up to 6 months. <b>Embroidered fabric:</b> typically 6–8 weeks; complex work up to 6 months. We confirm delivery dates only after reviewing the specification.']
 ]))}`
 });
@@ -170,17 +170,17 @@ ${sec('Before you write', 'Questions we are', 'often asked.', qa([
 /* ── /about/ ───────────────────────────────────────────────────────── */
 const about = shell({
   path:'about/', up:'../', pageType:'AboutPage',
-  title:'About Artilier — Master Craft Studio, New Delhi',
+  title:'About ARTILIER — Master Craft Studio, New Delhi',
   desc:'A master craft studio in New Delhi for rugs and hand embroidery, working with designers, architects and galleries — led by an interior designer.',
   lb:'About the studio', h1:'A design studio<br>in ', h1it:'New Delhi.',
-  lead:`<p class="bd">Artilier is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. We work trade only, with interior designers, architects and design practices internationally. We make rugs, hand embroidery, leather and stone inlay; design objects follow.</p>
+  lead:`<p class="bd">ARTILIER is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. We work trade only, with interior designers, architects and design practices internationally. We make rugs, hand embroidery, leather and stone inlay; design objects follow.</p>
     <div class="wp-meta"><span><b>Founded on making</b></span><span>Led by design</span><span>Trade only</span></div>`,
   nodes:[
-    { '@type':'Person','@id':`${HOST}/about/#ankit`,'name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development','worksFor':{'@id':`${HOST}/#organization`} },
+    { '@type':'Person','@id':`${HOST}/about/#ankit`,'name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development','sameAs':['https://www.linkedin.com/in/ankitvijaivargia/'],'worksFor':{'@id':`${HOST}/#organization`} },
     { '@type':'Person','@id':`${HOST}/about/#payal`,'name':'Payal Samal','jobTitle':'Design Head — Interior Designer','worksFor':{'@id':`${HOST}/#organization`} }
   ],
   body:`
-${sec('How the studio is built', 'Artilier is new.<br>The experience behind it', "isn't.", `<div class="facts">
+${sec('How the studio is built', 'ARTILIER is new.<br>The experience behind it', "isn't.", `<div class="facts">
     <div><b>Manufacturing</b><span>Over a decade of custom production, Delhi</span></div>
     <div><b>Design direction</b><span>Led by an interior designer</span></div>
     <div><b>Studio</b><span>New Delhi — development, sampling &amp; quality control</span></div>
@@ -197,7 +197,7 @@ ${sec('What we do', 'Rugs, developed', 'and made.', list([
   '<b>Collaborations</b> — rugs co-developed with designers, architects and artists. <a href="../collaborations/">Collaborations</a>',
   '<b>Hospitality and multi-rug projects</b> — schedules of rugs for boutique hospitality and residential work. <a href="../hospitality/">Hospitality</a>'
 ]))}
-${sec('Artilier and Art Avenue', 'One supplier,', 'one point of coordination.', `<div class="prose"><p>Artilier is the trade studio of Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is where design, development, sampling and the client relationship sit; orders are contracted, invoiced and exported through Art Avenue Pvt. Ltd. — so a project has one supplier, one point of coordination and established export documentation.</p></div>`)}
+${sec('ARTILIER and Art Avenue', 'One supplier,', 'one point of coordination.', `<div class="prose"><p>ARTILIER is the trade studio of Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. ARTILIER is where design, development, sampling and the client relationship sit; orders are contracted, invoiced and exported through Art Avenue Pvt. Ltd. — so a project has one supplier, one point of coordination and established export documentation.</p></div>`)}
 ${sec('Where the work sits', 'Studio in Delhi,', 'looms across India.', `<div class="prose"><p>Studio, artwork development, sampling, finishing and quality control sit in New Delhi. Weaving runs through established rug workshops across India, selected for the construction each rug needs. The workshop is chosen to suit the rug; the specification is held and checked in one place. More in <a href="../craft/">the craft</a> and <a href="../process/">the process</a>.</p></div>`, { dark:true })}
 ${ctaBlock('../', 'contact/', 'Start a project', [['trade/','Working with us'],['bespoke/','Bespoke development'],['collection/designs/','The collection']])}`
 });
@@ -220,8 +220,8 @@ const indexProjects = projectsOverride === 'index' ? hasProjects
 const pCaption = p => [p.discipline, p.location, p.year].filter(Boolean).join(' · ');
 const projects = shell({
   path:'projects/', up:'../', pageType:'CollectionPage',
-  title:'Projects — Rugs & Embroidery in Interiors | Artilier',
-  desc:'Completed Artilier rugs and embroidery in residential and hospitality interiors — the brief, what we developed and how it was made. Trade only.',
+  title:'Projects — Rugs & Embroidery in Interiors | ARTILIER',
+  desc:'Completed ARTILIER rugs and embroidery in residential and hospitality interiors — the brief, what we developed and how it was made. Trade only.',
   lb:'Projects', h1:'The work, in its<br>', h1it:'rooms.',
   robots: indexProjects ? undefined : 'noindex,follow',
   lead:`<p class="bd">Completed work — the brief, what we developed for it and how it was made. Some projects are shown without naming the client or the property.</p>`,
@@ -231,7 +231,7 @@ ${ctaBlock('../', 'contact/', 'Start a project', [['embroidery/','Embroidery'],[
 <section class="sec">
   <div class="empty-note">
     <span class="lb">Being documented</span>
-    <p>Artilier is a new studio. Completed projects are published here only once they are photographed and the people involved have agreed to what is shown — nothing on this page will be staged or invented.</p>
+    <p>ARTILIER is a new studio. Completed projects are published here only once they are photographed and the people involved have agreed to what is shown — nothing on this page will be staged or invented.</p>
     <p>Until then, the clearest view of our work is <a href="../collection/designs/">the rug collection</a>, <a href="../embroidery/">our embroidery</a> and how we <a href="../bespoke/">develop pieces from a designer’s artwork</a>. If you would like to discuss work relevant to your project, <a href="../contact/">write to us</a>.</p>
   </div>
 </section>
@@ -250,17 +250,17 @@ const projectPage = p => {
   ].filter(([, v]) => v);
   const media = [].concat(p.video ? [p.video] : [], p.images || []);
   const designs = [].concat(p.products || []).map(sl => indexable.find(d => d.slug === sl)).filter(Boolean);
-  const title = `${p.name} — ${p.discipline || 'Project'}${p.location ? ', ' + p.location : ''} | Artilier`;
-  const descRaw = p.summary || `${p.discipline || 'Work'} by Artilier for ${p.name}${p.location ? ' in ' + p.location : ''}${p.designer ? ', with ' + p.designer : ''}.`;
+  const title = `${p.name} — ${p.discipline || 'Project'}${p.location ? ', ' + p.location : ''} | ARTILIER`;
+  const descRaw = p.summary || `${p.discipline || 'Work'} by ARTILIER for ${p.name}${p.location ? ' in ' + p.location : ''}${p.designer ? ', with ' + p.designer : ''}.`;
   const desc = descRaw.length <= 158 ? descRaw : descRaw.slice(0, 157).replace(/[\s,;:—–-]+\S*$/, '') + '…';   // cut at a word boundary
   const schema = graph([
     { '@type':'WebPage','@id':`${url}#webpage`,'url':url,'name':title,'description':desc,'isPartOf':{'@id':`${HOST}/#website`},
       'breadcrumb':{'@id':`${url}#breadcrumb`},'about':{'@id':`${HOST}/#organization`},'inLanguage':'en' },
-    { ...breadcrumb([{ name:'Artilier', abs:`${HOST}/` }, { name:'Projects', abs:`${HOST}/projects/` }, { name:p.name, abs:url }]), '@id':`${url}#breadcrumb` }
+    { ...breadcrumb([{ name:'ARTILIER', abs:`${HOST}/` }, { name:'Projects', abs:`${HOST}/projects/` }, { name:p.name, abs:url }]), '@id':`${url}#breadcrumb` }
   ]);
   const ogImage = (() => { try { const m = JSON.parse(rd('assets/media/manifest.json'))[p.hero]; return m && m.type !== 'video' && m.src ? `${HOST}/assets/media/${m.src.split('?')[0]}` : undefined; } catch { return undefined; } })();
   return head({ title, desc, canonical:url, up:UP, schema, ogImage })
-    + nav(UP) + crumb([{ name:'Artilier', href:UP }, { name:'Projects', href:'../' }, { name:p.name, href:url }]) + `
+    + nav(UP) + crumb([{ name:'ARTILIER', href:UP }, { name:'Projects', href:'../' }, { name:p.name, href:url }]) + `
 <main id="main">
 <header class="wp-hd">
   <div>
@@ -291,10 +291,10 @@ ${ctaBlock(UP, 'contact/', 'Start a project', [['projects/','All projects'],['be
 const PRIVACY_PUBLISHED = '11 November 2026';
 const privacy = shell({
   path:'privacy/', up:'../', robots:'noindex,follow',
-  title:'Privacy Notice | Artilier',
-  desc:'How Artilier handles enquiry details, business contact details, analytics and cookies on artilier.co.',
+  title:'Privacy Notice | ARTILIER',
+  desc:'How ARTILIER handles enquiry details, business contact details, analytics and cookies on artilier.co.',
   lb:'Privacy', h1:'Privacy', h1it:'notice.',
-  lead:`<p class="bd">This notice explains what information Artilier collects through artilier.co and in the course of its trade enquiries, why, how long it is kept and the choices you have. Artilier is a studio of Art Avenue Pvt. Ltd., New Delhi, India, which is responsible for this information. Write to <a href="mailto:studio@artilier.co">studio@artilier.co</a> about anything in this notice.</p>
+  lead:`<p class="bd">This notice explains what information ARTILIER collects through artilier.co and in the course of its trade enquiries, why, how long it is kept and the choices you have. ARTILIER is a studio of Art Avenue Pvt. Ltd., New Delhi, India, which is responsible for this information. Write to <a href="mailto:studio@artilier.co">studio@artilier.co</a> about anything in this notice.</p>
     <p class="bd" style="margin-top:12px">Last updated: ${PRIVACY_PUBLISHED}.</p>`,
   body:`
 ${sec('Enquiries', 'What you', 'send us.', `<div class="prose">
@@ -328,7 +328,7 @@ ${ctaBlock('../', 'contact/', 'Contact the studio', [['about/','About the studio
    headboard freight or certification statement is made. */
 const hospitality = shell({
   path:'hospitality/', up:'../',
-  title:'Hotel Rugs, Headboards & Embroidery | Artilier',
+  title:'Hotel Rugs, Headboards & Embroidery | ARTILIER',
   desc:'Custom hotel rugs, embroidered headboards, wall panels and furnishing fabric for hospitality projects, developed from the designer’s scheme. Trade only.',
   lb:'Hospitality & contract', h1:'Rugs and embroidery<br>for ', h1it:'hospitality.',
   lead:`<p class="bd">For hospitality designers, architects and procurement teams: custom rugs for hotels and boutique hospitality projects, made to the dimensions of each room — and <a href="../embroidery/headboards/">embroidered headboards</a>, wall panels and furnishing fabric developed for the same scheme in our New Delhi studio.</p>
@@ -382,7 +382,7 @@ ${sec('What to send', 'A useful', 'first brief.', list([
   '<b>Specification requirements</b> — any performance, cleaning or documentation standards',
   '<b>Programme</b> — mock-up room date, target delivery date and project location'
 ]))}
-${sec('Contracting', 'One supplier,', 'one point of contact.', `<div class="prose"><p>Artilier is the trade studio of Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Orders are contracted, invoiced and exported through that entity, with established export documentation, and you have one point of contact from brief to dispatch. Costing and lead times are given per project once construction, materials, sizes and sampling are understood.</p></div>`)}
+${sec('Contracting', 'One supplier,', 'one point of contact.', `<div class="prose"><p>ARTILIER is the trade studio of Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Orders are contracted, invoiced and exported through that entity, with established export documentation, and you have one point of contact from brief to dispatch. Costing and lead times are given per project once construction, materials, sizes and sampling are understood.</p></div>`)}
 ${ctaBlock('../', 'contact/?type=hospitality', 'Send a hospitality brief', [['embroidery/headboards/','Embroidered headboards'],['embroidery/','Embroidered wall panels'],['embroidery/fabrics/','Embroidered fabric'],['bespoke/','Bespoke rugs'],['materials/','Materials'],['process/','The process'],['trade/','Trade']])}`
 });
 
@@ -407,14 +407,14 @@ const marketLinks = self => [['trade/uae/','UAE'],['trade/saudi-arabia/','Saudi 
 const common = {
   samples: ['Can we approve samples before production?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom; the strike-off takes 2–3 weeks once the design is approved, and its cost is credited against the order.'],
   adapt: ['Can a collection design be adapted?', `Yes. Every design in <a href="${UP2}collection/designs/">the collection</a> can be re-scaled, re-proportioned and re-coloured to your scheme, and made to the size the room needs within what the design and construction allow.`],
-  contract: ['Who do we contract with?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio; orders are contracted, invoiced and exported through that entity.'],
+  contract: ['Who do we contract with?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. ARTILIER is its trade studio; orders are contracted, invoiced and exported through that entity.'],
   pricing: ['How are prices quoted, and on what terms?', 'Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment terms are set out in the quote, and rugs are usually shipped rolled.'],
   time: ['What are the lead times, and is there a minimum?', 'Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases. There is no minimum order — a single rug is welcome. Costing follows once construction, materials, dimensions and sampling are understood.']
 };
 
 const uae = market({
   slug:'uae', crumb:'UAE',
-  title:'Bespoke Rugs & Carpets for UAE Interior Designers | Artilier',
+  title:'Bespoke Rugs & Carpets for UAE Interior Designers | ARTILIER',
   desc:'Custom rugs for villas, residences and hospitality in Dubai and Abu Dhabi — developed from your scheme in New Delhi and made to size. Trade only.',
   lb:'Trade · United Arab Emirates', h1:'Bespoke rugs for<br>', h1it:'Dubai and Abu Dhabi.',
   lead:'For interior designers, architects and hospitality teams in Dubai and Abu Dhabi: rugs developed from your scheme or artwork in our New Delhi studio, approved in sample, and made to the dimensions of each room.',
@@ -451,7 +451,7 @@ ${ctaBlock(UP2, 'contact/?type=residential', 'Start a UAE project', [...marketLi
 
 const ksa = market({
   slug:'saudi-arabia', crumb:'Saudi Arabia',
-  title:'Custom Rugs & Carpets for Saudi Arabia Projects | Artilier',
+  title:'Custom Rugs & Carpets for Saudi Arabia Projects | ARTILIER',
   desc:'Bespoke rugs for residences and hospitality in Riyadh, Jeddah and AlUla — developed from your scheme, sampled for approval, made to size. Trade only.',
   lb:'Trade · Saudi Arabia', h1:'Custom rugs for<br>', h1it:'Riyadh, Jeddah and AlUla.',
   lead:'For interior designers, architects and hospitality teams working in Saudi Arabia: rugs developed from your scheme or artwork in our New Delhi studio, approved in sample, and made to the dimensions of each room.',
@@ -479,7 +479,7 @@ ${sec('What to send', 'A useful', 'Saudi brief.', list([
 ]), { dark:true })}
 ${sec('Questions', 'From Saudi', 'practices.', qa([
   ['Can sampling be planned around a mock-up room?', 'Yes. Give us the mock-up date and the rug types it needs; yarn samples, colour trials and strike-offs are scheduled back from it and approved in the hand.'],
-  ['Can one supplier cover several rug types?', 'Yes. Hand-knotted, hand-tufted and flatweave rugs can sit in one schedule, developed by Artilier and contracted, invoiced and exported through one entity, Art Avenue Pvt. Ltd.'],
+  ['Can one supplier cover several rug types?', 'Yes. Hand-knotted, hand-tufted and flatweave rugs can sit in one schedule, developed by ARTILIER and contracted, invoiced and exported through one entity, Art Avenue Pvt. Ltd.'],
   common.time,
   common.pricing]))}
 ${ctaBlock(UP2, 'contact/?type=hospitality', 'Start a Saudi project', [...marketLinks('saudi-arabia'), ['hospitality/','Hospitality'], ['guides/briefing-a-bespoke-rug/','Briefing guide']])}`
@@ -487,7 +487,7 @@ ${ctaBlock(UP2, 'contact/?type=hospitality', 'Start a Saudi project', [...market
 
 const uk = market({
   slug:'uk', crumb:'United Kingdom',
-  title:'Bespoke Rugs & Carpets, Made to Measure — UK Trade | Artilier',
+  title:'Bespoke Rugs & Carpets, Made to Measure — UK Trade | ARTILIER',
   desc:'Bespoke and made-to-measure rugs and carpets for UK interior designers: hand-knotted, hand-tufted and flatweave, developed from your artwork. Trade only.',
   lb:'Trade · United Kingdom', h1:'Bespoke rugs<br>for ', h1it:'London practices.',
   lead:'For interior designers and architects in London and across the UK: bespoke rugs developed from your artwork or scheme in our New Delhi studio, proved in a strike-off, and made to the size each room needs — to the trade only.',
@@ -524,7 +524,7 @@ ${ctaBlock(UP2, 'contact/?type=bespoke', 'Start a UK project', [...marketLinks('
 
 const us = market({
   slug:'us', crumb:'United States',
-  title:'Custom Rugs to the Trade — New York & Texas | Artilier',
+  title:'Custom Rugs to the Trade — New York & Texas | ARTILIER',
   desc:'Custom hand-knotted and hand-tufted rugs for interior designers in New York, Dallas, Houston and Austin — developed from your artwork, made to size.',
   lb:'Trade · United States', h1:'Custom rugs<br>', h1it:'to the trade.',
   lead:'For interior designers and architects in New York, the Hamptons, Dallas, Houston and Austin: custom rugs developed from your artwork or scheme in our New Delhi studio, approved in a strike-off, and made to the size each room needs.',
@@ -542,7 +542,7 @@ ${sec('Working together', 'Briefed by email,', 'approved in hand.', `<div class=
     <p>New Delhi is nine hours thirty minutes ahead of New York during daylight saving time (ten hours thirty in winter), and Texas is an hour further behind. Work moves by email: a brief sent at the end of your day reaches us at the start of ours. Send sizes in feet and inches or metres, whichever your drawings use. Samples and strike-offs are approved in the hand before production.</p>
   </div>`)}
 ${sec('Questions', 'From US', 'practices.', qa([
-  ['Do you work with private clients?', 'Not directly. Artilier works trade only — with interior designers, architects, design practices and galleries, and with collectors through the galleries that represent them.'],
+  ['Do you work with private clients?', 'Not directly. ARTILIER works trade only — with interior designers, architects, design practices and galleries, and with collectors through the galleries that represent them.'],
   ['Can a Hamptons rug be timed to the season?', 'Tell us the date the rug must be on site. Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases, so the earlier the brief, the more options remain open.'],
   common.contract,
   common.pricing]))}
@@ -552,10 +552,10 @@ ${ctaBlock(UP2, 'contact/?type=residential', 'Start a US project', [...marketLin
 /* ── /fr/ — French trade page ──────────────────────────────────────── */
 const fr = shell({
   path:'fr/', up:'../', lang:'fr', locale:'fr_FR', crumbName:'Français',
-  title:'Tapis sur mesure pour architectes d’intérieur | Artilier',
+  title:'Tapis sur mesure pour architectes d’intérieur | ARTILIER',
   desc:'Tapis noués main, tuftés main et tissés à plat, réalisés sur mesure d’après vos dessins pour architectes d’intérieur. Studio à New Delhi, professionnels.',
   lb:'Tapis sur mesure · Réservé aux professionnels', h1:'Votre dessin.<br>Notre ', h1it:'savoir-faire.',
-  lead:`<p class="bd">Artilier est un studio de création de tapis basé à New Delhi, qui travaille exclusivement avec les architectes d’intérieur, les architectes et les agences de design. Chaque tapis est réalisé sur mesure — technique, matière, coloris et dimensions — d’après une pièce de notre collection ou d’après votre propre dessin.</p>
+  lead:`<p class="bd">ARTILIER est un studio de création de tapis basé à New Delhi, qui travaille exclusivement avec les architectes d’intérieur, les architectes et les agences de design. Chaque tapis est réalisé sur mesure — technique, matière, coloris et dimensions — d’après une pièce de notre collection ou d’après votre propre dessin.</p>
     <div class="wp-meta"><span><b>Professionnels uniquement</b></span><span>Dimensions sur mesure</span><span>Coloris sur mesure</span></div>`,
   nodes:[ service('fr/', 'Tapis sur mesure pour architectes d’intérieur', 'Conception et fabrication de tapis sur mesure',
     'Développement de tapis noués main, tuftés main et tissés à plat d’après le dessin, l’œuvre ou la palette de l’architecte d’intérieur, avec échantillonnage avant production.',
@@ -606,7 +606,7 @@ ${sec('Délais et conditions', 'Échantillon, délais,', 'devis.', `<div class="
   </div>
   <p class="proc-note" style="color:rgba(247,243,235,.62)">Le délai peut aller jusqu’à six mois selon la pièce : le noué main est la technique la plus longue, le tufté main est plus rapide. La taille de l’échantillon dépend du dessin. Les conditions de paiement figurent dans le devis, et le chiffrage se précise à mesure que la technique, les matières, les dimensions et l’échantillonnage sont définis.</p>`, { dark:true })}
 ${sec('Contractualisation', 'Devis, contrat', 'et export.', `<div class="prose">
-    <p>Artilier est le studio professionnel d’Art Avenue Pvt. Ltd., notre société de fabrication à New Delhi. Les commandes sont passées, facturées et exportées par cette entité : un seul fournisseur, un seul interlocuteur, du premier dessin à l’expédition.</p>
+    <p>ARTILIER est le studio professionnel d’Art Avenue Pvt. Ltd., notre société de fabrication à New Delhi. Les commandes sont passées, facturées et exportées par cette entité : un seul fournisseur, un seul interlocuteur, du premier dessin à l’expédition.</p>
     <p>Pour démarrer, écrivez-nous à <a href="mailto:studio@artilier.co">studio@artilier.co</a> en joignant vos dessins, les dimensions et le calendrier du projet, ou utilisez notre <a href="../contact/" hreflang="en">formulaire de contact</a> (en anglais).</p>
   </div>`)}
 <div class="backhome">
@@ -624,7 +624,7 @@ const G = 'guides/briefing-a-bespoke-rug/';
 const UPG = '../../';
 const guide = shell({
   path:G, up:UPG, crumbName:'Briefing a bespoke rug', pageType:'WebPage',
-  title:'How to Brief a Bespoke Rug: Files, Sizes, Sampling | Artilier',
+  title:'How to Brief a Bespoke Rug: Files, Sizes, Sampling | ARTILIER',
   desc:'A guide for interior designers and architects: what to send for a bespoke rug, how construction and yarn are chosen, how the strike-off works, and timing.',
   lb:'Guide · For designers and architects', h1:'How to brief<br>', h1it:'a bespoke rug.',
   lead:`<p class="bd">What to send, what gets decided and in what order, and how long the studio’s own stages take — written from the way our New Delhi studio runs commissions for interior designers, architects and hospitality teams. Use it as a checklist before you write to any rug maker, including us.</p>
@@ -674,7 +674,7 @@ ${sec('Timing and terms', 'Plan back from', 'the site date.', list([
   '<b>Minimum order</b> — none; a single rug is welcome',
   '<b>Quotes</b> — in USD or EUR, usually ex-works; FOB or DDP quoted separately on request',
   '<b>Shipping</b> — rugs usually travel rolled; payment terms are set out in the quote'
-]) + `<p class="bd" style="margin-top:22px">To plan a programme, add together the time to approve the design, 2–3 weeks for the strike-off, your approval of it, production, and freight to site. We confirm the timeline for each project and tell you about changes as they arise. Orders are contracted, invoiced and exported through one entity, Art Avenue Pvt. Ltd., of which Artilier is the trade studio.</p>`)}
+]) + `<p class="bd" style="margin-top:22px">To plan a programme, add together the time to approve the design, 2–3 weeks for the strike-off, your approval of it, production, and freight to site. We confirm the timeline for each project and tell you about changes as they arise. Orders are contracted, invoiced and exported through one entity, Art Avenue Pvt. Ltd., of which ARTILIER is the trade studio.</p>`)}
 ${sec('Checklist', 'A brief', 'we can cost.', list([
   'Design: artwork, CAD file, reference or collection design — with the size of the original',
   'Size and shape: outline on the floor plan, units stated, furniture marked',
@@ -686,21 +686,21 @@ ${sec('Checklist', 'A brief', 'we can cost.', list([
 ]), { dark:true })}
 ${sec('Questions', 'Asked before', 'the first brief.', qa([
   ['Can we start from a rough sketch?', 'Yes. A rough idea and a floor plan are enough to begin; construction, yarn, colour separation and scale are developed with you, and we tell you what needs resolving before costing.'],
-  ['Do you work with private clients?', `Not directly. Artilier works trade only — with interior designers, architects, design practices and galleries, and with collectors through the galleries that represent them. See <a href="${UPG}trade/">trade</a>.`],
+  ['Do you work with private clients?', `Not directly. ARTILIER works trade only — with interior designers, architects, design practices and galleries, and with collectors through the galleries that represent them. See <a href="${UPG}trade/">trade</a>.`],
   ['Can one rug be adapted from the collection rather than developed from scratch?', 'Yes. Collection designs can be re-scaled, re-proportioned and re-coloured to your scheme, and made to the size the room needs within what the design and construction allow.'],
   ['What happens if the strike-off is not right?', 'The full rug is not set on the loom until the strike-off is approved. If it is not right, tell us what needs to change; what a revision involves is agreed with you before anything further is made.']]))}
 ${ctaBlock(UPG, 'contact/?type=bespoke', 'Send a brief', [['bespoke/','Bespoke development'],['process/','The process'],['hospitality/','Hospitality'],['trade/','Trade']])}`
 });
 
 /* ── 404 ───────────────────────────────────────────────────────────── */
-const notFound = head({ title:'Page not found | Artilier', desc:'This page does not exist. Find the collection, bespoke rug development or start a project with Artilier.',
+const notFound = head({ title:'Page not found | ARTILIER', desc:'This page does not exist. Find the collection, bespoke rug development or start a project with ARTILIER.',
   canonical:`${HOST}/404.html`, up:'/', robots:'noindex,follow', schema:{ '@context':'https://schema.org', ...ORG } }).replace(/\n<link rel="canonical"[^>]*>/, '')
   + nav('/') + `
 <main id="main">
 <section class="nf">
   <span class="lb">404 · Page not found</span>
   <h1 class="d1">This page is<br><span class="it">not here.</span></h1>
-  <p class="bd" style="max-width:52ch">The address may have changed. Everything Artilier makes is still a click away.</p>
+  <p class="bd" style="max-width:52ch">The address may have changed. Everything ARTILIER makes is still a click away.</p>
   <div class="links"><a href="/collection/designs/">The collection</a><a href="/bespoke/">Bespoke development</a><a href="/hospitality/">Hospitality</a><a href="/trade/">Trade</a><a href="/contact/">Start a project</a></div>
 </section>
 </main>` + footer('/');
@@ -724,7 +724,7 @@ const embCommon = {
   /* OWNER DECISION M8 (Stage 8/9): 'FOB or DDP on request' is existing owner-confirmed wording
      (10 Oct). Whether it should stay for Gulf embroidery (freight policy, Hormuz/Red Sea risk)
      is open — do not replace it with invented terms. */
-  contract: ['Who contracts and invoices?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio; orders are contracted, invoiced and exported through that entity, usually quoted ex-works in USD or EUR, with FOB or DDP on request.']
+  contract: ['Who contracts and invoices?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. ARTILIER is its trade studio; orders are contracted, invoiced and exported through that entity, usually quoted ex-works in USD or EUR, with FOB or DDP on request.']
 };
 const embMarket = m => shell({
   path:`embroidery/${m.slug}/`, up:UP2, crumbName:m.crumb,
@@ -739,7 +739,7 @@ ${ctaBlock(UP2, 'contact/?type=embroidery', m.cta, [[m.rugs, m.rugsLabel], ['emb
 
 const embUae = embMarket({
   slug:'uae', crumb:'UAE & Gulf',
-  title:'Bespoke Embroidery & Wall Panels for Dubai and the UAE | Artilier',
+  title:'Bespoke Embroidery & Wall Panels for Dubai and the UAE | ARTILIER',
   desc:'Hand-embroidered wallcoverings, wall panels and headboards for Dubai, Abu Dhabi and the Gulf — zardozi, zari, aari, raffia. Trade only.',
   lb:'Embroidery · UAE & Gulf', h1:'Hand embroidery for<br>', h1it:'Dubai and the Gulf.',
   lead:'For interior designers, architects and galleries in Dubai, Abu Dhabi and across the Gulf: embroidered wall panels, framed pieces, headboards and upholstery panels, developed from your scheme or artwork in our New Delhi studio, with a strike-off approved in the hand where the project requires one.',
@@ -777,7 +777,7 @@ ${sec('Questions', 'From Gulf', 'practices.', qa([embCommon.min, embCommon.time,
 
 const embKsa = embMarket({
   slug:'saudi-arabia', crumb:'Saudi Arabia',
-  title:'Hand Embroidery & Wall Panels for Saudi Projects | Artilier',
+  title:'Hand Embroidery & Wall Panels for Saudi Projects | ARTILIER',
   desc:'Hand-embroidered wallcoverings, wall panels and headboards for Riyadh, Jeddah and AlUla — zardozi, zari, aari, raffia. Trade only.',
   lb:'Embroidery · Saudi Arabia', h1:'Hand embroidery for<br>', h1it:'Saudi projects.',
   lead:'For interior designers, architects and galleries working in Riyadh, Jeddah, AlUla and across the Kingdom: embroidered wall panels, framed pieces, headboards and upholstery panels, made to commission from your scheme or artwork, with a strike-off approved in the hand where the project requires one.',
@@ -806,7 +806,7 @@ ${sec('Questions', 'From Saudi', 'practices.', qa([embCommon.min, embCommon.time
 
 const embUk = embMarket({
   slug:'uk', crumb:'United Kingdom',
-  title:'Bespoke Hand Embroidery for London Interior Designers | Artilier',
+  title:'Bespoke Hand Embroidery for London Interior Designers | ARTILIER',
   desc:'Hand-embroidered wallcoverings, wall panels, headboards and upholstery panels for London and UK interiors — zardozi, zari, aari, raffia. Trade only.',
   lb:'Embroidery · United Kingdom', h1:'Hand embroidery for<br>', h1it:'London interiors.',
   lead:'For interior designers, architects and galleries in London and across the UK: embroidered wall panels, headboards, upholstery panels, cushions and framed works, developed from your drawing in our New Delhi studio, with a strike-off approved in the hand where the project requires one.',
@@ -835,7 +835,7 @@ ${sec('Questions', 'From UK', 'practices.', qa([embCommon.min, embCommon.time, e
 
 const embUs = embMarket({
   slug:'us', crumb:'United States',
-  title:'Hand Embroidery for New York Interior Designers | Artilier',
+  title:'Hand Embroidery for New York Interior Designers | ARTILIER',
   desc:'Hand-embroidered wallcoverings, wall panels, headboards and upholstery for New York and US interiors — zardozi, zari, aari, raffia. Trade only.',
   lb:'Embroidery · United States', h1:'Hand embroidery for<br>', h1it:'New York and the US.',
   lead:'For interior designers, architects and galleries in New York and across the United States: embroidered wall panels, headboards, upholstery panels and framed works, developed from your drawing in our New Delhi studio, with a strike-off approved in the hand where the project requires one.',
@@ -864,7 +864,7 @@ ${sec('Questions', 'From US', 'practices.', qa([embCommon.min, embCommon.time, e
 
 const embFr = shell({
   path:'fr/broderie/', up:UP2, lang:'fr', locale:'fr_FR', crumbName:'Broderie',
-  title:'Broderie main sur mesure pour architectes d’intérieur | Artilier',
+  title:'Broderie main sur mesure pour architectes d’intérieur | ARTILIER',
   desc:'Panneaux muraux brodés, têtes de lit, panneaux d’ameublement et œuvres encadrées — zardozi, zari, aari, raphia. Sur mesure, échantillon d’abord.',
   lb:'Broderie · Paris & France', h1:'La broderie main,<br>', h1it:'sur mesure.',
   lead:`<p class="bd">Pour les architectes d’intérieur, les architectes et les galeries à Paris et en France : panneaux muraux brodés, œuvres encadrées, têtes de lit, panneaux d’ameublement, coussins et rideaux, développés d’après votre dessin dans notre studio de New Delhi et validés sur échantillon avant production.</p>
@@ -945,13 +945,16 @@ syncShell('collection/index.html', '../');
       'hasPart':CATS.map(c => ({ '@id':`${HOST}/collection/${c.slug}/#collection` })),
       'mainEntity':{ '@type':'ItemList','numberOfItems':items.length,'itemListElement':items.map((d, i) => ({ '@type':'ListItem','position':i + 1,'name':d.name,'url':`${HOST}/collection/${d.slug}/` })) } },
     { '@type':'BreadcrumbList','@id':`${url}#breadcrumb`,'itemListElement':[
-      { '@type':'ListItem','position':1,'name':'Artilier','item':`${HOST}/` },
+      { '@type':'ListItem','position':1,'name':'ARTILIER','item':`${HOST}/` },
       { '@type':'ListItem','position':2,'name':'Rugs','item':`${HOST}/collection/` },
       { '@type':'ListItem','position':3,'name':'Designs','item':url } ] } ] };
   s = s.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify(hub)}</script>`);
   wr('collection/designs/index.html', s);
 }
-console.log('synced shell: collaborations, rugs page, designs page');
+/* Leather and stone are hand-maintained too: shell + the shared Organization entity. */
+syncShell('leather/index.html', '../');
+syncShell('stone/index.html', '../');
+console.log('synced shell: collaborations, rugs page, designs page, leather, stone');
 
 /* ── sitemap: canonical, indexable, 200-status URLs only ───────────── */
 /* No <lastmod>: every page is rewritten on each build (shared footer), so a
@@ -1001,7 +1004,7 @@ for (const f of ['index.html', 'collection/design.html']) {
   s = s.replace(/<footer>[\s\S]*?<\/footer>/, foot.slice(foot.indexOf('<footer>'), foot.indexOf('</footer>') + 9));
   const url = `${HOST}/`;
   const g = { '@context':'https://schema.org','@graph':[ORG, WEBSITE,
-    { '@type':'WebPage','@id':`${url}#webpage`,'url':url,'name':'Bespoke Rugs & Embroidery for Interior Designers | Artilier',
+    { '@type':'WebPage','@id':`${url}#webpage`,'url':url,'name':'Bespoke Rugs & Embroidery for Interior Designers | ARTILIER',
       'isPartOf':{'@id':`${HOST}/#website`},'about':{'@id':`${HOST}/#organization`},'inLanguage':'en',
       'primaryImageOfPage':{ '@type':'ImageObject','url':`${HOST}/assets/media/hero-main-poster.webp` } } ] };
   s = s.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify(g)}</script>`);

@@ -75,7 +75,7 @@
       ['utm_source', 'utm_medium', 'utm_campaign'].forEach(k => touch[k] && hidden(k, touch[k]));
       const fd = new FormData(form);
       const sector = fd.get('sector') || fd.get('enquiry') || 'General';
-      fd.set('_subject', `Artilier enquiry — ${sector} — ${fd.get('name') || ''}`.slice(0, 120));
+      fd.set('_subject', `ARTILIER enquiry — ${sector} — ${fd.get('name') || ''}`.slice(0, 120));
       fd.set('_replyto', fd.get('email') || '');
 
       if (!endpoint) {                       // honest fallback: compose an email
