@@ -301,3 +301,13 @@ Not changed (needs a decision or more evidence): homepage films on mobile (T-03)
 - Lighthouse, mobile, devtools throttling (slow 4G, 4× CPU), 3 runs, local server: CLS `/collection/reth/` 0.151/0.172/0.151 → 0/0/0; `/contact/` 0.199 ×3 → 0 ×3; `/trade/uae/` 0 ×3 → 0.033/0/0.032; `/collection/nazm/` 0 ×3 → 0/0/0.018; `/embroidery/`, `/bespoke/` 0 → 0. Remaining small shifts are single short lines sitting on a wrap point (e.g. "Dubai and Abu Dhabi."), which no fallback can match exactly.
 - Cost: `fonts.css` 0.3 KB → 1.5 KB compressed (render-blocking). Text LCP +0.2–0.4 s on some pages on the local server, which serves CSS uncompressed (14 KB); to be confirmed on the Cloudflare preview.
 
+
+## 16. robots.txt check (11 Nov 2026) — branch `seo/robots-check`
+
+**Finding (Verified, 11 Nov).** Live `/robots.txt` is no longer the repository file. It is Cloudflare's managed robots.txt: `User-agent: *` with `Content-Signal: search=yes,ai-train=no,use=reference` and `Allow: /`, then `Disallow: /` for about 30 AI-training and other crawlers. The repository's `Sitemap: https://artilier.co/sitemap.xml` line is not served. Search engines are not blocked. The 9 Nov monitor run reported "Disallow: / blocks the whole site", which was a false alarm: the check matched any `Disallow: /` line regardless of user-agent group.
+
+| Change | Files | Why | Test |
+|---|---|---|---|
+| robots.txt check parses user-agent groups (`urllib.robotparser`); ERROR only if Googlebot or Bingbot cannot fetch `/`; WARN if no `Sitemap:` line | `tools/seo_monitor.py` | Removes the false alarm and catches the real regression (missing Sitemap line) | Live text → no error, one warning; repository file → clean; `User-agent: * / Disallow: /` → errors for both bots |
+
+**Owner action (Cloudflare dashboard, not code).** Either keep the managed robots.txt and accept the missing Sitemap line (the sitemap stays submitted in Search Console and Bing, so discovery is unaffected), or turn the managed robots.txt off and serve the repository file. Lighthouse's `robots-txt` audit also fails on the managed file because `Content-Signal` is not a standard directive; that lowers the lab SEO score but does not affect Google crawling.

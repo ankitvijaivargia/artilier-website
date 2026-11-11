@@ -11,7 +11,7 @@ problems that can be detected from the outside:
   * internal links: broken (4xx/5xx), redirecting (3xx), links to index.html
   * images in the static HTML: missing alt, missing width/height, oversized files
   * orphan pages: in the sitemap but no internal link from a crawled page
-  * robots.txt reachable and does not block the site; 404 page returns 404
+  * robots.txt reachable, Googlebot and Bingbot allowed, Sitemap line present; 404 page returns 404
   * duplicate titles / descriptions across indexable pages
 
 Usage:
@@ -21,7 +21,7 @@ Usage:
 Exit code 1 if any ERROR is found (WARN does not fail). Polite: one request at
 a time, small delay, custom User-Agent; HEAD/GET only.
 """
-import argparse, json, re, sys, time, urllib.request, urllib.error, urllib.parse
+import argparse, json, re, sys, time, urllib.request, urllib.error, urllib.parse, urllib.robotparser
 from html.parser import HTMLParser
 from xml.etree import ElementTree as ET
 
@@ -138,8 +138,20 @@ def main():
     s, _, body = fetch(base + "/robots.txt")
     if s != 200:
         add("ERROR", "/robots.txt", f"status {s}")
-    elif re.search(r"(?im)^disallow:\s*/\s*$", body.decode("utf-8", "ignore")):
-        add("ERROR", "/robots.txt", "Disallow: / blocks the whole site")
+    else:
+        # Parse by user-agent group. A per-bot "Disallow: /" (Cloudflare's
+        # managed AI-crawler block) is not a site-wide block; only the search
+        # engines' own access matters here.
+        text = body.decode("utf-8", "ignore")
+        rp = urllib.robotparser.RobotFileParser()
+        rp.parse(text.splitlines())
+        for bot in ("Googlebot", "Bingbot"):
+            if not rp.can_fetch(bot, base + "/"):
+                add("ERROR", "/robots.txt", f"{bot} is blocked from the site")
+        if not re.search(r"(?im)^sitemap:\s*\S+", text):
+            add("WARN", "/robots.txt",
+                "no Sitemap: line (if Cloudflare's managed robots.txt is on, "
+                "it is replacing the repository file)")
     # 404 handling
     s, _, _ = fetch(base + "/seo-monitor-should-not-exist-404")
     if s != 404:
