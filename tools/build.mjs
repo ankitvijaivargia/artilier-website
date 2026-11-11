@@ -73,19 +73,19 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <link href="/assets/css/fonts.css?v=2" rel="stylesheet">
 <link rel="preload" href="/assets/fonts/jost-latin-300-normal.woff2?v=1" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/cormorant-garamond-latin-400-normal.woff2?v=1" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${up}assets/css/base.css?v=4">
+<link rel="stylesheet" href="${up}assets/css/base.css?v=7">
 <link rel="stylesheet" href="${up}assets/css/layout.css?v=3">
 <link rel="stylesheet" href="${up}assets/css/responsive.css?v=3">
 <link rel="stylesheet" href="${up}assets/css/collection-tweaks.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/pages.css?v=7">
-<script defer src="${up}assets/js/slots.js?v=5" data-manifest="${up}assets/media/manifest.json?v=${MV}"></script>
+<script defer src="${up}assets/js/slots.js?v=6" data-manifest="${up}assets/media/manifest.json?v=${MV}"></script>
 <script defer src="${up}assets/js/analytics.js?v=5"></script>${scripts}${extraHead}
 </head>
 <body>
 <a class="skip" href="#main">${lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}</a>`;
 
 const home = up => up || './';
-const NAV_FR = { 'Collection':'Collection','Rugs':'Tapis','Embroidery':'Broderie','Projects':'Projets','The rug collection':'La collection de tapis','Bespoke':'Sur mesure','Collaborations':'Collaborations','Hospitality':'Hôtellerie','Process':'Processus','Trade':'Professionnels','About':'Le studio',
+const NAV_FR = { 'Collection':'Collection','Rugs':'Tapis','Embroidery':'Broderie','Leather':'Cuir','Stone':'Pierre','Rug designs':'Modèles de tapis','Projects':'Projets','The rug collection':'La collection de tapis','Bespoke':'Sur mesure','Collaborations':'Collaborations','Hospitality':'Hôtellerie','Process':'Processus','Trade':'Professionnels','About':'Le studio',
   'Home':'Accueil','The collection':'La collection','Bespoke development':'Développement sur mesure','Hospitality &amp; contract':'Hôtellerie &amp; contract','Materials':'Matières','The craft':'Le savoir-faire','About the studio':'Le studio','Contact':'Contact','Start a project':'Démarrer un projet' };
 const nav = (up, lang = 'en') => {
   const t = k => lang === 'fr' ? (NAV_FR[k] || k) : k;
@@ -96,6 +96,8 @@ const nav = (up, lang = 'en') => {
   <ul class="nl">
     <li>${l('collection/','Rugs')}</li>
     <li>${l('embroidery/','Embroidery')}</li>
+    <li>${l('leather/','Leather')}</li>
+    <li>${l('stone/','Stone')}</li>
     <li>${l('bespoke/','Bespoke')}</li>
     <li>${l('hospitality/','Hospitality')}</li>
     <li>${l('projects/','Projects')}</li>
@@ -106,7 +108,7 @@ const nav = (up, lang = 'en') => {
   <a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
 </nav>
 <div class="mnav" id="mnav" hidden>
-  <a href="${home(up)}">${t('Home')}</a>${l('collection/','The rug collection')}${l('embroidery/','Embroidery')}${l('bespoke/','Bespoke development')}${l('collaborations/','Collaborations')}${l('hospitality/','Hospitality &amp; contract')}${l('materials/','Materials')}${l('process/','Process')}${l('craft/','The craft')}${l('projects/','Projects')}${l('trade/','Trade')}${l('about/','About the studio')}${l('contact/','Contact')}<a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a><a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
+  <a href="${home(up)}">${t('Home')}</a>${lang === 'fr' ? l('collection/','The rug collection') : l('collection/','Rugs') + l('collection/designs/','Rug designs')}${l('embroidery/','Embroidery')}${l('leather/','Leather')}${l('stone/','Stone')}${l('bespoke/','Bespoke development')}${l('collaborations/','Collaborations')}${l('hospitality/','Hospitality &amp; contract')}${l('materials/','Materials')}${l('process/','Process')}${l('craft/','The craft')}${l('projects/','Projects')}${l('trade/','Trade')}${l('about/','About the studio')}${l('contact/','Contact')}<a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a><a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
 </div>`;
 };
 
@@ -123,6 +125,10 @@ const FOOT_FR = {'Collection': 'Collection',
   'All designs': 'Tous les modèles',
   'Rug materials': 'Matières',
   'Embroidery': 'Broderie',
+  'Leather': 'Cuir',
+  'Stone': 'Pierre',
+  'Embroidered headboards': 'Têtes de lit brodées',
+  'Embroidered fabric': 'Tissu brodé',
   'Projects': 'Projets',
   'Studio': 'Studio',
   'Bespoke development': 'Développement sur mesure',
@@ -149,18 +155,20 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
     <div>
       <h4>Artilier</h4>
       <p>${lang === 'fr'
-        ? 'Art. Made Material. Studio d’artisanat d’art à New Delhi. Tapis et broderie à la main, réalisés à la commande pour les designers, architectes et galeries — une pièce unique ou une collection entière, sur nos dessins ou les vôtres.'
-        : 'Art. Made Material. A master craft studio in New Delhi. Rugs and hand embroidery, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.'}</p>
+        ? 'Art. Made Material. Studio d’artisanat d’art à New Delhi. Tapis, broderie à la main, cuir et pierre, réalisés à la commande pour les designers, architectes et galeries — une pièce unique ou une collection entière, sur nos dessins ou les vôtres.'
+        : 'Art. Made Material. A master craft studio in New Delhi. Rugs, hand embroidery, leather and stone, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.'}</p>
     </div>
     <div class="f-col"><h5>${T('Collection')}</h5><ul>
       <li><a href="${up}collection/hand-knotted/">${T('Hand-knotted rugs')}</a></li>
       <li><a href="${up}collection/hand-tufted/">${T('Hand-tufted rugs')}</a></li>
       <li><a href="${up}collection/flatweave/">${T('Flatweave rugs')}</a></li>
-      <li><a href="${up}collection/">${T('All designs')}</a></li>
+      <li><a href="${up}collection/designs/">${T('All designs')}</a></li>
       <li><a href="${up}materials/">${T('Rug materials')}</a></li>
       <li><a href="${up}embroidery/">${T('Embroidery')}</a></li>
       <li><a href="${up}embroidery/headboards/">${T('Embroidered headboards')}</a></li>
       <li><a href="${up}embroidery/fabrics/">${T('Embroidered fabric')}</a></li>
+      <li><a href="${up}leather/">${T('Leather')}</a></li>
+      <li><a href="${up}stone/">${T('Stone')}</a></li>
     </ul></div>
     <div class="f-col"><h5>${T('Studio')}</h5><ul>
       <li><a href="${up}bespoke/">${T('Bespoke development')}</a></li>
@@ -216,13 +224,38 @@ if(mc){addEventListener('scroll',()=>mc.classList.toggle('on',scrollY>innerHeigh
 /* A real <img> inside the slot so the markup is crawlable. slots.js adopts
    an existing [data-pre] image instead of appending a second one, so the
    authored crop and lazy-loading behaviour are unchanged. */
-const slotImg = (id, ph, up, eager = false) => {
+/* sizes hints match the layouts in layout.css / responsive.css: a design
+   page's hero fills the left grid column (~57%) above 860 px and the full
+   width below; grid tiles are 3-up, 2-up under 520 px, 1-up under 380 px. */
+const SIZES = {
+  hero: '(max-width:860px) 100vw, 57vw',
+  grid: '(max-width:380px) 100vw, (max-width:520px) 50vw, 33vw',
+  gal: '(max-width:760px) 100vw, 33vw',
+  full: '100vw',
+  wide: '(max-width:760px) 100vw, 67vw',
+  quarter: '(max-width:760px) 50vw, 25vw',
+};
+const srcsetAttr = (m, up) => {
+  if (!m.variants || !m.variants.length) return '';
+  const stem = m.src.split('?')[0].replace(/\.webp$/, '');
+  const list = m.variants.map(w => `${up}assets/media/r/${stem}-${w}.webp ${w}w`);
+  list.push(`${up}assets/media/${m.src} ${m.w}w`);
+  return ` srcset="${esc(list.join(', '))}"`;
+};
+const slotImg = (id, ph, up, eager = false, sizes = 'grid') => {
   const m = manifest[id] || {};
   const src = m.src ? `${up}assets/media/${m.src}` : '';
   if (!src || m.type === 'video') {
     return `<div class="ph"><media-slot id="${esc(id)}" shape="rect" placeholder="${esc(ph)}"></media-slot></div>`;
   }
-  return `<div class="ph"><media-slot id="${esc(id)}" shape="rect" placeholder="${esc(ph)}"><img data-pre src="${esc(src)}" alt="${esc(m.alt||'')}"${m.alt?' role="img"':' aria-hidden="true"'} loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}></media-slot></div>`;
+  const dims = m.w && m.h ? ` width="${m.w}" height="${m.h}"` : '';
+  const rs = srcsetAttr(m, up);
+  /* An authored zoom (view.s > 1) enlarges the image beyond its frame, so the
+     candidate must be chosen for the enlarged width: scale every length. */
+  const zoom = m.view && m.view.s > 1.1 ? m.view.s : 1;
+  const sizesVal = (SIZES[sizes] || sizes).replace(/(\d+)vw/g, (_, n) => zoom === 1 ? `${n}vw` : `calc(${n}vw * ${zoom.toFixed(2)})`);
+  const sz = rs ? ` sizes="${esc(sizesVal)}"` : '';
+  return `<div class="ph"><media-slot id="${esc(id)}" shape="rect" placeholder="${esc(ph)}"><img data-pre src="${esc(src)}"${rs}${sz}${dims} alt="${esc(m.alt||'')}"${m.alt?' role="img"':' aria-hidden="true"'} loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}></media-slot></div>`;
 };
 
 /* ── schema ─────────────────────────────────────────────────────────── */
@@ -230,7 +263,7 @@ const slotImg = (id, ph, up, eager = false) => {
 const ORG = {
   '@type':'Organization','@id':`${HOST}/#organization`,'name':'Artilier','url':`${HOST}/`,
   'email':'studio@artilier.co','sameAs':['https://www.instagram.com/artilier.co/'],
-  'description':"A master craft studio in New Delhi. Rugs and hand embroidery, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.",
+  'description':"A master craft studio in New Delhi. Rugs, hand embroidery, leather and stone, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.",
   'founder':{'@type':'Person','name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development'},
   'employee':{'@type':'Person','name':'Payal Samal','jobTitle':'Design Head — Interior Designer'},
   'address':{'@type':'PostalAddress','addressLocality':'New Delhi','addressCountry':'IN'},
@@ -239,7 +272,7 @@ const ORG = {
   'slogan':'Art. Made Material.',
   'parentOrganization':{'@type':'Organization','name':'Art Avenue Pvt. Ltd.','address':{'@type':'PostalAddress','addressLocality':'New Delhi','addressCountry':'IN'}},
   'contactPoint':{'@type':'ContactPoint','contactType':'Trade enquiries','email':'studio@artilier.co','url':`${HOST}/contact/`,'areaServed':'Worldwide','availableLanguage':['English']},
-  'knowsAbout':['hand-knotted rugs','hand-tufted rugs','flatweave rugs','custom rug development','bespoke rugs for interior designers','rug design collaboration','custom rugs for hospitality projects','hand embroidery','bespoke embroidered wall panels','embroidered upholstery and soft furnishings','hand-embroidered wallcoverings','embroidered wallcoverings','zardozi embroidery','zari embroidery','aari embroidery','raffia embroidery','embroidered headboards','bespoke embroidery for interior designers']
+  'knowsAbout':['hand-knotted rugs','hand-tufted rugs','flatweave rugs','custom rug development','bespoke rugs for interior designers','rug design collaboration','custom rugs for hospitality projects','hand embroidery','bespoke embroidered wall panels','embroidered upholstery and soft furnishings','hand-embroidered wallcoverings','embroidered wallcoverings','zardozi embroidery','zari embroidery','aari embroidery','raffia embroidery','embroidered headboards','bespoke embroidery for interior designers','semi-precious stone inlay','stone and shell inlay','mother-of-pearl inlay','pietra dura','inlaid stone table tops','bespoke stone furniture']
 };
 const WEBSITE = { '@type':'WebSite','@id':`${HOST}/#website`,'url':`${HOST}/`,'name':'Artilier','publisher':{'@id':`${HOST}/#organization`},'inLanguage':'en' };
 const breadcrumb = items => ({ '@type':'BreadcrumbList','itemListElement':items.map((it,i)=>({ '@type':'ListItem','position':i+1,'name':it.name,'item':it.abs })) });
@@ -298,7 +331,7 @@ function designPage(d) {
 
   const crumbs = [
     { name:'Artilier', href:home(up), abs:`${HOST}/` },
-    { name:'The collection', href:`${up}collection/`, abs:`${HOST}/collection/` },
+    { name:'Rugs', href:`${up}collection/`, abs:`${HOST}/collection/` },
     ...(cat ? [{ name:coll.name, href:`${up}collection/${cat.slug}/`, abs:catUrl }] : []),
     { name:d.name, href:url, abs:url }
   ];
@@ -361,7 +394,7 @@ function designPage(d) {
 </header>
 <section class="sec dtl">
   <div class="dtl-in">
-    <div class="dtl-media">${slotImg(d.hero, `${d.name} — ${d.construction} rug`, up, true)}</div>
+    <div class="dtl-media">${slotImg(d.hero, `${d.name} — ${d.construction} rug`, up, true, 'hero')}</div>
     <div>
       <h2 class="lb" style="display:block;margin-bottom:6px">Specification</h2>
       <div class="facts">
@@ -384,7 +417,7 @@ ${peers.length ? `<section class="sec">
   <div class="cg">${peers.map((p,i)=>`<figure class="cgi" data-design="${esc(p.slug)}">${slotImg(p.hero,`${p.name} — ${p.construction} rug`,up)}<figcaption><b><a href="${up}collection/${p.slug}/">${esc(p.name)}</a></b><span></span><span class="cgn">${n2(i+1)}</span></figcaption></figure>`).join('')}</div>
 </section>` : ''}
 <div class="backhome">
-  <a href="${up}collection/" class="cta ol"><span aria-hidden="true">←</span> Back to the collection</a>
+  <a href="${up}collection/designs/" class="cta ol"><span aria-hidden="true">←</span> Back to the designs</a>
   <div class="backhome-l">${CATS.filter(c=>c!==cat).map(c=>`<a href="${up}collection/${c.slug}/">${esc((collections.find(x=>x.slug===c.coll)||{}).name)} rugs</a>`).join('')}<a href="${up}bespoke/">Bespoke development</a><a href="${up}hospitality/">Hospitality</a><a href="${up}trade/">Trade</a></div>
 </div>
 </main>` + footer(up);
@@ -403,8 +436,9 @@ const CAT_COPY = {
     yarn: 'Pile yarns are selected per design from New Zealand wool, hand-spun wool, wool-silk blends, bamboo silk and developed blends; pile heights and carving are drawn into the specification.'
   },
   'flatweave': {
-    desc: n => `${n} flatweave rug designs for graphic work, layering and low-profile rooms, woven to order, sized and coloured to the project. Trade only, New Delhi.`,
-    when: 'Specify flatweave for graphic and geometric work, for layering, and for rooms where a pile would sit too high. It is lower and lighter underfoot than a pile rug, and reversible in some constructions.',
+    title: 'Custom Flat Weave Rugs — Flatweave, Made to Size | Artilier',
+    desc: n => `Custom flat weave rugs: ${n} flatweave designs for graphic work, layering and low-profile rooms, woven to order and sized and coloured to the project. Trade only.`,
+    when: 'Flatweave — often written flat weave — is woven on the loom with no pile. Specify it for graphic and geometric work, for layering, and for rooms where a pile would sit too high. It is lower and lighter underfoot than a pile rug, and reversible in some constructions.',
     yarn: 'Flatweaves are specified in cotton, jute, allo / hemp and developed blends, chosen for the surface the room needs.'
   }
 };
@@ -419,7 +453,7 @@ function categoryPage(cat) {
   const url = `${HOST}/collection/${cat.slug}/`;
   const crumbs = [
     { name:'Artilier', href:home(up), abs:`${HOST}/` },
-    { name:'The collection', href:`${up}collection/`, abs:`${HOST}/collection/` },
+    { name:'Rugs', href:`${up}collection/`, abs:`${HOST}/collection/` },
     { name:coll.name, href:url, abs:url }
   ];
   const schema = graph([
@@ -431,7 +465,7 @@ function categoryPage(cat) {
     { ...breadcrumb(crumbs), '@id':`${url}#breadcrumb` }
   ]);
   return head({
-    title:`${titleCaseC(coll.name)} Rugs — Custom Designs, Made to Size | Artilier`,
+    title:CAT_COPY[cat.slug].title || `${titleCaseC(coll.name)} Rugs — Custom Designs, Made to Size | Artilier`,
     desc:CAT_COPY[cat.slug].desc(ds.length),
     canonical:url, up, schema
   }) + nav(up) + crumb(crumbs.map(c=>({name:c.name,href:c.href}))) + `
@@ -465,7 +499,7 @@ function categoryPage(cat) {
 }
 
 /* ── run ────────────────────────────────────────────────────────────── */
-const KEEP = new Set([...indexable.map(d=>d.slug), ...CATS.map(c=>c.slug)]);
+const KEEP = new Set([...indexable.map(d=>d.slug), ...CATS.map(c=>c.slug), 'designs']);
 let pruned = 0;
 for (const e of readdirSync(ROOT+'/collection', { withFileTypes:true })) {
   if (!e.isDirectory() || KEEP.has(e.name)) continue;

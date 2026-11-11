@@ -30,7 +30,7 @@ Evidence labels used below: **Measured** (a tool returned it, with date), **Veri
 | Deployed = `main`? | Yes | **Automated** (compares live HTML with the repo, ignoring the edge-injected Cloudflare beacon) | Workflow |
 | PageSpeed Insights API | Free, but the keyless quota is shared and was exhausted on 14 Oct | Not used; Lighthouse CLI replaces it. A free API key (owner) would add CrUX field data | — |
 | Google Search Console `sc-domain:artilier.co` | Yes | Verified; owned by ankit.vijaivargia@gmail.com. **No API/connector access from Claude** — read in the owner's browser | Manual, monthly |
-| GA4 `G-8TXE25YJ86` (property 558437246) | Yes | Live code sends data (consent-gated for UK/EEA/CH). Whether `generate_lead` is starred and Search Console is linked: **Unknown** | Manual, monthly |
+| GA4 `G-8TXE25YJ86` (property 558437246) | Yes | Live code sends data (consent-gated for UK/EEA/CH). `generate_lead` is a key event (starred 15 Oct); Search Console linked (11 Oct) | Manual, monthly |
 | Cloudflare Web Analytics | Yes | Active (auto-injected beacon confirmed on every live page, 14 Oct) | Manual, monthly |
 | Bing Webmaster Tools | Yes | Verification tag live; import status Unknown | Manual, monthly |
 | Google Keyword Planner | Yes (Art Avenue Ads account, ranges only) | Used 11 Oct; ranges in project CSVs | Manual, quarterly |
@@ -58,8 +58,8 @@ Deployment: the live site at artilier.co is byte-identical to `main` @ `72d14d1`
 ### B. Implemented in code, not yet verifiable without an account or time
 | Item | What would verify it |
 |---|---|
-| `generate_lead` arriving in GA4 and starred as a key event | GA4 Admin → Events (owner) |
-| Sitemap re-read by Google (should show 49 URLs, was 40/41) | Search Console → Sitemaps |
+| ~~`generate_lead` starred as a key event~~ — done 15 Oct (event had fired in the previous 28 days) | — |
+| ~~Sitemap re-read by Google (49 URLs)~~ — confirmed 15 Oct: Success, 49 discovered, last read 11 Oct | — |
 | `/guides/briefing-a-bespoke-rug/` indexed (requested 10 Oct) | URL Inspection |
 | Embroidery, headboards, fabrics, hospitality pages indexed (released 11 Oct) | URL Inspection |
 
@@ -97,7 +97,7 @@ Volumes are Google Keyword Planner **ranges** (Sept 2025–Aug 2026, read 11 Oct
 | Gulf rugs | custom carpet dubai (AE 100–1k); custom rugs dubai (AE 10–100); rugs/carpets dubai (AE 1k–10k, retail) | `/trade/uae/` (title already "Bespoke Rugs & Carpets…") | "carpet" is the Gulf word | Keep "carpets" in UAE/Saudi copy; no new city pages |
 | Hospitality | hotel rugs, luxury hotel carpets (10–100 everywhere) | `/hospitality/` | Contract; needs documentation the studio does not hold | Keep cautious; no compliance claims |
 | Embroidered wall panels | embroidered wall panels (10–100 all four) | `/embroidery/` | Low volume, few specialists ranking | Own it — realistic page-one candidate |
-| Embroidered headboards | embroidered headboards (10–100 · 10–100 · 10–100 · 100–1k) | `/embroidery/headboards/` | Commercial; US is the real demand | Strengthen internal links (only 4 in-content links today) |
+| Embroidered headboards | embroidered headboards (10–100 · 10–100 · 10–100 · 100–1k) | `/embroidery/headboards/` | Commercial; US is the real demand | Internal links raised from 6 on 3 pages to 12 on 8 pages (PR `seo/week2-images-links`) |
 | Embroidery for interiors (trade) | bespoke embroidery studio (10–100 all four) | `/embroidery/` + market pages | Fashion-dominated SERP | Supporting |
 | Embroidered wall art / wallpaper | wall art US 1k–10k; wallpaper GB/US 100–1k | — | Consumer / different product | Do not target |
 | French | tapis sur mesure (FR 1k–10k), tapis personnalisés (FR 1k–10k), broderie sur mesure (FR 100–1k), brodeur d'art (FR 100–1k) | `/fr/`, `/fr/broderie/` | Consumer-leaning head terms | Keep; French copy changes only with a French reviewer |
@@ -109,12 +109,12 @@ New pages are not needed for any cluster above. The gaps are proof (photographs,
 
 | ID | Issue | Evidence | Severity | Status |
 |---|---|---|---|---|
-| T-01 | Text LCP delayed by late web-font load on every page (render delay 1.3–5.4 s; LCP element is body copy) | Lighthouse 14 Oct: `/bespoke/` 1.8–5.4 s, `/trade/uae/` 3.1–5.0 s | P1 | **Fix in PR** (preload Jost 300 + Cormorant 400). Verify after merge |
-| T-02 | Layout shift 0.14–0.24 on `/contact/`, `/embroidery/`, `/trade/uae/`, design pages (whole section/main moves — font swap, not images: image containers reserve space with aspect-ratio) | Lighthouse 14 Oct | P1 | Same fix; if CLS stays > 0.1, add metric-matched fallback fonts (`size-adjust`) |
+| T-01 | Text LCP delayed by late web-font load on every page (render delay 1.3–5.4 s; LCP element is body copy) | Lighthouse 14 Oct: `/bespoke/` 1.8–5.4 s, `/trade/uae/` 3.1–5.0 s | P1 | **Fixed** (#29, merged 15 Oct). Production 15 Oct: text pages LCP 1.9–2.3 s |
+| T-02 | Layout shift 0.14–0.24 on `/contact/`, `/embroidery/`, `/trade/uae/`, design pages (font swap) | Lighthouse 14 Oct | P1 | **Fixed**: preloads (#29) + metric-matched fallback fonts (#30). Production 15 Oct: CLS 0 on all six monitored pages |
 | T-03 | Homepage: 8.7 MB transferred, TBT 420–600 ms, LCP ≈ 6 s (lab) | Lighthouse 14 Oct | P1 | **Needs decision**: films on mobile (see owner list). Not changed — the films are part of the brand |
 | T-04 | Six render-blocking stylesheets per page | Lighthouse | P3 | Leave; combining CSS changes the build and gains little after T-01 |
-| T-05 | Homepage and embroidery photographs exist only after JavaScript runs | Static HTML: homepage 36 media slots, 0 `<img>` | P2 | Image sitemap added (PR). Pre-rendering `<img>` as on design pages is the next step |
-| T-06 | Images up to 680 KB, no responsive `srcset` | Image audit 14 Oct (25 of 64 photos > 300 KB) | P2 | Generate 800 px variants + `srcset` in a separate PR |
+| T-05 | Homepage and embroidery photographs exist only after JavaScript runs | Static HTML: homepage 36 media slots, 0 `<img>` | P2 | Image sitemap live (#29). Pre-rendering `<img>` on the hand-maintained homepage is the remaining step |
+| T-06 | Images up to 680 KB, no responsive `srcset` | Image audit 14 Oct (25 of 64 photos > 300 KB) | P2 | **Fix in PR** `seo/week2-images-links`: 480/800/1200 variants + `srcset`/`sizes`; category pages 3.7 MB → 1.0 MB (lab) |
 | T-07 | Media filenames are codes (`ct12.webp`) | Manifest | P3 | Leave: renaming breaks caches and links; alt text and image sitemap carry the meaning |
 | T-08 | Last three commits on `main` (13 Oct) went in without a PR or `release_check.sh` (privacy date "12 October 2026") | Git history | P2 process | Keep using PRs; run the gate before each release |
 
@@ -133,6 +133,7 @@ New pages are not needed for any cluster above. The gaps are proof (photographs,
 | Month | Clicks | Impressions | Non-brand clicks | Indexed pages | Organic enquiries | Qualified | Notes |
 |---|---|---|---|---|---|---|---|
 | to 10 Oct 2026 (3 mo) | 2 | 129 | 0 | 5 (report dated 4 Oct) | Unknown | Unknown | Pre-launch of most pages |
+| 15 Oct 2026 (indexing only) | — | — | — | 5 indexed; 35 not (21 discovered-not-indexed, 12 crawled-not-indexed, 2 redirects — report dated 9 Oct) | — | — | Read in owner's browser; pre-dates the 10–11 Oct releases |
 | Nov 2026 | | | | | | | first 28-day review after the 10–11 Oct releases |
 
 ## 9. Routines

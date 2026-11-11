@@ -18,7 +18,9 @@ a{color:inherit;text-decoration:none}
 a:hover{color:var(--rust)}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 image-slot{--is-empty-bg:#E4DACA}
-media-slot{position:absolute;inset:0;display:block}
+media-slot{position:absolute;inset:0;display:block;overflow:hidden}
+/* Same rule slots.js injects, so a pre-rendered image (now with width/height attributes) fills its frame before the script runs */
+media-slot>img{position:absolute;max-width:none;transform:translate(-50%,-50%);left:50%;top:50%;width:100%;height:100%;object-fit:cover}
 .mi-r media-slot,.brief-ph media-slot,.hand media-slot{--is-empty-bg:#2F251D;--ms-tag:#C4A667;--ms-tag-bd:rgba(196,166,103,.5);--ms-tag-bg:rgba(10,8,7,.45);--ms-tag-on:#151110}
 
 /* ── type ── */

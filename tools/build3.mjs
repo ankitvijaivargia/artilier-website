@@ -82,6 +82,8 @@ const enquiryForm = (id = 'contactForm') => `
       <label><input type="radio" name="sector" value="bespoke"> Bespoke rug from my artwork</label>
       <label><input type="radio" name="sector" value="collection"> A collection design</label>
       <label><input type="radio" name="sector" value="embroidery"> Embroidery</label>
+      <label><input type="radio" name="sector" value="leather"> Leather</label>
+      <label><input type="radio" name="sector" value="stone"> Stone</label>
       <label><input type="radio" name="sector" value="collaboration"> Collaboration</label>
       <label><input type="radio" name="sector" value="other"> Something else</label>
     </div>
@@ -99,13 +101,13 @@ const enquiryForm = (id = 'contactForm') => `
       <select id="c-ct" name="enquiry">
         <option>Bespoke rug from my own artwork</option><option>A design from the collection, re-sized</option>
         <option>A design from the collection, re-coloured</option><option>Several rugs for one project</option>
-        <option>Embroidery — wall panels or framed art</option><option>Embroidered headboards</option><option>Embroidered fabric by the metre</option><option>Embroidery — upholstery panels or soft furnishings</option>
+        <option>Embroidery — wall panels or framed art</option><option>Embroidered headboards</option><option>Embroidered fabric by the metre</option><option>Embroidery — upholstery panels or soft furnishings</option><option>Leather — wall panels, headboards or trims</option><option>Stone — inlay, table tops or furniture</option>
         <option>Samples</option><option>Trade terms</option><option>Not sure yet</option>
       </select>
     </div>
     <div class="f"><label for="c-cs">Construction</label>
       <select id="c-cs" name="construction">
-        <option>Open to your recommendation</option><option>Hand-knotted</option><option>Hand-tufted</option><option>Flatweave</option><option>Hand embroidery</option>
+        <option>Open to your recommendation</option><option>Hand-knotted</option><option>Hand-tufted</option><option>Flatweave</option><option>Hand embroidery</option><option>Leather or hide</option><option>Stone or shell inlay</option>
       </select>
     </div>
   </div>
@@ -131,7 +133,7 @@ const contact = shell({
   lb:'Contact · Start a project', h1:'Start a<br>', h1it:'project.',
   lead:`<p class="bd">Send artwork, a drawing, a reference or an early idea with the sizes. We review it and come back with questions, possibilities and the best way to make it.</p>
     <div class="wp-meta"><span><b>Trade only</b></span><span>Reviewed individually</span><span>New Delhi</span></div>`,
-  scripts:`\n<script defer src="../assets/js/enquiry.js?v=3"></script>`,
+  scripts:`\n<script defer src="../assets/js/enquiry.js?v=5"></script>`,
   body:`
 <section class="sec">
   <div class="about">
@@ -171,7 +173,7 @@ const about = shell({
   title:'About Artilier — Master Craft Studio, New Delhi',
   desc:'A master craft studio in New Delhi for rugs and hand embroidery, working with designers, architects and galleries — led by an interior designer.',
   lb:'About the studio', h1:'A design studio<br>in ', h1it:'New Delhi.',
-  lead:`<p class="bd">Artilier is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. We work trade only, with interior designers, architects and design practices internationally. We begin with rugs; embroidery and design objects follow.</p>
+  lead:`<p class="bd">Artilier is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. We work trade only, with interior designers, architects and design practices internationally. We make rugs, hand embroidery, leather and stone inlay; design objects follow.</p>
     <div class="wp-meta"><span><b>Founded on making</b></span><span>Led by design</span><span>Trade only</span></div>`,
   nodes:[
     { '@type':'Person','@id':`${HOST}/about/#ankit`,'name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development','worksFor':{'@id':`${HOST}/#organization`} },
@@ -191,13 +193,13 @@ ${sec('The people', 'Two perspectives.', 'One studio.', `<div class="cols2">
   </div>`, { dark:true, intro:'Every artwork, drawing and specification passes through both: one person who has spent over a decade making things, and one who designs the interiors those things go into.' })}
 ${sec('What we do', 'Rugs, developed', 'and made.', list([
   '<b>Bespoke development</b> — rugs developed from a designer’s artwork, drawing, CAD file or colour scheme. <a href="../bespoke/">Bespoke rugs</a>',
-  '<b>The collection</b> — named designs in hand-knotted, hand-tufted and flatweave, each a starting point re-coloured and re-sized to the project. <a href="../collection/">The collection</a>',
+  '<b>The collection</b> — named designs in hand-knotted, hand-tufted and flatweave, each a starting point re-coloured and re-sized to the project. <a href="../collection/designs/">The collection</a>',
   '<b>Collaborations</b> — rugs co-developed with designers, architects and artists. <a href="../collaborations/">Collaborations</a>',
   '<b>Hospitality and multi-rug projects</b> — schedules of rugs for boutique hospitality and residential work. <a href="../hospitality/">Hospitality</a>'
 ]))}
 ${sec('Artilier and Art Avenue', 'One supplier,', 'one point of coordination.', `<div class="prose"><p>Artilier is the trade studio of Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is where design, development, sampling and the client relationship sit; orders are contracted, invoiced and exported through Art Avenue Pvt. Ltd. — so a project has one supplier, one point of coordination and established export documentation.</p></div>`)}
 ${sec('Where the work sits', 'Studio in Delhi,', 'looms across India.', `<div class="prose"><p>Studio, artwork development, sampling, finishing and quality control sit in New Delhi. Weaving runs through established rug workshops across India, selected for the construction each rug needs. The workshop is chosen to suit the rug; the specification is held and checked in one place. More in <a href="../craft/">the craft</a> and <a href="../process/">the process</a>.</p></div>`, { dark:true })}
-${ctaBlock('../', 'contact/', 'Start a project', [['trade/','Working with us'],['bespoke/','Bespoke development'],['collection/','The collection']])}`
+${ctaBlock('../', 'contact/', 'Start a project', [['trade/','Working with us'],['bespoke/','Bespoke development'],['collection/designs/','The collection']])}`
 });
 
 /* ── /projects/ and /projects/<slug>/ ─────────────────────────────── */
@@ -230,10 +232,10 @@ ${ctaBlock('../', 'contact/', 'Start a project', [['embroidery/','Embroidery'],[
   <div class="empty-note">
     <span class="lb">Being documented</span>
     <p>Artilier is a new studio. Completed projects are published here only once they are photographed and the people involved have agreed to what is shown — nothing on this page will be staged or invented.</p>
-    <p>Until then, the clearest view of our work is <a href="../collection/">the rug collection</a>, <a href="../embroidery/">our embroidery</a> and how we <a href="../bespoke/">develop pieces from a designer’s artwork</a>. If you would like to discuss work relevant to your project, <a href="../contact/">write to us</a>.</p>
+    <p>Until then, the clearest view of our work is <a href="../collection/designs/">the rug collection</a>, <a href="../embroidery/">our embroidery</a> and how we <a href="../bespoke/">develop pieces from a designer’s artwork</a>. If you would like to discuss work relevant to your project, <a href="../contact/">write to us</a>.</p>
   </div>
 </section>
-${ctaBlock('../', 'contact/', 'Start a project', [['collection/','The rug collection'],['embroidery/','Embroidery'],['bespoke/','Bespoke development']])}`
+${ctaBlock('../', 'contact/', 'Start a project', [['collection/','Rugs'],['collection/designs/','Rug designs'],['embroidery/','Embroidery'],['leather/','Leather'],['stone/','Stone'],['bespoke/','Bespoke development']])}`
 });
 
 const projectPage = p => {
@@ -271,11 +273,11 @@ const projectPage = p => {
   </div>
 </header>
 <section class="sec tight">
-  ${p.hero ? `<div class="gal">${'<figure class="full">' + slotImg(p.hero, p.name, UP, true) + '</figure>'}</div>` : ''}
+  ${p.hero ? `<div class="gal">${'<figure class="full">' + slotImg(p.hero, p.name, UP, true, 'full') + '</figure>'}</div>` : ''}
   <div class="facts">${facts.map(([k, v]) => `<div><b>${k}</b><span>${v}</span></div>`).join('')}</div>
 </section>
 ${(p.brief || p.developed) ? `<section class="sec"><div class="cols2">${[['The brief', p.brief], ['What we developed', p.developed]].filter(([, t]) => t).map(([lb, t]) => `<div><span class="lb">${lb}</span><div class="prose" style="margin-top:18px">${String(t).split(/\n\n+/).map(par => `<p>${esc(par)}</p>`).join('')}</div></div>`).join('')}</div></section>` : ''}
-${media.length ? `<section class="sec gal-sec"><div class="gal">${media.map((id, i) => `<figure${i % 3 === 0 ? ' class="w"' : ''}>${slotImg(id, p.name + ' — detail', UP)}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div></section>` : ''}
+${media.length ? `<section class="sec gal-sec"><div class="gal">${media.map((id, i) => `<figure${i % 3 === 0 ? ' class="w"' : ''}>${slotImg(id, p.name + ' — detail', UP, false, i % 3 === 0 ? 'wide' : 'gal')}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div></section>` : ''}
 ${designs.length ? `<section class="sec"><div class="sec-hd"><div><span class="lb">In the collection</span><h2 class="d2">Designs in this<br><span class="it">project.</span></h2></div>
   <p class="bd">${designs.map(d => `<a href="${UP}collection/${esc(d.slug)}/">${esc(d.name)}</a>`).join(' · ')}</p></div></section>` : ''}
 ${ctaBlock(UP, 'contact/', 'Start a project', [['projects/','All projects'],['bespoke/','Bespoke development'],['embroidery/','Embroidery']])}
@@ -286,7 +288,7 @@ ${ctaBlock(UP, 'contact/', 'Start a project', [['projects/','All projects'],['be
    process or setting checked on 11 Oct 2026; see ARTILIER_stage10D report.
    PRIVACY_PUBLISHED must be the real publication date: if this is merged after
    12 October 2026, change the line below to the merge date before merging. ── */
-const PRIVACY_PUBLISHED = '15 October 2026';
+const PRIVACY_PUBLISHED = '11 November 2026';
 const privacy = shell({
   path:'privacy/', up:'../', robots:'noindex,follow',
   title:'Privacy Notice | Artilier',
@@ -329,7 +331,7 @@ const hospitality = shell({
   title:'Hotel Rugs, Headboards & Embroidery | Artilier',
   desc:'Custom hotel rugs, embroidered headboards, wall panels and furnishing fabric for hospitality projects, developed from the designer’s scheme. Trade only.',
   lb:'Hospitality & contract', h1:'Rugs and embroidery<br>for ', h1it:'hospitality.',
-  lead:`<p class="bd">For hospitality designers, architects and procurement teams: custom rugs for hotels and boutique hospitality projects, made to the dimensions of each room — and embroidered headboards, wall panels and furnishing fabric developed for the same scheme in our New Delhi studio.</p>
+  lead:`<p class="bd">For hospitality designers, architects and procurement teams: custom rugs for hotels and boutique hospitality projects, made to the dimensions of each room — and <a href="../embroidery/headboards/">embroidered headboards</a>, wall panels and furnishing fabric developed for the same scheme in our New Delhi studio.</p>
     <div class="wp-meta"><span><b>Made to the schedule</b></span><span>Rugs and embroidery</span><span>One point of contact</span></div>`,
   nodes:[ service('hospitality/', 'Custom rugs for hospitality projects', 'Custom rug development and manufacture for hotels and hospitality interiors',
     'Development, sampling, production, quality control and export coordination of custom hand-knotted, hand-tufted and flatweave rugs for hotels and hospitality interiors, made to each room’s dimensions and the designer’s scheme.',
@@ -357,7 +359,7 @@ ${sec('Embroidery for the same rooms', 'Headboards, walls', 'and fabric.', `<div
       <h3><a href="../embroidery/fabrics/">Embroidered fabric</a></h3>
       <p>Furnishing fabric by the metre for upholstery and curtains. Typical lead time 6–8 weeks; complex work up to 6 months.</p>
     </div>
-    <div class="gal"><figure class="full">${slotImg('e2', 'Embroidery — zardozi panel on the frame', '../')}<figcaption data-mf="e2"></figcaption></figure></div>
+    <div class="gal"><figure class="full">${slotImg('e2', 'Embroidery — zardozi panel on the frame', '../', false, 'full')}<figcaption data-mf="e2"></figcaption></figure></div>
   </div>`, { intro:'Developed in the same studio as the rugs, so colour and motif can carry across a room. Delivery dates are confirmed for each product only after the specification has been reviewed.' })}
 ${sec('How a hospitality project runs', 'From schedule', 'to dispatch.', `<div class="proc">
     <div class="pstep"><span class="pn">01</span><span class="pt">Understand</span><span class="pd">The rug schedule — rooms, quantities, sizes — with drawings, scheme and application. We come back with our thoughts, questions and what still needs resolving.</span></div>
@@ -404,7 +406,7 @@ const EMB_LINK = Object.fromEntries([['uae','UAE and Gulf'],['saudi-arabia','Sau
 const marketLinks = self => [['trade/uae/','UAE'],['trade/saudi-arabia/','Saudi Arabia'],['trade/uk/','United Kingdom'],['trade/us/','United States']].filter(([h]) => !h.includes(self));
 const common = {
   samples: ['Can we approve samples before production?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom; the strike-off takes 2–3 weeks once the design is approved, and its cost is credited against the order.'],
-  adapt: ['Can a collection design be adapted?', `Yes. Every design in <a href="${UP2}collection/">the collection</a> can be re-scaled, re-proportioned and re-coloured to your scheme, and made to the size the room needs within what the design and construction allow.`],
+  adapt: ['Can a collection design be adapted?', `Yes. Every design in <a href="${UP2}collection/designs/">the collection</a> can be re-scaled, re-proportioned and re-coloured to your scheme, and made to the size the room needs within what the design and construction allow.`],
   contract: ['Who do we contract with?', 'Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Artilier is its trade studio; orders are contracted, invoiced and exported through that entity.'],
   pricing: ['How are prices quoted, and on what terms?', 'Prices are quoted in USD or EUR, usually ex-works; FOB or DDP can be quoted separately on request. Payment terms are set out in the quote, and rugs are usually shipped rolled.'],
   time: ['What are the lead times, and is there a minimum?', 'Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases. There is no minimum order — a single rug is welcome. Costing follows once construction, materials, dimensions and sampling are understood.']
@@ -485,8 +487,8 @@ ${ctaBlock(UP2, 'contact/?type=hospitality', 'Start a Saudi project', [...market
 
 const uk = market({
   slug:'uk', crumb:'United Kingdom',
-  title:'Bespoke Rugs to the Trade — London & UK Designers | Artilier',
-  desc:'Bespoke hand-knotted, hand-tufted and flatweave rugs for UK interior designers — developed from your artwork, sampled, made to size. Trade only.',
+  title:'Bespoke Rugs & Carpets, Made to Measure — UK Trade | Artilier',
+  desc:'Bespoke and made-to-measure rugs and carpets for UK interior designers: hand-knotted, hand-tufted and flatweave, developed from your artwork. Trade only.',
   lb:'Trade · United Kingdom', h1:'Bespoke rugs<br>for ', h1it:'London practices.',
   lead:'For interior designers and architects in London and across the UK: bespoke rugs developed from your artwork or scheme in our New Delhi studio, proved in a strike-off, and made to the size each room needs — to the trade only.',
   meta:['To the trade','Made to size','Strike-off approved'],
@@ -495,6 +497,7 @@ const uk = market({
   body:`
 ${sec('Bespoke, to the trade', 'Your drawing,', 'developed properly.', `<div class="prose">
     <p>We work only with practices — no showroom retail, no consumer pricing. Send a painting, drawing, CAD file or colour scheme; we develop construction, yarn, colour separation and scale with you, then prove it in a woven strike-off before the rug is set on the loom. Collection designs can equally be re-coloured and re-scaled to your scheme.</p>
+    <p>On UK specifications “bespoke carpet”, “made-to-measure rug” and “tailor-made carpet” often describe the same thing: a hand-made piece made to a room’s size and layout. Our work is hand-made rugs in three constructions — <a href="${UP2}collection/hand-knotted/">hand-knotted</a>, <a href="${UP2}collection/hand-tufted/">hand-tufted</a> and <a href="${UP2}collection/flatweave/">flatweave</a> — made to measure from your drawing or floor plan.</p>
   </div>`)}
 ${sec('Typical briefs', 'Townhouses to', 'boutique hotels.', list([
   '<b>Residential</b> — townhouses, country houses and apartments, with rugs sized to the room and the furniture plan',
@@ -543,7 +546,7 @@ ${sec('Questions', 'From US', 'practices.', qa([
   ['Can a Hamptons rug be timed to the season?', 'Tell us the date the rug must be on site. Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases, so the earlier the brief, the more options remain open.'],
   common.contract,
   common.pricing]))}
-${ctaBlock(UP2, 'contact/?type=residential', 'Start a US project', [...marketLinks('us'), ['collection/','The collection'], ['guides/briefing-a-bespoke-rug/','Briefing guide']])}`
+${ctaBlock(UP2, 'contact/?type=residential', 'Start a US project', [...marketLinks('us'), ['collection/designs/','The collection'], ['guides/briefing-a-bespoke-rug/','Briefing guide']])}`
 });
 
 /* ── /fr/ — French trade page ──────────────────────────────────────── */
@@ -608,7 +611,7 @@ ${sec('Contractualisation', 'Devis, contrat', 'et export.', `<div class="prose">
   </div>`)}
 <div class="backhome">
   <a href="mailto:studio@artilier.co" class="cta">Démarrer un projet <span>→</span></a>
-  <div class="backhome-l"><a href="../collection/">La collection</a><a href="../bespoke/" hreflang="en">Bespoke (en anglais)</a><a href="../hospitality/" hreflang="en">Hôtellerie (en anglais)</a></div>
+  <div class="backhome-l"><a href="../collection/designs/">La collection</a><a href="../bespoke/" hreflang="en">Bespoke (en anglais)</a><a href="../hospitality/" hreflang="en">Hôtellerie (en anglais)</a></div>
 </div>`
 });
 
@@ -640,7 +643,7 @@ ${sec('The design', 'Send what exists,', 'at whatever stage.', list([
   '<b>A drawing or CAD file</b> — vector or scanned. Mark the intended finished size and anything that must stay fixed, such as a border width or a motif that must align with a room feature',
   '<b>A reference image</b> — a starting point rather than a design to copy; say what you want to keep from it',
   '<b>A colour scheme</b> — colours are matched by hand and approved in the hand, so send the references the scheme already uses',
-  '<b>A collection design</b> — any design in <a href="'+UPG+'collection/">the collection</a> can be re-scaled, re-proportioned and re-coloured to your scheme'
+  '<b>A collection design</b> — any design in <a href="'+UPG+'collection/designs/">the collection</a> can be re-scaled, re-proportioned and re-coloured to your scheme'
 ]) + `<p class="bd" style="margin-top:22px">A rough idea and a floor plan are enough to begin. Development — construction, yarn, colour separation and scale — is worked out with you, so the brief does not need to be finished artwork.</p>`, { dark:true })}
 ${sec('The size', 'Resolve it', 'from the plan.', `<div class="prose">
     <p>Rugs are made to order, so the size is set by the room rather than by a standard range. What is achievable still depends on the design and the construction, so very large or unusually shaped pieces are confirmed with you before sampling. The most useful thing you can send is the floor plan with the furniture layout, so proportions can be resolved before sampling. On the plan, mark:</p>
@@ -698,7 +701,7 @@ const notFound = head({ title:'Page not found | Artilier', desc:'This page does 
   <span class="lb">404 · Page not found</span>
   <h1 class="d1">This page is<br><span class="it">not here.</span></h1>
   <p class="bd" style="max-width:52ch">The address may have changed. Everything Artilier makes is still a click away.</p>
-  <div class="links"><a href="/collection/">The collection</a><a href="/bespoke/">Bespoke development</a><a href="/hospitality/">Hospitality</a><a href="/trade/">Trade</a><a href="/contact/">Start a project</a></div>
+  <div class="links"><a href="/collection/designs/">The collection</a><a href="/bespoke/">Bespoke development</a><a href="/hospitality/">Hospitality</a><a href="/trade/">Trade</a><a href="/contact/">Start a project</a></div>
 </section>
 </main>` + footer('/');
 
@@ -711,7 +714,7 @@ const notFound = head({ title:'Page not found | Artilier', desc:'This page does 
    galleries, and collectors through galleries. Time-zone sentences restate the
    rug market pages. No client, project or delivery is claimed. */
 const embGal = (ids, up) => `
-<section class="sec gal-sec"><div class="gal">${ids.map(id => `<figure class="q">${slotImg(id, 'Embroidery', up)}<figcaption data-mf="${id}"></figcaption></figure>`).join('')}</div></section>`;
+<section class="sec gal-sec"><div class="gal">${ids.map(id => `<figure class="q">${slotImg(id, 'Embroidery', up, false, 'quarter')}<figcaption data-mf="${id}"></figcaption></figure>`).join('')}</div></section>`;
 const embMarkets = self => [['embroidery/uae/','UAE & Gulf'],['embroidery/saudi-arabia/','Saudi Arabia'],['embroidery/uk/','United Kingdom'],['embroidery/us/','United States'],['fr/broderie/','France (en français)']].filter(([h]) => !h.includes(self));
 const embCommon = {
   min: ['Is there a minimum order?', 'No fixed minimum order quantity. Each project is assessed according to its design, technical requirements and production specifications.'],
@@ -748,7 +751,7 @@ const embUae = embMarket({
   body:`
 ${sec('Where it is used', 'From the majlis', 'to the suite.', list([
   '<b>Majlis and reception rooms</b> — hand-embroidered wallcoverings made wall to wall, or wall panels and framed pieces sized to the wall',
-  '<b>Bedrooms and suites</b> — embroidered headboard panels, cushion fronts and drapery borders',
+  '<b>Bedrooms and suites</b> — <a href="'+UP2+'embroidery/headboards/">embroidered headboard panels</a>, cushion fronts and drapery borders',
   '<b>Furniture</b> — seat, back and side panels for upholstered pieces made by your joinery or upholstery workshop',
   '<b>Hospitality</b> — lobbies, suites and restaurants, usually briefed as a set of panels across several rooms. See <a href="'+UP2+'hospitality/">hospitality</a>',
   '<b>Galleries and collectors</b> — single works and series, through the galleries that represent them'
@@ -784,7 +787,7 @@ const embKsa = embMarket({
   rugs:'trade/saudi-arabia/', rugsLabel:'Rugs for Saudi projects', cta:'Start a Saudi embroidery project',
   body:`
 ${sec('Where it is used', 'Panels, headboards,', 'whole schemes.', list([
-  '<b>Residences</b> — wall-to-wall embroidered wallcoverings, majlis wall panels, framed works, headboards and soft furnishings',
+  '<b>Residences</b> — wall-to-wall embroidered wallcoverings, majlis wall panels, framed works, <a href="'+UP2+'embroidery/headboards/">headboards</a> and soft furnishings',
   '<b>Hospitality</b> — hotels and resorts, including destination projects, usually briefed as a schedule of panel types across many rooms',
   '<b>Cultural and gallery projects</b> — single works and series, through the galleries and curators who commission them',
   '<b>Furniture</b> — embroidered panels supplied to your upholsterer or joinery workshop'
@@ -813,7 +816,7 @@ const embUk = embMarket({
   rugs:'trade/uk/', rugsLabel:'Rugs for UK projects', cta:'Start a UK embroidery project',
   body:`
 ${sec('Where it is used', 'Made for the drawing,', 'not the catalogue.', list([
-  '<b>Residential</b> — hand-embroidered wallcoverings for dining rooms and halls, embroidered headboards, cushion fronts and curtain borders, each made to the room',
+  '<b>Residential</b> — hand-embroidered wallcoverings for dining rooms and halls, <a href="'+UP2+'embroidery/headboards/">embroidered headboards</a>, cushion fronts and curtain borders, each made to the room',
   '<b>Upholstery panels</b> — embroidered seat, back and side panels supplied to your upholsterer',
   '<b>Framed and stretched works</b> — single pieces or series for a wall or a stair',
   '<b>Galleries and collectors</b> — commissioned works through the galleries that represent them'
@@ -842,7 +845,7 @@ const embUs = embMarket({
   rugs:'trade/us/', rugsLabel:'Rugs for US projects', cta:'Start a US embroidery project',
   body:`
 ${sec('Where it is used', 'Apartments, houses,', 'galleries.', list([
-  '<b>Apartments and townhouses</b> — hand-embroidered wallcoverings made wall to wall, wall panels, headboards and cushion fronts sized to the room',
+  '<b>Apartments and townhouses</b> — hand-embroidered wallcoverings made wall to wall, wall panels, <a href="'+UP2+'embroidery/headboards/">headboards</a> and cushion fronts sized to the room',
   '<b>Houses</b> — larger runs of panels for living rooms, bedrooms and stairs',
   '<b>Upholstery panels</b> — embroidered panels supplied to your workroom',
   '<b>Galleries and collectors</b> — single works and series, through the galleries that represent them'
@@ -915,7 +918,7 @@ const syncShell = (file, up, { ctaLabel } = {}) => {
   s = s.replace(/<a class="mcta" id="mcta" href="[^"]*">([^<]*)/, (m, label) => `<a class="mcta" id="mcta" href="${up}contact/">${ctaLabel || label}`);
   s = s.split(`${up}index.html#brief`).join(`${up}contact/`).split(`${up}index.html#about`).join(`${up}about/`).split(`href="${up}index.html"`).join(`href="${up}"`);
   s = s.replace(/manifest\.json\?v=[0-9a-f]+/g, `manifest.json?v=${MV}`);
-  s = s.replace(/slots\.js\?v=4/g, 'slots.js?v=5').replace(/pages\.css\?v=[345]/g, 'pages.css?v=7');
+  s = s.replace(/slots\.js\?v=[45]/g, 'slots.js?v=6').replace(/pages\.css\?v=[345]/g, 'pages.css?v=7');
   if (!s.includes('pages.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*collection-tweaks\.css\?v=2">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/pages.css?v=3">`);
   if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=5"></script>\n</head>`);
   /* one Organization entity everywhere: replace the inline copy with the shared one */
@@ -928,26 +931,27 @@ const syncShell = (file, up, { ctaLabel } = {}) => {
 };
 syncShell('collaborations/index.html', '../', { ctaLabel:'Start a collaboration ' });
 
-/* collection hub: shell + full graph instead of a lone BreadcrumbList */
+/* Rugs page (/collection/) is hand-maintained: shell only, its own WebPage graph stays.
+   Named designs live at /collection/designs/: shell + a CollectionPage graph rebuilt from the data. */
+syncShell('collection/index.html', '../');
 {
-  syncShell('collection/index.html', '../');
-  let s = rd('collection/index.html');
-  const url = `${HOST}/collection/`;
+  syncShell('collection/designs/index.html', '../../');
+  let s = rd('collection/designs/index.html');
+  const url = `${HOST}/collection/designs/`;
   const items = indexable.slice().sort(by);
   const hub = { '@context':'https://schema.org','@graph':[ORG, WEBSITE,
-    { '@type':'CollectionPage','@id':`${url}#collection`,'url':url,'name':'The collection — hand-knotted, hand-tufted and flatweave rug designs',
+    { '@type':'CollectionPage','@id':`${url}#collection`,'url':url,'name':'Rug designs — hand-knotted, hand-tufted and flatweave',
       'isPartOf':{'@id':`${HOST}/#website`},'about':{'@id':`${HOST}/#organization`},'breadcrumb':{'@id':`${url}#breadcrumb`},'inLanguage':'en',
       'hasPart':CATS.map(c => ({ '@id':`${HOST}/collection/${c.slug}/#collection` })),
       'mainEntity':{ '@type':'ItemList','numberOfItems':items.length,'itemListElement':items.map((d, i) => ({ '@type':'ListItem','position':i + 1,'name':d.name,'url':`${HOST}/collection/${d.slug}/` })) } },
     { '@type':'BreadcrumbList','@id':`${url}#breadcrumb`,'itemListElement':[
       { '@type':'ListItem','position':1,'name':'Artilier','item':`${HOST}/` },
-      { '@type':'ListItem','position':2,'name':'The collection','item':url } ] } ] };
+      { '@type':'ListItem','position':2,'name':'Rugs','item':`${HOST}/collection/` },
+      { '@type':'ListItem','position':3,'name':'Designs','item':url } ] } ] };
   s = s.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify(hub)}</script>`);
-  s = s.replace(/<title>[^<]*<\/title>/, '<title>Rug Collection: Hand-Knotted, Hand-Tufted &amp; Flatweave | Artilier</title>');
-  s = s.replace(/<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="The collection — Artilier rug designs">');
-  wr('collection/index.html', s);
+  wr('collection/designs/index.html', s);
 }
-console.log('synced shell: collaborations, collection hub');
+console.log('synced shell: collaborations, rugs page, designs page');
 
 /* ── sitemap: canonical, indexable, 200-status URLs only ───────────── */
 /* No <lastmod>: every page is rewritten on each build (shared footer), so a
@@ -955,10 +959,10 @@ console.log('synced shell: collaborations, collection hub');
    by Google and was dropped too. */
 
 const urls = [
-  ['', '1.0'], ['collection/', '0.9'], ...CATS.map(c => [`collection/${c.slug}/`, '0.8']),
+  ['', '1.0'], ['collection/', '0.9'], ['collection/designs/', '0.9'], ...CATS.map(c => [`collection/${c.slug}/`, '0.8']),
   ['bespoke/', '0.9'], ['hospitality/', '0.9'], ['trade/', '0.8'], ['collaborations/', '0.8'], ['contact/', '0.8'], ['about/', '0.7'],
   ['trade/uae/', '0.8'], ['trade/saudi-arabia/', '0.8'], ['trade/uk/', '0.7'], ['trade/us/', '0.7'], ['fr/', '0.8'],
-  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], [G, '0.7'],
+  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['leather/', '0.8'], ['stone/', '0.8'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], [G, '0.7'],
   ...(indexProjects ? [['projects/', '0.8']] : []), ...projectsData.map(p => [`projects/${p.slug}/`, '0.7']),
   ...indexable.slice().sort(by).map(d => [`collection/${d.slug}/`, '0.6'])
 ];

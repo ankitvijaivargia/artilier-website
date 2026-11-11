@@ -55,7 +55,7 @@ const relatedBlock = (links, { u = up, href = 'contact/', label = 'Start a proje
 const bespoke = page({
   slug:'bespoke', lb:'Bespoke rug development',
   title:'Bespoke Rugs from Your Artwork | Artilier Trade Studio',
-  desc:'Custom rugs developed from your artwork, CAD file or palette: construction, yarn, colour and scale resolved in sampling before production. Trade only.',
+  desc:'Custom and made-to-measure rugs developed from your artwork, CAD file or palette: construction, yarn, colour and scale resolved in sampling. Trade only.',
   h1:'Your artwork.<br>Our ', h1it:'development.',
   lead:`<p class="bd">Send artwork, a painting, a CAD file, a colour scheme, a reference image or a floor plan, and we develop it into a finished rug — construction, yarn, colour, scale and finish worked out with you, then proved in a sample before production.</p>
     <div class="wp-meta"><span><b>Made to order</b></span><span>Made to size</span><span>Custom colourways</span></div>`,
@@ -85,7 +85,7 @@ const bespoke = page({
 </section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">Construction</span><h2 class="d2">Which construction<br>a design <span class="it">wants.</span></h2></div>
-  <p class="bd">Which construction a design wants is a technical decision, not a style one. We make the recommendation from the artwork, the detail it carries, the traffic it will take and the budget — and prove it in sampling before production. Existing designs in <a href="${up}collection/">the collection</a> can equally be re-scaled and re-coloured to a scheme rather than developed from scratch.</p></div>
+  <p class="bd">Which construction a design wants is a technical decision, not a style one. We make the recommendation from the artwork, the detail it carries, the traffic it will take and the budget — and prove it in sampling before production. Existing designs in <a href="${up}collection/designs/">the collection</a> can equally be re-scaled and re-coloured to a scheme rather than developed from scratch.</p></div>
 </section>
 <section class="sec dark">
   <div class="sec-hd"><div><span class="lb">Sampling and timing</span><h2 class="d2">Proved in a sample,<br>then <span class="it">made.</span></h2></div>
@@ -111,7 +111,7 @@ const bespoke = page({
     <a href="https://wa.me/919828030095" class="cta ol" target="_blank" rel="noopener">WhatsApp the studio</a>
   </div>
 </section>
-${relatedBlock([['process/','The full process'],['materials/','Material selection'],['hospitality/','Hospitality & contract'],['collection/','The collection'],['trade/','Working with us']])}`
+${relatedBlock([['process/','The full process'],['materials/','Material selection'],['hospitality/','Hospitality & contract'],['collection/designs/','The collection'],['trade/','Working with us']])}`
 });
 
 /* ── /trade/ ───────────────────────────────────────────────────────── */
@@ -167,7 +167,7 @@ const trade = page({
   <div class="sec-hd"><div><span class="lb">Working internationally</span><h2 class="d2">Briefed from<br>anywhere, made in <span class="it">Delhi.</span></h2></div>
   <p class="bd">We work with trade clients in Europe, the Gulf and the United States. Market notes cover time zones, terminology and what to include in a brief: <a href="${up}trade/uae/">UAE</a> · <a href="${up}trade/saudi-arabia/">Saudi Arabia</a> · <a href="${up}trade/uk/">United Kingdom</a> · <a href="${up}trade/us/">United States</a> · <a href="${up}fr/" hreflang="fr" lang="fr">en français</a>.</p></div>
 </section>
-${relatedBlock([['bespoke/','Bespoke development'],['hospitality/','Hospitality & contract'],['process/','The process'],['materials/','Materials'],['collection/','The collection']])}`
+${relatedBlock([['bespoke/','Bespoke development'],['hospitality/','Hospitality & contract'],['process/','The process'],['materials/','Materials'],['collection/designs/','The collection']])}`
 });
 
 /* ── /materials/ ───────────────────────────────────────────────────── */
@@ -267,13 +267,13 @@ const craft = page({
 </section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">The second discipline</span><h2 class="d2">Embroidery,<br>worked by <span class="it">hand.</span></h2></div>
-  <p class="bd">The same model applied to thread: hand embroidery for wall panels, framed art, cushions, headboards, upholstery panels and drapery, from our designs or developed from your artwork, and sampled where the project requires it. <a href="${up}embroidery/">Embroidery at Artilier</a>.</p></div>
+  <p class="bd">The same model applied to thread: hand embroidery for wall panels, framed art, cushions, <a href="${up}embroidery/headboards/">headboards</a>, upholstery panels and drapery, from our designs or developed from your artwork, and sampled where the project requires it. <a href="${up}embroidery/">Embroidery at Artilier</a>.</p></div>
 </section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">Beyond</span><h2 class="d2">Built around making,<br>not one <span class="it">product.</span></h2></div>
   <p class="bd">Artilier is built around art, material and making rather than around a single product. Rugs and embroidery are where the studio works today; design objects follow. The constant is the model: made to order by hand, developed from Delhi, sold trade only. <a href="${up}trade/">How we work with practices</a>.</p></div>
 </section>
-${relatedBlock([['collection/','The collection'],['embroidery/','Embroidery'],['process/','The process'],['materials/','Materials'],['bespoke/','Bespoke development']])}`
+${relatedBlock([['collection/designs/','The collection'],['embroidery/','Embroidery'],['leather/','Leather'],['stone/','Stone'],['process/','The process'],['materials/','Materials'],['bespoke/','Bespoke development']])}`
 });
 
 /* ── embroidery pages ──────────────────────────────────────────────── */
@@ -296,13 +296,14 @@ const EMB_SLOTS = [
   ['e1','Embroidery — chain stitch','w'], ['e2','Embroidery — zardozi panel on the frame',''],
   ['e3','Embroidery — raffia on the frame',''], ['e4','Embroidery — cord stitching','w'],
   ['e5','Embroidery — metal thread','q'], ['e6','Embroidery — large panel','q'],
-  ['e7','Embroidery — finished zari and zardozi','q'], ['e8','Embroidery — finished panel','q']
+  ['e7','Embroidery — finished zari and zardozi','q'], ['e8','Embroidery — finished panel','q'],
+  ['e9','Embroidery — finished framed panel',''], ['e10','Embroidery — finished panel on a printed ground','w']
 ];
 const gallery = (slots, lb, h2, h2it, intro) => `
 <section class="sec gal-sec">
   <div class="sec-hd"><div><span class="lb">${esc(lb)}</span><h2 class="d2">${h2}<span class="it">${h2it}</span></h2></div>${intro ? `
   <p class="bd">${intro}</p>` : ''}</div>
-  <div class="gal">${slots.map(([id, ph, w]) => `<figure${w ? ` class="${w}"` : ''}>${slotImg(id, ph, up)}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div>
+  <div class="gal">${slots.map(([id, ph, w]) => `<figure${w ? ` class="${w}"` : ''}>${slotImg(id, ph, up, false, w === 'full' ? 'full' : w === 'w' ? 'wide' : w === 'q' ? 'quarter' : 'gal')}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div>
 </section>`;
 const qaBlock = (rows, lb = 'Practicalities', h2 = 'Before you<br>', h2it = 'brief us.') => `<section class="sec">
   <div class="sec-hd"><div><span class="lb">${esc(lb)}</span><h2 class="d2">${h2}<span class="it">${h2it}</span></h2></div></div>
@@ -541,9 +542,9 @@ console.log(`built ${Object.keys(pages).length} commercial pages`);
 /* ── pre-rendered collection ───────────────────────────────────────── */
 /* Mirrors content.js card()/section() exactly, so the visual output is
    byte-identical in structure — only now it exists before JavaScript runs. */
-const cUp = '../';
+const cUp = '../../';
 const card = (d, i, eagerRow) => {
-  const link = d.detail ? `<a href="${esc(d.slug)}/">${esc(d.name)}</a>` : esc(d.name);
+  const link = d.detail ? `<a href="../${esc(d.slug)}/">${esc(d.name)}</a>` : esc(d.name);
   return `<figure class="cgi" data-design="${esc(d.slug)}">${slotImg(d.hero, d.name + ' — full rug or in-room photograph', cUp, eagerRow && i < 3)}` +
     `<figcaption><b data-mt="${esc(d.hero)}">${link}</b><span data-mf="${esc(d.hero)}">${esc(d.label || '')}</span>` +
     `<span class="cgn">${n2(i + 1)}</span></figcaption></figure>`;
@@ -566,7 +567,7 @@ const filtBtns = `<button data-f="all" aria-pressed="true">All designs</button>`
   `<span class="fc" id="fc" role="status" aria-live="polite"></span>`;
 
 import { readFileSync, writeFileSync } from 'node:fs';
-let ci = readFileSync('collection/index.html','utf8');
+let ci = readFileSync('collection/designs/index.html','utf8');
 /* Idempotent: matches the empty placeholder AND an already pre-rendered
    block, so re-running the build refreshes the markup instead of silently
    doing nothing. */
@@ -575,7 +576,7 @@ ci = ci.replace(/<main id="collection-root"[\s\S]*?<\/main>/,
 ci = ci.replace(/<div class="filt-in" id="filt-in" role="group" aria-label="Filter the collection">[\s\S]*?<\/div>/,
   `<div class="filt-in" id="filt-in" role="group" aria-label="Filter the collection">${filtBtns}</div>`);
 ci = ci.replace('slots.js?v=3','slots.js?v=4').replace('content.js?v=2','content.js?v=4');
-writeFileSync('collection/index.html', ci);
-console.log('pre-rendered collection/index.html');
+writeFileSync('collection/designs/index.html', ci);
+console.log('pre-rendered collection/designs/index.html');
 
 /* Sitemap generation moved to tools/build3.mjs (it must list the new pages too). */
