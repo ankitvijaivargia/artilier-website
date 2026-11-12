@@ -238,6 +238,9 @@ ${ctaBlock('../', 'contact/', 'Start a project', [['embroidery/','Embroidery'],[
 ${ctaBlock('../', 'contact/', 'Start a project', [['collection/','Rugs'],['collection/designs/','Rug designs'],['embroidery/','Embroidery'],['leather/','Leather'],['stone/','Stone'],['bespoke/','Bespoke development']])}`
 });
 
+/* Gallery rhythm in a 12-column grid: wide+narrow, narrow+wide, three narrow,
+   repeating every seven, so every row is full and no gap is left. */
+const galW = i => i % 7 === 0 || i % 7 === 3;
 const projectPage = p => {
   const UP = '../../';
   const url = `${HOST}/projects/${p.slug}/`;
@@ -277,7 +280,7 @@ const projectPage = p => {
   <div class="facts">${facts.map(([k, v]) => `<div><b>${k}</b><span>${v}</span></div>`).join('')}</div>
 </section>
 ${(p.brief || p.developed) ? `<section class="sec"><div class="cols2">${[['The brief', p.brief], ['What we developed', p.developed]].filter(([, t]) => t).map(([lb, t]) => `<div><span class="lb">${lb}</span><div class="prose" style="margin-top:18px">${String(t).split(/\n\n+/).map(par => `<p>${esc(par)}</p>`).join('')}</div></div>`).join('')}</div></section>` : ''}
-${media.length ? `<section class="sec gal-sec"><div class="gal">${media.map((id, i) => `<figure${i % 3 === 0 ? ' class="w"' : ''}>${slotImg(id, p.name + ' — detail', UP, false, i % 3 === 0 ? 'wide' : 'gal')}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div></section>` : ''}
+${media.length ? `<section class="sec gal-sec"><div class="gal">${media.map((id, i) => `<figure${galW(i) ? ' class="w"' : ''}>${slotImg(id, p.name + ' — detail', UP, false, galW(i) ? 'wide' : 'gal')}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div></section>` : ''}
 ${designs.length ? `<section class="sec"><div class="sec-hd"><div><span class="lb">In the collection</span><h2 class="d2">Designs in this<br><span class="it">project.</span></h2></div>
   <p class="bd">${designs.map(d => `<a href="${UP}collection/${esc(d.slug)}/">${esc(d.name)}</a>`).join(' · ')}</p></div></section>` : ''}
 ${ctaBlock(UP, 'contact/', 'Start a project', [['projects/','All projects'],['bespoke/','Bespoke development'],['embroidery/','Embroidery']])}
