@@ -41,13 +41,13 @@
   },
   "projects": [
     {
-      "slug": "ludwig-suite-munich",
-      "name": "Ludwig Suite, Vier Jahreszeiten Kempinski",
+      "slug": "hotel-suite-munich",
+      "name": "Embroidered wall panels for a hotel suite",
       "discipline": "Embroidery",
       "category": "Hospitality",
       "location": "Munich",
       "year": "2025",
-      "summary": "Hand-embroidered wall panels in metallic-thread zardozi and dabka, made in our atelier for a design studio in India.",
+      "summary": "Hand-embroidered wall panels in metallic-thread zardozi and dabka, made in our atelier for a design studio in India, for a luxury hotel suite in Munich.",
       "scope": "Hand-embroidered wall panels",
       "techniques": [
         "Zardozi",
@@ -57,15 +57,15 @@
         "Metallic thread",
         "Cotton-cord padding"
       ],
-      "brief": "A design studio in India commissioned us to make embroidered wall panels for the Ludwig Suite at Hotel Vier Jahreszeiten Kempinski in Munich, which opened in 2025. The panels were to be embroidered by hand in metallic thread, to the studio's artwork.\n\nWe made the panels as the studio's manufacturer. The studio is not named here, and neither the hotel nor the suite's designer has endorsed ARTILIER.",
+      "brief": "A design studio in India commissioned us to make embroidered wall panels for a suite in a luxury hotel in Munich, completed in 2025. The panels were to be embroidered by hand in metallic thread, to the studio's artwork.\n\nWe made the panels as the studio's manufacturer. Neither the studio nor the hotel is named here.",
       "developed": "The artwork was drawn onto the ground fabric and stretched on the frame, with several embroiderers working one panel at a time. Raised areas were padded with cotton cord, then covered in zardozi: metallic thread couched by hand and dabka, a fine coiled metal wire cut to length and stitched down piece by piece.\n\nThe same rose-toned metal runs through the whole panel. What changes from the shell motif to the scrollwork and the border is the stitch, the padding and the direction the light catches.",
-      "hero": "pj-ludwig-2",
+      "hero": "pj-munich-2",
       "images": [
-        "pj-ludwig-1",
-        "pj-ludwig-3",
-        "pj-ludwig-4"
+        "pj-munich-1",
+        "pj-munich-3",
+        "pj-munich-4"
       ],
-      "video": "pj-ludwig-v1",
+      "video": "pj-munich-v1",
       "order": 1,
       "featured": true,
       "permission": true,

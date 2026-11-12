@@ -378,11 +378,10 @@ No new URL. No size, weight, price or project claims. Owner still to confirm: la
 - Organization `sameAs`: pinterest.com/artilierco added (now LinkedIn, Instagram, Pinterest).
 - After merge: Pinterest → Settings → Link to Pinterest → Websites → Claim → "Claim your website".
 
-## 22. First published project: Ludwig Suite, Munich (12 Nov 2026)
+## 22. First published project: hotel suite, Munich (12 Nov 2026)
 
-- Owner confirmed (12 Nov 2026): wall panels in metallic-thread zardozi and dabka, made in 2025 under ARTILIER for a design studio in India (manufacturer of record Art Avenue Pvt. Ltd.); the studio may be described but not named.
-- Public facts checked: the Ludwig Suite opened May 2025 with handmade embroidered wallcoverings (hogapage.de, 15 May 2025).
-- `content/projects.json`: record `ludwig-suite-munich` (permission and published true). Builds /projects/ludwig-suite-munich/ and a sitemap entry; /projects/ stays noindex until a second project (INDEX_PROJECTS_MIN = 2).
-- Media `pj-ludwig-1..4` and film `pj-ludwig-v1` from the owner's workshop photos and video, cropped so no faces appear. No hotel or press photography used.
-- /embroidery/: the "studios we do not name" paragraph now links to the project.
-- Copy states that neither the hotel nor the suite's designer endorses ARTILIER; the hotel's designer is not named. Art Avenue is not mentioned on the page.
+- Owner confirmed (12 Nov 2026): wall panels in metallic-thread zardozi and dabka, made in 2025 under ARTILIER for a design studio in India. Neither the studio nor the hotel is named (owner decision, 12 Nov).
+- `content/projects.json`: record `hotel-suite-munich` (permission and published true). /projects/ stays noindex until a second project (INDEX_PROJECTS_MIN = 2).
+- Media `pj-munich-1..4` and film `pj-munich-v1` from the owner's workshop photos and video, cropped so no faces appear. No hotel or press photography.
+- /embroidery/: the "studios we do not name" paragraph links to the project.
+- The first version (PR #39) used a different slug; it was live for under an hour, never indexed, and returns 404.
