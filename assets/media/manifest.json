@@ -1174,8 +1174,8 @@
     "h": 200,
     "variants": []
   },
-  "pj-ludwig-1": {
-    "src": "pj-ludwig-1.webp?v=1",
+  "pj-munich-1": {
+    "src": "pj-munich-1.webp?v=1",
     "type": "image",
     "alt": "Finished embroidered wall panel in rose-toned metallic thread, laid flat on the workshop table",
     "w": 550,
@@ -1184,8 +1184,8 @@
       480
     ]
   },
-  "pj-ludwig-2": {
-    "src": "pj-ludwig-2.webp?v=1",
+  "pj-munich-2": {
+    "src": "pj-munich-2.webp?v=1",
     "type": "image",
     "alt": "Full length of a wall panel on the frame, zardozi and dabka work in metallic thread over the drawn design",
     "w": 1150,
@@ -1195,8 +1195,8 @@
       800
     ]
   },
-  "pj-ludwig-3": {
-    "src": "pj-ludwig-3.webp?v=1",
+  "pj-munich-3": {
+    "src": "pj-munich-3.webp?v=1",
     "type": "image",
     "alt": "Close view of a shell motif and scrollwork being couched in metallic thread, with cut dabka on a felt pad",
     "w": 1200,
@@ -1206,8 +1206,8 @@
       800
     ]
   },
-  "pj-ludwig-4": {
-    "src": "pj-ludwig-4.webp?v=1",
+  "pj-munich-4": {
+    "src": "pj-munich-4.webp?v=1",
     "type": "image",
     "alt": "Lower section of a panel, metallic thread laid over cotton-cord padding, the drawn design still visible",
     "w": 1100,
@@ -1217,10 +1217,10 @@
       800
     ]
   },
-  "pj-ludwig-v1": {
+  "pj-munich-v1": {
     "type": "video",
-    "src": "pj-ludwig-v1.mp4?v=1",
-    "poster": "/assets/media/pj-ludwig-v1-poster.webp?v=1",
+    "src": "pj-munich-v1.mp4?v=1",
+    "poster": "/assets/media/pj-munich-v1-poster.webp?v=1",
     "alt": "Moving along an embroidered wall panel on the frame"
   }
 }
