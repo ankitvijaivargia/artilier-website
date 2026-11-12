@@ -262,7 +262,7 @@ const slotImg = (id, ph, up, eager = false, sizes = 'grid') => {
 
 const ORG = {
   '@type':'Organization','@id':`${HOST}/#organization`,'name':'ARTILIER','alternateName':['Artilier'],'url':`${HOST}/`,
-  'email':'studio@artilier.co','sameAs':['https://www.linkedin.com/company/artilier/','https://www.instagram.com/artilier.co/'],
+  'email':'studio@artilier.co','sameAs':['https://www.linkedin.com/company/artilier/','https://www.instagram.com/artilier.co/','https://www.pinterest.com/artilierco/'],
   'description':"A master craft studio in New Delhi. Rugs, hand embroidery, leather and stone, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.",
   'founder':{'@type':'Person','name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development','sameAs':['https://www.linkedin.com/in/ankitvijaivargia/']},
   'employee':{'@type':'Person','name':'Payal Samal','jobTitle':'Design Head — Interior Designer'},

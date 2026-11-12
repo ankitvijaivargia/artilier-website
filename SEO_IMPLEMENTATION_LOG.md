@@ -370,3 +370,10 @@ No shipping costs, customs arrangements or delivery dates are stated.
 | Meta description names mother-of-pearl, table tops, furniture surfaces, walls, doors, joinery | — |
 
 No new URL. No size, weight, price or project claims. Owner still to confirm: largest single piece, who cuts and sets the stone, finished pieces that may be named.
+
+## 21. Pinterest: website claim tag and sameAs (12 Nov 2026) — branch `brand/pinterest-claim` (stacked on §20)
+
+- Pinterest business account set up 12 Nov: pinterest.com/artilierco, name ARTILIER, website artilier.co, email studio@artilier.co confirmed, "A" mark as profile photo.
+- `index.html`: `<meta name="p:domain_verify" content="6ab79f36496886481840cf7a15b36fe5">` beside the Bing tag. Pinterest needs it on the homepage only.
+- Organization `sameAs`: pinterest.com/artilierco added (now LinkedIn, Instagram, Pinterest).
+- After merge: Pinterest → Settings → Link to Pinterest → Websites → Claim → "Claim your website".
