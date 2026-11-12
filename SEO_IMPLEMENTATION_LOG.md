@@ -377,3 +377,12 @@ No new URL. No size, weight, price or project claims. Owner still to confirm: la
 - `index.html`: `<meta name="p:domain_verify" content="6ab79f36496886481840cf7a15b36fe5">` beside the Bing tag. Pinterest needs it on the homepage only.
 - Organization `sameAs`: pinterest.com/artilierco added (now LinkedIn, Instagram, Pinterest).
 - After merge: Pinterest → Settings → Link to Pinterest → Websites → Claim → "Claim your website".
+
+## 22. First published project: Ludwig Suite, Munich (12 Nov 2026)
+
+- Owner confirmed (12 Nov 2026): wall panels in metallic-thread zardozi and dabka, made in 2025 under ARTILIER for a design studio in India (manufacturer of record Art Avenue Pvt. Ltd.); the studio may be described but not named.
+- Public facts checked: the Ludwig Suite opened May 2025 with handmade embroidered wallcoverings (hogapage.de, 15 May 2025).
+- `content/projects.json`: record `ludwig-suite-munich` (permission and published true). Builds /projects/ludwig-suite-munich/ and a sitemap entry; /projects/ stays noindex until a second project (INDEX_PROJECTS_MIN = 2).
+- Media `pj-ludwig-1..4` and film `pj-ludwig-v1` from the owner's workshop photos and video, cropped so no faces appear. No hotel or press photography used.
+- /embroidery/: the "studios we do not name" paragraph now links to the project.
+- Copy states that neither the hotel nor the suite's designer endorses ARTILIER; the hotel's designer is not named. Art Avenue is not mentioned on the page.

@@ -399,7 +399,7 @@ ${gallery(EMB_SLOTS, 'On the frame', 'Stitch by ', 'stitch.', 'Work in progress 
 </section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">Experience</span><h2 class="d2">Made for studios<br>we do not <span class="it">name.</span></h2></div>
-  <p class="bd">Our embroiderers have produced panels and soft furnishings for international interior design studios. That work was made under confidentiality, so it is not named or published as projects here — what this page shows is the making.</p></div>
+  <p class="bd">Our embroiderers have produced panels and soft furnishings for international interior design studios. Most of that work was made under confidentiality and is not published. Where we have permission, it is shown in <a href="../projects/">Projects</a> — among it the metallic-thread wall panels we made for <a href="../projects/ludwig-suite-munich/">the Ludwig Suite in Munich</a>.</p></div>
 </section>
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">Where we work</span><h2 class="d2">Briefed from<br>five <span class="it">markets.</span></h2></div>
