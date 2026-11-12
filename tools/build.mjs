@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 /**
- * Artilier — Phase 2 static generator.
+ * ARTILIER — Phase 2 static generator.
  * Reads /content/*.json and emits crawlable HTML. No invented facts: every
  * sentence below is traceable to existing site copy or repository data.
  * Fields that are empty in the data (material, referenceSize, leadTime,
@@ -55,7 +55,7 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${canonical}">${robots ? `\n<meta name="robots" content="${robots}">` : ''}
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Artilier">
+<meta property="og:site_name" content="ARTILIER">
 <meta property="og:locale" content="${locale}">
 <meta property="og:title" content="${esc(ogTitle || title)}">
 <meta property="og:description" content="${esc(ogDesc || desc)}">
@@ -92,7 +92,7 @@ const nav = (up, lang = 'en') => {
   const l = (h, k) => `<a href="${up}${h}"${lang === 'fr' ? ' hreflang="en"' : ''}>${t(k)}</a>`;
   return `
 <nav id="nav" class="s">
-  <a href="${home(up)}" class="logo">Artilier<em>Art. Made Material.</em></a>
+  <a href="${home(up)}" class="logo">ARTILIER<em>Art. Made Material.</em></a>
   <ul class="nl">
     <li>${l('collection/','Rugs')}</li>
     <li>${l('embroidery/','Embroidery')}</li>
@@ -146,14 +146,14 @@ const FOOT_FR = {'Collection': 'Collection',
   'United States': 'États-Unis',
   'Contact': 'Contact',
   'New Delhi, India': 'New Delhi, Inde',
-  '© 2026 Artilier — a studio of Art Avenue Pvt. Ltd.': '© 2026 Artilier — un studio d’Art Avenue Pvt. Ltd.',
+  '© 2026 ARTILIER — a studio of Art Avenue Pvt. Ltd.': '© 2026 ARTILIER — un studio d’Art Avenue Pvt. Ltd.',
   'New Delhi · Made by hand across India': 'New Delhi · Fait main en Inde',
   'Trade only · Made to order, sized to each project': 'Réservé aux professionnels · Sur mesure, aux dimensions de chaque projet'};
 const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (FOOT_FR[k] || k) : k; return `
 <footer>
   <div class="f-top">
     <div>
-      <h4>Artilier</h4>
+      <h4>ARTILIER</h4>
       <p>${lang === 'fr'
         ? 'Art. Made Material. Studio d’artisanat d’art à New Delhi. Tapis, broderie à la main, cuir et pierre, réalisés à la commande pour les designers, architectes et galeries — une pièce unique ou une collection entière, sur nos dessins ou les vôtres.'
         : 'Art. Made Material. A master craft studio in New Delhi. Rugs, hand embroidery, leather and stone, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.'}</p>
@@ -197,7 +197,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
     </ul></div>
   </div>
   <div class="f-bot">
-    <span>${T('© 2026 Artilier — a studio of Art Avenue Pvt. Ltd.')}</span>
+    <span>${T('© 2026 ARTILIER — a studio of Art Avenue Pvt. Ltd.')}</span>
     <span>${T('New Delhi · Made by hand across India')}</span>
     <span>${T('Trade only · Made to order, sized to each project')}</span>
     <span><a href="${up}privacy/">${T('Privacy notice')}</a> · <a href="#cookie-settings" data-consent-open>${T('Cookie settings')}</a></span>
@@ -261,20 +261,20 @@ const slotImg = (id, ph, up, eager = false, sizes = 'grid') => {
 /* ── schema ─────────────────────────────────────────────────────────── */
 
 const ORG = {
-  '@type':'Organization','@id':`${HOST}/#organization`,'name':'Artilier','url':`${HOST}/`,
-  'email':'studio@artilier.co','sameAs':['https://www.instagram.com/artilier.co/'],
+  '@type':'Organization','@id':`${HOST}/#organization`,'name':'ARTILIER','alternateName':['Artilier'],'url':`${HOST}/`,
+  'email':'studio@artilier.co','sameAs':['https://www.linkedin.com/company/artilier/','https://www.instagram.com/artilier.co/','https://www.pinterest.com/artilierco/'],
   'description':"A master craft studio in New Delhi. Rugs, hand embroidery, leather and stone, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.",
-  'founder':{'@type':'Person','name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development'},
+  'founder':{'@type':'Person','name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development','sameAs':['https://www.linkedin.com/in/ankitvijaivargia/']},
   'employee':{'@type':'Person','name':'Payal Samal','jobTitle':'Design Head — Interior Designer'},
   'address':{'@type':'PostalAddress','addressLocality':'New Delhi','addressCountry':'IN'},
   'areaServed':'Worldwide',
-  'logo':{'@type':'ImageObject','url':`${HOST}/apple-touch-icon.png`},
+  'logo':{'@type':'ImageObject','url':`${HOST}/assets/brand/artilier-logo-512.png`,'contentUrl':`${HOST}/assets/brand/artilier-logo-512.png`,'width':512,'height':512,'caption':'ARTILIER'},
   'slogan':'Art. Made Material.',
   'parentOrganization':{'@type':'Organization','name':'Art Avenue Pvt. Ltd.','address':{'@type':'PostalAddress','addressLocality':'New Delhi','addressCountry':'IN'}},
   'contactPoint':{'@type':'ContactPoint','contactType':'Trade enquiries','email':'studio@artilier.co','url':`${HOST}/contact/`,'areaServed':'Worldwide','availableLanguage':['English']},
   'knowsAbout':['hand-knotted rugs','hand-tufted rugs','flatweave rugs','custom rug development','bespoke rugs for interior designers','rug design collaboration','custom rugs for hospitality projects','hand embroidery','bespoke embroidered wall panels','embroidered upholstery and soft furnishings','hand-embroidered wallcoverings','embroidered wallcoverings','zardozi embroidery','zari embroidery','aari embroidery','raffia embroidery','embroidered headboards','bespoke embroidery for interior designers','semi-precious stone inlay','stone and shell inlay','mother-of-pearl inlay','pietra dura','inlaid stone table tops','bespoke stone furniture']
 };
-const WEBSITE = { '@type':'WebSite','@id':`${HOST}/#website`,'url':`${HOST}/`,'name':'Artilier','publisher':{'@id':`${HOST}/#organization`},'inLanguage':'en' };
+const WEBSITE = { '@type':'WebSite','@id':`${HOST}/#website`,'url':`${HOST}/`,'name':'ARTILIER','alternateName':['Artilier'],'publisher':{'@id':`${HOST}/#organization`},'inLanguage':'en' };
 const breadcrumb = items => ({ '@type':'BreadcrumbList','itemListElement':items.map((it,i)=>({ '@type':'ListItem','position':i+1,'name':it.name,'item':it.abs })) });
 
 const graph = nodes => ({ '@context':'https://schema.org','@graph':[ORG, WEBSITE, ...nodes] });
@@ -330,7 +330,7 @@ function designPage(d) {
   const cx = CONSTRUCTION[d.construction] || {};
 
   const crumbs = [
-    { name:'Artilier', href:home(up), abs:`${HOST}/` },
+    { name:'ARTILIER', href:home(up), abs:`${HOST}/` },
     { name:'Rugs', href:`${up}collection/`, abs:`${HOST}/collection/` },
     ...(cat ? [{ name:coll.name, href:`${up}collection/${cat.slug}/`, abs:catUrl }] : []),
     { name:d.name, href:url, abs:url }
@@ -375,10 +375,10 @@ function designPage(d) {
   ].filter(([,v]) => v).map(([k,v]) => `<div><b>${esc(k)}</b><span>${esc(v)}</span></div>`).join('\n        ');
 
   return head({
-    title:`${d.name} — Custom ${titleCaseC(d.construction)} Rug, Made to Size | Artilier`,
+    title:`${d.name} — Custom ${titleCaseC(d.construction)} Rug, Made to Size | ARTILIER`,
     desc:designDesc(d),
     canonical:url, up,
-    ogTitle:`${d.name} — ${d.construction} rug by Artilier`,
+    ogTitle:`${d.name} — ${d.construction} rug by ARTILIER`,
     ogDesc:d.description, schema, ogImage:ogFor(d.slug)
   }) + nav(up) + crumb(crumbs.map(c=>({name:c.name,href:c.href}))) + `
 <main id="main">
@@ -436,7 +436,7 @@ const CAT_COPY = {
     yarn: 'Pile yarns are selected per design from New Zealand wool, hand-spun wool, wool-silk blends, bamboo silk and developed blends; pile heights and carving are drawn into the specification.'
   },
   'flatweave': {
-    title: 'Custom Flat Weave Rugs — Flatweave, Made to Size | Artilier',
+    title: 'Custom Flat Weave Rugs — Flatweave, Made to Size | ARTILIER',
     desc: n => `Custom flat weave rugs: ${n} flatweave designs for graphic work, layering and low-profile rooms, woven to order and sized and coloured to the project. Trade only.`,
     when: 'Flatweave — often written flat weave — is woven on the loom with no pile. Specify it for graphic and geometric work, for layering, and for rooms where a pile would sit too high. It is lower and lighter underfoot than a pile rug, and reversible in some constructions.',
     yarn: 'Flatweaves are specified in cotton, jute, allo / hemp and developed blends, chosen for the surface the room needs.'
@@ -452,12 +452,12 @@ function categoryPage(cat) {
   const linked = ds.filter(d => d.detail === true);
   const url = `${HOST}/collection/${cat.slug}/`;
   const crumbs = [
-    { name:'Artilier', href:home(up), abs:`${HOST}/` },
+    { name:'ARTILIER', href:home(up), abs:`${HOST}/` },
     { name:'Rugs', href:`${up}collection/`, abs:`${HOST}/collection/` },
     { name:coll.name, href:url, abs:url }
   ];
   const schema = graph([
-    { '@type':'CollectionPage','@id':`${url}#collection`,'url':url,'name':`${coll.name} rugs — Artilier`,
+    { '@type':'CollectionPage','@id':`${url}#collection`,'url':url,'name':`${coll.name} rugs — ARTILIER`,
       'isPartOf':{'@id':`${HOST}/#website`},'breadcrumb':{'@id':`${url}#breadcrumb`},
       'about':{'@id':`${HOST}/#organization`},
       'mainEntity':{ '@type':'ItemList','numberOfItems':linked.length,
@@ -465,7 +465,7 @@ function categoryPage(cat) {
     { ...breadcrumb(crumbs), '@id':`${url}#breadcrumb` }
   ]);
   return head({
-    title:CAT_COPY[cat.slug].title || `${titleCaseC(coll.name)} Rugs — Custom Designs, Made to Size | Artilier`,
+    title:CAT_COPY[cat.slug].title || `${titleCaseC(coll.name)} Rugs — Custom Designs, Made to Size | ARTILIER`,
     desc:CAT_COPY[cat.slug].desc(ds.length),
     canonical:url, up, schema
   }) + nav(up) + crumb(crumbs.map(c=>({name:c.name,href:c.href}))) + `

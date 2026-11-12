@@ -1,5 +1,5 @@
 {
-  "_readme": "MATERIALS & TECHNIQUES — the single source of truth for Artilier's material and technique vocabulary. Terms are NOT categories: a CATEGORY is what a piece is (rugs, objects), a MATERIAL is what it is made from, a TECHNIQUE is how it is made. `kind` may be \"material\", \"technique\" or \"both\", and may be revised as the studio's use of a term settles. Designs, collections and projects reference these slugs in their `terms` array; a term is only ever shown publicly when it is published AND attached to published work. Add a term by appending a record — nothing else changes.",
+  "_readme": "MATERIALS & TECHNIQUES — the single source of truth for ARTILIER's material and technique vocabulary. Terms are NOT categories: a CATEGORY is what a piece is (rugs, objects), a MATERIAL is what it is made from, a TECHNIQUE is how it is made. `kind` may be \"material\", \"technique\" or \"both\", and may be revised as the studio's use of a term settles. Designs, collections and projects reference these slugs in their `terms` array; a term is only ever shown publicly when it is published AND attached to published work. Add a term by appending a record — nothing else changes.",
   "terms": [
     {
       "slug": "hand-knotted",

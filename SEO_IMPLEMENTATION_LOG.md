@@ -325,3 +325,55 @@ Week-2 items from the 14 Oct audit roadmap that need no owner decision (T-06 and
 | robots.txt check parses user-agent groups (`urllib.robotparser`); ERROR only if Googlebot or Bingbot cannot fetch `/`; WARN if no `Sitemap:` line | `tools/seo_monitor.py` | Removes the false alarm and catches the real regression (missing Sitemap line) | Live text → no error, one warning; repository file → clean; `User-agent: * / Disallow: /` → errors for both bots |
 
 **Owner action (Cloudflare dashboard, not code).** Either keep the managed robots.txt and accept the missing Sitemap line (the sitemap stays submitted in Search Console and Bing, so discovery is unaffected), or turn the managed robots.txt off and serve the repository file. Lighthouse's `robots-txt` audit also fails on the managed file because `Content-Signal` is not a standard directive; that lowers the lab SEO score but does not affect Google crawling.
+
+## 18. Brand entity: ARTILIER naming, logo, verified profiles (11 Nov 2026) — branch `brand/organization-naming`
+
+**Why (Measured, 11 Nov):** Google rewrites "artilier" to "atelier" in UK and UAE checks; Search Console shows 1 external link. The site called the brand "Artilier" while outreach, LinkedIn and Instagram say "ARTILIER". Organization `sameAs` listed Instagram only; the logo was the 180 px app icon.
+
+| Change | Files | Evidence |
+|---|---|---|
+| Brand name "ARTILIER" in all titles, Open Graph site name, breadcrumbs, schema and copy (the header logo already displayed in capitals through CSS). `alternateName` keeps "Artilier" | generators, `content/*.json`, hand-maintained pages, `content.js` (document title), `enquiry.js` (email subject) | No URL, email or file name changes |
+| Organization `sameAs`: LinkedIn company page added | `tools/build.mjs` | Verified 11 Nov: linkedin.com/company/artilier, website artilier.co, 46 followers, Ankit admin |
+| Founder `sameAs`: Ankit's LinkedIn profile | `tools/build.mjs`, `tools/build3.mjs` (About page) | Profile appears in Google for "artilier" |
+| Logo: the site's own "A" mark at 512 × 512 px, with width and height | `assets/brand/artilier-logo-512.png` (rendered from `favicon.svg`) | Same mark as the favicon and app icon; nothing new drawn |
+| WebSite `name` ARTILIER, `alternateName` Artilier | `tools/build.mjs` | Helps Google's site-name display |
+| Leather and stone pages now share the build's nav, footer and Organization entity (`syncShell`) | `tools/build3.mjs` | Diff on both pages limited to the name and the schema |
+| JS cache versions: `content.js` v5, `enquiry.js` v6 | generators, hand-maintained pages | — |
+
+**Not added:** Pinterest (no ARTILIER account could be confirmed; owner to check). Instagram already reads "ARTILIER · Bespoke Craft" with artilier.co in the bio.
+
+## 19. Saudi and UAE trade pages (11 Nov 2026) — branch `seo/gulf-trade-pages` (stacked on §18)
+
+**Why (Measured, Search Console 4 Sep–9 Nov):** /trade/saudi-arabia/ — "custom rugs riyadh" 30 impressions at 18.1, "tailor made carpets" 8 at 21.6. /trade/uae/ — 69 UAE impressions at 40.3 for "bespoke rugs" (30.2), "made to measure rugs", "bespoke carpets", "tailor made carpets". Neither page had a majlis, production or shipping section.
+
+| Change | Pages | Source of every claim |
+|---|---|---|
+| Titles: "Custom Rugs & Carpets in Riyadh and Saudi Arabia"; "Bespoke Rugs & Tailor-Made Carpets, Dubai & UAE"; descriptions name majlis and tailor-made carpets | both | Search Console queries |
+| Gulf terminology paragraph: tailor-made carpet, bespoke carpet, made-to-measure rug, bespoke rug; wall-to-wall only "confirmed at brief" | both | Existing UK/UAE wording; broadloom not claimed (owner §I open) |
+| "Majlis rugs" section: drawn from the floor plan and seating layout, construction from traffic, what to send, three designs linked | both | Existing published statements (made to the room, size limits confirmed before sampling, unsuitable materials named) |
+| "Working with your studio": collection, own artwork, co-authored design; contracting through Art Avenue Pvt. Ltd. | both | /collaborations/, /trade/ |
+| "Production and shipping": strike-off 2–3 weeks; 6–12 weeks, up to 6 months; checked against the strike-off; rolled and wrapped; USD/EUR ex-works, FOB/DDP on request; duties depend on the importer of record | both | /hospitality/, /process/, OWNER_INPUT_REQUIRED §A |
+| Saudi FAQ: majlis in Riyadh | Saudi | as above |
+
+No shipping costs, customs arrangements or delivery dates are stated.
+
+## 20. Stone page (11 Nov 2026) — branch `seo/stone-page` (stacked on §19)
+
+**Why:** /stone/ had no Search Console impressions (live after 26 Oct). Google autocomplete in the UK, US and UAE (11 Nov) shows demand for stone inlay table tops, semi-precious stone table tops and mother-of-pearl inlay furniture; Google Trends UK puts "mother of pearl inlay" highest of the stone and embroidery terms compared.
+
+| Change | Source of every claim |
+|---|---|
+| Work grid renamed to the searched terms: inlaid table tops, furniture surfaces, door and cabinet panels (stone, mother-of-pearl or abalone), wall panels, relief pieces, objects | Same items as before |
+| New "Mother-of-pearl inlay" section | Materials list and the page's own photographs (st3, st10, st11 captions) |
+| New "Architectural applications" section: walls, door leaves, joinery; installation by the client's contractor | Existing work grid and installation statement |
+| FAQ: mother-of-pearl; bespoke inlaid table tops | As above |
+| Meta description names mother-of-pearl, table tops, furniture surfaces, walls, doors, joinery | — |
+
+No new URL. No size, weight, price or project claims. Owner still to confirm: largest single piece, who cuts and sets the stone, finished pieces that may be named.
+
+## 21. Pinterest: website claim tag and sameAs (12 Nov 2026) — branch `brand/pinterest-claim` (stacked on §20)
+
+- Pinterest business account set up 12 Nov: pinterest.com/artilierco, name ARTILIER, website artilier.co, email studio@artilier.co confirmed, "A" mark as profile photo.
+- `index.html`: `<meta name="p:domain_verify" content="6ab79f36496886481840cf7a15b36fe5">` beside the Bing tag. Pinterest needs it on the homepage only.
+- Organization `sameAs`: pinterest.com/artilierco added (now LinkedIn, Instagram, Pinterest).
+- After merge: Pinterest → Settings → Link to Pinterest → Websites → Claim → "Claim your website".

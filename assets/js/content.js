@@ -102,7 +102,7 @@
     const tech = (live(data.taxonomy.terms).find(t => t.slug === d.technique) || {});
     const terms = termNames(data, d.terms);
     const cta = d.cta || data.site.defaultCta || { label: 'Start a project', href: '../index.html#brief' };
-    document.title = d.name + ' — Artilier';
+    document.title = d.name + ' — ARTILIER';
     const media = [d.hero].concat(d.images || []).filter(Boolean)
       .map(id => slot(id, d.name)).join('') + (d.video ? slot(d.video, d.name + ' — film') : '');
     const pal = (d.palette || []).map(p =>
