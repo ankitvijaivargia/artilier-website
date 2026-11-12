@@ -1222,5 +1222,61 @@
     "src": "pj-munich-v1.mp4?v=1",
     "poster": "/assets/media/pj-munich-v1-poster.webp?v=1",
     "alt": "Moving along an embroidered wall panel on the frame"
+  },
+  "pj-munich-5": {
+    "src": "pj-munich-5.webp?v=1",
+    "type": "image",
+    "alt": "Four embroiderers working along one wall panel on a single frame",
+    "w": 1200,
+    "h": 2133,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "pj-munich-6": {
+    "src": "pj-munich-6.webp?v=1",
+    "type": "image",
+    "alt": "Embroiderers at the frame early in the work, the design outlined in metallic thread",
+    "w": 1400,
+    "h": 1050,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "pj-munich-7": {
+    "src": "pj-munich-7.webp?v=1",
+    "type": "image",
+    "alt": "Two embroiderers either side of a panel, with cut dabka on felt pads and the working drawing",
+    "w": 1200,
+    "h": 1600,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "pj-munich-8": {
+    "src": "pj-munich-8.webp?v=1",
+    "type": "image",
+    "alt": "The atelier team holding the finished panel, seen from above",
+    "w": 1200,
+    "h": 1600,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "pj-munich-9": {
+    "src": "pj-munich-9.webp?v=1",
+    "type": "image",
+    "alt": "A panel nearing completion on the frame, an embroiderer at work beside it",
+    "w": 1200,
+    "h": 1600,
+    "variants": [
+      480,
+      800
+    ]
   }
 }
