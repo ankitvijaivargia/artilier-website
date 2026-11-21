@@ -84,6 +84,7 @@ const enquiryForm = (id = 'contactForm') => `
       <label><input type="radio" name="sector" value="embroidery"> Embroidery</label>
       <label><input type="radio" name="sector" value="leather"> Leather</label>
       <label><input type="radio" name="sector" value="stone"> Stone</label>
+      <label><input type="radio" name="sector" value="wall-works"> Wall works</label>
       <label><input type="radio" name="sector" value="collaboration"> Collaboration</label>
       <label><input type="radio" name="sector" value="other"> Something else</label>
     </div>
@@ -101,13 +102,13 @@ const enquiryForm = (id = 'contactForm') => `
       <select id="c-ct" name="enquiry">
         <option>Bespoke rug from my own artwork</option><option>A design from the collection, re-sized</option>
         <option>A design from the collection, re-coloured</option><option>Several rugs for one project</option>
-        <option>Embroidery — wall panels or framed art</option><option>Embroidered headboards</option><option>Embroidered fabric by the metre</option><option>Embroidery — upholstery panels or soft furnishings</option><option>Leather — wall panels, headboards or trims</option><option>Stone — inlay, table tops or furniture</option>
+        <option>Embroidery — wall panels or framed art</option><option>Embroidered headboards</option><option>Embroidered fabric by the metre</option><option>Embroidery — upholstery panels or soft furnishings</option><option>Leather — wall panels, headboards or trims</option><option>Stone — inlay, table tops or furniture</option><option>Wall works — wall art or relief panels</option>
         <option>Samples</option><option>Trade terms</option><option>Not sure yet</option>
       </select>
     </div>
     <div class="f"><label for="c-cs">Construction</label>
       <select id="c-cs" name="construction">
-        <option>Open to your recommendation</option><option>Hand-knotted</option><option>Hand-tufted</option><option>Flatweave</option><option>Hand embroidery</option><option>Leather or hide</option><option>Stone or shell inlay</option>
+        <option>Open to your recommendation</option><option>Hand-knotted</option><option>Hand-tufted</option><option>Flatweave</option><option>Hand embroidery</option><option>Leather or hide</option><option>Stone or shell inlay</option><option>Ceramic, metal, plaster, wood or fibre</option>
       </select>
     </div>
   </div>
@@ -364,6 +365,9 @@ ${sec('Embroidery for the same rooms', 'Headboards, walls', 'and fabric.', `<div
     </div>
     <div class="gal"><figure class="full">${slotImg('e2', 'Embroidery — zardozi panel on the frame', '../', false, 'full')}<figcaption data-mf="e2"></figcaption></figure></div>
   </div>`, { intro:'Developed in the same studio as the rugs, so colour and motif can carry across a room. Delivery dates are confirmed for each product only after the specification has been reviewed.' })}
+${sec('Wall works for the same rooms', 'Art for the', 'walls.', `<div class="prose">
+      <p>Sculptural wall pieces and relief panels in ceramic, metal, plaster, carved and assembled wood, and natural fibre, made to the designer’s drawing. One design can be repeated across a room schedule, with sizes and quantities taken from your schedule. A sample is made for approval before production; production usually takes 6–12 weeks from sample approval. Pieces are supplied for installation by your appointed contractor. <a href="../wall-works/">Wall works</a>.</p>
+    </div>`, { dark:true })}
 ${sec('How a hospitality project runs', 'From schedule', 'to dispatch.', `<div class="proc">
     <div class="pstep"><span class="pn">01</span><span class="pt">Understand</span><span class="pd">The rug schedule — rooms, quantities, sizes — with drawings, scheme and application. We come back with our thoughts, questions and what still needs resolving.</span></div>
     <div class="pstep"><span class="pn">02</span><span class="pt">Develop</span><span class="pd">Construction, yarn, pile and colour worked through for each rug type. Where there is enough information, an initial cost range follows.</span></div>
@@ -380,13 +384,14 @@ ${sec('Specification and documentation', 'Agreed before', 'the order.', `<div cl
 ${sec('What to send', 'A useful', 'first brief.', list([
   '<b>Rug schedule</b> — room or area, quantity and size for each rug type',
   '<b>Embroidery</b> — headboards, wall panels or fabric for the same rooms, with quantities by room type',
+  '<b>Wall works</b> — wall art or relief panels, with sizes, material and quantities by room type',
   '<b>Design intent</b> — artwork, scheme, references, or the collection designs you are considering',
   '<b>Construction preference</b> — or leave it to our recommendation',
   '<b>Specification requirements</b> — any performance, cleaning or documentation standards',
   '<b>Programme</b> — mock-up room date, target delivery date and project location'
 ]))}
 ${sec('Contracting', 'One supplier,', 'one point of contact.', `<div class="prose"><p>ARTILIER is the trade studio of Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Orders are contracted, invoiced and exported through that entity, with established export documentation, and you have one point of contact from brief to dispatch. Costing and lead times are given per project once construction, materials, sizes and sampling are understood.</p></div>`)}
-${ctaBlock('../', 'contact/?type=hospitality', 'Send a hospitality brief', [['embroidery/headboards/','Embroidered headboards'],['embroidery/','Embroidered wall panels'],['embroidery/fabrics/','Embroidered fabric'],['bespoke/','Bespoke rugs'],['materials/','Materials'],['process/','The process'],['trade/','Trade']])}`
+${ctaBlock('../', 'contact/?type=hospitality', 'Send a hospitality brief', [['embroidery/headboards/','Embroidered headboards'],['embroidery/','Embroidered wall panels'],['embroidery/fabrics/','Embroidered fabric'],['wall-works/','Wall works'],['bespoke/','Bespoke rugs'],['materials/','Materials'],['process/','The process'],['trade/','Trade']])}`
 });
 
 /* ── market pages ──────────────────────────────────────────────────── */
@@ -397,7 +402,7 @@ const market = m => shell({
     <div class="wp-meta">${m.meta.map((x, i) => i ? `<span>${x}</span>` : `<span><b>${x}</b></span>`).join('')}</div>`,
   nodes:[ service(`trade/${m.slug}/`, m.serviceName, 'Custom rug development and manufacture for design practices',
     m.serviceDesc, 'Interior designers, architects, hospitality designers and design practices', m.area) ],
-  body: m.body.replace('\n<div class="backhome">', (EMB_LINK[m.slug] || '') + '\n<div class="backhome">')
+  body: m.body.replace('\n<div class="backhome">', (EMB_LINK[m.slug] || '') + WW_LINK + '\n<div class="backhome">')
 });
 const UP2 = '../../';
 const EMB_LINK = Object.fromEntries([['uae','UAE and Gulf'],['saudi-arabia','Saudi'],['uk','UK'],['us','US']].map(([sl, lab]) => [sl, `
@@ -406,6 +411,12 @@ const EMB_LINK = Object.fromEntries([['uae','UAE and Gulf'],['saudi-arabia','Sau
   <p class="bd">Wall panels, framed works, headboards, upholstery panels, cushions and drapery in zardozi, zari, aari, raffia and hand embroidery — developed alongside your rugs so colour and motif carry across. <a href="../../embroidery/${sl}/">Embroidery for ${lab} projects</a>.</p></div>
 </section>
 `]));
+const WW_LINK = `
+<section class="sec">
+  <div class="sec-hd"><div><span class="lb">Also from the studio</span><h2 class="d2">Wall works,<br>for the same <span class="it">rooms.</span></h2></div>
+  <p class="bd">Sculptural wall pieces and relief panels in ceramic, metal, plaster, carved and assembled wood, and natural fibre — made to your drawing, sized to the room, and developed alongside your rugs and embroidery. <a href="../../wall-works/">Wall works</a>.</p></div>
+</section>
+`;
 const marketLinks = self => [['trade/uae/','UAE'],['trade/saudi-arabia/','Saudi Arabia'],['trade/uk/','United Kingdom'],['trade/us/','United States']].filter(([h]) => !h.includes(self));
 const common = {
   samples: ['Can we approve samples before production?', 'Yes. Yarn samples, colour trials and a woven strike-off are approved in the hand before the full rug is set on the loom; the strike-off takes 2–3 weeks once the design is approved, and its cost is credited against the order.'],
@@ -640,6 +651,9 @@ ${sec('Délais et conditions', 'Échantillon, délais,', 'devis.', `<div class="
     <div>Expédition <span>FOB ou DDP chiffrés séparément, sur demande · tapis expédiés roulés</span></div>
   </div>
   <p class="proc-note" style="color:rgba(247,243,235,.62)">Le délai peut aller jusqu’à six mois selon la pièce : le noué main est la technique la plus longue, le tufté main est plus rapide. La taille de l’échantillon dépend du dessin. Les conditions de paiement figurent dans le devis, et le chiffrage se précise à mesure que la technique, les matières, les dimensions et l’échantillonnage sont définis.</p>`, { dark:true })}
+${sec('Aussi au studio', 'Œuvres murales,', 'pour les mêmes pièces.', `<div class="prose">
+    <p>Pièces murales sculpturales et panneaux en relief en céramique, métal, plâtre, bois sculpté ou assemblé et fibres naturelles, réalisés d’après votre dessin et aux dimensions de la pièce. Un échantillon est soumis à votre approbation avant la production ; la fabrication prend en général 6 à 12 semaines après cette approbation. La pose est assurée par l’installateur ou l’entreprise que vous désignez. <a href="../wall-works/" hreflang="en">Œuvres murales (en anglais)</a></p>
+  </div>`)}
 ${sec('Contractualisation', 'Devis, contrat', 'et export.', `<div class="prose">
     <p>ARTILIER est le studio professionnel d’Art Avenue Pvt. Ltd., notre société de fabrication à New Delhi. Les commandes sont passées, facturées et exportées par cette entité : un seul fournisseur, un seul interlocuteur, du premier dessin à l’expédition.</p>
     <p>Pour démarrer, écrivez-nous à <a href="mailto:studio@artilier.co">studio@artilier.co</a> en joignant vos dessins, les dimensions et le calendrier du projet, ou utilisez notre <a href="../contact/" hreflang="en">formulaire de contact</a> (en anglais).</p>
@@ -989,6 +1003,7 @@ syncShell('collection/index.html', '../');
 /* Leather and stone are hand-maintained too: shell + the shared Organization entity. */
 syncShell('leather/index.html', '../');
 syncShell('stone/index.html', '../');
+syncShell('wall-works/index.html', '../');
 console.log('synced shell: collaborations, rugs page, designs page, leather, stone');
 
 /* ── sitemap: canonical, indexable, 200-status URLs only ───────────── */
@@ -1000,7 +1015,7 @@ const urls = [
   ['', '1.0'], ['collection/', '0.9'], ['collection/designs/', '0.9'], ...CATS.map(c => [`collection/${c.slug}/`, '0.8']),
   ['bespoke/', '0.9'], ['hospitality/', '0.9'], ['trade/', '0.8'], ['collaborations/', '0.8'], ['contact/', '0.8'], ['about/', '0.7'],
   ['trade/uae/', '0.8'], ['trade/saudi-arabia/', '0.8'], ['trade/uk/', '0.7'], ['trade/us/', '0.7'], ['fr/', '0.8'],
-  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['leather/', '0.8'], ['stone/', '0.8'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], [G, '0.7'],
+  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['leather/', '0.8'], ['stone/', '0.8'], ['wall-works/', '0.8'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], [G, '0.7'],
   ...(indexProjects ? [['projects/', '0.8']] : []), ...projectsData.map(p => [`projects/${p.slug}/`, '0.7']),
   ...indexable.slice().sort(by).map(d => [`collection/${d.slug}/`, '0.6'])
 ];

@@ -121,6 +121,8 @@
 .dc-s{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-family:var(--s-caps);color:var(--tx-3)}
 .dc-a{font-size:13px;color:var(--rust);margin-top:4px}
 .dc:hover .dc-n{color:var(--rust)}
+@media(min-width:1101px){.disc.d5{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(min-width:821px) and (max-width:1100px){.disc.d5{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:820px){.disc{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* Lead times with five entries */
 .lead-grid.g5{grid-template-columns:repeat(5,minmax(0,1fr))}

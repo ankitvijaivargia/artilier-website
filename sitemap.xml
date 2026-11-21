@@ -7,6 +7,7 @@
     <image:image><image:loc>https://artilier.co/assets/media/e9.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/l2.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/st2.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ww1.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/fo1.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/fo2.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/cn1.webp?v=2</image:loc></image:image>
@@ -178,6 +179,18 @@
     <image:image><image:loc>https://artilier.co/assets/media/st9.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/st10.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/st11.webp?v=1</image:loc></image:image>
+  </url>
+  <url><loc>https://artilier.co/wall-works/</loc>
+    <image:image><image:loc>https://artilier.co/assets/media/ww10.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ww3.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ww1.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ww2.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ww4.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ww6.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ww5.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ww7.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ww8.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ww9.webp?v=1</image:loc></image:image>
   </url>
   <url><loc>https://artilier.co/embroidery/headboards/</loc></url>
   <url><loc>https://artilier.co/embroidery/fabrics/</loc></url>

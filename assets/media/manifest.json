@@ -1278,5 +1278,104 @@
       480,
       800
     ]
+  },
+  "ww1": {
+    "type": "image",
+    "src": "ww1.webp?v=1",
+    "alt": "Glazed ceramic relief: clustered cup forms on a speckled ground, detail",
+    "facts": "Glazed ceramic · relief, detail",
+    "w": 448,
+    "h": 431,
+    "variants": []
+  },
+  "ww2": {
+    "type": "image",
+    "src": "ww2.webp?v=1",
+    "alt": "Rolled metal sections in copper tones, grooved and etched, assembled on a wall, detail",
+    "facts": "Toned metal · wall sculpture, detail",
+    "w": 356,
+    "h": 563,
+    "variants": []
+  },
+  "ww3": {
+    "type": "image",
+    "src": "ww3.webp?v=1",
+    "alt": "Hand-wrapped fibre in ivory, grey, navy and orange bands over a fringed base, detail",
+    "facts": "Wrapped fibre · wall piece, detail",
+    "w": 540,
+    "h": 848,
+    "variants": [
+      480
+    ]
+  },
+  "ww4": {
+    "type": "image",
+    "src": "ww4.webp?v=2",
+    "alt": "Sculpted plaster surface with a cracked, raised texture, detail",
+    "facts": "Sculpted plaster · relief, detail",
+    "w": 418,
+    "h": 218,
+    "variants": []
+  },
+  "ww5": {
+    "type": "image",
+    "src": "ww5.webp?v=1",
+    "alt": "Cast relief panel in white with a silvered finish, detail",
+    "facts": "Cast relief · framed panel, detail",
+    "w": 646,
+    "h": 819,
+    "variants": [
+      480
+    ]
+  },
+  "ww6": {
+    "type": "image",
+    "src": "ww6.webp?v=1",
+    "alt": "Carved relief in a terracotta tone with abstract motifs, detail",
+    "facts": "Carved relief · panel, detail",
+    "w": 423,
+    "h": 435,
+    "variants": []
+  },
+  "ww7": {
+    "type": "image",
+    "src": "ww7.webp?v=1",
+    "alt": "Assembled wood blocks stained in teal and green, detail",
+    "facts": "Assembled wood · wall sculpture, detail",
+    "w": 300,
+    "h": 416,
+    "variants": []
+  },
+  "ww8": {
+    "type": "image",
+    "src": "ww8.webp?v=1",
+    "alt": "Layered natural raffia fringe, detail",
+    "facts": "Natural raffia · wall hanging, detail",
+    "w": 480,
+    "h": 416,
+    "variants": []
+  },
+  "ww9": {
+    "type": "image",
+    "src": "ww9.webp?v=1",
+    "alt": "Long natural hemp fibre falling over smooth white stone, detail",
+    "facts": "Hemp and stone · wall piece, detail",
+    "w": 672,
+    "h": 832,
+    "variants": [
+      480
+    ]
+  },
+  "ww10": {
+    "type": "image",
+    "src": "ww10.webp?v=1",
+    "alt": "Fibre-wrapped forms in blue, ivory and jute bands, detail",
+    "facts": "Wrapped fibre · bands, detail",
+    "w": 1200,
+    "h": 1120,
+    "variants": [
+      480,
+      800
+    ]
   }
 }

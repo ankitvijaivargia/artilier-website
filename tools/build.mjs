@@ -85,7 +85,7 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <a class="skip" href="#main">${lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}</a>`;
 
 const home = up => up || './';
-const NAV_FR = { 'Collection':'Collection','Rugs':'Tapis','Embroidery':'Broderie','Leather':'Cuir','Stone':'Pierre','Rug designs':'Modèles de tapis','Projects':'Projets','The rug collection':'La collection de tapis','Bespoke':'Sur mesure','Collaborations':'Collaborations','Hospitality':'Hôtellerie','Process':'Processus','Trade':'Professionnels','About':'Le studio',
+const NAV_FR = { 'Collection':'Collection','Rugs':'Tapis','Embroidery':'Broderie','Leather':'Cuir','Stone':'Pierre','Wall works':'Œuvres murales','Rug designs':'Modèles de tapis','Projects':'Projets','The rug collection':'La collection de tapis','Bespoke':'Sur mesure','Collaborations':'Collaborations','Hospitality':'Hôtellerie','Process':'Processus','Trade':'Professionnels','About':'Le studio',
   'Home':'Accueil','The collection':'La collection','Bespoke development':'Développement sur mesure','Hospitality &amp; contract':'Hôtellerie &amp; contract','Materials':'Matières','The craft':'Le savoir-faire','About the studio':'Le studio','Contact':'Contact','Start a project':'Démarrer un projet' };
 const nav = (up, lang = 'en') => {
   const t = k => lang === 'fr' ? (NAV_FR[k] || k) : k;
@@ -98,6 +98,7 @@ const nav = (up, lang = 'en') => {
     <li>${l('embroidery/','Embroidery')}</li>
     <li>${l('leather/','Leather')}</li>
     <li>${l('stone/','Stone')}</li>
+    <li>${l('wall-works/','Wall works')}</li>
     <li>${l('bespoke/','Bespoke')}</li>
     <li>${l('hospitality/','Hospitality')}</li>
     <li>${l('projects/','Projects')}</li>
@@ -108,7 +109,7 @@ const nav = (up, lang = 'en') => {
   <a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
 </nav>
 <div class="mnav" id="mnav" hidden>
-  <a href="${home(up)}">${t('Home')}</a>${lang === 'fr' ? l('collection/','The rug collection') : l('collection/','Rugs') + l('collection/designs/','Rug designs')}${l('embroidery/','Embroidery')}${l('leather/','Leather')}${l('stone/','Stone')}${l('bespoke/','Bespoke development')}${l('collaborations/','Collaborations')}${l('hospitality/','Hospitality &amp; contract')}${l('materials/','Materials')}${l('process/','Process')}${l('craft/','The craft')}${l('projects/','Projects')}${l('trade/','Trade')}${l('about/','About the studio')}${l('contact/','Contact')}<a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a><a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
+  <a href="${home(up)}">${t('Home')}</a>${lang === 'fr' ? l('collection/','The rug collection') : l('collection/','Rugs') + l('collection/designs/','Rug designs')}${l('embroidery/','Embroidery')}${l('leather/','Leather')}${l('stone/','Stone')}${l('wall-works/','Wall works')}${l('bespoke/','Bespoke development')}${l('collaborations/','Collaborations')}${l('hospitality/','Hospitality &amp; contract')}${l('materials/','Materials')}${l('process/','Process')}${l('craft/','The craft')}${l('projects/','Projects')}${l('trade/','Trade')}${l('about/','About the studio')}${l('contact/','Contact')}<a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a><a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
 </div>`;
 };
 
@@ -119,6 +120,7 @@ const crumb = items => `
     : `<a href="${it.href}">${esc(it.name)}</a><span aria-hidden="true">/</span>`).join('')}</div>`;
 
 const FOOT_FR = {'Collection': 'Collection',
+  'Wall works': 'Œuvres murales',
   'Hand-knotted rugs': 'Tapis noués main',
   'Hand-tufted rugs': 'Tapis tuftés main',
   'Flatweave rugs': 'Tapis tissés à plat',
@@ -156,7 +158,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
       <h4>ARTILIER</h4>
       <p>${lang === 'fr'
         ? 'Art. Made Material. Studio d’artisanat d’art à New Delhi. Tapis, broderie à la main, cuir et pierre, réalisés à la commande pour les designers, architectes et galeries — une pièce unique ou une collection entière, sur nos dessins ou les vôtres.'
-        : 'Art. Made Material. A master craft studio in New Delhi. Rugs, hand embroidery, leather and stone, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.'}</p>
+        : 'Art. Made Material. A master craft studio in New Delhi. Rugs, hand embroidery, leather, stone and wall works, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.'}</p>
     </div>
     <div class="f-col"><h5>${T('Collection')}</h5><ul>
       <li><a href="${up}collection/hand-knotted/">${T('Hand-knotted rugs')}</a></li>
@@ -169,6 +171,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
       <li><a href="${up}embroidery/fabrics/">${T('Embroidered fabric')}</a></li>
       <li><a href="${up}leather/">${T('Leather')}</a></li>
       <li><a href="${up}stone/">${T('Stone')}</a></li>
+      <li><a href="${up}wall-works/">${T('Wall works')}</a></li>
     </ul></div>
     <div class="f-col"><h5>${T('Studio')}</h5><ul>
       <li><a href="${up}bespoke/">${T('Bespoke development')}</a></li>
@@ -263,7 +266,7 @@ const slotImg = (id, ph, up, eager = false, sizes = 'grid') => {
 const ORG = {
   '@type':'Organization','@id':`${HOST}/#organization`,'name':'ARTILIER','alternateName':['Artilier'],'url':`${HOST}/`,
   'email':'studio@artilier.co','sameAs':['https://www.linkedin.com/company/artilier/','https://www.instagram.com/artilier.co/','https://www.pinterest.com/artilierco/'],
-  'description':"A master craft studio in New Delhi. Rugs, hand embroidery, leather and stone, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.",
+  'description':"A master craft studio in New Delhi. Rugs, hand embroidery, leather, stone and wall works, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.",
   'founder':{'@type':'Person','name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development','sameAs':['https://www.linkedin.com/in/ankitvijaivargia/']},
   'employee':{'@type':'Person','name':'Payal Samal','jobTitle':'Design Head — Interior Designer'},
   'address':{'@type':'PostalAddress','addressLocality':'New Delhi','addressCountry':'IN'},
@@ -272,7 +275,7 @@ const ORG = {
   'slogan':'Art. Made Material.',
   'parentOrganization':{'@type':'Organization','name':'Art Avenue Pvt. Ltd.','address':{'@type':'PostalAddress','addressLocality':'New Delhi','addressCountry':'IN'}},
   'contactPoint':{'@type':'ContactPoint','contactType':'Trade enquiries','email':'studio@artilier.co','url':`${HOST}/contact/`,'areaServed':'Worldwide','availableLanguage':['English']},
-  'knowsAbout':['hand-knotted rugs','hand-tufted rugs','flatweave rugs','custom rug development','bespoke rugs for interior designers','rug design collaboration','custom rugs for hospitality projects','hand embroidery','bespoke embroidered wall panels','embroidered upholstery and soft furnishings','hand-embroidered wallcoverings','embroidered wallcoverings','zardozi embroidery','zari embroidery','aari embroidery','raffia embroidery','embroidered headboards','bespoke embroidery for interior designers','semi-precious stone inlay','stone and shell inlay','mother-of-pearl inlay','pietra dura','inlaid stone table tops','bespoke stone furniture']
+  'knowsAbout':['hand-knotted rugs','hand-tufted rugs','flatweave rugs','custom rug development','bespoke rugs for interior designers','rug design collaboration','custom rugs for hospitality projects','hand embroidery','bespoke embroidered wall panels','embroidered upholstery and soft furnishings','hand-embroidered wallcoverings','embroidered wallcoverings','zardozi embroidery','zari embroidery','aari embroidery','raffia embroidery','embroidered headboards','bespoke embroidery for interior designers','semi-precious stone inlay','stone and shell inlay','mother-of-pearl inlay','pietra dura','inlaid stone table tops','bespoke stone furniture','bespoke wall art','relief wall panels','wall sculpture','ceramic wall art']
 };
 const WEBSITE = { '@type':'WebSite','@id':`${HOST}/#website`,'url':`${HOST}/`,'name':'ARTILIER','alternateName':['Artilier'],'publisher':{'@id':`${HOST}/#organization`},'inLanguage':'en' };
 const breadcrumb = items => ({ '@type':'BreadcrumbList','itemListElement':items.map((it,i)=>({ '@type':'ListItem','position':i+1,'name':it.name,'item':it.abs })) });
