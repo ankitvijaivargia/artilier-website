@@ -249,7 +249,7 @@ nav.s{background:rgba(247,243,235,.94);backdrop-filter:blur(14px);padding:13px v
 .brief p{margin-top:22px;max-width:44ch;font-size:17px;line-height:1.7;color:rgba(247,243,235,.9);font-weight:300}
 .brief-list{margin-top:30px;display:grid;gap:0;max-width:460px}
 .brief-list div{padding:12px 0;border-top:1px solid rgba(247,243,235,.26);font-size:14px;color:rgba(247,243,235,.9);display:flex;gap:14px}
-.brief-list b{font-weight:400;color:#F0D9A8;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-family:var(--s-caps);min-width:74px;padding-top:2px}
+.brief-list b{font-weight:400;color:#F6E7C4;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-family:var(--s-caps);min-width:74px;padding-top:2px}
 .brief-a{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
 .brief .cta.ol{color:var(--paper);border-color:rgba(247,243,235,.5)}
 .brief .cta.ol:hover{background:var(--paper);color:var(--rust);border-color:var(--paper)}
