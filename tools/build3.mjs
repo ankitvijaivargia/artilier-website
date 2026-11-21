@@ -993,7 +993,7 @@ syncShell('collection/index.html', '../');
     if (!ds.length) return '';
     return `\n    <p class="bd"><a href="${c.slug}/"><b>${esc(coll.name)}</b></a> — ${ds.map(d => `<a href="${d.slug}/">${esc(d.name)}</a>`).join(' · ')}</p>`;
   }).join('');
-  const block = `<!-- design-index -->\n  <nav class="dindex" aria-label="Rug designs by construction" style="margin-top:clamp(28px,4vw,48px);display:grid;gap:10px">${rows}\n  </nav>\n  <!-- /design-index -->`;
+  const block = `<!-- design-index -->\n  <div class="dindex" role="navigation" aria-label="Rug designs by construction" style="margin-top:clamp(28px,4vw,48px);display:grid;gap:10px">${rows}\n  </div>\n  <!-- /design-index -->`;
   const re = /<!-- design-index -->[\s\S]*?<!-- \/design-index -->/;
   if (re.test(s)) s = s.replace(re, block);
   else {
