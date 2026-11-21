@@ -247,3 +247,22 @@
   body{padding-bottom:0}
 }
 @media(prefers-reduced-motion:reduce){.mcta{transition:none}}
+
+/* ── Audit fixes, 21 Nov 2026 ──
+   1. French header: the longer labels need ~1370px, so the menu takes over below 1400px on /fr/ pages.
+   2. Long CTA labels may wrap on the narrowest phones instead of pushing the page sideways.
+   3. Footer bottom-row links get a usable tap height on phones. */
+@media(min-width:1041px) and (max-width:1400px){
+  html[lang="fr"] nav .nl{display:none}
+  html[lang="fr"] nav .burger{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-family:var(--s-caps);min-height:var(--tapmin);padding:0 2px}
+  html[lang="fr"] .mnav{display:grid;position:fixed;top:56px;left:0;right:0;z-index:89;max-height:calc(100vh - 56px);overflow-y:auto;background:rgba(247,243,235,.98);backdrop-filter:blur(14px);border-bottom:1px solid var(--sand);padding:10px var(--pad) 20px;gap:0}
+  html[lang="fr"] .mnav a{padding:13px 0;border-bottom:1px solid var(--sand);font-family:var(--d);font-size:21px;color:var(--tx)}
+  html[lang="fr"] .mnav a.cta{margin-top:16px;border-bottom:0;font-family:var(--s);font-size:11.5px;justify-content:center}
+  html[lang="fr"] .mnav[hidden]{display:none!important}
+}
+@media(max-width:380px){
+  .cta{max-width:100%;white-space:normal;text-align:center;line-height:1.35}
+}
+@media(max-width:760px){
+  .f-bot a{display:inline-block;padding:12px 0}
+}
