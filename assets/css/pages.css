@@ -38,6 +38,10 @@
 .qa div{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);gap:clamp(16px,4vw,48px);padding:20px 0;border-bottom:1px solid var(--sand)}
 .qa dt{font-family:var(--d);font-size:clamp(20px,2vw,25px);line-height:1.25;color:var(--tx)}
 .qa dd{font-size:15px;line-height:1.7;color:var(--tx-2)}
+.sec.dark .qa{border-top-color:rgba(247,243,235,.14)}
+.sec.dark .qa div{border-bottom-color:rgba(247,243,235,.14)}
+.sec.dark .qa dt{color:var(--paper)}   /* questions were ink on espresso, 1.1:1 */
+.sec.dark .qa dd{color:rgba(247,243,235,.78)}
 @media (max-width:760px){.qa div{grid-template-columns:minmax(0,1fr);gap:8px}}
 
 /* Contact page. */

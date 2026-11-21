@@ -155,12 +155,12 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
 <footer>
   <div class="f-top">
     <div>
-      <h4>ARTILIER</h4>
+      <h4 aria-level="2">ARTILIER</h4>
       <p>${lang === 'fr'
         ? 'Art. Made Material. Studio d’artisanat d’art à New Delhi. Tapis, broderie à la main, cuir et pierre, réalisés à la commande pour les designers, architectes et galeries — une pièce unique ou une collection entière, sur nos dessins ou les vôtres.'
         : 'Art. Made Material. A master craft studio in New Delhi. Rugs, hand embroidery, leather, stone and wall works, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.'}</p>
     </div>
-    <div class="f-col"><h5>${T('Collection')}</h5><ul>
+    <div class="f-col"><h5 aria-level="3">${T('Collection')}</h5><ul>
       <li><a href="${up}collection/hand-knotted/">${T('Hand-knotted rugs')}</a></li>
       <li><a href="${up}collection/hand-tufted/">${T('Hand-tufted rugs')}</a></li>
       <li><a href="${up}collection/flatweave/">${T('Flatweave rugs')}</a></li>
@@ -173,7 +173,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
       <li><a href="${up}stone/">${T('Stone')}</a></li>
       <li><a href="${up}wall-works/">${T('Wall works')}</a></li>
     </ul></div>
-    <div class="f-col"><h5>${T('Studio')}</h5><ul>
+    <div class="f-col"><h5 aria-level="3">${T('Studio')}</h5><ul>
       <li><a href="${up}bespoke/">${T('Bespoke development')}</a></li>
       <li><a href="${up}collaborations/">${T('Collaborations')}</a></li>
       <li><a href="${up}hospitality/">${T('Hospitality &amp; contract')}</a></li>
@@ -183,7 +183,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
       <li><a href="${up}about/">${T('About the studio')}</a></li>
       <li><a href="${up}guides/briefing-a-bespoke-rug/"${lang === 'fr' ? ' hreflang="en"' : ''}>${T('How to brief a rug')}</a></li>
     </ul></div>
-    <div class="f-col"><h5>${T('Trade')}</h5><ul>
+    <div class="f-col"><h5 aria-level="3">${T('Trade')}</h5><ul>
       <li><a href="${up}trade/">${T('Working with us')}</a></li>
       <li><a href="${up}trade/uae/">${T('UAE')}</a></li>
       <li><a href="${up}trade/saudi-arabia/">${T('Saudi Arabia')}</a></li>
@@ -191,7 +191,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
       <li><a href="${up}trade/us/">${T('United States')}</a></li>
       <li><a href="${up}fr/" hreflang="fr" lang="fr">Français</a></li>
     </ul></div>
-    <div class="f-col"><h5>${T('Contact')}</h5><ul>
+    <div class="f-col"><h5 aria-level="3">${T('Contact')}</h5><ul>
       <li><a href="mailto:studio@artilier.co">studio@artilier.co</a></li>
       <li><a href="https://wa.me/919828030095" target="_blank" rel="noopener">WhatsApp</a></li>
       <li><a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a></li>
