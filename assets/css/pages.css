@@ -129,3 +129,25 @@
 .lead-grid.g5 .lead-n{font-size:clamp(38px,3.6vw,54px)}
 @media(max-width:1180px) and (min-width:821px){.lead-grid.g5{grid-template-columns:repeat(3,minmax(0,1fr))}.lead-grid.g5 .lead-i:nth-child(4){border-left:0;padding-left:0}}
 @media(max-width:820px){.lead-grid.g5{grid-template-columns:1fr}}
+
+/* Homepage hero: the five disciplines as one quiet row of links under the main CTA */
+.hero-d{display:flex;flex-wrap:wrap;gap:4px 26px;margin-top:22px}
+.hero-d a{font-family:var(--s-caps);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tx-2);padding:10px 0 6px;border-bottom:1px solid var(--sand);transition:color .3s,border-color .3s}
+.hero-d a:hover,.hero-d a:focus-visible{color:var(--rust);border-color:var(--rust)}
+@media(max-width:600px){.hero-d{gap:2px 20px;margin-top:18px}.hero-d a{padding:12px 0 6px}}
+
+/* Homepage hero collage with all five disciplines: the rug film on the left,
+   embroidery, leather, stone and wall works as a 2 × 2 beside it */
+.hero-r.h5{grid-template-columns:minmax(0,1.6fr) repeat(2,minmax(0,.8fr));grid-template-rows:repeat(2,minmax(0,1fr))}
+.hero-r.h5 .hs-a{grid-row:span 2;grid-column:auto}
+.hero-r.h5 .hs-b,.hero-r.h5 .hs-c,.hero-r.h5 .hs-d,.hero-r.h5 .hs-e{aspect-ratio:auto;position:relative;min-width:0;min-height:0}
+@media(max-width:760px){
+  .hero-r.h5{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}
+  .hero-r.h5 .hs-a{grid-row:auto;grid-column:span 2}
+  .hero-r.h5 .hs-b,.hero-r.h5 .hs-c,.hero-r.h5 .hs-d,.hero-r.h5 .hs-e{aspect-ratio:1}
+}
+@media(max-height:520px) and (orientation:landscape) and (max-width:1024px){
+  .hero-r.h5{grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:auto}
+  .hero-r.h5 .hs-a{grid-row:auto;grid-column:span 1}
+  .hero-r.h5 .hs-b,.hero-r.h5 .hs-c,.hero-r.h5 .hs-d,.hero-r.h5 .hs-e{aspect-ratio:3/4}
+}
