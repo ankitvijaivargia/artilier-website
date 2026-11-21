@@ -16,7 +16,7 @@
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { MV, HOST, esc, head, nav, footer, crumb, graph, breadcrumb, write, home, ORG, WEBSITE, ROOT, indexable, CATS, by, slotImg } from './build.mjs';
+import { MV, HOST, esc, head, nav, footer, crumb, graph, breadcrumb, write, home, ORG, WEBSITE, ROOT, indexable, CATS, by, slotImg, collections } from './build.mjs';
 
 const FORM_ENDPOINT = 'https://formspree.io/f/myklqvgp';   // the endpoint the live homepage form already uses
 const rd = f => readFileSync(join(ROOT, f), 'utf8');
@@ -983,6 +983,26 @@ syncShell('collaborations/index.html', '../', { ctaLabel:'Start a collaboration 
 /* Rugs page (/collection/) is hand-maintained: shell only, its own WebPage graph stays.
    Named designs live at /collection/designs/: shell + a CollectionPage graph rebuilt from the data. */
 syncShell('collection/index.html', '../');
+/* Rugs page: a plain-text index of every indexable design, grouped by construction,
+   so each design page sits two clicks from the homepage. Rebuilt from the data. */
+{
+  let s = rd('collection/index.html');
+  const rows = CATS.map(c => {
+    const coll = collections.find(x => x.slug === c.coll);
+    const ds = indexable.filter(d => d.collection === c.coll).sort(by);
+    if (!ds.length) return '';
+    return `\n    <p class="bd"><a href="${c.slug}/"><b>${esc(coll.name)}</b></a> — ${ds.map(d => `<a href="${d.slug}/">${esc(d.name)}</a>`).join(' · ')}</p>`;
+  }).join('');
+  const block = `<!-- design-index -->\n  <nav class="dindex" aria-label="Rug designs by construction" style="margin-top:clamp(28px,4vw,48px);display:grid;gap:10px">${rows}\n  </nav>\n  <!-- /design-index -->`;
+  const re = /<!-- design-index -->[\s\S]*?<!-- \/design-index -->/;
+  if (re.test(s)) s = s.replace(re, block);
+  else {
+    const anchor = '<div class="brief-a" style="margin-top:clamp(28px,4vw,48px)"><a href="designs/" class="cta">View all designs';
+    if (!s.includes(anchor)) throw new Error('design-index anchor not found in collection/index.html');
+    s = s.replace(anchor, block + '\n  ' + anchor);
+  }
+  wr('collection/index.html', s);
+}
 {
   syncShell('collection/designs/index.html', '../../');
   let s = rd('collection/designs/index.html');
