@@ -392,3 +392,16 @@ No new URL. No size, weight, price or project claims. Owner still to confirm: la
 - Owner decision: the city is not mentioned; the hotel suite project is described as in Germany.
 - Slug `hotel-suite-munich` → `hotel-suite-germany`; `/projects/hotel-suite-munich/` 301-redirects to the new URL (`_redirects`).
 - Media renamed `pj-munich-*` → `pj-germany-*` (files, responsive variants, manifest); location, summary and brief in `content/projects.json` and the embroidery-page link text in `tools/build2.mjs` now say Germany.
+
+## 23. Rug category Q&A: flatweave and hand-tufted (21 Nov 2026) — branch `seo/rug-category-faq`
+
+**Why (measured, Search Console 19 Sep–13 Nov, India excluded):** /collection/flatweave/ is the site's most-shown non-brand page — "custom flat weave rugs" 54 impressions, average position 23.0, no clicks. /collection/hand-tufted/ — "custom hand tufted rugs" 4 impressions at 44.5. Both pages answered only two questions ("when to specify", "yarn and sampling"). Conversational queries already reach the site (e.g. "can i create a custom rug from cad drawings?" at 2.3, "how does the designer rug sampling process work?" at 29.2), so direct question-and-answer copy suits both Google and AI answers.
+
+| Change | Source of every claim |
+|---|---|
+| `tools/build.mjs`: optional `faq` list per rug category in `CAT_COPY`, rendered as a "Questions" section with the existing `dl.qa` pattern (as on the Saudi trade page) | — |
+| Flatweave: 6 questions (custom from own design, flatweave vs pile, yarns, sizes, lead time, minimum order) | Bespoke service description (build2.mjs), the page's own "when" and "yarn" copy, Saudi trade page (size limit confirmed before sampling), published lead times and "no minimum order" |
+| Hand-tufted: 5 questions (custom from own design, when to tuft, sizes, lead time, minimum order) | Same sources; "when" copy from the page |
+| Hand-knotted: unchanged (no measured demand yet) | — |
+
+No new URL, no FAQPage schema (none elsewhere on the site), no prices, no new facts. `check.py`: no new warnings on the two pages; the image-variant errors and index.html warnings exist on main before this change.
