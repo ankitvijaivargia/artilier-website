@@ -405,3 +405,14 @@ No new URL. No size, weight, price or project claims. Owner still to confirm: la
 | Hand-knotted: unchanged (no measured demand yet) | — |
 
 No new URL, no FAQPage schema (none elsewhere on the site), no prices, no new facts. `check.py`: no new warnings on the two pages; the image-variant errors and index.html warnings exist on main before this change.
+
+## 24. Rugs page: text index of every design (21 Nov 2026) — branch `seo/design-internal-links`
+
+**Why (measured, Search Console Pages report, 21 Nov 2026):** 18 design pages (/collection/<design>/) are "Discovered – currently not indexed". Each already has 6 internal links (its category page, /collection/designs/ and sibling design pages), but since 10 Nov (commit e77ea00) the design grid sits on /collection/designs/, so every design page is three clicks from the homepage. Click depth is one signal Google uses to decide crawl priority on a small, new site.
+
+| Change | Detail |
+|---|---|
+| `tools/build3.mjs`: after the Rugs page shell sync, writes a `<nav class="dindex">` between `<!-- design-index -->` markers in the "The collection" section of `/collection/` | Built from `indexable` and `CATS`, so it follows the data: a design added to or removed from the indexable set updates the list on the next build |
+| `/collection/`: one line per construction — category link, then each indexable design name as a text link (7 hand-knotted, 12 hand-tufted, 2 flatweave = 21) | No images, no new copy, no new claims; names only |
+
+Every design page is now two clicks from the homepage (Home → Rugs → design). No new URL, no schema change, sitemap unchanged (54 URLs). Indexing requests for the 18 pages are being sent in batches (10/day quota). `check.py`: no new warnings; the 21 image-variant errors exist on main before this change.
