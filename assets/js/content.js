@@ -161,6 +161,33 @@
       } else { ex.innerHTML = ''; ex.hidden = true; }
     }
 
+    /* Sections rendered here arrive after the page's own reveal observer has
+       run, so their .rv blocks need observing too — otherwise they stay at
+       opacity 0 and the section shows as blank space. */
+    const reveal = root => {
+      const els = root ? root.querySelectorAll('.rv:not(.in)') : [];
+      if (!els.length) return;
+      if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
+      const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); o.unobserve(e.target); } }), { threshold: .1 });
+      els.forEach(e => o.observe(e));
+    };
+
+    /* One published project: a feature (two pictures beside the story) instead
+       of a lone card in a three-column grid. Two or more fall back to the grid. */
+    const feature = p => {
+      const second = (p.images || [])[0];
+      const facts = [['Discipline', p.discipline], ['Location', p.location], ['Year', p.year], ['Techniques', (p.techniques || []).join(', ')]].filter(([, v]) => v);
+      return `<div class="pj1 rv">
+    <div class="pj1-m${second ? '' : ' one'}">${slot(p.hero, p.name)}${second ? slot(second, p.name) : ''}</div>
+    <div class="pj1-t">
+      <h3 class="pj1-n"><a href="projects/${esc(p.slug)}/">${esc(p.name)}</a></h3>
+      ${p.summary ? `<p class="bd">${esc(p.summary)}</p>` : ''}
+      <dl class="pj1-f">${facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
+      <a class="aa" href="projects/${esc(p.slug)}/">See the project <span>→</span></a>
+    </div>
+  </div>`;
+    };
+
     const pr = el('#projects');
     const prs = live(data.projects.projects).filter(p => p.published === true && p.permission === true && p.slug).sort(by);
     if (pr) {
@@ -169,9 +196,10 @@
     <div><span class="lb">${esc(data.projects.eyebrow || 'Projects')}</span><h2 class="d2">${esc(data.projects.title || 'Work,')}<br><span class="it">${esc(data.projects.titleItalic || 'completed.')}</span></h2></div>
     <p class="bd">${esc(data.projects.intro || '')}</p>
   </div>
-  <div class="cg rv">${prs.map((p, i) =>
-          `<figure class="cgi">${slot(p.hero, p.name)}<figcaption><b data-mt="${esc(p.hero)}"><a href="projects/${esc(p.slug)}/">${esc(p.name)}</a></b><span data-mf="${esc(p.hero)}">${esc([p.location, p.designer].filter(Boolean).join(' · ') || termNames(data, p.terms).join(' · '))}</span><span class="cgn">${n2(i + 1)}</span></figcaption></figure>`).join('')}</div>`;
+  ${prs.length === 1 ? feature(prs[0]) : `<div class="cg rv">${prs.map((p, i) =>
+          `<figure class="cgi">${slot(p.hero, p.name)}<figcaption><b data-mt="${esc(p.hero)}"><a href="projects/${esc(p.slug)}/">${esc(p.name)}</a></b><span data-mf="${esc(p.hero)}">${esc([p.location, p.designer].filter(Boolean).join(' · ') || termNames(data, p.terms).join(' · '))}</span><span class="cgn">${n2(i + 1)}</span></figcaption></figure>`).join('')}</div>`}`;
         pr.hidden = false;
+        reveal(pr);
       } else { pr.innerHTML = ''; pr.hidden = true; }
     }
 
