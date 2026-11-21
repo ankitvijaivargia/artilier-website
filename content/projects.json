@@ -41,13 +41,13 @@
   },
   "projects": [
     {
-      "slug": "hotel-suite-munich",
+      "slug": "hotel-suite-germany",
       "name": "Embroidered wall panels for a hotel suite",
       "discipline": "Embroidery",
       "category": "Hospitality",
-      "location": "Munich",
+      "location": "Germany",
       "year": "2025",
-      "summary": "Hand-embroidered wall panels in metallic-thread zardozi and dabka, made in our atelier for a design studio in India, for a luxury hotel suite in Munich.",
+      "summary": "Hand-embroidered wall panels in metallic-thread zardozi and dabka, made in our atelier for a design studio in India, for a luxury hotel suite in Germany.",
       "scope": "Hand-embroidered wall panels",
       "techniques": [
         "Zardozi",
@@ -57,20 +57,20 @@
         "Metallic thread",
         "Cotton-cord padding"
       ],
-      "brief": "A design studio in India commissioned us to make embroidered wall panels for a suite in a luxury hotel in Munich, completed in 2025. The panels were to be embroidered by hand in metallic thread, to the studio's artwork.\n\nWe made the panels as the studio's manufacturer. Neither the studio nor the hotel is named here.",
+      "brief": "A design studio in India commissioned us to make embroidered wall panels for a suite in a luxury hotel in Germany, completed in 2025. The panels were to be embroidered by hand in metallic thread, to the studio's artwork.\n\nWe made the panels as the studio's manufacturer. Neither the studio nor the hotel is named here.",
       "developed": "The artwork was drawn onto the ground fabric and stretched on the frame, with several embroiderers working one panel at a time. Raised areas were padded with cotton cord, then covered in zardozi: metallic thread couched by hand and dabka, a fine coiled metal wire cut to length and stitched down piece by piece.\n\nThe same rose-toned metal runs through the whole panel. What changes from the shell motif to the scrollwork and the border is the stitch, the padding and the direction the light catches.",
-      "hero": "pj-munich-2",
+      "hero": "pj-germany-2",
       "images": [
-        "pj-munich-1",
-        "pj-munich-5",
-        "pj-munich-3",
-        "pj-munich-6",
-        "pj-munich-4",
-        "pj-munich-7",
-        "pj-munich-9",
-        "pj-munich-8"
+        "pj-germany-1",
+        "pj-germany-5",
+        "pj-germany-3",
+        "pj-germany-6",
+        "pj-germany-4",
+        "pj-germany-7",
+        "pj-germany-9",
+        "pj-germany-8"
       ],
-      "video": "pj-munich-v1",
+      "video": "pj-germany-v1",
       "order": 1,
       "featured": true,
       "permission": true,

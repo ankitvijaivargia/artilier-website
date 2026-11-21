@@ -15,7 +15,6 @@
     <image:image><image:loc>https://artilier.co/assets/media/cn1.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/cn2.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/cn3.webp?v=2</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/w8.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/e2.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/l1.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/l3.webp?v=1</image:loc></image:image>
@@ -224,16 +223,16 @@
     <image:image><image:loc>https://artilier.co/assets/media/e2.webp?v=1</image:loc></image:image>
   </url>
   <url><loc>https://artilier.co/guides/briefing-a-bespoke-rug/</loc></url>
-  <url><loc>https://artilier.co/projects/hotel-suite-munich/</loc>
-    <image:image><image:loc>https://artilier.co/assets/media/pj-munich-2.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/pj-munich-1.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/pj-munich-5.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/pj-munich-3.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/pj-munich-6.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/pj-munich-4.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/pj-munich-7.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/pj-munich-9.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/pj-munich-8.webp?v=1</image:loc></image:image>
+  <url><loc>https://artilier.co/projects/hotel-suite-germany/</loc>
+    <image:image><image:loc>https://artilier.co/assets/media/pj-germany-2.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/pj-germany-1.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/pj-germany-5.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/pj-germany-3.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/pj-germany-6.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/pj-germany-4.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/pj-germany-7.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/pj-germany-9.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/pj-germany-8.webp?v=1</image:loc></image:image>
   </url>
   <url><loc>https://artilier.co/collection/chhaya/</loc>
     <image:image><image:loc>https://artilier.co/assets/media/ct1.webp?v=2</image:loc></image:image>

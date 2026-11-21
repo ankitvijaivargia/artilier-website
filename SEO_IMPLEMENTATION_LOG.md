@@ -386,3 +386,9 @@ No new URL. No size, weight, price or project claims. Owner still to confirm: la
 - /embroidery/: the "studios we do not name" paragraph links to the project.
 - The first version (PR #39) used a different slug; it was live for under an hour, never indexed, and returns 404.
 - 12 Nov (later): owner asked for the photographs of the team at work. Added `pj-munich-5..9` (embroiderers at the frame, and the team with the finished panel). Project galleries now follow a seven-item rhythm (wide+narrow, narrow+wide, three narrow) so no row is left with a gap.
+
+## Project location shown as Germany (21 Nov 2026)
+
+- Owner decision: the city is not mentioned; the hotel suite project is described as in Germany.
+- Slug `hotel-suite-munich` → `hotel-suite-germany`; `/projects/hotel-suite-munich/` 301-redirects to the new URL (`_redirects`).
+- Media renamed `pj-munich-*` → `pj-germany-*` (files, responsive variants, manifest); location, summary and brief in `content/projects.json` and the embroidery-page link text in `tools/build2.mjs` now say Germany.
