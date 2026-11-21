@@ -1377,5 +1377,141 @@
       480,
       800
     ]
+  },
+  "ww11": {
+    "type": "image",
+    "src": "ww11.webp?v=1",
+    "alt": "Hand-cast relief in white with gilded, wave-like ridges, detail",
+    "facts": "Hand-cast relief · gilded ridges, detail",
+    "w": 901,
+    "h": 1400,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "ww12": {
+    "type": "image",
+    "src": "ww12.webp?v=1",
+    "alt": "Hand-cast white relief with a sand-textured bronze motif, detail",
+    "facts": "Hand-cast relief · sand-textured, detail",
+    "w": 863,
+    "h": 1400,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "ww13": {
+    "type": "image",
+    "src": "ww13.webp?v=1",
+    "alt": "Pale hand-cast relief with carved lines and incised marks, detail",
+    "facts": "Hand-cast relief · carved line, detail",
+    "w": 899,
+    "h": 1400,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "ww14": {
+    "type": "image",
+    "src": "ww14.webp?v=1",
+    "alt": "White hand-cast relief with layered ridges and ink-dark edges, detail",
+    "facts": "Hand-cast relief · ridged surface, detail",
+    "w": 979,
+    "h": 1400,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "ww15": {
+    "type": "image",
+    "src": "ww15.webp?v=1",
+    "alt": "White hand-cast relief with a swept surface and fine line work, detail",
+    "facts": "Hand-cast relief · swept white, detail",
+    "w": 899,
+    "h": 1400,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "ww16": {
+    "type": "image",
+    "src": "ww16.webp?v=1",
+    "alt": "Inscribed hand-cast surface in white with a dark stippled arc, detail",
+    "facts": "Hand-cast relief · inscribed surface, detail",
+    "w": 856,
+    "h": 1400,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "ww17": {
+    "type": "image",
+    "src": "ww17.webp?v=1",
+    "alt": "Hand-cast relief tinted in blush and aqua with gilded accents, detail",
+    "facts": "Hand-cast relief · tinted and gilded, detail",
+    "w": 899,
+    "h": 1400,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "ww18": {
+    "type": "image",
+    "src": "ww18.webp?v=1",
+    "alt": "Ribbed relief in grey with rust and gold streaks, detail",
+    "facts": "Layered relief · mineral finish, detail",
+    "w": 675,
+    "h": 1256,
+    "variants": [
+      480
+    ]
+  },
+  "ww19": {
+    "type": "image",
+    "src": "ww19.webp?v=1",
+    "alt": "Layered relief in stone, charcoal and ochre tones, detail",
+    "facts": "Layered relief · stone tones, detail",
+    "w": 969,
+    "h": 1225,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "ww20": {
+    "type": "image",
+    "src": "ww20.webp?v=1",
+    "alt": "Layered hand-built ceramic forms in white, charcoal and sand, detail",
+    "facts": "Hand-built ceramic · layered forms, detail",
+    "w": 553,
+    "h": 665,
+    "variants": [
+      480
+    ]
+  },
+  "ww22": {
+    "type": "image",
+    "src": "ww22.webp?v=1",
+    "alt": "Knotted natural fibre wall hanging with dark wrapped cords, detail",
+    "facts": "Knotted fibre · wall hanging, detail",
+    "w": 384,
+    "h": 720,
+    "variants": []
+  },
+  "ww23": {
+    "type": "image",
+    "src": "ww23.webp?v=1",
+    "alt": "Layered mixed-media relief in rust, blue and stone tones, detail",
+    "facts": "Layered relief · mixed media, detail",
+    "w": 468,
+    "h": 448,
+    "variants": []
   }
 }
