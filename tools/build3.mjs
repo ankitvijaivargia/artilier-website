@@ -84,6 +84,7 @@ const enquiryForm = (id = 'contactForm') => `
       <label><input type="radio" name="sector" value="embroidery"> Embroidery</label>
       <label><input type="radio" name="sector" value="leather"> Leather</label>
       <label><input type="radio" name="sector" value="stone"> Stone</label>
+      <label><input type="radio" name="sector" value="wall-works"> Wall works</label>
       <label><input type="radio" name="sector" value="collaboration"> Collaboration</label>
       <label><input type="radio" name="sector" value="other"> Something else</label>
     </div>
@@ -101,13 +102,13 @@ const enquiryForm = (id = 'contactForm') => `
       <select id="c-ct" name="enquiry">
         <option>Bespoke rug from my own artwork</option><option>A design from the collection, re-sized</option>
         <option>A design from the collection, re-coloured</option><option>Several rugs for one project</option>
-        <option>Embroidery — wall panels or framed art</option><option>Embroidered headboards</option><option>Embroidered fabric by the metre</option><option>Embroidery — upholstery panels or soft furnishings</option><option>Leather — wall panels, headboards or trims</option><option>Stone — inlay, table tops or furniture</option>
+        <option>Embroidery — wall panels or framed art</option><option>Embroidered headboards</option><option>Embroidered fabric by the metre</option><option>Embroidery — upholstery panels or soft furnishings</option><option>Leather — wall panels, headboards or trims</option><option>Stone — inlay, table tops or furniture</option><option>Wall works — wall art or relief panels</option>
         <option>Samples</option><option>Trade terms</option><option>Not sure yet</option>
       </select>
     </div>
     <div class="f"><label for="c-cs">Construction</label>
       <select id="c-cs" name="construction">
-        <option>Open to your recommendation</option><option>Hand-knotted</option><option>Hand-tufted</option><option>Flatweave</option><option>Hand embroidery</option><option>Leather or hide</option><option>Stone or shell inlay</option>
+        <option>Open to your recommendation</option><option>Hand-knotted</option><option>Hand-tufted</option><option>Flatweave</option><option>Hand embroidery</option><option>Leather or hide</option><option>Stone or shell inlay</option><option>Ceramic, metal, plaster, wood or fibre</option>
       </select>
     </div>
   </div>
@@ -989,6 +990,7 @@ syncShell('collection/index.html', '../');
 /* Leather and stone are hand-maintained too: shell + the shared Organization entity. */
 syncShell('leather/index.html', '../');
 syncShell('stone/index.html', '../');
+syncShell('wall-works/index.html', '../');
 console.log('synced shell: collaborations, rugs page, designs page, leather, stone');
 
 /* ── sitemap: canonical, indexable, 200-status URLs only ───────────── */
@@ -1000,7 +1002,7 @@ const urls = [
   ['', '1.0'], ['collection/', '0.9'], ['collection/designs/', '0.9'], ...CATS.map(c => [`collection/${c.slug}/`, '0.8']),
   ['bespoke/', '0.9'], ['hospitality/', '0.9'], ['trade/', '0.8'], ['collaborations/', '0.8'], ['contact/', '0.8'], ['about/', '0.7'],
   ['trade/uae/', '0.8'], ['trade/saudi-arabia/', '0.8'], ['trade/uk/', '0.7'], ['trade/us/', '0.7'], ['fr/', '0.8'],
-  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['leather/', '0.8'], ['stone/', '0.8'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], [G, '0.7'],
+  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['leather/', '0.8'], ['stone/', '0.8'], ['wall-works/', '0.8'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], [G, '0.7'],
   ...(indexProjects ? [['projects/', '0.8']] : []), ...projectsData.map(p => [`projects/${p.slug}/`, '0.7']),
   ...indexable.slice().sort(by).map(d => [`collection/${d.slug}/`, '0.6'])
 ];
