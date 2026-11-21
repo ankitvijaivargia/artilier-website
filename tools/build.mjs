@@ -436,13 +436,30 @@ const CAT_COPY = {
   'hand-tufted': {
     desc: n => `${n} hand-tufted rug designs with carved outlines and high-low pile, woven to order, sized and coloured to the project at shorter lead times. Trade only.`,
     when: 'Specify hand-tufting for carved outlines, sculpted relief, mixed pile heights and loop-and-cut surfaces — or where the programme needs a shorter lead time than hand-knotting allows.',
-    yarn: 'Pile yarns are selected per design from New Zealand wool, hand-spun wool, wool-silk blends, bamboo silk and developed blends; pile heights and carving are drawn into the specification.'
+    yarn: 'Pile yarns are selected per design from New Zealand wool, hand-spun wool, wool-silk blends, bamboo silk and developed blends; pile heights and carving are drawn into the specification.',
+    /* Q&A: every answer restates copy already published on the site (bespoke, process, trade pages). */
+    faq: [
+      ['Can you make a custom hand-tufted rug from our own design?', 'Yes. Send the artwork, drawing, CAD file, reference image or colour scheme. The rug is drawn to the room, approved in a woven strike-off and made to size.'],
+      ['When is hand-tufting the right construction?', 'For carved outlines, sculpted relief, mixed pile heights and loop-and-cut surfaces, or where the programme needs a shorter lead time than hand-knotting allows.'],
+      ['What sizes can a hand-tufted rug be made in?', 'Every rug is made to the size of the project. Any size limit for the chosen construction is confirmed before sampling.'],
+      ['How long does a custom hand-tufted rug take?', 'A woven strike-off is ready in 2–3 weeks once the design is approved. Lead times usually run 6–12 weeks from strike-off approval, up to six months in some cases.'],
+      ['Is there a minimum order?', 'No. One rug or a full schedule is made to order.']
+    ]
   },
   'flatweave': {
     title: 'Custom Flat Weave Rugs — Flatweave, Made to Size | ARTILIER',
     desc: n => `Custom flat weave rugs: ${n} flatweave designs for graphic work, layering and low-profile rooms, woven to order and sized and coloured to the project. Trade only.`,
     when: 'Flatweave — often written flat weave — is woven on the loom with no pile. Specify it for graphic and geometric work, for layering, and for rooms where a pile would sit too high. It is lower and lighter underfoot than a pile rug, and reversible in some constructions.',
-    yarn: 'Flatweaves are specified in cotton, jute, allo / hemp and developed blends, chosen for the surface the room needs.'
+    yarn: 'Flatweaves are specified in cotton, jute, allo / hemp and developed blends, chosen for the surface the room needs.',
+    /* Q&A: every answer restates copy already published on the site (bespoke, process, trade pages). */
+    faq: [
+      ['Can you make a custom flat weave rug from our own design?', 'Yes. Send the artwork, drawing, CAD file, reference image or colour scheme. The rug is drawn to the room, approved in a woven strike-off and made to size.'],
+      ['Flatweave or a pile rug?', 'Flatweave is woven on the loom with no pile, so it is lower and lighter underfoot than a pile rug, and reversible in some constructions. Specify it for graphic and geometric work, for layering, and for rooms where a pile would sit too high.'],
+      ['Which yarns are used for flatweave rugs?', 'Cotton, jute, allo / hemp and developed blends, chosen for the surface the room needs. Yarn, spin and dye lot are approved in the hand against your scheme.'],
+      ['What sizes can a flatweave rug be made in?', 'Every rug is made to the size of the project. Any size limit for the chosen construction is confirmed before sampling.'],
+      ['How long does a custom flat weave rug take?', 'A woven strike-off is ready in 2–3 weeks once the design is approved. Lead times usually run 6–12 weeks from strike-off approval, up to six months in some cases.'],
+      ['Is there a minimum order?', 'No. One rug or a full schedule is made to order.']
+    ]
   }
 };
 
@@ -493,7 +510,11 @@ function categoryPage(cat) {
   <p class="bd">${esc(CAT_COPY[cat.slug].when)}</p></div>
   <div class="sec-hd"><div><span class="lb">Yarn and sampling</span><h2 class="d2">Yarn, colour<br>and <span class="it">specification.</span></h2></div>
   <p class="bd">${esc(CAT_COPY[cat.slug].yarn)} Yarn, spin and dye lot are approved in the hand against your scheme, and a woven strike-off — ready in 2–3 weeks once the design is approved — is signed off before the full rug is set on the loom. Lead times usually run 6–12 weeks from strike-off approval, up to six months in some cases. There is no minimum order. <a href="${up}materials/">Rug materials</a> · <a href="${up}process/">The process</a> · <a href="${up}contact/?type=bespoke">Brief a ${esc(coll.name.toLowerCase())} rug</a></p></div>
-</section>
+</section>${(CAT_COPY[cat.slug].faq||[]).length ? `
+<section class="sec dark">
+  <div class="sec-hd"><div><span class="lb">Questions</span><h2 class="d2">Specifying ${esc(coll.name.toLowerCase())}<br><span class="it">rugs.</span></h2></div></div>
+  <dl class="qa">${CAT_COPY[cat.slug].faq.map(([q,a])=>`<div><dt>${esc(q)}</dt><dd>${esc(a)}</dd></div>`).join('')}</dl>
+</section>` : ''}
 <div class="backhome">
   <a href="${up}collection/" class="cta ol"><span aria-hidden="true">←</span> The whole collection</a>
   <div class="backhome-l">${CATS.filter(c=>c.slug!==cat.slug).map(c=>`<a href="${up}collection/${c.slug}/">${esc((collections.find(x=>x.slug===c.coll)||{}).name)} rugs</a>`).join('')}<a href="${up}bespoke/">Bespoke development</a><a href="${up}hospitality/">Hospitality</a><a href="${up}contact/">Start a project</a></div>
