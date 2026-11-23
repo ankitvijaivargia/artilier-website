@@ -23,6 +23,37 @@
   const qs = new URLSearchParams(location.search);
   const titleCase = s => s.replace(/(^|[-\s])([a-z])/g, (m, a, b) => (a === '-' ? ' ' : a) + b.toUpperCase());
 
+
+  /* Post-submission view for forms marked data-confirm: replaces the form with a designed confirmation.
+     The guide link matches the discipline the visitor chose.
+     TODO: the receipt email to the visitor is a Formspree auto-response setting (dashboard), not code in this repo.
+     Suggested subject "We've received your brief — here's what happens next"; body = receipt, reply timing,
+     discipline-matched guide, /process/, WhatsApp. Add it there, then keep the timing line below in step. */
+  const GUIDE_BY_SECTOR = { embroidery: ['briefing-an-embroidery-commission', 'How to brief an embroidery commission'], leather: ['briefing-a-leather-commission', 'How to brief a leather commission'], stone: ['briefing-a-stone-commission', 'How to brief a stone commission'] };
+  const RUG_GUIDE = ['briefing-a-bespoke-rug', 'How to brief a bespoke rug'];
+  function showConfirmation(form, sector) {
+    const key = String(sector).toLowerCase();
+    const guide = key === 'wall-works' ? null : (GUIDE_BY_SECTOR[key] || RUG_GUIDE);
+    const link = (href, text, ext) => `<li><a href="${href}"${ext ? ' target="_blank" rel="noopener"' : ''}>${text} <span aria-hidden="true">→</span></a></li>`;
+    const box = document.createElement('div');
+    box.className = 'f-done';
+    box.tabIndex = -1;
+    box.innerHTML =
+      '<span class="lb">Enquiry received</span>' +
+      '<h2>Thank you — <span class="it">we have your brief.</span></h2>' +
+      '<p>We read every enquiry ourselves and reply individually, usually within a few working days. The reply covers our thoughts on construction and material, any questions we need answered, and where there is enough information, an initial cost range.</p>' +
+      '<span class="lb">While you wait</span>' +
+      '<ul>' + (guide ? link('/guides/' + guide[0] + '/', guide[1]) : '') +
+        link('/process/', 'Our process') + link('/collection/designs/', 'Browse all designs') +
+        link('https://www.instagram.com/artilier.co/', 'Instagram @artilier.co', true) + '</ul>' +
+      '<p>Need a faster answer? <a href="https://wa.me/919828030095" target="_blank" rel="noopener">Message the studio on WhatsApp</a>.</p>';
+    [...form.children].forEach(c => { if (!c.matches('.f-status') && !c.querySelector('[name="_gotcha"]')) c.hidden = true; });
+    const st = form.querySelector('.f-status'); if (st) st.hidden = true;   /* the focused confirmation carries the message for screen readers */
+    form.insertBefore(box, form.firstChild);
+    box.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    box.focus({ preventScroll: true });
+  }
+
   forms.forEach(form => {
     const status = form.querySelector('.f-status');
     const btn = form.querySelector('button[type=submit]');
@@ -97,6 +128,7 @@
         form.reset(); sentAt = Date.now();
         status.classList.add('ok');
         status.textContent = 'Received. We read every enquiry ourselves and reply individually — usually within a few working days.';
+        if (form.hasAttribute('data-confirm')) showConfirmation(form, String(sector));
         if (window.artilierTrack) window.artilierTrack('generate_lead', evt({ enquiry_type: String(sector) }), 'lead|' + Date.now());
       } catch (err) {
         if (window.artilierTrack) window.artilierTrack('enquiry_error', evt({ error_type: String(err && err.message || 'unknown').slice(0, 20) }), 'err|' + Date.now());

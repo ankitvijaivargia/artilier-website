@@ -29,10 +29,10 @@
 <link rel="stylesheet" href="../assets/css/layout.css?v=3">
 <link rel="stylesheet" href="../assets/css/responsive.css?v=3">
 <link rel="stylesheet" href="../assets/css/collection-tweaks.css?v=2">
-<link rel="stylesheet" href="../assets/css/pages.css?v=7">
+<link rel="stylesheet" href="../assets/css/pages.css?v=8">
 <script defer src="../assets/js/slots.js?v=6" data-manifest="../assets/media/manifest.json?v=159ffb0b2f"></script>
 <script defer src="../assets/js/analytics.js?v=5"></script>
-<script defer src="../assets/js/enquiry.js?v=6"></script>
+<script defer src="../assets/js/enquiry.js?v=7"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -78,6 +78,7 @@
         <p>Artwork or drawing, rug sizes, colour scheme, construction preference, quantity, project location and target date all help — but none is required to start. If information is missing, we tell you what needs resolving before anything can be costed properly.</p>
         <p>What comes back: our thoughts on construction and material, the questions we need answered, and how we would approach the rug. Where there is enough information, an initial cost range follows.</p>
       </div>
+      <p class="guide-link" id="guideLink">Briefing a rug project? Read our <a href="../guides/briefing-a-bespoke-rug/">guide to briefing a bespoke rug <span aria-hidden="true">→</span></a></p>
       <div class="contact-opts">
         <a href="mailto:studio@artilier.co"><b>Email</b>studio@artilier.co</a>
         <a href="https://wa.me/919828030095" target="_blank" rel="noopener"><b>WhatsApp</b>Message the studio</a>
@@ -88,7 +89,7 @@
       </div>
     </div>
     
-<form class="fx" id="contactForm" action="https://formspree.io/f/myklqvgp" method="post" data-enquiry data-endpoint="https://formspree.io/f/myklqvgp" novalidate>
+<form class="fx" id="contactForm" action="https://formspree.io/f/myklqvgp" method="post" data-enquiry data-confirm data-endpoint="https://formspree.io/f/myklqvgp" novalidate>
   <fieldset>
     <legend>What is the project?</legend>
     <div class="chips">
@@ -203,6 +204,22 @@
 </footer>
 
 <a class="mcta" id="mcta" href="../contact/">Start a project <span aria-hidden="true">→</span></a>
+<script>
+/* Guide link follows the discipline the visitor came for (?type= is what the site's CTAs send; ?discipline= is accepted too).
+   No discipline: the rug guide stays, as the page was written for rug enquiries. */
+(()=>{
+  const el=document.getElementById('guideLink'); if(!el) return;
+  const q=new URLSearchParams(location.search);
+  const d=(q.get('discipline')||q.get('type')||'').toLowerCase().replace(/[^a-z-]/g,'');
+  const E=['Briefing an embroidery commission?','guide to briefing embroidery','briefing-an-embroidery-commission'];
+  const G={embroidery:E,headboard:E,fabric:E,
+    leather:['Briefing a leather commission?','guide to briefing leather','briefing-a-leather-commission'],
+    stone:['Briefing a stone commission?','guide to briefing stone','briefing-a-stone-commission']};
+  const g=G[d];
+  if(g){el.innerHTML=g[0]+' Read our <a href="../guides/'+g[2]+'/">'+g[1]+' <span aria-hidden="true">→</span></a>';}
+  else if(d==='wall-works'){el.hidden=true;}   /* no wall-works guide */
+})();
+</script>
 <script>
 const bg=document.getElementById('burger'),mn=document.getElementById('mnav');
 if(bg&&mn){
