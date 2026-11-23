@@ -169,3 +169,19 @@
 .pj1-f dt{font-family:var(--s-caps);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--tx-3);margin-bottom:4px}
 .pj1-f dd{margin:0;font-size:15px}
 @media(max-width:900px){.pj1{grid-template-columns:minmax(0,1fr)}}
+/* contact: guide link + post-submission confirmation */
+.guide-link{margin-top:22px;font-size:15px;line-height:1.7;color:var(--tx-2)}
+.guide-link[hidden]{display:none}
+.guide-link a{color:var(--tx);border-bottom:1px solid var(--sand)}
+.guide-link a:hover{color:var(--rust);border-color:var(--rust)}
+.f-done{display:grid;gap:20px;align-content:start;padding:clamp(24px,3vw,40px);border:1px solid var(--sand);background:var(--bone)}
+.f-done{scroll-margin-top:110px}
+.f-done:focus{outline:none}
+.f-done h2{font-family:var(--d);font-weight:400;font-size:clamp(30px,3.4vw,44px);line-height:1.1;color:var(--tx)}
+.f-done p{font-size:15.5px;line-height:1.75;color:var(--tx-2)}
+.f-done .lb{display:block}
+.f-done ul{list-style:none;display:grid;border-top:1px solid var(--sand)}
+.f-done li{border-bottom:1px solid var(--sand)}
+.f-done li a{display:flex;justify-content:space-between;gap:18px;padding:13px 0;font-size:15px;color:var(--tx)}
+.f-done li a:hover{color:var(--rust)}
+.fx [hidden]{display:none!important}
