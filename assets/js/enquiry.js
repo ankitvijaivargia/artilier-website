@@ -25,14 +25,15 @@
 
 
   /* Post-submission view for forms marked data-confirm: replaces the form with a designed confirmation.
-     Only the rug guide exists today; other disciplines get the general links until their guides are published.
+     The guide link matches the discipline the visitor chose.
      TODO: the receipt email to the visitor is a Formspree auto-response setting (dashboard), not code in this repo.
      Suggested subject "We've received your brief — here's what happens next"; body = receipt, reply timing,
      discipline-matched guide, /process/, WhatsApp. Add it there, then keep the timing line below in step. */
-  const RUG_SECTORS = ['residential', 'hospitality', 'bespoke', 'collection', 'collaboration', 'other', 'general'];
+  const GUIDE_BY_SECTOR = { embroidery: ['briefing-an-embroidery-commission', 'How to brief an embroidery commission'], leather: ['briefing-a-leather-commission', 'How to brief a leather commission'], stone: ['briefing-a-stone-commission', 'How to brief a stone commission'] };
+  const RUG_GUIDE = ['briefing-a-bespoke-rug', 'How to brief a bespoke rug'];
   function showConfirmation(form, sector) {
     const key = String(sector).toLowerCase();
-    const rug = RUG_SECTORS.includes(key) || /rug|collection|artwork|trade|samples|not sure/i.test(key);
+    const guide = key === 'wall-works' ? null : (GUIDE_BY_SECTOR[key] || RUG_GUIDE);
     const link = (href, text, ext) => `<li><a href="${href}"${ext ? ' target="_blank" rel="noopener"' : ''}>${text} <span aria-hidden="true">→</span></a></li>`;
     const box = document.createElement('div');
     box.className = 'f-done';
@@ -42,7 +43,7 @@
       '<h2>Thank you — <span class="it">we have your brief.</span></h2>' +
       '<p>We read every enquiry ourselves and reply individually, usually within a few working days. The reply covers our thoughts on construction and material, any questions we need answered, and where there is enough information, an initial cost range.</p>' +
       '<span class="lb">While you wait</span>' +
-      '<ul>' + (rug ? link('/guides/briefing-a-bespoke-rug/', 'How to brief a bespoke rug') : '') +
+      '<ul>' + (guide ? link('/guides/' + guide[0] + '/', guide[1]) : '') +
         link('/process/', 'Our process') + link('/collection/designs/', 'Browse all designs') +
         link('https://www.instagram.com/artilier.co/', 'Instagram @artilier.co', true) + '</ul>' +
       '<p>Need a faster answer? <a href="https://wa.me/919828030095" target="_blank" rel="noopener">Message the studio on WhatsApp</a>.</p>';

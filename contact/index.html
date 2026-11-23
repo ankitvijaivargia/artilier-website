@@ -206,13 +206,18 @@
 <a class="mcta" id="mcta" href="../contact/">Start a project <span aria-hidden="true">→</span></a>
 <script>
 /* Guide link follows the discipline the visitor came for (?type= is what the site's CTAs send; ?discipline= is accepted too).
-   Only the rug guide exists today. When a guide for another discipline is published, add its path here and it appears. */
+   No discipline: the rug guide stays, as the page was written for rug enquiries. */
 (()=>{
   const el=document.getElementById('guideLink'); if(!el) return;
   const q=new URLSearchParams(location.search);
   const d=(q.get('discipline')||q.get('type')||'').toLowerCase().replace(/[^a-z-]/g,'');
-  const GUIDES={embroidery:null,headboard:null,fabric:null,leather:null,stone:null,'wall-works':null};
-  if(d in GUIDES&&!GUIDES[d]) el.hidden=true;
+  const E=['Briefing an embroidery commission?','guide to briefing embroidery','briefing-an-embroidery-commission'];
+  const G={embroidery:E,headboard:E,fabric:E,
+    leather:['Briefing a leather commission?','guide to briefing leather','briefing-a-leather-commission'],
+    stone:['Briefing a stone commission?','guide to briefing stone','briefing-a-stone-commission']};
+  const g=G[d];
+  if(g){el.innerHTML=g[0]+' Read our <a href="../guides/'+g[2]+'/">'+g[1]+' <span aria-hidden="true">→</span></a>';}
+  else if(d==='wall-works'){el.hidden=true;}   /* no wall-works guide */
 })();
 </script>
 <script>
