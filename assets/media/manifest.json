@@ -1657,5 +1657,189 @@
     "src": "inv4.mp4?v=1",
     "poster": "/assets/media/inv4-poster.webp?v=1",
     "alt": "Bedside chest in mother-of-pearl leaf inlay on a teal ground"
+  },
+  "ic1": {
+    "type": "image",
+    "src": "ic1.webp?v=1",
+    "alt": "Chest of drawers in black and white bone inlay with a fish-scale pattern",
+    "facts": "Bone inlay · chest of drawers, scale pattern",
+    "w": 720,
+    "h": 644,
+    "variants": [
+      480
+    ]
+  },
+  "ic2": {
+    "type": "image",
+    "src": "ic2.webp?v=1",
+    "alt": "Chest of drawers with a navy ground and bone inlay rosettes",
+    "facts": "Bone inlay · chest of drawers, rosettes",
+    "w": 1445,
+    "h": 1164,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "ic3": {
+    "type": "image",
+    "src": "ic3.webp?v=1",
+    "alt": "Chest of drawers in white mother-of-pearl floral inlay",
+    "facts": "Mother-of-pearl inlay · chest of drawers",
+    "w": 1040,
+    "h": 780,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "ic4": {
+    "type": "image",
+    "src": "ic4.webp?v=1",
+    "alt": "Serpentine chest with a black ground, mother-of-pearl trellis inlay and metal cabriole legs",
+    "facts": "Mother-of-pearl inlay · serpentine chest, cabriole legs",
+    "w": 750,
+    "h": 687,
+    "variants": [
+      480
+    ]
+  },
+  "ic5": {
+    "type": "image",
+    "src": "ic5.webp?v=1",
+    "alt": "Two-door cabinet in black and white bone inlay with a sunburst pattern and a ring handle",
+    "facts": "Bone inlay · cabinet, sunburst doors",
+    "w": 621,
+    "h": 528,
+    "variants": [
+      480
+    ]
+  },
+  "ic6": {
+    "type": "image",
+    "src": "ic6.webp?v=1",
+    "alt": "Two-drawer console in navy and bone leaf inlay on a brass frame",
+    "facts": "Bone inlay · console table on brass frame",
+    "w": 992,
+    "h": 640,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "ic7": {
+    "type": "image",
+    "src": "ic7.webp?v=1",
+    "alt": "Three-drawer console table in geometric bone inlay",
+    "facts": "Bone inlay · three-drawer console",
+    "w": 646,
+    "h": 440,
+    "variants": [
+      480
+    ]
+  },
+  "ic8": {
+    "type": "image",
+    "src": "ic8.webp?v=1",
+    "alt": "Serpentine-front vanity desk in black and white floral bone inlay",
+    "facts": "Bone inlay · serpentine vanity desk",
+    "w": 570,
+    "h": 473,
+    "variants": [
+      480
+    ]
+  },
+  "ic9": {
+    "type": "image",
+    "src": "ic9.webp?v=1",
+    "alt": "Round dining table in geometric bone inlay on a black pedestal base",
+    "facts": "Bone inlay · round dining table, pedestal base",
+    "w": 640,
+    "h": 479,
+    "variants": [
+      480
+    ]
+  },
+  "ic10": {
+    "type": "image",
+    "src": "ic10.webp?v=1",
+    "alt": "Round table with a terracotta and bone striped top and clustered column base",
+    "facts": "Bone inlay · striped pedestal table, terracotta ground",
+    "w": 823,
+    "h": 577,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "ic11": {
+    "type": "image",
+    "src": "ic11.webp?v=1",
+    "alt": "Pair of round nesting coffee tables in radiating bone inlay on brass frames",
+    "facts": "Bone inlay · nesting coffee tables, brass frames",
+    "w": 1045,
+    "h": 736,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "ic12": {
+    "type": "image",
+    "src": "ic12.webp?v=1",
+    "alt": "Hexagonal side table in white and grey floral bone inlay",
+    "facts": "Bone inlay · hexagonal side table",
+    "w": 720,
+    "h": 822,
+    "variants": [
+      480
+    ]
+  },
+  "ic13": {
+    "type": "image",
+    "src": "ic13.webp?v=1",
+    "alt": "Nine-drawer dresser in brown and bone floral inlay on brass legs",
+    "facts": "Bone inlay · nine-drawer dresser, brass legs",
+    "w": 794,
+    "h": 596,
+    "variants": [
+      480
+    ]
+  },
+  "ic14": {
+    "type": "image",
+    "src": "ic14.webp?v=1",
+    "alt": "Bedside cabinet with a green ground and bone floral inlay",
+    "facts": "Bone inlay · bedside cabinet, green ground",
+    "w": 694,
+    "h": 782,
+    "variants": [
+      480
+    ]
+  },
+  "ic15": {
+    "type": "image",
+    "src": "ic15.webp?v=1",
+    "alt": "Chest in black and white bone inlay with a three-dimensional block pattern",
+    "facts": "Bone inlay · chest, block pattern",
+    "w": 612,
+    "h": 432,
+    "variants": [
+      480
+    ]
+  },
+  "ic16": {
+    "type": "image",
+    "src": "ic16.webp?v=1",
+    "alt": "Rectangular coffee table with a geometric bone inlay top and striped sides",
+    "facts": "Bone inlay · coffee table, geometric top",
+    "w": 1245,
+    "h": 521,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
   }
 }

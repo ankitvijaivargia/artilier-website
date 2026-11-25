@@ -98,6 +98,9 @@
 .gal .ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bone)}
 .gal figure.w .ph{aspect-ratio:16/10}
 .gal figure.full .ph{aspect-ratio:16/9}
+/* range galleries: whole piece shown, squared tiles (inlay catalogue photos vary in shape) */
+.gal.rng .ph{aspect-ratio:1;background:var(--bone)}
+.gal.rng media-slot>img{object-fit:contain}
 .gal figcaption{font-size:12.5px;line-height:1.5;color:var(--tx-3);margin-top:8px;letter-spacing:.02em}
 .gal figcaption:empty{display:none}
 .gal figure:has(media-slot[data-empty]){display:none}
