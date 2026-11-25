@@ -180,7 +180,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
       <h4 aria-level="2">ARTILIER</h4>
       <p>${lang === 'fr'
         ? 'Art. Made Material. Studio d’artisanat d’art à New Delhi. Tapis, broderie à la main, cuir et pierre, réalisés à la commande pour les designers, architectes et galeries — une pièce unique ou une collection entière, sur nos dessins ou les vôtres.'
-        : 'Art. Made Material. A master craft studio in New Delhi. Rugs, hand embroidery, leather, stone and wall works, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.'}</p>
+        : 'Art. Made Material. A master craft studio in New Delhi. Rugs, hand embroidery, leather, stone, inlay furniture and wall works, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.'}</p>
     </div>
     <div class="f-col"><h5 aria-level="3">${T('Collection')}</h5><ul>
       <li><a href="${up}collection/hand-knotted/">${T('Hand-knotted rugs')}</a></li>
@@ -289,7 +289,7 @@ const slotImg = (id, ph, up, eager = false, sizes = 'grid') => {
 const ORG = {
   '@type':'Organization','@id':`${HOST}/#organization`,'name':'ARTILIER','alternateName':['Artilier'],'url':`${HOST}/`,
   'email':'studio@artilier.co','sameAs':['https://www.linkedin.com/company/artilier/','https://www.instagram.com/artilier.co/','https://www.pinterest.com/artilierco/'],
-  'description':"A master craft studio in New Delhi. Rugs, hand embroidery, leather, stone and wall works, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.",
+  'description':"A master craft studio in New Delhi. Rugs, hand embroidery, leather, stone, inlay furniture and wall works, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.",
   'founder':{'@type':'Person','name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development','sameAs':['https://www.linkedin.com/in/ankitvijaivargia/']},
   'employee':{'@type':'Person','name':'Payal Samal','jobTitle':'Design Head — Interior Designer'},
   'address':{'@type':'PostalAddress','addressLocality':'New Delhi','addressCountry':'IN'},
