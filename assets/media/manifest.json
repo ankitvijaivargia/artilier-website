@@ -1718,15 +1718,13 @@
   },
   "ihero": {
     "type": "image",
-    "src": "ihero.webp?v=2",
-    "alt": "Drawer fronts of a chest in bone inlay rosettes on a navy ground",
-    "facts": "Bone inlay · chest of drawers, navy ground",
-    "w": 1445,
-    "h": 812,
+    "src": "ihero.webp?v=3",
+    "alt": "Serpentine chest with a black ground and mother-of-pearl trellis inlay on metal cabriole legs",
+    "facts": "Mother-of-pearl inlay · serpentine chest, cabriole legs",
+    "w": 750,
+    "h": 562,
     "variants": [
-      480,
-      800,
-      1200
+      480
     ]
   }
 }

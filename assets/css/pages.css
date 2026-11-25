@@ -100,6 +100,11 @@
 .gal figure.full .ph{aspect-ratio:16/9}
 /* range galleries: whole piece shown, squared tiles (inlay catalogue photos vary in shape) */
 .gal.sw .ph{aspect-ratio:1}
+/* lead image with a side note */
+.gal.lead figure{grid-column:span 8}
+.gal.lead .ph{aspect-ratio:4/3}
+.gal.lead .lead-t{grid-column:span 4;align-self:end;padding-bottom:6px}
+.gal.lead .lead-t .lb{display:block;margin-bottom:14px}
 /* pattern swatches: captions as quiet labels */
 .gal.sw figcaption{letter-spacing:.06em}
 .gal figcaption{font-size:12.5px;line-height:1.5;color:var(--tx-3);margin-top:8px;letter-spacing:.02em}
@@ -108,7 +113,7 @@
 .gal-sec:has(.gal):not(:has(media-slot:not([data-empty]))){display:none}
 .gal:has(figure.full media-slot[data-empty]){display:none}
 @media (max-width:760px){
-  .gal figure,.gal figure.w{grid-column:1/-1}
+  .gal figure,.gal figure.w,.gal.lead figure,.gal.lead .lead-t{grid-column:1/-1}
   .gal figure.q{grid-column:span 6}
   .gal figure.w .ph{aspect-ratio:4/5}
   .gal figure.full .ph{aspect-ratio:4/5}
