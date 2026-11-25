@@ -1730,5 +1730,18 @@
       800,
       1200
     ]
+  },
+  "hero-inlay": {
+    "type": "image",
+    "src": "hero-inlay.webp?v=1",
+    "alt": "Three-door sideboard with a black ground and a branching vine of bone inlay across all three doors, on tapered legs",
+    "facts": "Bone inlay · sideboard",
+    "w": 1266,
+    "h": 880,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
   }
 }
