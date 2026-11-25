@@ -1637,11 +1637,11 @@
   },
   "ip5": {
     "type": "image",
-    "src": "ip5.webp?v=1",
-    "alt": "Detail of rosettes and borders in bone inlay on a navy ground",
-    "facts": "Rosette · bone",
-    "w": 442,
-    "h": 442,
+    "src": "ip5.webp?v=2",
+    "alt": "Detail of a radiating pattern in bone inlay on a round table top",
+    "facts": "Radiating · bone",
+    "w": 456,
+    "h": 456,
     "variants": []
   },
   "ip6": {
@@ -1718,11 +1718,11 @@
   },
   "ihero": {
     "type": "image",
-    "src": "ihero.webp?v=1",
-    "alt": "Top and waterfall edge of a console in mother-of-pearl inlay on a terracotta ground",
-    "facts": "Mother-of-pearl inlay · waterfall console",
-    "w": 1451,
-    "h": 816,
+    "src": "ihero.webp?v=2",
+    "alt": "Drawer fronts of a chest in bone inlay rosettes on a navy ground",
+    "facts": "Bone inlay · chest of drawers, navy ground",
+    "w": 1445,
+    "h": 812,
     "variants": [
       480,
       800,
