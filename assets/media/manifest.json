@@ -1720,11 +1720,11 @@
   },
   "ihero": {
     "type": "image",
-    "src": "ihero.webp?v=4",
+    "src": "ihero.webp?v=5",
     "alt": "Top and waterfall edge of a console in mother-of-pearl inlay on a terracotta ground",
     "facts": "Mother-of-pearl inlay · waterfall console",
     "w": 1600,
-    "h": 900,
+    "h": 1200,
     "variants": [
       480,
       800,
