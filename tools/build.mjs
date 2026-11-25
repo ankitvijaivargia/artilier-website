@@ -109,7 +109,7 @@ const nav = (up, lang = 'en') => {
   <a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
 </nav>
 <div class="mnav" id="mnav" hidden>
-  <a href="${home(up)}">${t('Home')}</a>${lang === 'fr' ? l('collection/','The rug collection') : l('collection/','Rugs') + l('collection/designs/','Rug designs')}${l('embroidery/','Embroidery')}${l('leather/','Leather')}${l('stone/','Stone')}${l('wall-works/','Wall works')}${l('bespoke/','Bespoke development')}${l('collaborations/','Collaborations')}${l('hospitality/','Hospitality &amp; contract')}${l('materials/','Materials')}${l('process/','Process')}${l('craft/','The craft')}${l('projects/','Projects')}${l('trade/','Trade')}${l('about/','About the studio')}${l('contact/','Contact')}<a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a><a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
+  <a href="${home(up)}">${t('Home')}</a>${lang === 'fr' ? l('collection/','The rug collection') : l('collection/','Rugs') + l('collection/designs/','Rug designs')}${l('embroidery/','Embroidery')}${l('leather/','Leather')}${l('stone/','Stone')}${l('inlay/','Inlay furniture')}${l('wall-works/','Wall works')}${l('bespoke/','Bespoke development')}${l('collaborations/','Collaborations')}${l('hospitality/','Hospitality &amp; contract')}${l('materials/','Materials')}${l('process/','Process')}${l('craft/','The craft')}${l('projects/','Projects')}${l('trade/','Trade')}${l('about/','About the studio')}${l('contact/','Contact')}<a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a><a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
 </div>`;
 };
 
@@ -171,6 +171,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
       <li><a href="${up}embroidery/fabrics/">${T('Embroidered fabric')}</a></li>
       <li><a href="${up}leather/">${T('Leather')}</a></li>
       <li><a href="${up}stone/">${T('Stone')}</a></li>
+      <li><a href="${up}inlay/">${T('Inlay furniture')}</a></li>
       <li><a href="${up}wall-works/">${T('Wall works')}</a></li>
     </ul></div>
     <div class="f-col"><h5 aria-level="3">${T('Studio')}</h5><ul>
@@ -275,7 +276,7 @@ const ORG = {
   'slogan':'Art. Made Material.',
   'parentOrganization':{'@type':'Organization','name':'Art Avenue Pvt. Ltd.','address':{'@type':'PostalAddress','addressLocality':'New Delhi','addressCountry':'IN'}},
   'contactPoint':{'@type':'ContactPoint','contactType':'Trade enquiries','email':'studio@artilier.co','url':`${HOST}/contact/`,'areaServed':'Worldwide','availableLanguage':['English']},
-  'knowsAbout':['hand-knotted rugs','hand-tufted rugs','flatweave rugs','custom rug development','bespoke rugs for interior designers','rug design collaboration','custom rugs for hospitality projects','hand embroidery','bespoke embroidered wall panels','embroidered upholstery and soft furnishings','hand-embroidered wallcoverings','embroidered wallcoverings','zardozi embroidery','zari embroidery','aari embroidery','raffia embroidery','embroidered headboards','bespoke embroidery for interior designers','semi-precious stone inlay','stone and shell inlay','mother-of-pearl inlay','pietra dura','inlaid stone table tops','bespoke stone furniture','bespoke wall art','relief wall panels','wall sculpture','ceramic wall art']
+  'knowsAbout':['hand-knotted rugs','hand-tufted rugs','flatweave rugs','custom rug development','bespoke rugs for interior designers','rug design collaboration','custom rugs for hospitality projects','hand embroidery','bespoke embroidered wall panels','embroidered upholstery and soft furnishings','hand-embroidered wallcoverings','embroidered wallcoverings','zardozi embroidery','zari embroidery','aari embroidery','raffia embroidery','embroidered headboards','bespoke embroidery for interior designers','semi-precious stone inlay','stone and shell inlay','mother-of-pearl inlay','mother-of-pearl inlay furniture','bone inlay furniture','pietra dura','inlaid stone table tops','bespoke stone furniture','bespoke wall art','relief wall panels','wall sculpture','ceramic wall art']
 };
 const WEBSITE = { '@type':'WebSite','@id':`${HOST}/#website`,'url':`${HOST}/`,'name':'ARTILIER','alternateName':['Artilier'],'publisher':{'@id':`${HOST}/#organization`},'inLanguage':'en' };
 const breadcrumb = items => ({ '@type':'BreadcrumbList','itemListElement':items.map((it,i)=>({ '@type':'ListItem','position':i+1,'name':it.name,'item':it.abs })) });

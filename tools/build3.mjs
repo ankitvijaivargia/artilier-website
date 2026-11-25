@@ -84,6 +84,7 @@ const enquiryForm = (id = 'contactForm') => `
       <label><input type="radio" name="sector" value="embroidery"> Embroidery</label>
       <label><input type="radio" name="sector" value="leather"> Leather</label>
       <label><input type="radio" name="sector" value="stone"> Stone</label>
+      <label><input type="radio" name="sector" value="inlay"> Inlay furniture</label>
       <label><input type="radio" name="sector" value="wall-works"> Wall works</label>
       <label><input type="radio" name="sector" value="collaboration"> Collaboration</label>
       <label><input type="radio" name="sector" value="other"> Something else</label>
@@ -102,13 +103,13 @@ const enquiryForm = (id = 'contactForm') => `
       <select id="c-ct" name="enquiry">
         <option>Bespoke rug from my own artwork</option><option>A design from the collection, re-sized</option>
         <option>A design from the collection, re-coloured</option><option>Several rugs for one project</option>
-        <option>Embroidery — wall panels or framed art</option><option>Embroidered headboards</option><option>Embroidered fabric by the metre</option><option>Embroidery — upholstery panels or soft furnishings</option><option>Leather — wall panels, headboards or trims</option><option>Stone — inlay, table tops or furniture</option><option>Wall works — wall art or relief panels</option>
+        <option>Embroidery — wall panels or framed art</option><option>Embroidered headboards</option><option>Embroidered fabric by the metre</option><option>Embroidery — upholstery panels or soft furnishings</option><option>Leather — wall panels, headboards or trims</option><option>Stone — inlay, table tops or furniture</option><option>Inlay furniture — mother-of-pearl or bone</option><option>Wall works — wall art or relief panels</option>
         <option>Samples</option><option>Trade terms</option><option>Not sure yet</option>
       </select>
     </div>
     <div class="f"><label for="c-cs">Construction</label>
       <select id="c-cs" name="construction">
-        <option>Open to your recommendation</option><option>Hand-knotted</option><option>Hand-tufted</option><option>Flatweave</option><option>Hand embroidery</option><option>Leather or hide</option><option>Stone or shell inlay</option><option>Ceramic, metal, plaster, wood or fibre</option>
+        <option>Open to your recommendation</option><option>Hand-knotted</option><option>Hand-tufted</option><option>Flatweave</option><option>Hand embroidery</option><option>Leather or hide</option><option>Stone or shell inlay</option><option>Mother-of-pearl or bone inlay</option><option>Ceramic, metal, plaster, wood or fibre</option>
       </select>
     </div>
   </div>
@@ -134,7 +135,7 @@ const contact = shell({
   lb:'Contact · Start a project', h1:'Start a<br>', h1it:'project.',
   lead:`<p class="bd">Send artwork, a drawing, a reference or an early idea with the sizes. We review it and come back with questions, possibilities and the best way to make it.</p>
     <div class="wp-meta"><span><b>Trade only</b></span><span>Reviewed individually</span><span>New Delhi</span></div>`,
-  scripts:`\n<script defer src="../assets/js/enquiry.js?v=6"></script>`,
+  scripts:`\n<script defer src="../assets/js/enquiry.js?v=7"></script>`,
   body:`
 <section class="sec">
   <div class="about">
@@ -236,7 +237,7 @@ ${ctaBlock('../', 'contact/', 'Start a project', [['embroidery/','Embroidery'],[
     <p>Until then, the clearest view of our work is <a href="../collection/designs/">the rug collection</a>, <a href="../embroidery/">our embroidery</a> and how we <a href="../bespoke/">develop pieces from a designer’s artwork</a>. If you would like to discuss work relevant to your project, <a href="../contact/">write to us</a>.</p>
   </div>
 </section>
-${ctaBlock('../', 'contact/', 'Start a project', [['collection/','Rugs'],['collection/designs/','Rug designs'],['embroidery/','Embroidery'],['leather/','Leather'],['stone/','Stone'],['bespoke/','Bespoke development']])}`
+${ctaBlock('../', 'contact/', 'Start a project', [['collection/','Rugs'],['collection/designs/','Rug designs'],['embroidery/','Embroidery'],['leather/','Leather'],['stone/','Stone'],['inlay/','Inlay furniture'],['bespoke/','Bespoke development']])}`
 });
 
 /* Gallery rhythm in a 12-column grid: wide+narrow, narrow+wide, three narrow,
@@ -385,13 +386,14 @@ ${sec('What to send', 'A useful', 'first brief.', list([
   '<b>Rug schedule</b> — room or area, quantity and size for each rug type',
   '<b>Embroidery</b> — headboards, wall panels or fabric for the same rooms, with quantities by room type',
   '<b>Wall works</b> — wall art or relief panels, with sizes, material and quantities by room type',
+  '<b>Inlay furniture</b> — bedside tables, chests or consoles in mother-of-pearl or bone inlay, with quantities by room type',
   '<b>Design intent</b> — artwork, scheme, references, or the collection designs you are considering',
   '<b>Construction preference</b> — or leave it to our recommendation',
   '<b>Specification requirements</b> — any performance, cleaning or documentation standards',
   '<b>Programme</b> — mock-up room date, target delivery date and project location'
 ]))}
 ${sec('Contracting', 'One supplier,', 'one point of contact.', `<div class="prose"><p>ARTILIER is the trade studio of Art Avenue Pvt. Ltd., our manufacturing company in New Delhi. Orders are contracted, invoiced and exported through that entity, with established export documentation, and you have one point of contact from brief to dispatch. Costing and lead times are given per project once construction, materials, sizes and sampling are understood.</p></div>`)}
-${ctaBlock('../', 'contact/?type=hospitality', 'Send a hospitality brief', [['embroidery/headboards/','Embroidered headboards'],['embroidery/','Embroidered wall panels'],['embroidery/fabrics/','Embroidered fabric'],['wall-works/','Wall works'],['bespoke/','Bespoke rugs'],['materials/','Materials'],['process/','The process'],['trade/','Trade']])}`
+${ctaBlock('../', 'contact/?type=hospitality', 'Send a hospitality brief', [['embroidery/headboards/','Embroidered headboards'],['embroidery/','Embroidered wall panels'],['embroidery/fabrics/','Embroidered fabric'],['wall-works/','Wall works'],['inlay/','Inlay furniture'],['bespoke/','Bespoke rugs'],['materials/','Materials'],['process/','The process'],['trade/','Trade']])}`
 });
 
 /* ── market pages ──────────────────────────────────────────────────── */
@@ -1023,8 +1025,9 @@ syncShell('collection/index.html', '../');
 /* Leather and stone are hand-maintained too: shell + the shared Organization entity. */
 syncShell('leather/index.html', '../');
 syncShell('stone/index.html', '../');
+syncShell('inlay/index.html', '../');
 syncShell('wall-works/index.html', '../');
-console.log('synced shell: collaborations, rugs page, designs page, leather, stone');
+console.log('synced shell: collaborations, rugs page, designs page, leather, stone, inlay');
 
 /* ── sitemap: canonical, indexable, 200-status URLs only ───────────── */
 /* No <lastmod>: every page is rewritten on each build (shared footer), so a
@@ -1035,7 +1038,7 @@ const urls = [
   ['', '1.0'], ['collection/', '0.9'], ['collection/designs/', '0.9'], ...CATS.map(c => [`collection/${c.slug}/`, '0.8']),
   ['bespoke/', '0.9'], ['hospitality/', '0.9'], ['trade/', '0.8'], ['collaborations/', '0.8'], ['contact/', '0.8'], ['about/', '0.7'],
   ['trade/uae/', '0.8'], ['trade/saudi-arabia/', '0.8'], ['trade/uk/', '0.7'], ['trade/us/', '0.7'], ['fr/', '0.8'],
-  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['leather/', '0.8'], ['stone/', '0.8'], ['wall-works/', '0.8'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], [G, '0.7'],
+  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['leather/', '0.8'], ['stone/', '0.8'], ['inlay/', '0.8'], ['wall-works/', '0.8'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], [G, '0.7'],
   ...(indexProjects ? [['projects/', '0.8']] : []), ...projectsData.map(p => [`projects/${p.slug}/`, '0.7']),
   ...indexable.slice().sort(by).map(d => [`collection/${d.slug}/`, '0.6'])
 ];

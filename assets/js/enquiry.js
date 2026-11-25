@@ -179,6 +179,13 @@
           const cons = form.querySelector('select[name=construction]');
           if (cons) [...cons.options].forEach(o => { if (/^Stone or shell inlay$/i.test(o.text)) cons.value = o.value || o.text; });
         }
+        if (type === 'inlay') {
+          hidden('cta_type', type);
+          const need = form.querySelector('select[name=enquiry]');
+          if (need) [...need.options].forEach(o => { if (/^Inlay furniture — /i.test(o.text)) need.value = o.value || o.text; });
+          const cons = form.querySelector('select[name=construction]');
+          if (cons) [...cons.options].forEach(o => { if (/^Mother-of-pearl or bone inlay$/i.test(o.text)) cons.value = o.value || o.text; });
+        }
         if (type === 'wall-works') {
           hidden('cta_type', type);
           const need = form.querySelector('select[name=enquiry]');

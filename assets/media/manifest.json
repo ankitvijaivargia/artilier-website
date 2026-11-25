@@ -1513,5 +1513,149 @@
     "w": 468,
     "h": 448,
     "variants": []
+  },
+  "in1": {
+    "type": "image",
+    "src": "in1.webp?v=1",
+    "alt": "Round drum coffee table in black and white bone inlay, star pattern, on a brass base",
+    "facts": "Bone inlay · drum coffee table, brass base",
+    "w": 1230,
+    "h": 990,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "in2": {
+    "type": "image",
+    "src": "in2.webp?v=1",
+    "alt": "Oval coffee table in black and white bone inlay on a brass plinth",
+    "facts": "Bone inlay · oval coffee table, brass plinth",
+    "w": 1280,
+    "h": 1174,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "in3": {
+    "type": "image",
+    "src": "in3.webp?v=1",
+    "alt": "Mother-of-pearl geometric top and striped side of an oval coffee table, shown in part",
+    "facts": "Mother-of-pearl inlay · oval coffee table, in part",
+    "w": 770,
+    "h": 710,
+    "variants": [
+      480
+    ]
+  },
+  "in4": {
+    "type": "image",
+    "src": "in4.webp?v=1",
+    "alt": "Round coffee table with a navy ground and a Moroccan trellis in bone inlay",
+    "facts": "Bone inlay · round coffee table, navy ground",
+    "w": 736,
+    "h": 736,
+    "variants": [
+      480
+    ]
+  },
+  "in5": {
+    "type": "image",
+    "src": "in5.webp?v=1",
+    "alt": "Nine-drawer dresser with a black ground, dotted inlay and inlaid knobs",
+    "facts": "Inlay · nine-drawer dresser, black ground",
+    "w": 1600,
+    "h": 1200,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "in7": {
+    "type": "image",
+    "src": "in7.webp?v=1",
+    "alt": "Waterfall console in mother-of-pearl floral inlay on a terracotta ground",
+    "facts": "Mother-of-pearl inlay · waterfall console",
+    "w": 1600,
+    "h": 1458,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "in8": {
+    "type": "image",
+    "src": "in8.webp?v=1",
+    "alt": "Three-drawer bedside chest in mother-of-pearl leaf inlay on a teal ground",
+    "facts": "Mother-of-pearl inlay · bedside chest, teal ground",
+    "w": 1200,
+    "h": 1600,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "in9": {
+    "type": "image",
+    "src": "in9.webp?v=1",
+    "alt": "Bedside chest with a navy ground and trellis bone inlay, a chevron panel behind",
+    "facts": "Bone inlay · bedside chest, navy ground",
+    "w": 750,
+    "h": 680,
+    "variants": [
+      480
+    ]
+  },
+  "in10": {
+    "type": "image",
+    "src": "in10.webp?v=1",
+    "alt": "Chest of drawers in mother-of-pearl vine inlay on a black ground, drawer open, on a brass stand",
+    "facts": "Mother-of-pearl inlay · chest on brass stand",
+    "w": 960,
+    "h": 1280,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "in12": {
+    "type": "image",
+    "src": "in12.webp?v=1",
+    "alt": "Square coffee table with a mother-of-pearl bird on a black top and striped sides",
+    "facts": "Mother-of-pearl inlay · coffee table",
+    "w": 639,
+    "h": 782,
+    "variants": [
+      480
+    ]
+  },
+  "inv1": {
+    "type": "video",
+    "src": "inv1.mp4?v=1",
+    "poster": "/assets/media/inv1-poster.webp?v=1",
+    "alt": "Bedside chest in navy trellis bone inlay, turned on the workshop floor"
+  },
+  "inv2": {
+    "type": "video",
+    "src": "inv2.mp4?v=1",
+    "poster": "/assets/media/inv2-poster.webp?v=1",
+    "alt": "Waterfall console in mother-of-pearl floral inlay on a terracotta ground"
+  },
+  "inv3": {
+    "type": "video",
+    "src": "inv3.mp4?v=1",
+    "poster": "/assets/media/inv3-poster.webp?v=1",
+    "alt": "Waterfall console in black and white striped inlay"
+  },
+  "inv4": {
+    "type": "video",
+    "src": "inv4.mp4?v=1",
+    "poster": "/assets/media/inv4-poster.webp?v=1",
+    "alt": "Bedside chest in mother-of-pearl leaf inlay on a teal ground"
   }
 }
