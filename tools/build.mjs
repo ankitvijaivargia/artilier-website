@@ -78,27 +78,45 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <link rel="stylesheet" href="${up}assets/css/responsive.css?v=3">
 <link rel="stylesheet" href="${up}assets/css/collection-tweaks.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/pages.css?v=7">
+<link rel="stylesheet" href="${up}assets/css/nav.css?v=1">
 <script defer src="${up}assets/js/slots.js?v=6" data-manifest="${up}assets/media/manifest.json?v=${MV}"></script>
-<script defer src="${up}assets/js/analytics.js?v=5"></script>${scripts}${extraHead}
+<script defer src="${up}assets/js/analytics.js?v=5"></script>
+<script defer src="${up}assets/js/nav.js?v=1"></script>${scripts}${extraHead}
 </head>
 <body>
 <a class="skip" href="#main">${lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}</a>`;
 
 const home = up => up || './';
 const NAV_FR = { 'Collection':'Collection','Rugs':'Tapis','Embroidery':'Broderie','Leather':'Cuir','Stone':'Pierre','Wall works':'Œuvres murales','Rug designs':'Modèles de tapis','Projects':'Projets','The rug collection':'La collection de tapis','Bespoke':'Sur mesure','Collaborations':'Collaborations','Hospitality':'Hôtellerie','Process':'Processus','Trade':'Professionnels','About':'Le studio',
-  'Home':'Accueil','The collection':'La collection','Bespoke development':'Développement sur mesure','Hospitality &amp; contract':'Hôtellerie &amp; contract','Materials':'Matières','The craft':'Le savoir-faire','About the studio':'Le studio','Contact':'Contact','Start a project':'Démarrer un projet' };
+  'Home':'Accueil','The collection':'La collection','Bespoke development':'Développement sur mesure','Hospitality &amp; contract':'Hôtellerie &amp; contract','Materials':'Matières','The craft':'Le savoir-faire','About the studio':'Le studio','Contact':'Contact','Start a project':'Démarrer un projet','Crafts':'Métiers','Studio':'Studio','Inlay furniture':'Mobilier incrusté' };
+/* Navigation. Desktop: seven top-level items, the craft disciplines grouped
+   under one "Crafts" panel (assets/css/nav.css, assets/js/nav.js). The panel
+   opens on hover and keyboard focus with CSS alone; nav.js adds click/tap,
+   aria-expanded and Escape. Mobile: one sheet in three labelled groups. */
+const CRAFTS = [
+  ['embroidery/','Embroidery','Wall panels, headboards and fabric'],
+  ['leather/','Leather','Wall panels, headboards and trims'],
+  ['stone/','Stone','Inlaid table tops, panels and joinery'],
+  ['inlay/','Inlay furniture','Mother-of-pearl and bone'],
+  ['wall-works/','Wall works','Relief panels and wall art']
+];
+const NAV_FR_DESC = { 'Wall panels, headboards and fabric':'Panneaux muraux, têtes de lit et tissus', 'Wall panels, headboards and trims':'Panneaux muraux, têtes de lit et finitions',
+  'Inlaid table tops, panels and joinery':'Plateaux, panneaux et menuiserie incrustés', 'Mother-of-pearl and bone':'Nacre et os', 'Relief panels and wall art':'Panneaux en relief et œuvres murales' };
 const nav = (up, lang = 'en') => {
   const t = k => lang === 'fr' ? (NAV_FR[k] || k) : k;
-  const l = (h, k) => `<a href="${up}${h}"${lang === 'fr' ? ' hreflang="en"' : ''}>${t(k)}</a>`;
+  const hl = lang === 'fr' ? ' hreflang="en"' : '';
+  const l = (h, k) => `<a href="${up}${h}"${hl}>${t(k)}</a>`;
+  const d = k => lang === 'fr' ? (NAV_FR_DESC[k] || k) : k;
   return `
 <nav id="nav" class="s">
   <a href="${home(up)}" class="logo">ARTILIER<em>Art. Made Material.</em></a>
   <ul class="nl">
     <li>${l('collection/','Rugs')}</li>
-    <li>${l('embroidery/','Embroidery')}</li>
-    <li>${l('leather/','Leather')}</li>
-    <li>${l('stone/','Stone')}</li>
-    <li>${l('wall-works/','Wall works')}</li>
+    <li class="dd"><button type="button" class="dd-t" aria-expanded="false" aria-controls="dd-crafts">${t('Crafts')}<span aria-hidden="true"></span></button>
+      <div class="dd-p" id="dd-crafts"><div class="dd-in">
+        <ul class="dd-l">${CRAFTS.map(([h, k, s]) => `<li><a href="${up}${h}"${hl}><b>${t(k)}</b><span>${d(s)}</span></a></li>`).join('')}</ul>
+        <p class="dd-f">${l('craft/','The craft')}${l('materials/','Materials')}${l('process/','Process')}</p>
+      </div></div></li>
     <li>${l('bespoke/','Bespoke')}</li>
     <li>${l('hospitality/','Hospitality')}</li>
     <li>${l('projects/','Projects')}</li>
@@ -109,8 +127,12 @@ const nav = (up, lang = 'en') => {
   <a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
 </nav>
 <div class="mnav" id="mnav" hidden>
-  <a href="${home(up)}">${t('Home')}</a>${lang === 'fr' ? l('collection/','The rug collection') : l('collection/','Rugs') + l('collection/designs/','Rug designs')}${l('embroidery/','Embroidery')}${l('leather/','Leather')}${l('stone/','Stone')}${l('inlay/','Inlay furniture')}${l('wall-works/','Wall works')}${l('bespoke/','Bespoke development')}${l('collaborations/','Collaborations')}${l('hospitality/','Hospitality &amp; contract')}${l('materials/','Materials')}${l('process/','Process')}${l('craft/','The craft')}${l('projects/','Projects')}${l('trade/','Trade')}${l('about/','About the studio')}${l('contact/','Contact')}<a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a><a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
-</div>`;
+  <div class="mn-g"><span class="mn-h">${t('Rugs')}</span>${lang === 'fr' ? l('collection/','The rug collection') : l('collection/','Rugs') + l('collection/designs/','Rug designs')}${l('bespoke/','Bespoke development')}</div>
+  <div class="mn-g"><span class="mn-h">${t('Crafts')}</span>${CRAFTS.map(([h, k]) => l(h, k)).join('')}</div>
+  <div class="mn-g"><span class="mn-h">${t('Studio')}</span>${l('hospitality/','Hospitality &amp; contract')}${l('collaborations/','Collaborations')}${l('projects/','Projects')}${l('trade/','Trade')}${l('about/','About the studio')}</div>
+  <p class="mn-s">${l('craft/','The craft')}${l('materials/','Materials')}${l('process/','Process')}${l('contact/','Contact')}<a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a></p>
+  <a href="${up}contact/" class="cta">${t('Start a project')} <span>→</span></a>
+</div><!-- /mnav -->`;
 };
 
 const crumb = items => `

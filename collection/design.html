@@ -28,34 +28,47 @@
    noindex so the legacy URL never competes with the canonical one. */
 (function(){var d=new URLSearchParams(location.search).get('d');
 if(d&&/^[a-z0-9-]+$/.test(d))location.replace('../collection/'+d+'/');})();</script>
+<script defer src="../assets/js/analytics.js?v=5"></script>
+<script defer src="../assets/js/nav.js?v=1"></script>
 </head>
 <body>
 <a class="skip" href="#design-root">Skip to the design</a>
 <nav id="nav" class="s">
-  <a href="../index.html" class="logo">ARTILIER<em>Art. Made Material.</em></a>
+  <a href="../" class="logo">ARTILIER<em>Art. Made Material.</em></a>
   <ul class="nl">
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="index.html">The collection</a></li>
-    <li><a href="../index.html#bespoke">Bespoke</a></li><li><a href="../collaborations/">Collaborations</a></li>
-    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../collection/">Rugs</a></li>
+    <li class="dd"><button type="button" class="dd-t" aria-expanded="false" aria-controls="dd-crafts">Crafts<span aria-hidden="true"></span></button>
+      <div class="dd-p" id="dd-crafts"><div class="dd-in">
+        <ul class="dd-l"><li><a href="../embroidery/"><b>Embroidery</b><span>Wall panels, headboards and fabric</span></a></li><li><a href="../leather/"><b>Leather</b><span>Wall panels, headboards and trims</span></a></li><li><a href="../stone/"><b>Stone</b><span>Inlaid table tops, panels and joinery</span></a></li><li><a href="../inlay/"><b>Inlay furniture</b><span>Mother-of-pearl and bone</span></a></li><li><a href="../wall-works/"><b>Wall works</b><span>Relief panels and wall art</span></a></li></ul>
+        <p class="dd-f"><a href="../craft/">The craft</a><a href="../materials/">Materials</a><a href="../process/">Process</a></p>
+      </div></div></li>
+    <li><a href="../bespoke/">Bespoke</a></li>
+    <li><a href="../hospitality/">Hospitality</a></li>
+    <li><a href="../projects/">Projects</a></li>
+    <li><a href="../trade/">Trade</a></li>
+    <li><a href="../about/">About</a></li>
   </ul>
   <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav">Menu <span aria-hidden="true">≡</span></button>
-  <a href="../index.html#brief" class="cta">Start a project <span>→</span></a>
+  <a href="../contact/" class="cta">Start a project <span>→</span></a>
 </nav>
 <div class="mnav" id="mnav" hidden>
-  <a href="../index.html">Home</a><a href="index.html">The collection</a><a href="../index.html#bespoke">Bespoke development</a><a href="../index.html#materials">Materials</a><a href="../index.html#process">Process</a><a href="../index.html#about">About &amp; contact</a><a href="../index.html#brief" class="cta">Start a project <span>→</span></a>
-</div>
-<div class="crumb" role="navigation" aria-label="Breadcrumb"><a href="../index.html">ARTILIER</a><span aria-hidden="true">/</span><a href="index.html">The collection</a><span aria-hidden="true">/</span><span aria-current="page" data-crumb>Design</span></div>
+  <div class="mn-g"><span class="mn-h">Rugs</span><a href="../collection/">Rugs</a><a href="../collection/designs/">Rug designs</a><a href="../bespoke/">Bespoke development</a></div>
+  <div class="mn-g"><span class="mn-h">Crafts</span><a href="../embroidery/">Embroidery</a><a href="../leather/">Leather</a><a href="../stone/">Stone</a><a href="../inlay/">Inlay furniture</a><a href="../wall-works/">Wall works</a></div>
+  <div class="mn-g"><span class="mn-h">Studio</span><a href="../hospitality/">Hospitality &amp; contract</a><a href="../collaborations/">Collaborations</a><a href="../projects/">Projects</a><a href="../trade/">Trade</a><a href="../about/">About the studio</a></div>
+  <p class="mn-s"><a href="../craft/">The craft</a><a href="../materials/">Materials</a><a href="../process/">Process</a><a href="../contact/">Contact</a><a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a></p>
+  <a href="../contact/" class="cta">Start a project <span>→</span></a>
+</div><!-- /mnav -->
+<div class="crumb" role="navigation" aria-label="Breadcrumb"><a href="../">ARTILIER</a><span aria-hidden="true">/</span><a href="index.html">The collection</a><span aria-hidden="true">/</span><span aria-current="page" data-crumb>Design</span></div>
 <main id="design-root"></main>
 <div class="backhome">
   <a href="index.html" class="cta ol"><span aria-hidden="true">←</span> Back to the collection</a>
-  <div class="backhome-l"><a href="../index.html#bespoke">Bespoke development</a><a href="../index.html#materials">Rug materials</a><a href="../index.html#process">How we work</a><a href="../index.html#about">About &amp; contact</a></div>
+  <div class="backhome-l"><a href="../index.html#bespoke">Bespoke development</a><a href="../index.html#materials">Rug materials</a><a href="../index.html#process">How we work</a><a href="../about/">About &amp; contact</a></div>
 </div>
 <footer>
   <div class="f-top">
     <div>
       <h4 aria-level="2">ARTILIER</h4>
-      <p>Art. Made Material. A master craft studio in New Delhi. Rugs, hand embroidery, leather and stone, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.</p>
+      <p>Art. Made Material. A master craft studio in New Delhi. Rugs, hand embroidery, leather, stone and wall works, made to commission for designers, architects and galleries — one piece or a full collection, from our designs or yours. Design objects follow.</p>
     </div>
     <div class="f-col"><h5 aria-level="3">Collection</h5><ul>
       <li><a href="../collection/hand-knotted/">Hand-knotted rugs</a></li>
@@ -64,6 +77,12 @@ if(d&&/^[a-z0-9-]+$/.test(d))location.replace('../collection/'+d+'/');})();</scr
       <li><a href="../collection/designs/">All designs</a></li>
       <li><a href="../materials/">Rug materials</a></li>
       <li><a href="../embroidery/">Embroidery</a></li>
+      <li><a href="../embroidery/headboards/">Embroidered headboards</a></li>
+      <li><a href="../embroidery/fabrics/">Embroidered fabric</a></li>
+      <li><a href="../leather/">Leather</a></li>
+      <li><a href="../stone/">Stone</a></li>
+      <li><a href="../inlay/">Inlay furniture</a></li>
+      <li><a href="../wall-works/">Wall works</a></li>
     </ul></div>
     <div class="f-col"><h5 aria-level="3">Studio</h5><ul>
       <li><a href="../bespoke/">Bespoke development</a></li>
@@ -85,6 +104,7 @@ if(d&&/^[a-z0-9-]+$/.test(d))location.replace('../collection/'+d+'/');})();</scr
     </ul></div>
     <div class="f-col"><h5 aria-level="3">Contact</h5><ul>
       <li><a href="mailto:studio@artilier.co">studio@artilier.co</a></li>
+      <li><a href="https://wa.me/919828030095" target="_blank" rel="noopener">WhatsApp</a></li>
       <li><a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="../contact/">Start a project</a></li>
       <li><a href="../about/">New Delhi, India</a></li>
@@ -94,9 +114,10 @@ if(d&&/^[a-z0-9-]+$/.test(d))location.replace('../collection/'+d+'/');})();</scr
     <span>© 2026 ARTILIER — a studio of Art Avenue Pvt. Ltd.</span>
     <span>New Delhi · Made by hand across India</span>
     <span>Trade only · Made to order, sized to each project</span>
+    <span><a href="../privacy/">Privacy notice</a> · <a href="#cookie-settings" data-consent-open>Cookie settings</a></span>
   </div>
 </footer>
-<a class="mcta" id="mcta" href="../index.html#brief">Start a project <span aria-hidden="true">→</span></a>
+<a class="mcta" id="mcta" href="../contact/">Start a project <span aria-hidden="true">→</span></a>
 <script>
 const bg=document.getElementById('burger'),mn=document.getElementById('mnav');
 if(bg&&mn){

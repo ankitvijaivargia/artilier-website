@@ -30,8 +30,10 @@
 <link rel="stylesheet" href="../../assets/css/responsive.css?v=3">
 <link rel="stylesheet" href="../../assets/css/collection-tweaks.css?v=2">
 <link rel="stylesheet" href="../../assets/css/pages.css?v=7">
+<link rel="stylesheet" href="../../assets/css/nav.css?v=1">
 <script defer src="../../assets/js/slots.js?v=6" data-manifest="../../assets/media/manifest.json?v=94be0362ec"></script>
 <script defer src="../../assets/js/analytics.js?v=5"></script>
+<script defer src="../../assets/js/nav.js?v=1"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -39,10 +41,11 @@
   <a href="../../" class="logo">ARTILIER<em>Art. Made Material.</em></a>
   <ul class="nl">
     <li><a href="../../collection/">Rugs</a></li>
-    <li><a href="../../embroidery/">Embroidery</a></li>
-    <li><a href="../../leather/">Leather</a></li>
-    <li><a href="../../stone/">Stone</a></li>
-    <li><a href="../../wall-works/">Wall works</a></li>
+    <li class="dd"><button type="button" class="dd-t" aria-expanded="false" aria-controls="dd-crafts">Crafts<span aria-hidden="true"></span></button>
+      <div class="dd-p" id="dd-crafts"><div class="dd-in">
+        <ul class="dd-l"><li><a href="../../embroidery/"><b>Embroidery</b><span>Wall panels, headboards and fabric</span></a></li><li><a href="../../leather/"><b>Leather</b><span>Wall panels, headboards and trims</span></a></li><li><a href="../../stone/"><b>Stone</b><span>Inlaid table tops, panels and joinery</span></a></li><li><a href="../../inlay/"><b>Inlay furniture</b><span>Mother-of-pearl and bone</span></a></li><li><a href="../../wall-works/"><b>Wall works</b><span>Relief panels and wall art</span></a></li></ul>
+        <p class="dd-f"><a href="../../craft/">The craft</a><a href="../../materials/">Materials</a><a href="../../process/">Process</a></p>
+      </div></div></li>
     <li><a href="../../bespoke/">Bespoke</a></li>
     <li><a href="../../hospitality/">Hospitality</a></li>
     <li><a href="../../projects/">Projects</a></li>
@@ -53,8 +56,12 @@
   <a href="../../contact/" class="cta">Start a project <span>→</span></a>
 </nav>
 <div class="mnav" id="mnav" hidden>
-  <a href="../../">Home</a><a href="../../collection/">Rugs</a><a href="../../collection/designs/">Rug designs</a><a href="../../embroidery/">Embroidery</a><a href="../../leather/">Leather</a><a href="../../stone/">Stone</a><a href="../../inlay/">Inlay furniture</a><a href="../../wall-works/">Wall works</a><a href="../../bespoke/">Bespoke development</a><a href="../../collaborations/">Collaborations</a><a href="../../hospitality/">Hospitality &amp; contract</a><a href="../../materials/">Materials</a><a href="../../process/">Process</a><a href="../../craft/">The craft</a><a href="../../projects/">Projects</a><a href="../../trade/">Trade</a><a href="../../about/">About the studio</a><a href="../../contact/">Contact</a><a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a><a href="../../contact/" class="cta">Start a project <span>→</span></a>
-</div>
+  <div class="mn-g"><span class="mn-h">Rugs</span><a href="../../collection/">Rugs</a><a href="../../collection/designs/">Rug designs</a><a href="../../bespoke/">Bespoke development</a></div>
+  <div class="mn-g"><span class="mn-h">Crafts</span><a href="../../embroidery/">Embroidery</a><a href="../../leather/">Leather</a><a href="../../stone/">Stone</a><a href="../../inlay/">Inlay furniture</a><a href="../../wall-works/">Wall works</a></div>
+  <div class="mn-g"><span class="mn-h">Studio</span><a href="../../hospitality/">Hospitality &amp; contract</a><a href="../../collaborations/">Collaborations</a><a href="../../projects/">Projects</a><a href="../../trade/">Trade</a><a href="../../about/">About the studio</a></div>
+  <p class="mn-s"><a href="../../craft/">The craft</a><a href="../../materials/">Materials</a><a href="../../process/">Process</a><a href="../../contact/">Contact</a><a href="https://www.instagram.com/artilier.co/" target="_blank" rel="noopener">Instagram</a></p>
+  <a href="../../contact/" class="cta">Start a project <span>→</span></a>
+</div><!-- /mnav -->
 <div class="crumb" role="navigation" aria-label="Breadcrumb"><a href="../../">ARTILIER</a><span aria-hidden="true">/</span><a href="../../collection/">Rugs</a><span aria-hidden="true">/</span><a href="../../collection/hand-knotted/">Hand-knotted</a><span aria-hidden="true">/</span><span aria-current="page">Anhad</span></div>
 <main id="main">
 <header class="wp-hd">

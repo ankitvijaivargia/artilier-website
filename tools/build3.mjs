@@ -958,9 +958,12 @@ for (const [f, html] of Object.entries(built)) write(f, html);
 console.log(`built ${Object.keys(built).length} phase-3 pages`);
 
 /* ── shell sync for hand-maintained pages ──────────────────────────── */
+/* nav + mobile sheet: the new sheet ends with <!-- /mnav --> (it nests divs);
+   the old flat sheet ended at its first </div>. */
+const NAV_RE = /<nav id="nav"[\s\S]*?<\/nav>\s*<div class="mnav" id="mnav" hidden>(?:[\s\S]*?<!-- \/mnav -->|(?:(?!<div)[\s\S])*?<\/div>)/;
 const syncShell = (file, up, { ctaLabel } = {}) => {
   let s = rd(file);
-  const navRe = /<nav id="nav"[\s\S]*?<\/nav>\s*<div class="mnav" id="mnav" hidden>[\s\S]*?<\/div>/;
+  const navRe = NAV_RE;
   if (!navRe.test(s)) throw new Error('nav block not found in ' + file);
   s = s.replace(navRe, nav(up).trim());
   const foot = footer(up);
@@ -972,6 +975,8 @@ const syncShell = (file, up, { ctaLabel } = {}) => {
   s = s.replace(/slots\.js\?v=[45]/g, 'slots.js?v=6').replace(/pages\.css\?v=[345]/g, 'pages.css?v=7');
   if (!s.includes('pages.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*collection-tweaks\.css\?v=2">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/pages.css?v=3">`);
   if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=5"></script>\n</head>`);
+  if (!s.includes('nav.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*pages\.css\?v=\d+">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/nav.css?v=1">`);
+  if (!s.includes('nav.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/nav.js?v=1"></script>\n</head>`);
   /* one Organization entity everywhere: replace the inline copy with the shared one */
   s = s.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/, (m, json) => {
     const data = JSON.parse(json);
@@ -1026,6 +1031,9 @@ syncShell('collection/index.html', '../');
 syncShell('leather/index.html', '../');
 syncShell('stone/index.html', '../');
 syncShell('inlay/index.html', '../');
+syncShell('collection/design.html', '../');
+for (const g of ['briefing-a-stone-commission', 'briefing-a-leather-commission', 'briefing-an-embroidery-commission'])
+  if (existsSync(join(ROOT, 'guides', g, 'index.html'))) syncShell(`guides/${g}/index.html`, '../../');
 syncShell('wall-works/index.html', '../');
 console.log('synced shell: collaborations, rugs page, designs page, leather, stone, inlay');
 
@@ -1070,9 +1078,14 @@ console.log(`sitemap: ${urls.length} URLs`);
 for (const f of ['index.html', 'collection/design.html']) {
   wr(f, rd(f).replace(/manifest\.json\?v=[0-9a-f]+/g, `manifest.json?v=${MV}`));
 }
-/* ── homepage: shared footer + one Organization graph (nav stays anchor-based) ── */
+/* ── homepage: shared nav, shared footer + one Organization graph ── */
 {
   let s = rd('index.html');
+  /* shared nav too; the homepage keeps its transparent-over-hero start and #top logo */
+  s = s.replace(NAV_RE,
+    nav('').trim().replace('<nav id="nav" class="s">', '<nav id="nav">').replace('<a href="./" class="logo">', '<a href="#top" class="logo">'));
+  if (!s.includes('nav.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*pages\.css\?v=\d+">)/, `$1\n<link rel="stylesheet" href="assets/css/nav.css?v=1">`);
+  if (!s.includes('nav.js')) s = s.replace('</head>', `<script defer src="assets/js/nav.js?v=1"></script>\n</head>`);
   const foot = footer('');
   s = s.replace(/<footer>[\s\S]*?<\/footer>/, foot.slice(foot.indexOf('<footer>'), foot.indexOf('</footer>') + 9));
   const url = `${HOST}/`;
