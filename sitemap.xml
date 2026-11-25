@@ -9,6 +9,7 @@
     <image:image><image:loc>https://artilier.co/assets/media/e9.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/l2.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/st2.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/in12.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/ww20.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/fo1.webp?v=2</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/fo2.webp?v=2</image:loc></image:image>
@@ -24,6 +25,10 @@
     <image:image><image:loc>https://artilier.co/assets/media/st4.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/st8.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/st3.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/in7.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/in1.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/in8.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/in10.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/ww22.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/ww2.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/ww17.webp?v=1</image:loc></image:image>
@@ -186,16 +191,19 @@
     <image:image><image:loc>https://artilier.co/assets/media/st11.webp?v=1</image:loc></image:image>
   </url>
   <url><loc>https://artilier.co/inlay/</loc>
-    <image:image><image:loc>https://artilier.co/assets/media/in7.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/in10.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/in1.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/in4.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/in8.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/in12.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/in2.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/in9.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/in3.webp?v=1</image:loc></image:image>
-    <image:image><image:loc>https://artilier.co/assets/media/in5.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ihero.webp?v=4</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ip1.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ip2.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ip3.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ip4.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ip5.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ip6.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ip7.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ip8.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/if1.webp?v=3</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/if2.webp?v=3</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/if3.webp?v=3</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/if4.webp?v=3</image:loc></image:image>
   </url>
   <url><loc>https://artilier.co/wall-works/</loc>
     <image:image><image:loc>https://artilier.co/assets/media/ww11.webp?v=1</image:loc></image:image>

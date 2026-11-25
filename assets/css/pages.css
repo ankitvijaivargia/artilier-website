@@ -98,13 +98,22 @@
 .gal .ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bone)}
 .gal figure.w .ph{aspect-ratio:16/10}
 .gal figure.full .ph{aspect-ratio:16/9}
+/* range galleries: whole piece shown, squared tiles (inlay catalogue photos vary in shape) */
+.gal.sw .ph{aspect-ratio:1}
+/* lead image with a side note */
+.gal.lead figure{grid-column:span 8}
+.gal.lead .ph{aspect-ratio:4/3}
+.gal.lead .lead-t{grid-column:span 4;align-self:end;padding-bottom:6px}
+.gal.lead .lead-t .lb{display:block;margin-bottom:14px}
+/* pattern swatches: captions as quiet labels */
+.gal.sw figcaption{letter-spacing:.06em}
 .gal figcaption{font-size:12.5px;line-height:1.5;color:var(--tx-3);margin-top:8px;letter-spacing:.02em}
 .gal figcaption:empty{display:none}
 .gal figure:has(media-slot[data-empty]){display:none}
 .gal-sec:has(.gal):not(:has(media-slot:not([data-empty]))){display:none}
 .gal:has(figure.full media-slot[data-empty]){display:none}
 @media (max-width:760px){
-  .gal figure,.gal figure.w{grid-column:1/-1}
+  .gal figure,.gal figure.w,.gal.lead figure,.gal.lead .lead-t{grid-column:1/-1}
   .gal figure.q{grid-column:span 6}
   .gal figure.w .ph{aspect-ratio:4/5}
   .gal figure.full .ph{aspect-ratio:4/5}
@@ -127,6 +136,8 @@
 .dc:hover .dc-n{color:var(--rust)}
 @media(min-width:1101px){.disc.d5{grid-template-columns:repeat(5,minmax(0,1fr))}}
 @media(min-width:821px) and (max-width:1100px){.disc.d5{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* six disciplines: 3 × 2 on desktop and tablet, 2 × 3 on phones */
+@media(min-width:821px){.disc.d6{grid-template-columns:repeat(3,minmax(0,1fr))}.disc.d6 .dc .ph{aspect-ratio:4/3}}
 @media(max-width:820px){.disc{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* Lead times with five entries */
 .lead-grid.g5{grid-template-columns:repeat(5,minmax(0,1fr))}

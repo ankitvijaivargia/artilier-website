@@ -1527,54 +1527,6 @@
       1200
     ]
   },
-  "in2": {
-    "type": "image",
-    "src": "in2.webp?v=1",
-    "alt": "Oval coffee table in black and white bone inlay on a brass plinth",
-    "facts": "Bone inlay · oval coffee table, brass plinth",
-    "w": 1280,
-    "h": 1174,
-    "variants": [
-      480,
-      800,
-      1200
-    ]
-  },
-  "in3": {
-    "type": "image",
-    "src": "in3.webp?v=1",
-    "alt": "Mother-of-pearl geometric top and striped side of an oval coffee table, shown in part",
-    "facts": "Mother-of-pearl inlay · oval coffee table, in part",
-    "w": 770,
-    "h": 710,
-    "variants": [
-      480
-    ]
-  },
-  "in4": {
-    "type": "image",
-    "src": "in4.webp?v=1",
-    "alt": "Round coffee table with a navy ground and a Moroccan trellis in bone inlay",
-    "facts": "Bone inlay · round coffee table, navy ground",
-    "w": 736,
-    "h": 736,
-    "variants": [
-      480
-    ]
-  },
-  "in5": {
-    "type": "image",
-    "src": "in5.webp?v=1",
-    "alt": "Nine-drawer dresser with a black ground, dotted inlay and inlaid knobs",
-    "facts": "Inlay · nine-drawer dresser, black ground",
-    "w": 1600,
-    "h": 1200,
-    "variants": [
-      480,
-      800,
-      1200
-    ]
-  },
   "in7": {
     "type": "image",
     "src": "in7.webp?v=1",
@@ -1598,17 +1550,6 @@
     "variants": [
       480,
       800
-    ]
-  },
-  "in9": {
-    "type": "image",
-    "src": "in9.webp?v=1",
-    "alt": "Bedside chest with a navy ground and trellis bone inlay, a chevron panel behind",
-    "facts": "Bone inlay · bedside chest, navy ground",
-    "w": 750,
-    "h": 680,
-    "variants": [
-      480
     ]
   },
   "in10": {
@@ -1657,5 +1598,137 @@
     "src": "inv4.mp4?v=1",
     "poster": "/assets/media/inv4-poster.webp?v=1",
     "alt": "Bedside chest in mother-of-pearl leaf inlay on a teal ground"
+  },
+  "ip1": {
+    "type": "image",
+    "src": "ip1.webp?v=1",
+    "alt": "Detail of mother-of-pearl vine inlay on a black ground",
+    "facts": "Vine · mother-of-pearl",
+    "w": 435,
+    "h": 436,
+    "variants": []
+  },
+  "ip2": {
+    "type": "image",
+    "src": "ip2.webp?v=1",
+    "alt": "Detail of a bird drawn in mother-of-pearl inlay on a black table top",
+    "facts": "Figurative · mother-of-pearl",
+    "w": 407,
+    "h": 407,
+    "variants": []
+  },
+  "ip3": {
+    "type": "image",
+    "src": "ip3.webp?v=1",
+    "alt": "Detail of a geometric pattern in mother-of-pearl and black resin",
+    "facts": "Geometric · mother-of-pearl",
+    "w": 305,
+    "h": 305,
+    "variants": []
+  },
+  "ip4": {
+    "type": "image",
+    "src": "ip4.webp?v=1",
+    "alt": "Detail of a fish-scale pattern in bone inlay on a black ground",
+    "facts": "Fish scale · bone",
+    "w": 283,
+    "h": 283,
+    "variants": []
+  },
+  "ip5": {
+    "type": "image",
+    "src": "ip5.webp?v=2",
+    "alt": "Detail of a radiating pattern in bone inlay on a round table top",
+    "facts": "Radiating · bone",
+    "w": 456,
+    "h": 456,
+    "variants": []
+  },
+  "ip6": {
+    "type": "image",
+    "src": "ip6.webp?v=1",
+    "alt": "Detail of a sunburst pattern in bone inlay across two cabinet doors with a ring handle",
+    "facts": "Sunburst · bone",
+    "w": 359,
+    "h": 359,
+    "variants": []
+  },
+  "ip7": {
+    "type": "image",
+    "src": "ip7.webp?v=1",
+    "alt": "Detail of a trellis pattern in bone inlay on a navy ground",
+    "facts": "Trellis · bone",
+    "w": 309,
+    "h": 309,
+    "variants": []
+  },
+  "ip8": {
+    "type": "image",
+    "src": "ip8.webp?v=1",
+    "alt": "Detail of mother-of-pearl leaves and borders on a teal ground",
+    "facts": "Leaf · mother-of-pearl",
+    "w": 528,
+    "h": 528,
+    "variants": [
+      480
+    ]
+  },
+  "if1": {
+    "type": "image",
+    "src": "if1.webp?v=3",
+    "alt": "Serpentine chest in mother-of-pearl trellis inlay on metal cabriole legs",
+    "facts": "Serpentine · mother-of-pearl",
+    "w": 687,
+    "h": 687,
+    "variants": [
+      480
+    ]
+  },
+  "if2": {
+    "type": "image",
+    "src": "if2.webp?v=3",
+    "alt": "Hexagonal side table in white and grey floral bone inlay",
+    "facts": "Hexagonal · bone",
+    "w": 720,
+    "h": 720,
+    "variants": [
+      480
+    ]
+  },
+  "if3": {
+    "type": "image",
+    "src": "if3.webp?v=3",
+    "alt": "Drum coffee table in bone inlay on a brass base",
+    "facts": "Drum · bone",
+    "w": 990,
+    "h": 990,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "if4": {
+    "type": "image",
+    "src": "if4.webp?v=3",
+    "alt": "Pedestal table in terracotta and bone stripes on a clustered column base",
+    "facts": "Pedestal · bone",
+    "w": 577,
+    "h": 577,
+    "variants": [
+      480
+    ]
+  },
+  "ihero": {
+    "type": "image",
+    "src": "ihero.webp?v=4",
+    "alt": "Top and waterfall edge of a console in mother-of-pearl inlay on a terracotta ground",
+    "facts": "Mother-of-pearl inlay · waterfall console",
+    "w": 1600,
+    "h": 900,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
   }
 }
