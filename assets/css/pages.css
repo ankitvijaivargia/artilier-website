@@ -215,3 +215,12 @@
 .f-done li a{display:flex;justify-content:space-between;gap:18px;padding:13px 0;font-size:15px;color:var(--tx)}
 .f-done li a:hover{color:var(--rust)}
 .fx [hidden]{display:none!important}
+
+/* Homepage material strip on phones: one material per discipline (.k), in an
+   even 2 × 3 grid, instead of the first six items cut off mid-list */
+@media(max-width:520px){
+  .strip-in{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px;padding:18px var(--pad)}
+  .strip-in span:not(.k){display:none}
+  .strip-in span.k{display:block;white-space:nowrap}
+}
+@media(max-width:360px){.strip-in{gap:10px 10px;font-size:10px;letter-spacing:.12em}.strip-in span::before{margin-right:8px}}
