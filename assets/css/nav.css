@@ -1,0 +1,83 @@
+/* ══ NAVIGATION — v1 (Nov 2026) ══
+   Loaded after pages.css so it settles the nav rules spread across base,
+   layout and responsive. Desktop (>1040px): seven items in one caps register
+   matching the CTA, crafts grouped in a panel. Mobile: one sheet in labelled
+   groups. Markup: nav() in tools/build.mjs. */
+
+/* ── desktop bar ── */
+nav .nl{gap:clamp(18px,2.2vw,34px);margin:0 auto}
+nav .nl>li{position:relative;display:flex;align-items:center}
+nav .nl>li>a,nav .dd-t{font-family:var(--s-caps);font-size:11px;font-weight:400;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--tx-2);padding:10px 0;border-bottom:1px solid transparent;line-height:1;transition:color .3s,border-color .3s}
+nav .nl>li>a:hover,nav .nl>li>a[aria-current="page"],nav .dd-t:hover,nav .dd:focus-within .dd-t,nav .dd.on .dd-t{color:var(--ink);border-bottom-color:var(--rust)}
+nav .nl>li>a[aria-current="page"]{border-bottom-color:var(--brass)}
+nav>.logo{flex:0 0 auto}
+nav>.cta{flex:0 0 auto}
+
+/* crafts trigger */
+nav .dd-t{display:inline-flex;align-items:center;gap:8px;background:none;border-top:0;border-left:0;border-right:0;cursor:pointer}
+nav .dd-t span{width:6px;height:6px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .3s var(--e)}
+nav .dd:hover .dd-t span,nav .dd:focus-within .dd-t span,nav .dd.on .dd-t span{transform:translateY(1px) rotate(225deg)}
+
+/* crafts panel — padding-top bridges the gap so hover is not lost */
+nav .dd-p{position:absolute;top:100%;left:50%;padding-top:18px;transform:translate(-50%,6px);
+  opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s var(--e),transform .28s var(--e),visibility 0s .28s;z-index:95}
+nav .dd:hover .dd-p,nav .dd:focus-within .dd-p,nav .dd.on .dd-p{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0);transition:opacity .28s var(--e),transform .28s var(--e),visibility 0s}
+nav .dd.off .dd-p{opacity:0;visibility:hidden;pointer-events:none}
+nav .dd-in{width:min(440px,calc(100vw - 48px));background:var(--paper);border:1px solid var(--stone);box-shadow:0 18px 40px -24px rgba(21,17,16,.35);padding:12px 28px 20px}
+nav .dd-l{list-style:none;margin:0;padding:0}
+nav .dd-l li+li{border-top:1px solid var(--bone)}
+nav .dd-l a{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding:14px 0;color:var(--tx)}
+nav .dd-l b{font-family:var(--d);font-weight:400;font-size:21px;line-height:1.1;letter-spacing:0;transition:color .25s}
+nav .dd-l span{font-family:var(--s);font-size:12.5px;letter-spacing:.02em;color:var(--tx-3)}
+nav .dd-l a:hover b,nav .dd-l a:focus-visible b{color:var(--rust)}
+nav .dd-f{display:flex;gap:22px;margin:8px 0 0;padding-top:16px;border-top:1px solid var(--stone)}
+nav .dd-f a{font-family:var(--s-caps);font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--tx-2)}
+nav .dd-f a:hover{color:var(--rust)}
+@media(prefers-reduced-motion:reduce){nav .dd-p,nav .dd .dd-p{transition:none}}
+
+/* mid widths: keep the bar on one line */
+@media(min-width:1041px) and (max-width:1200px){
+  nav .nl{gap:16px}
+  nav .nl>li>a,nav .dd-t{letter-spacing:.13em}
+  nav>.cta{padding:12px 16px}
+}
+
+/* ── mobile sheet ── */
+@media(max-width:1040px){
+  nav .nl{display:none}
+  .mnav{gap:0;align-content:start}
+  .mnav .mn-g{display:grid;align-content:start;padding:18px 0 14px;border-bottom:1px solid var(--stone)}
+  .mnav .mn-g:first-child{padding-top:4px}
+  .mnav .mn-h{font-family:var(--s-caps);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin-bottom:4px}
+  .mnav .mn-g a{display:flex;align-items:center;min-height:44px;padding:6px 0;border-bottom:0;
+    font-family:var(--d);font-size:clamp(21px,5.2vw,26px);line-height:1.15;color:var(--tx)}
+  .mnav .mn-g a:active,.mnav .mn-g a:hover{color:var(--rust)}
+  .mnav .mn-s{display:flex;flex-wrap:wrap;gap:4px 22px;margin:16px 0 0}
+  .mnav .mn-s a{display:inline-flex;min-height:44px;padding:0;border-bottom:0;
+    font-family:var(--s-caps);font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--tx-2)}
+  .mnav>a.cta{margin-top:14px}
+}
+@media(max-width:1040px) and (min-width:600px){
+  /* tablets: groups side by side */
+  .mnav{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;column-gap:clamp(20px,4vw,48px)}
+  .mnav .mn-g{border-bottom:0;padding-top:4px}
+  .mnav .mn-s,.mnav>a.cta{grid-column:1/-1}
+  .mnav .mn-s{padding-top:18px;border-top:1px solid var(--stone)}
+}
+@media(max-height:620px) and (max-width:1040px){
+  .mnav .mn-g{padding:12px 0 8px}
+  .mnav .mn-g a{min-height:40px;font-size:20px}
+}
+
+/* ink ground (collection tweak) */
+html[data-tw-ground="ink"] nav .dd-t{color:rgba(247,243,235,.66)}
+html[data-tw-ground="ink"] nav .dd-in{background:#241C16;border-color:rgba(247,243,235,.16)}
+html[data-tw-ground="ink"] nav .dd-l a,html[data-tw-ground="ink"] .mnav .mn-g a{color:#F0EAE0}
+
+/* current section (set by nav.js) */
+nav .dd-t.cur{color:var(--ink);border-bottom-color:var(--brass)}
+nav .dd-l a[aria-current="page"] b,.mnav .mn-g a[aria-current="page"]{color:var(--rust)}
+
+/* menu button sits beside the CTA, not floating mid-bar */
+@media(max-width:1040px){nav .burger{margin-left:auto}}
