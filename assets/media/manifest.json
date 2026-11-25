@@ -1675,56 +1675,60 @@
   },
   "if1": {
     "type": "image",
-    "src": "if1.webp?v=1",
-    "alt": "Waterfall console in mother-of-pearl inlay on a terracotta ground",
-    "facts": "Waterfall · mother-of-pearl",
-    "w": 1167,
-    "h": 1458,
+    "src": "if1.webp?v=3",
+    "alt": "Serpentine chest in mother-of-pearl trellis inlay on metal cabriole legs",
+    "facts": "Serpentine · mother-of-pearl",
+    "w": 687,
+    "h": 687,
     "variants": [
-      480,
-      800
+      480
     ]
   },
   "if2": {
     "type": "image",
-    "src": "if2.webp?v=2",
+    "src": "if2.webp?v=3",
     "alt": "Hexagonal side table in white and grey floral bone inlay",
     "facts": "Hexagonal · bone",
-    "w": 657,
-    "h": 822,
+    "w": 720,
+    "h": 720,
     "variants": [
       480
     ]
   },
   "if3": {
     "type": "image",
-    "src": "if3.webp?v=1",
+    "src": "if3.webp?v=3",
     "alt": "Drum coffee table in bone inlay on a brass base",
     "facts": "Drum · bone",
-    "w": 792,
+    "w": 990,
     "h": 990,
     "variants": [
-      480
+      480,
+      800
     ]
   },
   "if4": {
     "type": "image",
-    "src": "if4.webp?v=1",
+    "src": "if4.webp?v=3",
     "alt": "Pedestal table in terracotta and bone stripes on a clustered column base",
     "facts": "Pedestal · bone",
-    "w": 462,
+    "w": 577,
     "h": 577,
-    "variants": []
+    "variants": [
+      480
+    ]
   },
   "ihero": {
     "type": "image",
-    "src": "ihero.webp?v=3",
-    "alt": "Serpentine chest with a black ground and mother-of-pearl trellis inlay on metal cabriole legs",
-    "facts": "Mother-of-pearl inlay · serpentine chest, cabriole legs",
-    "w": 750,
-    "h": 562,
+    "src": "ihero.webp?v=4",
+    "alt": "Top and waterfall edge of a console in mother-of-pearl inlay on a terracotta ground",
+    "facts": "Mother-of-pearl inlay · waterfall console",
+    "w": 1600,
+    "h": 900,
     "variants": [
-      480
+      480,
+      800,
+      1200
     ]
   }
 }
