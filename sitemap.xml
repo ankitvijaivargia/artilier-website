@@ -161,7 +161,20 @@
   <url><loc>https://artilier.co/fr/</loc></url>
   <url><loc>https://artilier.co/materials/</loc></url>
   <url><loc>https://artilier.co/process/</loc></url>
-  <url><loc>https://artilier.co/craft/</loc></url>
+  <url><loc>https://artilier.co/craft/</loc>
+    <image:image><image:loc>https://artilier.co/assets/media/cn1.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/w19.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/m3.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/cn2.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/e2.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/pj-germany-3.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st3.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ip3.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/ip4.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/st1.webp?v=1</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/bs1.webp?v=2</image:loc></image:image>
+    <image:image><image:loc>https://artilier.co/assets/media/wd1.webp?v=2</image:loc></image:image>
+  </url>
   <url><loc>https://artilier.co/embroidery/</loc>
     <image:image><image:loc>https://artilier.co/assets/media/e2.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/e9.webp?v=1</image:loc></image:image>
@@ -244,6 +257,11 @@
     <image:image><image:loc>https://artilier.co/assets/media/e2.webp?v=1</image:loc></image:image>
   </url>
   <url><loc>https://artilier.co/guides/briefing-a-bespoke-rug/</loc></url>
+  <url><loc>https://artilier.co/guides/briefing-an-embroidery-commission/</loc></url>
+  <url><loc>https://artilier.co/guides/briefing-a-leather-commission/</loc></url>
+  <url><loc>https://artilier.co/guides/briefing-a-stone-commission/</loc></url>
+  <url><loc>https://artilier.co/guides/briefing-an-inlay-commission/</loc></url>
+  <url><loc>https://artilier.co/guides/briefing-a-wall-works-commission/</loc></url>
   <url><loc>https://artilier.co/projects/hotel-suite-germany/</loc>
     <image:image><image:loc>https://artilier.co/assets/media/pj-germany-2.webp?v=1</image:loc></image:image>
     <image:image><image:loc>https://artilier.co/assets/media/pj-germany-1.webp?v=1</image:loc></image:image>

@@ -29,11 +29,11 @@
      TODO: the receipt email to the visitor is a Formspree auto-response setting (dashboard), not code in this repo.
      Suggested subject "We've received your brief — here's what happens next"; body = receipt, reply timing,
      discipline-matched guide, /process/, WhatsApp. Add it there, then keep the timing line below in step. */
-  const GUIDE_BY_SECTOR = { embroidery: ['briefing-an-embroidery-commission', 'How to brief an embroidery commission'], leather: ['briefing-a-leather-commission', 'How to brief a leather commission'], stone: ['briefing-a-stone-commission', 'How to brief a stone commission'] };
+  const GUIDE_BY_SECTOR = { embroidery: ['briefing-an-embroidery-commission', 'How to brief an embroidery commission'], leather: ['briefing-a-leather-commission', 'How to brief a leather commission'], stone: ['briefing-a-stone-commission', 'How to brief a stone commission'], inlay: ['briefing-an-inlay-commission', 'How to brief an inlay commission'], 'wall-works': ['briefing-a-wall-works-commission', 'How to brief a wall works commission'] };
   const RUG_GUIDE = ['briefing-a-bespoke-rug', 'How to brief a bespoke rug'];
   function showConfirmation(form, sector) {
     const key = String(sector).toLowerCase();
-    const guide = key === 'wall-works' ? null : (GUIDE_BY_SECTOR[key] || RUG_GUIDE);
+    const guide = GUIDE_BY_SECTOR[key] || RUG_GUIDE;
     const link = (href, text, ext) => `<li><a href="${href}"${ext ? ' target="_blank" rel="noopener"' : ''}>${text} <span aria-hidden="true">→</span></a></li>`;
     const box = document.createElement('div');
     box.className = 'f-done';
@@ -207,4 +207,22 @@
       }
     } catch (err) { /* pre-fill is a convenience only */ }
   });
+
+  /* /contact/ "Before you brief us": the guide list follows the discipline chosen
+     under "What is the project?". All six guides show by default, and whenever the
+     choice is not a single discipline (residential, hospitality, collaboration…). */
+  const guides = document.querySelector('[data-guides]');
+  if (guides) {
+    const RUG_SECTORS = ['bespoke', 'collection'];
+    const items = [...guides.querySelectorAll('[data-guide]')];
+    const sync = () => {
+      const r = document.querySelector('input[type=radio][name=sector]:checked');
+      const v = r ? r.value.toLowerCase() : '';
+      const key = RUG_SECTORS.includes(v) ? 'rug' : v;
+      const one = items.some(a => a.dataset.guide === key);
+      items.forEach(a => { a.style.display = one && a.dataset.guide !== key ? 'none' : ''; });
+    };
+    document.addEventListener('change', e => { if (e.target.matches('input[type=radio][name=sector]')) sync(); });
+    sync();
+  }
 })();

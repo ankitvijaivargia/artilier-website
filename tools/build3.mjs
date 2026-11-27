@@ -71,6 +71,16 @@ const service = (path, name, serviceType, description, audience, area = 'Worldwi
 });
 const country = (name, code) => ({ '@type':'Country','name':name,'identifier':code });
 
+/* The six specifier guides, in discipline order. Used by /contact/ and the sitemap. */
+const GUIDES = [
+  ['briefing-a-bespoke-rug', 'rug', 'Rugs', 'How to brief a rug'],
+  ['briefing-an-embroidery-commission', 'embroidery', 'Embroidery', 'How to brief embroidery'],
+  ['briefing-a-leather-commission', 'leather', 'Leather', 'How to brief leather'],
+  ['briefing-a-stone-commission', 'stone', 'Stone', 'How to brief stone'],
+  ['briefing-an-inlay-commission', 'inlay', 'Inlay furniture', 'How to brief inlay'],
+  ['briefing-a-wall-works-commission', 'wall-works', 'Wall works', 'How to brief wall works']
+];
+
 /* ── /contact/ ─────────────────────────────────────────────────────── */
 const enquiryForm = (id = 'contactForm') => `
 <form class="fx" id="${id}" action="${FORM_ENDPOINT}" method="post" data-enquiry data-endpoint="${FORM_ENDPOINT}" novalidate>
@@ -130,12 +140,16 @@ const enquiryForm = (id = 'contactForm') => `
 
 const contact = shell({
   path:'contact/', up:'../', pageType:'ContactPage',
-  title:'Contact ARTILIER — Start a Rug Project | Trade Enquiries',
-  desc:'Brief a bespoke rug, a collection design or a hospitality project. Trade enquiries from interior designers and architects, answered individually from New Delhi.',
+  title:'Start a Project — Trade Enquiries | ARTILIER',
+  desc:'Brief a rug, embroidery, leather, stone, inlay furniture or wall works commission. Trade enquiries from designers and architects, answered from New Delhi.',
   lb:'Contact · Start a project', h1:'Start a<br>', h1it:'project.',
   lead:`<p class="bd">Send artwork, a drawing, a reference or an early idea with the sizes. We review it and come back with questions, possibilities and the best way to make it.</p>
-    <div class="wp-meta"><span><b>Trade only</b></span><span>Reviewed individually</span><span>New Delhi</span></div>`,
-  scripts:`\n<script defer src="../assets/js/enquiry.js?v=7"></script>`,
+    <div class="wp-meta"><span><b>Trade only</b></span><span>Reviewed individually</span><span>New Delhi</span></div>
+    <div class="guide-opts" role="navigation" aria-labelledby="guides-h" data-guides style="margin-top:34px">
+      <span class="lb" id="guides-h" style="display:block;margin-bottom:14px">Before you brief us · Specifier guides</span>
+      <div class="backhome-l">${GUIDES.map(([slug, key, , t]) => `<a href="../guides/${slug}/" data-guide="${key}">${t} →</a>`).join('')}</div>
+    </div>`,
+  scripts:`\n<script defer src="../assets/js/enquiry.js?v=8"></script>`,
   body:`
 <section class="sec">
   <div class="about">
@@ -173,9 +187,9 @@ ${sec('Before you write', 'Questions we are', 'often asked.', qa([
 const about = shell({
   path:'about/', up:'../', pageType:'AboutPage',
   title:'About ARTILIER — Master Craft Studio, New Delhi',
-  desc:'A master craft studio in New Delhi for rugs and hand embroidery, working with designers, architects and galleries — led by an interior designer.',
+  desc:'A master craft studio in New Delhi for rugs, embroidery, leather, stone, inlay furniture and wall works, made for designers, architects and galleries.',
   lb:'About the studio', h1:'A design studio<br>in ', h1it:'New Delhi.',
-  lead:`<p class="bd">ARTILIER is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. We work trade only, with interior designers, architects and design practices internationally. We make rugs, hand embroidery, leather and stone inlay; design objects follow.</p>
+  lead:`<p class="bd">ARTILIER is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. We work trade only, with interior designers, architects and design practices internationally. We make rugs, hand embroidery, leather, stone, inlay furniture and wall works to commission; design objects follow.</p>
     <div class="wp-meta"><span><b>Founded on making</b></span><span>Led by design</span><span>Trade only</span></div>`,
   nodes:[
     { '@type':'Person','@id':`${HOST}/about/#ankit`,'name':'Ankit Vijaivargia','jobTitle':'Founder — Manufacturing & Development','sameAs':['https://www.linkedin.com/in/ankitvijaivargia/'],'worksFor':{'@id':`${HOST}/#organization`} },
@@ -293,7 +307,7 @@ ${ctaBlock(UP, 'contact/', 'Start a project', [['projects/','All projects'],['be
    process or setting checked on 11 Oct 2026; see ARTILIER_stage10D report.
    PRIVACY_PUBLISHED must be the real publication date: if this is merged after
    12 October 2026, change the line below to the merge date before merging. ── */
-const PRIVACY_PUBLISHED = '12 November 2026';
+const PRIVACY_PUBLISHED = '27 November 2026';
 const privacy = shell({
   path:'privacy/', up:'../', robots:'noindex,follow',
   title:'Privacy Notice | ARTILIER',
@@ -335,9 +349,9 @@ const hospitality = shell({
   path:'hospitality/', up:'../',
   title:'Hotel Rugs, Headboards & Embroidery | ARTILIER',
   desc:'Custom hotel rugs, embroidered headboards, wall panels and furnishing fabric for hospitality projects, developed from the designer’s scheme. Trade only.',
-  lb:'Hospitality & contract', h1:'Rugs and embroidery<br>for ', h1it:'hospitality.',
-  lead:`<p class="bd">For hospitality designers, architects and procurement teams: custom rugs for hotels and boutique hospitality projects, made to the dimensions of each room — and <a href="../embroidery/headboards/">embroidered headboards</a>, wall panels and furnishing fabric developed for the same scheme in our New Delhi studio.</p>
-    <div class="wp-meta"><span><b>Made to the schedule</b></span><span>Rugs and embroidery</span><span>One point of contact</span></div>`,
+  lb:'Hospitality & contract', h1:'Made to the schedule,<br>for ', h1it:'hospitality.',
+  lead:`<p class="bd">For hospitality designers, architects and procurement teams: custom rugs for hotels and boutique hospitality projects, made to the dimensions of each room — and <a href="../embroidery/headboards/">embroidered headboards</a>, wall panels and furnishing fabric developed for the same scheme in our New Delhi studio, with <a href="../wall-works/">wall works</a> and <a href="../inlay/">inlay furniture</a> for the same rooms.</p>
+    <div class="wp-meta"><span><b>Made to the schedule</b></span><span>Rugs · embroidery · wall works · inlay</span><span>One point of contact</span></div>`,
   nodes:[ service('hospitality/', 'Custom rugs for hospitality projects', 'Custom rug development and manufacture for hotels and hospitality interiors',
     'Development, sampling, production, quality control and export coordination of custom hand-knotted, hand-tufted and flatweave rugs for hotels and hospitality interiors, made to each room’s dimensions and the designer’s scheme.',
     'Hospitality interior designers, architects and procurement teams'),
@@ -367,7 +381,7 @@ ${sec('Embroidery for the same rooms', 'Headboards, walls', 'and fabric.', `<div
     <div class="gal"><figure class="full">${slotImg('e2', 'Embroidery — zardozi panel on the frame', '../', false, 'full')}<figcaption data-mf="e2"></figcaption></figure></div>
   </div>`, { intro:'Developed in the same studio as the rugs, so colour and motif can carry across a room. Delivery dates are confirmed for each product only after the specification has been reviewed.' })}
 ${sec('Wall works for the same rooms', 'Art for the', 'walls.', `<div class="prose">
-      <p>Sculptural wall pieces and relief panels in ceramic, metal, plaster, carved and assembled wood, and natural fibre, made to the designer’s drawing. One design can be repeated across a room schedule, with sizes and quantities taken from your schedule. A sample is made for approval before production; production usually takes 6–12 weeks from sample approval. Pieces are supplied for installation by your appointed contractor. <a href="../wall-works/">Wall works</a>.</p>
+      <p>Sculptural wall pieces and relief panels in ceramic, metal, plaster, carved and assembled wood, and natural fibre, made to the designer’s drawing. One design can be repeated across a room schedule, with sizes and quantities taken from your schedule. A sample is made for approval before production; production usually takes 4–12 weeks from sample approval, depending on the material. Pieces are supplied for installation by your appointed contractor. <a href="../wall-works/">Wall works</a>.</p>
     </div>`, { dark:true })}
 ${sec('How a hospitality project runs', 'From schedule', 'to dispatch.', `<div class="proc">
     <div class="pstep"><span class="pn">01</span><span class="pt">Understand</span><span class="pd">The rug schedule — rooms, quantities, sizes — with drawings, scheme and application. We come back with our thoughts, questions and what still needs resolving.</span></div>
@@ -1032,7 +1046,7 @@ syncShell('leather/index.html', '../');
 syncShell('stone/index.html', '../');
 syncShell('inlay/index.html', '../');
 syncShell('collection/design.html', '../');
-for (const g of ['briefing-a-stone-commission', 'briefing-a-leather-commission', 'briefing-an-embroidery-commission'])
+for (const g of ['briefing-a-stone-commission', 'briefing-a-leather-commission', 'briefing-an-embroidery-commission', 'briefing-an-inlay-commission', 'briefing-a-wall-works-commission'])
   if (existsSync(join(ROOT, 'guides', g, 'index.html'))) syncShell(`guides/${g}/index.html`, '../../');
 syncShell('wall-works/index.html', '../');
 console.log('synced shell: collaborations, rugs page, designs page, leather, stone, inlay');
@@ -1046,7 +1060,7 @@ const urls = [
   ['', '1.0'], ['collection/', '0.9'], ['collection/designs/', '0.9'], ...CATS.map(c => [`collection/${c.slug}/`, '0.8']),
   ['bespoke/', '0.9'], ['hospitality/', '0.9'], ['trade/', '0.8'], ['collaborations/', '0.8'], ['contact/', '0.8'], ['about/', '0.7'],
   ['trade/uae/', '0.8'], ['trade/saudi-arabia/', '0.8'], ['trade/uk/', '0.7'], ['trade/us/', '0.7'], ['fr/', '0.8'],
-  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['leather/', '0.8'], ['stone/', '0.8'], ['inlay/', '0.8'], ['wall-works/', '0.8'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], [G, '0.7'],
+  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['leather/', '0.8'], ['stone/', '0.8'], ['inlay/', '0.8'], ['wall-works/', '0.8'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], ...GUIDES.map(([slug]) => [`guides/${slug}/`, '0.7']),
   ...(indexProjects ? [['projects/', '0.8']] : []), ...projectsData.map(p => [`projects/${p.slug}/`, '0.7']),
   ...indexable.slice().sort(by).map(d => [`collection/${d.slug}/`, '0.6'])
 ];
