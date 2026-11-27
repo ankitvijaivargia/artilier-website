@@ -117,17 +117,17 @@ ${relatedBlock([['process/','The full process'],['materials/','Material selectio
 /* ── /trade/ ───────────────────────────────────────────────────────── */
 const trade = page({
   slug:'trade', lb:'Trade',
-  title:'Trade Rugs for Interior Designers & Architects | ARTILIER',
-  desc:'Custom rugs for designers and architects on high-end residential and villa projects. One studio from drawing to export, contracted by Art Avenue Pvt. Ltd.',
+  title:'Trade Studio for Interior Designers & Architects | ARTILIER',
+  desc:'Rugs, embroidery, leather, stone, inlay furniture and wall works for designers and architects. One studio from drawing to export, via Art Avenue Pvt. Ltd.',
   h1:'A design-led studio,<br>working ', h1it:'trade only.',
-  lead:`<p class="bd">ARTILIER is built around the relationship between art, material and making. We begin with rugs: developed and made for interior designers, architects and design practices working on high-end residential, villa and boutique hospitality projects.</p>
+  lead:`<p class="bd">ARTILIER is built around the relationship between art, material and making. ARTILIER develops and makes rugs, hand embroidery, leather, stone, inlay furniture and wall works to commission for interior designers, architects and design practices working on high-end residential, villa and boutique hospitality projects.</p>
     <div class="wp-meta"><span><b>Trade only</b></span><span>Designers · architects</span><span>Made to order</span></div>`,
   service:{ name:'Trade rug programme', serviceType:'Trade rug supply and development for design practices',
     description:'Rug development, specification, sampling, production, quality control and export coordination for interior designers, architects and design practices. Every rug is made to order in the construction, material, colourway and dimensions the project needs.' },
   body:`
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">Where we help</span><h2 class="d2">From specification<br>to <span class="it">site.</span></h2></div>
-  <p class="bd">Every rug is made to order, in the construction, material, colourway and dimensions the project needs. The pieces shown across this site are references, not stock.</p></div>
+  <p class="bd">Every piece is made to order, in the construction, material, colourway and dimensions the project needs. The pieces shown across this site are references, not stock.</p></div>
   <div class="mats">
     <div>Artwork development <span>From your drawing</span></div>
     <div>Material selection <span>To the application</span></div>
@@ -160,7 +160,7 @@ const trade = page({
     <div>Residential interiors <span>Villas · apartments · private homes</span></div>
     <div>Boutique hospitality <span><a href="${up}hospitality/" style="color:inherit">Hotels &amp; contract</a></span></div>
     <div>Artists &amp; designers <span><a href="${up}collaborations/" style="color:inherit">Collaborations</a></span></div>
-    <div>One rug or a schedule <span>Single pieces to multi-room projects</span></div>
+    <div>One piece or a schedule <span>Single pieces to multi-room projects</span></div>
   </div>
 </section>
 <section class="sec">
@@ -203,22 +203,24 @@ ${relatedBlock([['collection/hand-knotted/','Hand-knotted designs'],['collection
 });
 
 /* ── /process/ ─────────────────────────────────────────────────────── */
+/* Six stages for every discipline. Step and lead-time wording restates the
+   homepage process section (#process) so the two cannot drift apart. */
 const PROC = [
   ['01','Understand','Artwork, dimensions, colour scheme and application. We read it properly, then come back with our thoughts, our questions and what still needs resolving.'],
-  ['02','Develop','Construction, yarn, knot count, pile height, colour separation and scale worked through with the weaving workshop. Where there is enough information, an initial cost range follows.'],
-  ['03','Sample','Yarn samples, colour trials and a woven strike-off — approved in the hand before the full rug is set on the loom.'],
-  ['04','Make','Weaving, tufting or flatweaving to your dimensions, in the workshop suited to the construction. Progress photography at agreed points.'],
-  ['05','Check','Quality control against the specification and approved sample — dimensions, pile, colour, binding, backing and finishing, reviewed in Delhi.'],
-  ['06','Deliver','Rolling, wrapping, export documentation and freight coordinated through our logistics partners. Installation is carried out by your appointed contractor; we remain available to answer questions until the piece is in place.']
+  ['02','Develop','Construction or technique, materials, colour and scale worked through with the workshop suited to the piece. Where there is enough information, an initial cost range follows.'],
+  ['03','Sample','Material samples, colour trials and a strike-off or sample — approved in the hand before full production begins.'],
+  ['04','Make','Weaving, embroidery, cutting or inlay to your dimensions, in the workshop suited to the work. Progress photography at agreed points.'],
+  ['05','Check','Quality control against the specification and approved sample — dimensions, colour, construction and finishing, reviewed in Delhi.'],
+  ['06','Deliver','Rolling, crating, export documentation and freight coordinated through our logistics partners. Installation is carried out by your appointed contractor; we remain available to answer questions until the piece is in place.']
 ];
 const process = page({
   slug:'process', lb:'Process',
-  title:'How a custom rug is made — our six-stage process | ARTILIER',
-  desc:'How a custom rug is made in six stages, from artwork to floor: understand, develop, sample, make, check, deliver. For interior designers and architects.',
-  h1:'From artwork<br>to ', h1it:'floor.',
-  lead:`<p class="bd">Six stages, adapted to the rug. Some commissions move quickly; others need more development. We keep the process transparent, with approvals and progress updates at the stages that matter.</p>
+  title:'How we make: six stages from brief to delivery | ARTILIER',
+  desc:'Six stages from drawing to delivery — understand, develop, sample, make, check, deliver — for rugs, embroidery, leather, stone, inlay and wall works.',
+  h1:'From drawing<br>to ', h1it:'delivery.',
+  lead:`<p class="bd">Six stages, adapted to the piece. Some commissions move quickly; others need more development. We keep the process transparent, with approvals and progress updates at the stages that matter.</p>
     <div class="wp-meta"><span><b>Six stages</b></span><span>Approvals throughout</span><span>Reviewed in Delhi</span></div>`,
-  service:{ name:'Custom rug development and production', serviceType:'Rug development, sampling, manufacture and export coordination',
+  service:{ name:'Commissioned development and production', serviceType:'Development, sampling, manufacture and export coordination of rugs, embroidery, leather, stone, inlay furniture and wall works',
     description:'A six-stage process from artwork through development, sampling, manufacture, quality control and delivery, with approvals at each stage.' },
   body:`
 <section class="sec">
@@ -228,52 +230,76 @@ const process = page({
 </section>
 <section class="sec dark">
   <div class="sec-hd"><div><span class="lb">Costing and timing</span><h2 class="d2">Precise when<br>it can <span class="it">be.</span></h2></div>
-  <p class="bd">A woven strike-off takes 2–3 weeks once the design or sketch is approved, and its cost is credited against the order. Lead times usually run 6–12 weeks from strike-off approval and can extend to six months in some cases; we confirm the timeline for each project. There is no minimum order. Costing becomes more precise as the artwork, construction, materials and sampling requirements are understood. Hand-made production can vary with construction, yarn availability and loom capacity — we communicate changes as they arise rather than after the fact.</p></div>
+  <p class="bd">Delivery dates are confirmed once we have reviewed the specification. There is no fixed minimum order. Costing becomes more precise as the artwork, construction, materials and sampling requirements are understood. Hand-made production can vary with construction, yarn availability and loom capacity — we communicate changes as they arise rather than after the fact.</p></div>
+  <div class="facts">
+    <div><b>Rugs</b><span>Usually 6–12 weeks from strike-off approval; up to 6 months in some cases</span></div>
+    <div><b>Embroidered wall panels &amp; headboards</b><span>3–4 months; up to 6 months for complex projects</span></div>
+    <div><b>Embroidered fabric</b><span>6–8 weeks; up to 6 months for complex work</span></div>
+    <div><b>Leather &amp; hide</b><span>2–4 months; up to 6 months for complex designs</span></div>
+    <div><b>Stone &amp; inlay</b><span>6–8 weeks after sample approval</span></div>
+    <div><b>Wall works</b><span>4–12 weeks from sample approval, depending on the material</span></div>
+    <div><b>Strike-off</b><span>For rugs, 2–3 weeks once the design is approved, its cost credited against the order</span></div>
+  </div>
 </section>
 <section class="sec">
-  <div class="sec-hd"><div><span class="lb">Where the work sits</span><h2 class="d2">Studio in Delhi,<br>looms across <span class="it">India.</span></h2></div>
-  <p class="bd">Studio, artwork development, sampling, finishing and quality control sit in New Delhi. Weaving runs through established rug workshops across India, selected for the construction each rug needs — more on that in <a href="${up}craft/">the craft</a>.</p></div>
+  <div class="sec-hd"><div><span class="lb">Where the work sits</span><h2 class="d2">Studio in Delhi,<br>made across <span class="it">India.</span></h2></div>
+  <p class="bd">Studio, artwork development, sampling, finishing and quality control sit in New Delhi. Making runs through established workshops across India, selected for what each piece needs — more on that in <a href="${up}craft/">the craft</a>. Before you brief us, the <a href="${up}contact/">contact page</a> links a briefing guide for each discipline.</p></div>
 </section>
 ${relatedBlock([['bespoke/','Start from your artwork'],['materials/','Material selection'],['craft/','The craft'],['trade/','Trade']])}`
 });
 
 /* ── /craft/ ───────────────────────────────────────────────────────── */
+/* Structured by production centre. Manufacturing towns are never named on the
+   site (tools/check.py blocks them): centres are described by craft, with the
+   New Delhi studio named as it is everywhere else. Every photograph below is
+   real ARTILIER workshop or studio media from the manifest; captions come
+   from the manifest. Every sentence restates existing site copy. */
+const centre = (n, lb, h2, h2it, intro, slots, { dark = false, inner = '', todo = '' } = {}) => `
+<section class="sec gal-sec${dark ? ' dark' : ''}" id="centre-${n}">
+  <div class="sec-hd"><div><span class="lb">${esc(lb)}</span><h2 class="d2">${h2}<span class="it">${h2it}</span></h2></div>
+  <p class="bd">${intro}</p></div>${todo ? `\n  <!-- TODO: ${todo} -->` : ''}
+  <div class="gal">${slots.map(([id, ph, w]) => `<figure${w ? ` class="${w}"` : ''}>${slotImg(id, ph, up, false, w === 'q' ? 'quarter' : 'gal')}<figcaption data-mf="${esc(id)}"></figcaption></figure>`).join('')}</div>${inner}
+</section>`;
 const craft = page({
   slug:'craft', lb:'The craft',
-  title:'Handmade rugs and embroidery from India — the craft | ARTILIER',
-  desc:'Hand-knotting, hand-tufting, flatweaving and hand embroidery as ARTILIER practises them: developed and checked in New Delhi, made in workshops across India.',
+  title:'The craft — six disciplines, made by hand in India | ARTILIER',
+  desc:'Rugs, hand embroidery, leather, stone, inlay furniture and wall works: developed and checked in New Delhi, made by hand in established workshops across India.',
   h1:'Made by hand,<br>and it ', h1it:'shows.',
-  lead:`<p class="bd">ARTILIER is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. We work in two disciplines — rugs and embroidery — and everything we make is made by hand.</p>
+  lead:`<p class="bd">ARTILIER is a design-led studio in New Delhi bringing together interior design thinking, material understanding and hands-on manufacturing experience. We work across six disciplines — rugs, hand embroidery, leather, stone, inlay furniture and wall works — from workshops across India.</p>
     <div class="wp-meta"><span><b>New Delhi</b></span><span>Made across India</span><span>Made to order</span></div>`,
   body:`
-<section class="sec">
-  <div class="sec-hd"><div><span class="lb">Three constructions</span><h2 class="d2">Three constructions.<br>One <span class="it">specialism.</span></h2></div>
-  <p class="bd">Which construction a design wants is a technical decision, not a style one. We make the recommendation from the artwork, the detail it carries, the traffic it will take and the budget — and prove it in sampling before production.</p></div>
-  <div class="proc">
+${centre('rugs', '01 — Rug weaving', 'Looms across<br>', 'India.',
+  `Weaving runs through established rug workshops across India, selected for the construction each rug needs rather than for convenience. Construction, yarn, knot count, pile height, colour separation and scale are worked through with the weaving workshop, and yarn, spin and dye lot are approved in the hand before a loom is set. <a href="${up}materials/">Rug materials</a>.`,
+  [['cn1','Rug weaving — at the loom','q'], ['w19','Rug weaving — hand tools and yarn','q'], ['m3','Rug weaving — yarn colour library','q'], ['cn2','Rug weaving — finishing','q']],
+  { inner:`
+  <div class="proc" style="margin-top:clamp(28px,4vw,48px)">
     <div class="pstep"><span class="pn">01</span><span class="pt">Hand-knotted</span><span class="pd">Knot by knot on the loom. Traditional hand-knotting for high-detail, high-density rugs: the finest definition, the longest lead time, and the construction that carries painterly artwork best. <a href="${up}collection/hand-knotted/">See the designs</a>.</span></div>
     <div class="pstep"><span class="pn">02</span><span class="pt">Hand-tufted</span><span class="pd">Tufted to the drawing. A more flexible construction for certain designs, textures and project requirements — carving, mixed pile heights and loop-and-cut surfaces, at a shorter lead time. <a href="${up}collection/hand-tufted/">See the designs</a>.</span></div>
     <div class="pstep"><span class="pn">03</span><span class="pt">Flatweave</span><span class="pd">Low profile, woven flat. Suited to specific applications and design requirements — lighter, reversible in some constructions, and a different surface underfoot. <a href="${up}collection/flatweave/">See the designs</a>.</span></div>
   </div>
-</section>
-<section class="sec dark">
-  <div class="sec-hd"><div><span class="lb">Where it is made</span><h2 class="d2">A studio in Delhi,<br>looms across <span class="it">India.</span></h2></div>
-  <p class="bd">Studio, artwork development, sampling, finishing and quality control sit in New Delhi. Weaving runs through established rug workshops across India, selected for the construction each rug needs rather than for convenience. That separation is deliberate: the workshop is chosen to suit the rug, and the specification is held and checked in one place.</p></div>
-  <div class="facts">
+  <p class="bd" style="margin-top:22px">Which construction a design wants is a technical decision, not a style one. We make the recommendation from the artwork, the detail it carries, the traffic it will take and the budget — and prove it in sampling before production.</p>` })}
+${centre('embroidery', '02 — Embroidery', 'Worked on<br>the ', 'frame.',
+  `Zardozi, zari, aari, raffia and hand embroidery. Each piece is worked on the frame in our New Delhi studio and in the established workshops we work with across India, then checked in Delhi before it leaves — for wall panels, framed art, <a href="${up}embroidery/headboards/">headboards</a>, upholstery panels and drapery. <a href="${up}embroidery/">Embroidery at ARTILIER</a>.`,
+  [['e2','Embroidery — panel on the frame'], ['pj-germany-3','Embroidery — metal thread close-up'], ['e6','Embroidery — embroiderers at the frame']],
+  { dark:true })}
+${centre('stone-inlay', '03 — Stone, inlay & mother-of-pearl', 'The master<br>', 'atelier.',
+  `Semi-precious stone, marble and shell are cut piece by piece and inlaid in the atelier, with mother-of-pearl and abalone set alongside stone. Inlay furniture is made in our own workshops: mother-of-pearl or bone cut by hand and laid piece by piece into a coloured resin ground over the carcass, then sanded and finished. <a href="${up}stone/">Stone</a> · <a href="${up}inlay/">Inlay furniture</a>.`,
+  [['st3','Stone — mother-of-pearl laid beside rose quartz','q'], ['ip3','Inlay — mother-of-pearl geometric detail','q'], ['ip4','Inlay — bone fish-scale detail','q'], ['st1','Stone — malachite set into marble','q']])}
+${centre('new-delhi', '04 — New Delhi · Studio, sampling & quality', 'Developed and<br>checked in ', 'Delhi.',
+  `Studio, artwork development, sampling, finishing and quality control sit in New Delhi. Leather and wall works are developed here too: pattern, cutting and colour-matching for leather, and form, material and finish for wall works in ceramic, metal, plaster, wood and natural fibre, are worked out against the drawing in our New Delhi studio. Each piece is checked against the specification and the approved sample, then finished and packed in Delhi. <a href="${up}leather/">Leather</a> · <a href="${up}wall-works/">Wall works</a> · <a href="${up}process/">The process</a>.`,
+  [['bs1','Studio — specification drawing'], ['b1','Studio — finished pieces laid out for inspection'], ['wd1','Studio — the New Delhi showroom']],
+  { dark:true, todo:'Add studio packing / dispatch photography (none in assets/media yet).', inner:`
+  <div class="facts" style="margin-top:clamp(28px,4vw,48px)">
     <div><b>Studio</b><span>New Delhi, India</span></div>
-    <div><b>Weaving</b><span>Established rug workshops across India</span></div>
+    <div><b>Making</b><span>Established workshops across India</span></div>
     <div><b>Finishing &amp; QC</b><span>Reviewed in Delhi against the approved sample</span></div>
     <div><b>People</b><span>Ankit Vijaivargia · Payal Samal</span></div>
-  </div>
-</section>
-<section class="sec">
-  <div class="sec-hd"><div><span class="lb">The second discipline</span><h2 class="d2">Embroidery,<br>worked by <span class="it">hand.</span></h2></div>
-  <p class="bd">The same model applied to thread: hand embroidery for wall panels, framed art, cushions, <a href="${up}embroidery/headboards/">headboards</a>, upholstery panels and drapery, from our designs or developed from your artwork, and sampled where the project requires it. <a href="${up}embroidery/">Embroidery at ARTILIER</a>.</p></div>
-</section>
+  </div>` })}
 <section class="sec">
   <div class="sec-hd"><div><span class="lb">Beyond</span><h2 class="d2">Built around making,<br>not one <span class="it">product.</span></h2></div>
-  <p class="bd">ARTILIER is built around art, material and making rather than around a single product. Rugs and embroidery are where the studio works today; design objects follow. The constant is the model: made to order by hand, developed from Delhi, sold trade only. <a href="${up}trade/">How we work with practices</a>.</p></div>
+  <p class="bd">ARTILIER is built around art, material and making rather than around a single product. Rugs, hand embroidery, leather, stone, inlay furniture and wall works are where the studio works today; design objects follow. The constant is the model: made to order by hand, developed from Delhi, sold trade only. <a href="${up}trade/">How we work with practices</a>.</p></div>
 </section>
-${relatedBlock([['collection/designs/','The collection'],['embroidery/','Embroidery'],['leather/','Leather'],['stone/','Stone'],['process/','The process'],['materials/','Materials'],['bespoke/','Bespoke development']])}`
+${relatedBlock([['collection/designs/','The collection'],['embroidery/','Embroidery'],['leather/','Leather'],['stone/','Stone'],['inlay/','Inlay furniture'],['wall-works/','Wall works'],['process/','The process'],['materials/','Materials'],['bespoke/','Bespoke development']])}`
 });
 
 /* ── embroidery pages ──────────────────────────────────────────────── */
@@ -422,7 +448,7 @@ ${qaBlock([
   ['Can embroidery be paired with a rug?', 'Yes. Rugs and embroidery are developed in the same studio, so colour and motif can be carried across both for one room.'],
   ['Who contracts and invoices?', 'Art Avenue Pvt. Ltd., New Delhi — the same company that contracts our rugs.']
 ])}
-${relatedBlock([['embroidery/headboards/','Embroidered headboards'],['embroidery/fabrics/','Embroidered fabric'],['hospitality/','Hospitality'],['bespoke/','Bespoke development'],['craft/','The craft']], { href:'contact/?type=embroidery', label:'Send an embroidery brief' })}`
+${relatedBlock([['embroidery/headboards/','Embroidered headboards'],['embroidery/fabrics/','Embroidered fabric'],['hospitality/','Hospitality'],['bespoke/','Bespoke development'],['craft/','The craft'],['guides/briefing-an-embroidery-commission/','How to brief embroidery']], { href:'contact/?type=embroidery', label:'Send an embroidery brief' })}`
 });
 
 /* ── /embroidery/headboards/ — Brief B with the C-09 restrictions ──── */
