@@ -28,6 +28,7 @@ const shell = ({ path, up, title, desc, lb, h1, h1it, lead, body, nodes = [], la
   const crumbs = [{ name:'ARTILIER', href:home(up), abs:`${HOST}/` }];
   if (path.startsWith('trade/') && path !== 'trade/') crumbs.push({ name:'Trade', href:`${up}trade/`, abs:`${HOST}/trade/` });
   if (path.startsWith('embroidery/') && path !== 'embroidery/') crumbs.push({ name:'Embroidery', href:`${up}embroidery/`, abs:`${HOST}/embroidery/` });
+  if (path.startsWith('guides/') && path !== 'guides/') crumbs.push({ name:'Guides', href:`${up}guides/`, abs:`${HOST}/guides/` });
   if (path.startsWith('fr/') && path !== 'fr/') crumbs.push({ name:'Français', href:`${up}fr/`, abs:`${HOST}/fr/` });
   crumbs.push({ name:crumbName || lb, href:url, abs:url });
   const schema = graph([
@@ -964,9 +965,28 @@ ${sec('Travailler ensemble', 'Votre dessin,', 'en fil.', `<div class="prose">
 </div>`
 });
 
+/* ── /guides/ — hub for the six specifier guides (SEO audit, 27 Nov 2026:
+   /guides/ returned 404 and three guides had only two internal links).
+   Each line restates the guide's own meta description; nothing new. */
+const guideDesc = slug => {
+  if (slug === 'briefing-a-bespoke-rug') return guide.match(/<meta name="description" content="([^"]*)"/)[1];
+  return rd(`guides/${slug}/index.html`).match(/<meta name="description" content="([^"]*)"/)[1];
+};
+const guidesHub = shell({
+  path:'guides/', up:'../', crumbName:'Guides', pageType:'CollectionPage',
+  title:'Briefing Guides for Designers and Architects | ARTILIER',
+  desc:'Six specifier guides from the ARTILIER studio: what to send, what gets decided and how timing runs for rugs, embroidery, leather, stone, inlay furniture and wall works.',
+  lb:'Guides · For designers and architects', h1:'Briefing<br>', h1it:'guides.',
+  lead:`<p class="bd">One guide per discipline. Each sets out what to send, what gets decided and in what order, and how long the studio’s own stages take.</p>`,
+  nodes:[{ '@type':'ItemList','@id':`${HOST}/guides/#list`,'itemListElement':GUIDES.map(([slug, , , t], i) => ({ '@type':'ListItem','position':i + 1,'name':t,'url':`${HOST}/guides/${slug}/` })) }],
+  body:`
+${sec('Six disciplines', 'What to send,', 'and when.', qa(GUIDES.map(([slug, , name, t]) => [`<a href="../guides/${slug}/">${esc(t)}</a>`, `${esc(name)}. ${esc(guideDesc(slug).replace(/^A guide for [^:]+: /, '').replace(/^./, c => c.toUpperCase()))}`])))}
+${ctaBlock('../', 'contact/', 'Start a project', [['bespoke/','Bespoke development'],['process/','Process'],['trade/','Working with us']])}`
+});
+
 /* ── write ─────────────────────────────────────────────────────────── */
 const built = { 'privacy/index.html':privacy, 'contact/index.html':contact, 'about/index.html':about, 'projects/index.html':projects, 'hospitality/index.html':hospitality,
-  'trade/uae/index.html':uae, 'trade/saudi-arabia/index.html':ksa, 'trade/uk/index.html':uk, 'trade/us/index.html':us, 'fr/index.html':fr, 'embroidery/uae/index.html':embUae, 'embroidery/saudi-arabia/index.html':embKsa, 'embroidery/uk/index.html':embUk, 'embroidery/us/index.html':embUs, 'fr/broderie/index.html':embFr, [G + 'index.html']:guide, '404.html':notFound };
+  'trade/uae/index.html':uae, 'trade/saudi-arabia/index.html':ksa, 'trade/uk/index.html':uk, 'trade/us/index.html':us, 'fr/index.html':fr, 'embroidery/uae/index.html':embUae, 'embroidery/saudi-arabia/index.html':embKsa, 'embroidery/uk/index.html':embUk, 'embroidery/us/index.html':embUs, 'fr/broderie/index.html':embFr, [G + 'index.html']:guide, '404.html':notFound, 'guides/index.html':guidesHub };
 for (const p of projectsData) built[`projects/${p.slug}/index.html`] = projectPage(p);
 for (const [f, html] of Object.entries(built)) write(f, html);
 console.log(`built ${Object.keys(built).length} phase-3 pages`);
@@ -1060,7 +1080,7 @@ const urls = [
   ['', '1.0'], ['collection/', '0.9'], ['collection/designs/', '0.9'], ...CATS.map(c => [`collection/${c.slug}/`, '0.8']),
   ['bespoke/', '0.9'], ['hospitality/', '0.9'], ['trade/', '0.8'], ['collaborations/', '0.8'], ['contact/', '0.8'], ['about/', '0.7'],
   ['trade/uae/', '0.8'], ['trade/saudi-arabia/', '0.8'], ['trade/uk/', '0.7'], ['trade/us/', '0.7'], ['fr/', '0.8'],
-  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['leather/', '0.8'], ['stone/', '0.8'], ['inlay/', '0.8'], ['wall-works/', '0.8'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], ...GUIDES.map(([slug]) => [`guides/${slug}/`, '0.7']),
+  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['leather/', '0.8'], ['stone/', '0.8'], ['inlay/', '0.8'], ['wall-works/', '0.8'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], ['guides/', '0.6'], ...GUIDES.map(([slug]) => [`guides/${slug}/`, '0.7']),
   ...(indexProjects ? [['projects/', '0.8']] : []), ...projectsData.map(p => [`projects/${p.slug}/`, '0.7']),
   ...indexable.slice().sort(by).map(d => [`collection/${d.slug}/`, '0.6'])
 ];
