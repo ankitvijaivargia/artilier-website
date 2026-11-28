@@ -1132,5 +1132,19 @@ for (const f of ['index.html', 'collection/design.html']) {
   console.log('synced homepage footer and schema');
 }
 
+/* ── hreflang: English ↔ French equivalents (SEO audit, 27 Nov 2026) ─
+   Reciprocal tags on both pages of each pair, plus x-default to English.
+   Only true equivalents are paired; other /fr/ links stay plain hreflang
+   hints on anchors. Idempotent: existing alternates are replaced. */
+const HREFLANG = [ ['', 'fr/'], ['embroidery/', 'fr/broderie/'] ];
+for (const [en, frp] of HREFLANG) {
+  const tags = `<link rel="alternate" hreflang="en" href="${HOST}/${en}">\n<link rel="alternate" hreflang="fr" href="${HOST}/${frp}">\n<link rel="alternate" hreflang="x-default" href="${HOST}/${en}">`;
+  for (const f of [`${en}index.html`, `${frp}index.html`]) {
+    let s = rd(f).replace(/<link rel="alternate" hreflang="[^"]+" href="[^"]+">\n?/g, '');
+    s = s.replace(/(<link rel="canonical" href="[^"]+">)/, `$1\n${tags}`);
+    wr(f, s);
+  }
+}
+
 /* ── last step: pre-render media into every page (tools/prerender.mjs) ── */
 await import('./prerender.mjs');
