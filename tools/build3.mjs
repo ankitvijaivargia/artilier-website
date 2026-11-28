@@ -985,7 +985,10 @@ ${ctaBlock('../', 'contact/', 'Start a project', [['bespoke/','Bespoke developme
 });
 
 /* ── write ─────────────────────────────────────────────────────────── */
-const built = { 'privacy/index.html':privacy, 'contact/index.html':contact, 'about/index.html':about, 'projects/index.html':projects, 'hospitality/index.html':hospitality,
+/* /contact/: no sticky "Start a project" bar — it linked to the page itself
+   and covered the form on phones (SEO audit, 27 Nov 2026). */
+const contactPage = contact.replace(/<a class="mcta" id="mcta"[^>]*>[\s\S]*?<\/a>\n?/, '');
+const built = { 'privacy/index.html':privacy, 'contact/index.html':contactPage, 'about/index.html':about, 'projects/index.html':projects, 'hospitality/index.html':hospitality,
   'trade/uae/index.html':uae, 'trade/saudi-arabia/index.html':ksa, 'trade/uk/index.html':uk, 'trade/us/index.html':us, 'fr/index.html':fr, 'embroidery/uae/index.html':embUae, 'embroidery/saudi-arabia/index.html':embKsa, 'embroidery/uk/index.html':embUk, 'embroidery/us/index.html':embUs, 'fr/broderie/index.html':embFr, [G + 'index.html']:guide, '404.html':notFound, 'guides/index.html':guidesHub };
 for (const p of projectsData) built[`projects/${p.slug}/index.html`] = projectPage(p);
 for (const [f, html] of Object.entries(built)) write(f, html);
