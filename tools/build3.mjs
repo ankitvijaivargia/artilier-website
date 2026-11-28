@@ -28,6 +28,7 @@ const shell = ({ path, up, title, desc, lb, h1, h1it, lead, body, nodes = [], la
   const crumbs = [{ name:'ARTILIER', href:home(up), abs:`${HOST}/` }];
   if (path.startsWith('trade/') && path !== 'trade/') crumbs.push({ name:'Trade', href:`${up}trade/`, abs:`${HOST}/trade/` });
   if (path.startsWith('embroidery/') && path !== 'embroidery/') crumbs.push({ name:'Embroidery', href:`${up}embroidery/`, abs:`${HOST}/embroidery/` });
+  if (path.startsWith('guides/') && path !== 'guides/') crumbs.push({ name:'Guides', href:`${up}guides/`, abs:`${HOST}/guides/` });
   if (path.startsWith('fr/') && path !== 'fr/') crumbs.push({ name:'Français', href:`${up}fr/`, abs:`${HOST}/fr/` });
   crumbs.push({ name:crumbName || lb, href:url, abs:url });
   const schema = graph([
@@ -964,9 +965,31 @@ ${sec('Travailler ensemble', 'Votre dessin,', 'en fil.', `<div class="prose">
 </div>`
 });
 
+/* ── /guides/ — hub for the six specifier guides (SEO audit, 27 Nov 2026:
+   /guides/ returned 404 and three guides had only two internal links).
+   Each line restates the guide's own meta description; nothing new. */
+const guideDesc = slug => {
+  if (slug === 'briefing-a-bespoke-rug') return guide.match(/<meta name="description" content="([^"]*)"/)[1];
+  return rd(`guides/${slug}/index.html`).match(/<meta name="description" content="([^"]*)"/)[1];
+};
+const guidesHub = shell({
+  path:'guides/', up:'../', crumbName:'Guides', pageType:'CollectionPage',
+  title:'Briefing Guides for Designers and Architects | ARTILIER',
+  desc:'Specifier guides for rugs, embroidery, leather, stone, inlay furniture and wall works: what to send, what gets decided and how timing runs.',
+  lb:'Guides · For designers and architects', h1:'Briefing<br>', h1it:'guides.',
+  lead:`<p class="bd">One guide per discipline. Each sets out what to send, what gets decided and in what order, and how long the studio’s own stages take.</p>`,
+  nodes:[{ '@type':'ItemList','@id':`${HOST}/guides/#list`,'itemListElement':GUIDES.map(([slug, , , t], i) => ({ '@type':'ListItem','position':i + 1,'name':t,'url':`${HOST}/guides/${slug}/` })) }],
+  body:`
+${sec('Six disciplines', 'What to send,', 'and when.', qa(GUIDES.map(([slug, , , t]) => [`<a href="../guides/${slug}/">${esc(t)}</a>`, `${esc(guideDesc(slug).replace(/^A guide for [^:]+: /, '').replace(/^./, c => c.toUpperCase()))}`])))}
+${ctaBlock('../', 'contact/', 'Start a project', [['bespoke/','Bespoke development'],['process/','Process'],['trade/','Working with us']])}`
+});
+
 /* ── write ─────────────────────────────────────────────────────────── */
-const built = { 'privacy/index.html':privacy, 'contact/index.html':contact, 'about/index.html':about, 'projects/index.html':projects, 'hospitality/index.html':hospitality,
-  'trade/uae/index.html':uae, 'trade/saudi-arabia/index.html':ksa, 'trade/uk/index.html':uk, 'trade/us/index.html':us, 'fr/index.html':fr, 'embroidery/uae/index.html':embUae, 'embroidery/saudi-arabia/index.html':embKsa, 'embroidery/uk/index.html':embUk, 'embroidery/us/index.html':embUs, 'fr/broderie/index.html':embFr, [G + 'index.html']:guide, '404.html':notFound };
+/* /contact/: no sticky "Start a project" bar — it linked to the page itself
+   and covered the form on phones (SEO audit, 27 Nov 2026). */
+const contactPage = contact.replace(/<a class="mcta" id="mcta"[^>]*>[\s\S]*?<\/a>\n?/, '');
+const built = { 'privacy/index.html':privacy, 'contact/index.html':contactPage, 'about/index.html':about, 'projects/index.html':projects, 'hospitality/index.html':hospitality,
+  'trade/uae/index.html':uae, 'trade/saudi-arabia/index.html':ksa, 'trade/uk/index.html':uk, 'trade/us/index.html':us, 'fr/index.html':fr, 'embroidery/uae/index.html':embUae, 'embroidery/saudi-arabia/index.html':embKsa, 'embroidery/uk/index.html':embUk, 'embroidery/us/index.html':embUs, 'fr/broderie/index.html':embFr, [G + 'index.html']:guide, '404.html':notFound, 'guides/index.html':guidesHub };
 for (const p of projectsData) built[`projects/${p.slug}/index.html`] = projectPage(p);
 for (const [f, html] of Object.entries(built)) write(f, html);
 console.log(`built ${Object.keys(built).length} phase-3 pages`);
@@ -986,7 +1009,7 @@ const syncShell = (file, up, { ctaLabel } = {}) => {
   s = s.replace(/<a class="mcta" id="mcta" href="[^"]*">([^<]*)/, (m, label) => `<a class="mcta" id="mcta" href="${up}contact/">${ctaLabel || label}`);
   s = s.split(`${up}index.html#brief`).join(`${up}contact/`).split(`${up}index.html#about`).join(`${up}about/`).split(`href="${up}index.html"`).join(`href="${up}"`);
   s = s.replace(/manifest\.json\?v=[0-9a-f]+/g, `manifest.json?v=${MV}`);
-  s = s.replace(/slots\.js\?v=[45]/g, 'slots.js?v=6').replace(/pages\.css\?v=[345]/g, 'pages.css?v=7');
+  s = s.replace(/slots\.js\?v=[456]/g, 'slots.js?v=7').replace(/pages\.css\?v=[345]/g, 'pages.css?v=7');
   if (!s.includes('pages.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*collection-tweaks\.css\?v=2">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/pages.css?v=3">`);
   if (!s.includes('analytics.js')) s = s.replace('</head>', `<script defer src="${up}assets/js/analytics.js?v=5"></script>\n</head>`);
   if (!s.includes('nav.css')) s = s.replace(/(<link rel="stylesheet" href="[^"]*pages\.css\?v=\d+">)/, `$1\n<link rel="stylesheet" href="${up}assets/css/nav.css?v=1">`);
@@ -1060,7 +1083,7 @@ const urls = [
   ['', '1.0'], ['collection/', '0.9'], ['collection/designs/', '0.9'], ...CATS.map(c => [`collection/${c.slug}/`, '0.8']),
   ['bespoke/', '0.9'], ['hospitality/', '0.9'], ['trade/', '0.8'], ['collaborations/', '0.8'], ['contact/', '0.8'], ['about/', '0.7'],
   ['trade/uae/', '0.8'], ['trade/saudi-arabia/', '0.8'], ['trade/uk/', '0.7'], ['trade/us/', '0.7'], ['fr/', '0.8'],
-  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['leather/', '0.8'], ['stone/', '0.8'], ['inlay/', '0.8'], ['wall-works/', '0.8'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], ...GUIDES.map(([slug]) => [`guides/${slug}/`, '0.7']),
+  ['materials/', '0.7'], ['process/', '0.7'], ['craft/', '0.7'], ['embroidery/', '0.9'], ['leather/', '0.8'], ['stone/', '0.8'], ['inlay/', '0.8'], ['wall-works/', '0.8'], ['embroidery/headboards/', '0.8'], ['embroidery/fabrics/', '0.8'], ['embroidery/uae/', '0.8'], ['embroidery/saudi-arabia/', '0.8'], ['embroidery/uk/', '0.8'], ['embroidery/us/', '0.8'], ['fr/broderie/', '0.8'], ['guides/', '0.6'], ...GUIDES.map(([slug]) => [`guides/${slug}/`, '0.7']),
   ...(indexProjects ? [['projects/', '0.8']] : []), ...projectsData.map(p => [`projects/${p.slug}/`, '0.7']),
   ...indexable.slice().sort(by).map(d => [`collection/${d.slug}/`, '0.6'])
 ];
@@ -1111,3 +1134,21 @@ for (const f of ['index.html', 'collection/design.html']) {
   wr('index.html', s);
   console.log('synced homepage footer and schema');
 }
+
+/* ── hreflang: English ↔ French equivalents (SEO audit, 27 Nov 2026) ─
+   Reciprocal tags on both pages of each pair, plus x-default to English.
+   Only true equivalents are paired; other /fr/ links stay plain hreflang
+   hints on anchors. Idempotent: existing alternates are replaced. */
+const HREFLANG = [ ['', 'fr/'], ['embroidery/', 'fr/broderie/'] ];
+for (const [en, frp] of HREFLANG) {
+  const tags = `<link rel="alternate" hreflang="en" href="${HOST}/${en}">\n<link rel="alternate" hreflang="fr" href="${HOST}/${frp}">\n<link rel="alternate" hreflang="x-default" href="${HOST}/${en}">`;
+  for (const f of [`${en}index.html`, `${frp}index.html`]) {
+    let s = rd(f).replace(/<link rel="alternate" hreflang="[^"]+" href="[^"]+">\n?/g, '');
+    s = s.replace(/(<link rel="canonical" href="[^"]+">)/, `$1\n${tags}`);
+    wr(f, s);
+  }
+}
+
+/* ── last step: pre-render media into every page (tools/prerender.mjs) ── */
+await import('./prerender.mjs');
+await import('./assethash.mjs');

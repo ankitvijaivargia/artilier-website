@@ -79,7 +79,7 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <link rel="stylesheet" href="${up}assets/css/collection-tweaks.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/pages.css?v=7">
 <link rel="stylesheet" href="${up}assets/css/nav.css?v=1">
-<script defer src="${up}assets/js/slots.js?v=6" data-manifest="${up}assets/media/manifest.json?v=${MV}"></script>
+<script defer src="${up}assets/js/slots.js?v=7" data-manifest="${up}assets/media/manifest.json?v=${MV}"></script>
 <script defer src="${up}assets/js/analytics.js?v=5"></script>
 <script defer src="${up}assets/js/nav.js?v=1"></script>${scripts}${extraHead}
 </head>
@@ -162,6 +162,7 @@ const FOOT_FR = {'Collection': 'Collection',
   'The craft': 'Le savoir-faire',
   'About the studio': 'Le studio',
   'How to brief a rug': 'Guide : rédiger le brief d’un tapis (en anglais)',
+  'Briefing guides': 'Guides de brief (en anglais)',
   'How to brief inlay': 'Guide : le brief d’un meuble incrusté (en anglais)',
   'How to brief wall works': 'Guide : le brief d’une œuvre murale (en anglais)',
   'Trade': 'Professionnels',
@@ -206,9 +207,7 @@ const footer = (up, { lang = 'en' } = {}) => { const T = k => lang === 'fr' ? (F
       <li><a href="${up}craft/">${T('The craft')}</a></li>
       <li><a href="${up}projects/">${T('Projects')}</a></li>
       <li><a href="${up}about/">${T('About the studio')}</a></li>
-      <li><a href="${up}guides/briefing-a-bespoke-rug/"${lang === 'fr' ? ' hreflang="en"' : ''}>${T('How to brief a rug')}</a></li>
-      <li><a href="${up}guides/briefing-an-inlay-commission/"${lang === 'fr' ? ' hreflang="en"' : ''}>${T('How to brief inlay')}</a></li>
-      <li><a href="${up}guides/briefing-a-wall-works-commission/"${lang === 'fr' ? ' hreflang="en"' : ''}>${T('How to brief wall works')}</a></li>
+      <li><a href="${up}guides/"${lang === 'fr' ? ' hreflang="en"' : ''}>${T('Briefing guides')}</a></li>
     </ul></div>
     <div class="f-col"><h5 aria-level="3">${T('Trade')}</h5><ul>
       <li><a href="${up}trade/">${T('Working with us')}</a></li>

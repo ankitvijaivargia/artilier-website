@@ -124,7 +124,13 @@
       v.preload = 'none';
       v.setAttribute('aria-label', entry.alt || this.getAttribute('alt') || 'Process film');
       const poster = this.getAttribute('poster') || entry.poster;
-      if (poster) v.poster = poster;
+      /* Pages pre-rendered by tools/prerender.mjs carry the poster as a real
+         <img data-poster>: it is the first paint, loads lazily below the fold
+         and is crawlable. Keep it over the film until the film plays, then
+         remove it. Without one, the poster attribute stands in as before. */
+      const pre = this.querySelector('img[data-poster]');
+      if (pre) v.addEventListener('playing', () => pre.remove(), { once: true });
+      else if (poster) v.poster = poster;
       this.appendChild(v);
       /* Load and play only once the frame is on screen, and never under
          reduced-motion — the poster or first frame stands in. */

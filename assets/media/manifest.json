@@ -1,7 +1,7 @@
 {
   "b1": {
     "type": "video",
-    "src": "b1.mp4?v=2",
+    "src": "b1.mp4?v=3",
     "poster": "/assets/media/b1-poster.webp?v=2",
     "alt": "Finished rugs laid out for inspection"
   },
@@ -700,7 +700,7 @@
   },
   "hero-3": {
     "type": "video",
-    "src": "hero-3.mp4?v=2",
+    "src": "hero-3.mp4?v=3",
     "poster": "/assets/media/hero-3-poster.webp?v=2",
     "alt": "Washing and finishing the woven pile"
   },
@@ -712,7 +712,7 @@
   },
   "m1": {
     "type": "video",
-    "src": "m1.mp4?v=2",
+    "src": "m1.mp4?v=3",
     "poster": "/assets/media/m1-poster.webp?v=2",
     "alt": "Rugs being washed at the workshop"
   },
@@ -805,7 +805,7 @@
   },
   "w20": {
     "type": "video",
-    "src": "w20.mp4?v=2",
+    "src": "w20.mp4?v=3",
     "poster": "/assets/media/w20-poster.webp?v=2",
     "alt": "Artisan tufting a blue botanical design"
   },
@@ -816,7 +816,7 @@
       "x": 0,
       "y": 0
     },
-    "src": "w3.mp4?v=2",
+    "src": "w3.mp4?v=3",
     "poster": "/assets/media/w3-poster.webp?v=2",
     "alt": "Weaver knotting row by row at the loom"
   },
@@ -829,7 +829,7 @@
   },
   "w6": {
     "type": "video",
-    "src": "w6.mp4?v=2",
+    "src": "w6.mp4?v=3",
     "poster": "/assets/media/w6-poster.webp?v=2",
     "alt": "Close detail of warp threads under tension"
   },
