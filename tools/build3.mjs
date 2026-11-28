@@ -975,12 +975,12 @@ const guideDesc = slug => {
 const guidesHub = shell({
   path:'guides/', up:'../', crumbName:'Guides', pageType:'CollectionPage',
   title:'Briefing Guides for Designers and Architects | ARTILIER',
-  desc:'Six specifier guides from the ARTILIER studio: what to send, what gets decided and how timing runs for rugs, embroidery, leather, stone, inlay furniture and wall works.',
+  desc:'Specifier guides for rugs, embroidery, leather, stone, inlay furniture and wall works: what to send, what gets decided and how timing runs.',
   lb:'Guides · For designers and architects', h1:'Briefing<br>', h1it:'guides.',
   lead:`<p class="bd">One guide per discipline. Each sets out what to send, what gets decided and in what order, and how long the studio’s own stages take.</p>`,
   nodes:[{ '@type':'ItemList','@id':`${HOST}/guides/#list`,'itemListElement':GUIDES.map(([slug, , , t], i) => ({ '@type':'ListItem','position':i + 1,'name':t,'url':`${HOST}/guides/${slug}/` })) }],
   body:`
-${sec('Six disciplines', 'What to send,', 'and when.', qa(GUIDES.map(([slug, , name, t]) => [`<a href="../guides/${slug}/">${esc(t)}</a>`, `${esc(name)}. ${esc(guideDesc(slug).replace(/^A guide for [^:]+: /, '').replace(/^./, c => c.toUpperCase()))}`])))}
+${sec('Six disciplines', 'What to send,', 'and when.', qa(GUIDES.map(([slug, , , t]) => [`<a href="../guides/${slug}/">${esc(t)}</a>`, `${esc(guideDesc(slug).replace(/^A guide for [^:]+: /, '').replace(/^./, c => c.toUpperCase()))}`])))}
 ${ctaBlock('../', 'contact/', 'Start a project', [['bespoke/','Bespoke development'],['process/','Process'],['trade/','Working with us']])}`
 });
 

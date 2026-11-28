@@ -416,3 +416,24 @@ No new URL, no FAQPage schema (none elsewhere on the site), no prices, no new fa
 | `/collection/`: one line per construction — category link, then each indexable design name as a text link (7 hand-knotted, 12 hand-tufted, 2 flatweave = 21) | No images, no new copy, no new claims; names only |
 
 Every design page is now two clicks from the homepage (Home → Rugs → design). No new URL, no schema change, sitemap unchanged (54 URLs). Indexing requests for the 18 pages are being sent in batches (10/day quota). `check.py`: no new warnings; the 21 image-variant errors exist on main before this change.
+
+## 25. Audit fixes from the 27 Nov 2026 SEO audit (28 Nov 2026) — branch `seo/audit-fixes-2026-11-28`
+
+**Why:** the full audit (claude-seo, 27 Nov) scored the site 75/100. These are the fixes that need no new facts from the owner.
+
+| Change | Detail |
+|---|---|
+| `tools/prerender.mjs` (runs at the end of `build3.mjs`) | Every empty media slot whose manifest entry is a photograph gets `<img data-pre>` (srcset, `sizes="auto, …"` when lazy, width/height, manifest alt). Video slots get their poster as `<img data-pre data-poster>`. Homepage, /collection/, /leather/, /stone/, /inlay/ and /wall-works/ now have images in the HTML; 150 slots in all. Only the first eager slot on a page gets `fetchpriority="high"` |
+| `assets/js/slots.js` | Keeps a pre-rendered poster over the film until the film plays, then removes it. Posters below the fold now load lazily instead of all at once |
+| Films | Unused AAC tracks stripped from b1, hero-3, m1, w20, w3, w6 (films always play muted). Video copied, not re-encoded; 1.5 MB saved. Manifest `?v` bumped |
+| `/guides/` | New hub (was 404): six guides, each summarised by its own meta description; ItemList schema; in the sitemap (61 URLs). Footer "Briefing guides" link replaces three single-guide links. Guide breadcrumbs include Guides |
+| /stone/ vs /inlay/ | /stone/ meta says "stone and shell inlay"; "mother-of-pearl inlay" belongs to /inlay/ |
+| /collection/ and /collection/designs/ | Distinct titles ("Custom Rugs Made to Order: How We Make Them", "Rug Designs Collection, Woven to Your Size"); twitter:title fixed; broken `#knotted` skip link fixed |
+| hreflang | Reciprocal en/fr/x-default on `/` ↔ `/fr/` and `/embroidery/` ↔ `/fr/broderie/` |
+| Homepage | `<main id="main">`; skip link targets it |
+| /contact/ | Sticky "Start a project" bar removed (it linked to the page itself and covered the form on phones) |
+| `tools/assethash.mjs` + `_headers` | CSS/JS references carry a content hash; /assets/css/* and /assets/js/* cached one year, immutable (was one hour) |
+
+**Not done here (owner input or Cloudflare dashboard):** AI crawler 403s for PerplexityBot/YouBot (Cloudflare AI Crawl Control); MP4 byte-range (206) responses (needs a Worker or R2; the blob fallback in slots.js keeps iOS playback working meanwhile); 21 thin design pages; proof (case studies, bylines); directory listings; terms-of-trade page and registration details.
+
+`check.py`: no new warnings; the `images.py --check` error exists on main before this change.
