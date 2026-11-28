@@ -79,7 +79,7 @@ const head = ({ title, desc, canonical, ogTitle, ogDesc, up, schema, robots, lan
 <link rel="stylesheet" href="${up}assets/css/collection-tweaks.css?v=2">
 <link rel="stylesheet" href="${up}assets/css/pages.css?v=7">
 <link rel="stylesheet" href="${up}assets/css/nav.css?v=1">
-<script defer src="${up}assets/js/slots.js?v=6" data-manifest="${up}assets/media/manifest.json?v=${MV}"></script>
+<script defer src="${up}assets/js/slots.js?v=7" data-manifest="${up}assets/media/manifest.json?v=${MV}"></script>
 <script defer src="${up}assets/js/analytics.js?v=5"></script>
 <script defer src="${up}assets/js/nav.js?v=1"></script>${scripts}${extraHead}
 </head>

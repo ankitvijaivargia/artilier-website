@@ -601,7 +601,7 @@ ci = ci.replace(/<main id="collection-root"[\s\S]*?<\/main>/,
   `<main id="collection-root" data-category="rugs" data-prerendered="1">\n${sections}\n</main>`);
 ci = ci.replace(/<div class="filt-in" id="filt-in" role="group" aria-label="Filter the collection">[\s\S]*?<\/div>/,
   `<div class="filt-in" id="filt-in" role="group" aria-label="Filter the collection">${filtBtns}</div>`);
-ci = ci.replace('slots.js?v=3','slots.js?v=4').replace('content.js?v=5','content.js?v=5');
+ci = ci.replace(/slots\.js\?v=[346]\b/,'slots.js?v=7').replace('content.js?v=5','content.js?v=5');
 writeFileSync('collection/designs/index.html', ci);
 console.log('pre-rendered collection/designs/index.html');
 
