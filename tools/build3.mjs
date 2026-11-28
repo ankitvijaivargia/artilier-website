@@ -1151,3 +1151,4 @@ for (const [en, frp] of HREFLANG) {
 
 /* ── last step: pre-render media into every page (tools/prerender.mjs) ── */
 await import('./prerender.mjs');
+await import('./assethash.mjs');
